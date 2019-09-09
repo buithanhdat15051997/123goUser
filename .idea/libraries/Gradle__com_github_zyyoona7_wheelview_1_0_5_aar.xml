@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.zyyoona7:wheelview:1.0.5@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5ea352c76c7e96edd74ddc272e3b6909/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5ea352c76c7e96edd74ddc272e3b6909/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5ea352c76c7e96edd74ddc272e3b6909/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.zyyoona7/wheelview/1.0.5/28976a1d5054c0cf382751033cdc0edda2bcb392/wheelview-1.0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

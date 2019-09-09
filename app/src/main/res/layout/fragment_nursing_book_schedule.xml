@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Created by HaoLS
+     on April 18th, 2019-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar_add_schedule"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@drawable/background_with_shadow">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp">
+
+            <ImageButton
+                android:id="@+id/add_schedule_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="10dp"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_back_blue" />
+
+            <TextView
+                android:id="@+id/register_schedule_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/submit_schedule_title"
+                android:textSize="@dimen/_16ssp"
+                android:textStyle="bold|italic"
+                android:textColor="@color/deeporange600"/>
+
+            <TextView
+                android:id="@+id/btn_register_schedule_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:text="@string/done"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/lightblueA700"
+                android:textStyle="italic"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/group_ambulance_operator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_add_schedule"
+        android:layout_margin="@dimen/_5sdp"
+        android:background="@drawable/background_rectango_stroke_blue"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_ambulance_operator_notice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:text="@string/ambulance_operator_notice"
+            android:textColor="@color/deeporange600"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold|italic"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"/>
+
+        <com.zyyoona7.wheel.WheelView
+            android:id="@+id/wheel_view_ambulance_operator"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
+            app:wv_textSize="@dimen/_16ssp"
+            app:wv_normalItemTextColor="@color/deeporange600"
+            app:wv_selectedItemTextColor="@color/deeporange600"
+            app:wv_lineSpacing="@dimen/_5sdp"
+            app:wv_textAlign="center"
+            app:wv_showDivider="true"
+            app:wv_curved="true"
+            app:wv_curvedArcDirection="center"
+            app:wv_dividerType="fill"
+            app:wv_dividerPaddingForWrap="@dimen/_2sdp"
+            app:wv_dividerColor="@color/deeporange600"/>
+
+        <!--Horizontal Ambulance Operator-->
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_schedule_vehicle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:padding="@dimen/_5sdp"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:layout_weight="0.3"/>
+
+            <LinearLayout
+                android:id="@+id/any_ambulance_operator_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginBottom="@dimen/_2sdp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="0.7">
+
+                <ImageView
+                    android:id="@+id/type_picutre"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_margin="@dimen/_3sdp"
+                    android:gravity="center"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ambulance_car" />
+
+                <View
+                    android:id="@+id/view_select"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_5sdp"
+                    android:background="@drawable/background_gradient_line"
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:id="@+id/tv_type_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="Any Ambulance Operator"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_13ssp"
+                    android:scrollHorizontally="true"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--Button another ambulance operators-->
+        <Button
+            android:visibility="gone"
+            android:id="@+id/btn_another_ambulance_operator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="@dimen/_5sdp"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:background="@color/lightblueA700"
+            android:text="@string/another_ambulance_operator"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="italic|bold"/>
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_add_schedule"
+        android:layout_below="@id/group_ambulance_operator"
+        android:focusable="true"
+        android:orientation="vertical"/>
+
+    <Button
+        android:id="@+id/btn_add_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="@string/add_schedule"
+        android:textSize="@dimen/_16sdp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@color/background123go"/>
+
+</RelativeLayout>

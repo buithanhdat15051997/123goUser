@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/background_with_shadow"
+    android:layout_margin="@dimen/_10sdp"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/reason_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/issue_title"
+        android:layout_marginBottom="20dp"
+        android:textAllCaps="true"
+        android:gravity="center"
+        android:textSize="@dimen/_16ssp"
+        android:textColor="@color/lightblueA700"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/cancel_reason_lst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reason_title"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_centerInParent="true">
+
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>

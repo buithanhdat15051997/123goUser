@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@drawable/background_with_shadow"
+        android:padding="@dimen/_10sdp">
+
+        <ImageButton
+            android:id="@+id/btn_pay_viewcancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@null"
+            android:padding="@dimen/_5sdp"
+            app:srcCompat="@drawable/close" />
+
+        <TextView
+            android:id="@+id/tv_payment_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/lightblueA700"
+            android:gravity="center"
+            android:textSize="@dimen/_16ssp"/>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_16ssp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/lightblueA700"
+        android:gravity="center"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:text="@string/txt_select_payment_note" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/lv_cards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/tv_1"
+        ></android.support.v7.widget.RecyclerView>
+
+
+    <TextView
+        android:id="@+id/tv_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lv_cards"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:textColor="@color/lightblueA700"
+        android:gravity="center"
+        android:textSize="@dimen/_16ssp"
+        android:text="@string/txt_select_payment_note2" />
+
+</RelativeLayout>

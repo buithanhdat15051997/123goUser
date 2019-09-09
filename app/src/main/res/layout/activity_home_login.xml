@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0.35"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/img_logo_application"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_170sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo_application"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_home_screen_footer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="0.65">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/background_gradient_line" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/login_label"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_20ssp"
+                android:textAllCaps="true"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/background_gradient_line" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/activity_home_login_btn_hospital"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/icon_hospital"/>
+
+                <TextView
+                    android:id="@+id/activity_home_login_tv_hospital"
+                    android:layout_below="@id/activity_home_login_btn_hospital"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hospital"
+                    android:textAlignment="center"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_14ssp"
+                    android:textAllCaps="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/activity_home_login_btn_house_nursing"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/icon_house_nursing" />
+
+                <TextView
+                    android:id="@+id/activity_home_login_tv_house_nursing"
+                    android:layout_below="@id/activity_home_login_btn_house_nursing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:text="@string/house_nursing"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_14ssp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/activity_home_login_btn_patient"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/icon_consumer"/>
+
+                <TextView
+                    android:id="@+id/activity_home_login_tv_patient"
+                    android:layout_below="@id/activity_home_login_btn_patient"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/patient"
+                    android:textAlignment="center"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_14ssp"
+                    android:textAllCaps="true"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background123go">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/background123go"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/img_logo_application"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_170sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_logoapp"/>
+
+        <FrameLayout
+            android:id="@+id/login_text_group"
+            android:layout_below="@id/img_logo_application"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:gravity="center">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerCrop"
+                android:background="@drawable/background_gradient_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:background="@color/white"
+                android:text="@string/login_label"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_30ssp" />
+
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_below="@id/login_text_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/activity_home_login_btn_hospital"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_centerHorizontal="true"
+               />
+
+                <TextView
+                    android:id="@+id/activity_home_login_tv_hospital"
+                    android:layout_below="@id/activity_home_login_btn_hospital"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hospital"
+                    android:textAlignment="center"
+                    android:textColor="@color/lightblue700"
+                    android:textSize="@dimen/_14ssp"
+                    android:textAllCaps="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/activity_home_login_btn_house_nursing"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_centerHorizontal="true"
+                   />
+
+                <TextView
+                    android:id="@+id/activity_home_login_tv_house_nursing"
+                    android:layout_below="@id/activity_home_login_btn_house_nursing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:text="@string/house_nursing"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/lightblue700"
+                    android:textSize="@dimen/_14ssp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/activity_home_login_btn_patient"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/icon_consumer"/>
+
+                <TextView
+                    android:id="@+id/activity_home_login_tv_patient"
+                    android:layout_below="@id/activity_home_login_btn_patient"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/patient"
+                    android:textAlignment="center"
+                    android:textColor="@color/lightblue700"
+                    android:textSize="@dimen/_14ssp"
+                    android:textAllCaps="true"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
+    <!--android:background="@drawable/icon_house_nursing"-->
+
+    <!--android:background="@drawable/icon_hospital"-->

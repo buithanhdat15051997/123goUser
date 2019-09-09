@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/dialog_remark_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_remark_title"
+        android:textColor="@color/lightblueA700"
+        android:textStyle="bold|italic"
+        android:textSize="@dimen/_14sdp"
+        android:layout_margin="@dimen/_10sdp"/>
+
+    <EditText
+        android:id="@+id/dialog_remark_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        android:padding="@dimen/_10sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:lines="10"
+        android:background="@drawable/background_edittext"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/deeporange600"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/_30sdp"
+        android:paddingEnd="@dimen/_30sdp">
+
+        <Button
+            android:id="@+id/dialog_remark_btn_okay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:text="@string/btn_confirm"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/lightblueA700"
+            android:background="@color/lightblue100"/>
+
+        <Button
+            android:id="@+id/dialog_remark_btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:text="@string/txt_cancel"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/lightblueA700"
+            android:background="@color/lightblue100"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

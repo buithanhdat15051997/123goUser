@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--* Code by HaoLS
+    * 03/01/2019 -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+
+        <shape android:shape="rectangle">
+
+            <corners android:radius="@dimen/_50sdp"/>
+
+            <size android:width="@dimen/_200sdp"
+                android:height="@dimen/_50sdp"/>
+
+            <gradient android:startColor="@color/white"
+                android:endColor="@color/white"/>
+
+
+        </shape>
+
+    </item>
+
+    <item android:gravity="center">
+
+        <shape android:shape="rectangle">
+
+            <size android:width="@dimen/_198sdp"
+                android:height="@dimen/_48sdp"/>
+
+            <solid android:color="@color/lightblue700"/>
+
+            <corners android:radius="@dimen/_50sdp"/>
+
+        </shape>
+
+    </item>
+</layer-list>

@@ -1,0 +1,151 @@
+{
+  "project_info": {
+    "project_number": "460240570470",
+    "firebase_url": "https://ambulance2u-user.firebaseio.com",
+    "project_id": "ambulance2u-user",
+    "storage_bucket": "ambulance2u-user.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460240570470:android:651f74153fdf81c8",
+        "android_client_info": {
+          "package_name": "com.company.ambulance2u.patient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460240570470-50ud83hc54cj6b5mnmi7eob042f6bc43.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.company.ambulance2u.patient",
+            "certificate_hash": "4dcc2933762441a38518869f94bbc9799becb235"
+          }
+        },
+        {
+          "client_id": "460240570470-9mptkq0cdrmu9ojbg25ubrnkknefn594.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUmA0zZKA3jXuSKpxbVoF9K6u5z8TNkyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460240570470-9mptkq0cdrmu9ojbg25ubrnkknefn594.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "460240570470-o6beb28ejpn7ano13aeiulta8j04v36q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "vn.com.ebizworld.ambulance2u-driver"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460240570470:android:7e1a154eec5f55dc",
+        "android_client_info": {
+          "package_name": "com.nikola.driver1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460240570470-728drhoojm78v659uc5b2ec2bjr2u4p9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nikola.driver1",
+            "certificate_hash": "4dcc2933762441a38518869f94bbc9799becb235"
+          }
+        },
+        {
+          "client_id": "460240570470-ba33guat841dv8msmt43ruulope88ppj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nikola.driver1",
+            "certificate_hash": "cff2730814517e72ce06ca3a81564ee0ae68626f"
+          }
+        },
+        {
+          "client_id": "460240570470-9mptkq0cdrmu9ojbg25ubrnkknefn594.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUmA0zZKA3jXuSKpxbVoF9K6u5z8TNkyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460240570470-9mptkq0cdrmu9ojbg25ubrnkknefn594.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "460240570470-o6beb28ejpn7ano13aeiulta8j04v36q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "vn.com.ebizworld.ambulance2u-driver"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460240570470:android:27ec14e82a44a2aa",
+        "android_client_info": {
+          "package_name": "sg.go.user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460240570470-acrcfjijhah9js74t3s5cbki5apa8b80.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sg.go.user",
+            "certificate_hash": "4dcc2933762441a38518869f94bbc9799becb235"
+          }
+        },
+        {
+          "client_id": "460240570470-9mptkq0cdrmu9ojbg25ubrnkknefn594.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUmA0zZKA3jXuSKpxbVoF9K6u5z8TNkyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460240570470-9mptkq0cdrmu9ojbg25ubrnkknefn594.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "460240570470-o6beb28ejpn7ano13aeiulta8j04v36q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "vn.com.ebizworld.ambulance2u-driver"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

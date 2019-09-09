@@ -1,0 +1,9 @@
+com.app.RecylerviewAnimation
+anim item_animation_fall_down
+anim item_animation_from_bottom
+anim item_animation_from_left
+anim item_animation_from_right
+anim layout_animation_fall_down
+anim layout_animation_from_bottom
+anim layout_animation_from_left
+anim layout_animation_from_right

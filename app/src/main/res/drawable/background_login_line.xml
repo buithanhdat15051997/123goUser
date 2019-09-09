@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--* Code by HaoLS
+    * 03/01/2019 -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="line">
+
+    <size android:width="@dimen/_300sdp"/>
+
+    <stroke android:width="@dimen/_2sdp"
+        android:color="@color/white"/>
+
+</shape>

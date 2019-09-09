@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.googlecode.android-query:android-query:0.24.3@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.googlecode.android-query/android-query/0.24.3/c16a02916ce93da57880136984f4e33043fbd255/android-query-0.24.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.googlecode.android-query/android-query/0.24.3/912bc8da38d5e92af8893353c29e16aa2cfa0f65/android-query-0.24.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

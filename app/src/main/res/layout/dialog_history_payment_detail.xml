@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:layout_gravity="center">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="@color/white"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardElevation="@dimen/_5sdp"
+        card_view:cardCornerRadius="@dimen/_5sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_5sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_history_payment_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00-00-0000"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_12ssp" />
+
+            <TextView
+                android:id="@+id/tv_history_payment_ambulance_operator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:singleLine="true"
+                android:text="car"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_14ssp" />
+
+            <TextView
+                android:id="@+id/tv_history_payment_source"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@drawable/map_green_marker"
+                android:drawablePadding="@dimen/_5sdp"
+                android:singleLine="true"
+                android:text="Source"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_12ssp" />
+
+            <TextView
+                android:id="@+id/tv_history_payment_destination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:drawableLeft="@drawable/map_red_marker"
+                android:drawablePadding="@dimen/_5sdp"
+                android:singleLine="true"
+                android:text="Destination"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_12ssp" />
+
+            <LinearLayout
+                android:id="@+id/tv_history_payment_base_price_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/_5sdp"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/tv_history_payment_base_price_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/base_price"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="italic"
+                    android:textAlignment="center"
+                    android:layout_weight="0.35"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2sdp"
+                    android:background="@drawable/background_gradient_line"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_weight="0.25"/>
+
+                <TextView
+                    android:id="@+id/tv_history_payment_base_price_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$ 0"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="italic"
+                    android:textAlignment="center"
+                    android:layout_weight="0.4"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tv_history_payment_lift_landing_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/_5sdp"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/tv_history_payment_lift_landing_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ferry_terminals"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="italic"
+                    android:textAlignment="center"
+                    android:layout_weight="0.35"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2sdp"
+                    android:background="@drawable/background_gradient_line"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_weight="0.25"/>
+
+                <TextView
+                    android:id="@+id/tv_history_payment_lift_landing_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$ 0"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="italic"
+                    android:textAlignment="center"
+                    android:layout_weight="0.4"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tv_history_payment_weight_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/tv_history_payment_weight_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/staircase_less_80"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="italic"
+                    android:textAlignment="center"
+                    android:layout_weight="0.35"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2sdp"
+                    android:background="@drawable/background_gradient_line"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_weight="0.25"/>
+
+                <TextView
+                    android:id="@+id/tv_history_payment_weight_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$ 0"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="italic"
+                    android:textAlignment="center"
+                    android:layout_weight="0.4"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tv_history_payment_oxygen_tank_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/tv_history_payment_oxygen_tank_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/oxygen_tank"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="italic"
+                    android:textAlignment="center"
+                    android:layout_weight="0.35"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2sdp"
+                    android:background="@drawable/background_gradient_line"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_weight="0.25"/>
+
+                <TextView
+                    android:id="@+id/tv_history_payment_oxygen_tank_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$ 0"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="italic"
+                    android:textAlignment="center"
+                    android:layout_weight="0.4"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tv_history_payment_trips_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_5sdp"
+                android:gravity="center"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/tv_history_payment_trips_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/trips"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="italic"
+                    android:textAlignment="center"
+                    android:layout_weight="0.35"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2sdp"
+                    android:background="@drawable/background_gradient_line"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_weight="0.25"/>
+
+                <TextView
+                    android:id="@+id/tv_history_payment_trips_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$ 0"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="italic"
+                    android:textAlignment="center"
+                    android:layout_weight="0.4"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tv_history_payment_total_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_5sdp"
+                android:gravity="center"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/tv_history_payment_total_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total"
+                    android:textColor="@color/deeporange600"
+                    android:textSize="@dimen/_20ssp"
+                    android:textStyle="italic|bold"
+                    android:textAlignment="center"
+                    android:layout_weight="0.35"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2sdp"
+                    android:background="@drawable/background_gradient_line"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_weight="0.25"/>
+
+                <TextView
+                    android:id="@+id/tv_history_payment_total_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$ 0"
+                    android:textColor="@color/deeporange600"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="italic|bold"
+                    android:textAlignment="center"
+                    android:layout_weight="0.4"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

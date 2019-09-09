@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/background_with_shadow"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:gravity="center"
+                    android:text="@string/txt_schedule_ttl"
+                    android:textColor="@color/white"
+                    android:background="@color/lightblue700"
+                    android:textSize="@dimen/_20ssp"
+                    android:textAllCaps="true"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        app:srcCompat="@drawable/calendar_clock" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!--<Spinner
+                            android:id="@+id/spn_pickup_time_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:background="@drawable/background_rectango_stroke_blue"
+                            android:maxLines="1"
+                            android:padding="@dimen/_2sdp"
+                            android:textColor="@color/lightblueA700"
+                            android:textColorHint="@color/lightblueA700"
+                            android:textSize="@dimen/_12ssp"/>-->
+
+                        <TextView
+                            android:id="@+id/tv_pickup_time_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:background="@drawable/background_rectango_stroke_blue"
+                            android:hint="@string/txt_select_time_pickup"
+                            android:maxLines="1"
+                            android:padding="@dimen/_10sdp"
+                            android:textColor="@color/lightblueA700"
+                            android:textColorHint="@color/lightblueA700"
+                            android:textSize="@dimen/_14ssp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <!--<android.support.v7.widget.RecyclerView
+                    android:id="@+id/list_schedule_vehicle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_available_taxi"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:clickable="true"
+                    android:orientation="horizontal" />
+        -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ambulance_operator_notice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_3sdp"
+                        android:paddingTop="@dimen/_3sdp"
+                        android:text="@string/ambulance_operator_notice"
+                        android:textColor="@color/deeporange600"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold|italic"
+                        android:singleLine="true"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"/>
+
+                    <com.zyyoona7.wheel.WheelView
+                        android:id="@+id/wheel_view_ambulance_operator"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:padding="@dimen/_5sdp"
+                        app:wv_textSize="@dimen/_16ssp"
+                        app:wv_normalItemTextColor="@color/deeporange600"
+                        app:wv_selectedItemTextColor="@color/deeporange600"
+                        app:wv_lineSpacing="@dimen/_5sdp"
+                        app:wv_textAlign="center"
+                        app:wv_showDivider="true"
+                        app:wv_curved="true"
+                        app:wv_curvedArcDirection="center"
+                        app:wv_dividerType="fill"
+                        app:wv_dividerPaddingForWrap="@dimen/_2sdp"
+                        app:wv_dividerColor="@color/deeporange600"
+                        app:wv_drawSelectedRect="true"/>
+
+                    <!--Horizontal ambulance operator-->
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1"
+                        android:gravity="center">
+
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/list_schedule_vehicle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:focusable="true"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.3"/>
+
+                        <LinearLayout
+                            android:id="@+id/any_ambulance_operator_group"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_marginBottom="@dimen/_2sdp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_weight="0.7">
+
+                            <ImageView
+                                android:id="@+id/type_picutre"
+                                android:layout_width="@dimen/_70sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_margin="@dimen/_3sdp"
+                                android:gravity="center"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/ambulance_car" />
+
+                            <View
+                                android:id="@+id/view_select"
+                                android:layout_width="@dimen/_70sdp"
+                                android:layout_height="@dimen/_5sdp"
+                                android:background="@drawable/background_gradient_line"
+                                android:visibility="invisible"/>
+
+                            <TextView
+                                android:id="@+id/tv_type_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:text="Any Ambulance Operator"
+                                android:textColor="@color/lightblueA700"
+                                android:textSize="@dimen/_13ssp"
+                                android:scrollHorizontally="true"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!--Button another ambulance operator-->
+                    <Button
+                        android:visibility="gone"
+                        android:id="@+id/btn_another_ambulance_operator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_3sdp"
+                        android:paddingTop="@dimen/_3sdp"
+                        android:background="@color/lightblueA700"
+                        android:text="@string/another_ambulance_operator"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="italic|bold"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/search_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_5sdp"
+                            android:text="@string/txt_symbol_dot"
+                            android:textColor="@color/green" />
+
+                        <View
+                            android:layout_width="@dimen/_2sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/background_gradient_line" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:background="@color/redA700"
+                            android:text="@string/txt_symbol_square" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_weight="0.9"
+                        android:orientation="vertical">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/actv_sch_source_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:background="@drawable/background_rectango_stroke_blue"
+                            android:dropDownHeight="@dimen/_200sdp"
+                            android:hint="@string/txt_current_loc"
+                            android:imeOptions="actionSearch"
+                            android:inputType="text"
+                            android:padding="@dimen/_10sdp"
+                            android:textColor="@color/lightblueA700"
+                            android:textColorHint="@color/lightblueA700"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <AutoCompleteTextView
+                            android:id="@+id/actv_sch_destination_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:background="@drawable/background_rectango_stroke_blue"
+                            android:dropDownHeight="@dimen/_200sdp"
+                            android:hint="@string/txt_dest_hint"
+                            android:imeOptions="actionSearch"
+                            android:inputType="text"
+                            android:padding="@dimen/_10sdp"
+                            android:singleLine="true"
+                            android:textColor="@color/lightblueA700"
+                            android:textColorHint="@color/lightblueA700"
+                            android:textSize="@dimen/_12ssp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <!--Check box A_E and IMH-->
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:id="@+id/tv_a_and_e_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/a_and_e"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:backgroundTint="@color/lightblueA700"
+                        android:buttonTint="@color/lightblueA700"
+                        android:layout_weight="1"
+                        android:checked="false"/>
+
+                    <CheckBox
+                        android:id="@+id/tv_imh_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/imh"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:backgroundTint="@color/lightblueA700"
+                        android:buttonTint="@color/lightblueA700"
+                        android:layout_weight="1"
+                        android:checked="false"/>
+
+                </LinearLayout>
+
+                <!--Check box Ferry Terminals-->
+                <CheckBox
+                    android:visibility="gone"
+                    android:id="@+id/tv_ferry_terminals_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:text="@string/ferry_terminals"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_12ssp"
+                    android:backgroundTint="@color/lightblueA700"
+                    android:buttonTint="@color/lightblueA700"
+                    android:layout_weight="1"
+                    android:checked="false"/>
+
+
+                <!--Check box Tarmac and Staircase-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:visibility="gone"
+                        android:id="@+id/tv_tarmac_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_gravity="center"
+                        android:gravity="center|start"
+                        android:text="@string/airport_tarmac"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:backgroundTint="@color/lightblueA700"
+                        android:buttonTint="@color/lightblueA700"
+                        android:layout_weight="1"
+                        android:checked="false"/>
+
+                    <CheckBox
+                        android:id="@+id/cb_staircase_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/staircase_less_80"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:backgroundTint="@color/lightblueA700"
+                        android:buttonTint="@color/lightblueA700"
+                        android:layout_weight="1"
+                        android:checked="false"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:gravity="center"
+                        android:id="@+id/tv_family_member"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/family_member"
+                        android:textColor="@color/deeporange600"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold|italic"
+                        android:layout_weight="1"/>
+
+                    <Spinner
+                        android:id="@+id/spn_family_member_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:hint="@string/family_member"
+                        android:inputType="number"
+                        android:padding="@dimen/_2sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:gravity="center"
+                        android:id="@+id/tv_house_unit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/house_unit"
+                        android:textColor="@color/deeporange600"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold|italic"
+                        android:layout_weight="1"/>
+
+                    <EditText
+                        android:id="@+id/edt_house_unit_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:hint="@string/house_unit"
+                        android:inputType="text"
+                        android:padding="@dimen/_5sdp"
+                        android:maxLines="2"
+                        android:singleLine="true"
+                        android:textColor="@color/lightblueA700"
+                        android:textColorHint="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:gravity="center"
+                        android:id="@+id/tv_weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/weight"
+                        android:textColor="@color/deeporange600"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold|italic"
+                        android:layout_weight="1"/>
+
+                    <Spinner
+                        android:id="@+id/spn_weight_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:hint="@string/weight"
+                        android:inputType="number"
+                        android:padding="@dimen/_2sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_weight="1"/>
+
+
+                </LinearLayout>
+
+                <!--<LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:gravity="center"
+                        android:id="@+id/tv_assistive_device"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/assistive_device"
+                        android:textColor="@color/deeporange600"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold|italic"
+                        android:layout_weight="1"/>
+
+                    <Spinner
+                        android:id="@+id/tv_assistive_device_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:hint="@string/assistive_device"
+                        android:inputType="number"
+                        android:padding="@dimen/_2sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:gravity="center"
+                        android:id="@+id/tv_oxygen_tank"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/oxygen_liter"
+                        android:textColor="@color/deeporange600"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold|italic"
+                        android:layout_weight="1"/>
+
+                    <Spinner
+                        android:id="@+id/spn_oxygen_tank_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:hint="@string/oxygen_liter"
+                        android:inputType="number"
+                        android:padding="@dimen/_2sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_weight="1"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:gravity="center"
+                        android:id="@+id/tv_pickup_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/case_type"
+                        android:textColor="@color/deeporange600"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold|italic"
+                        android:layout_weight="1"/>
+
+                    <Spinner
+                        android:id="@+id/spn_pickup_type_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:hint="@string/case_type"
+                        android:inputType="number"
+                        android:padding="@dimen/_2sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btn_schedule_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@color/lightblueA700"
+                    android:gravity="center"
+                    android:shadowDy="0"
+                    android:text="@string/txt_next"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_18ssp" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

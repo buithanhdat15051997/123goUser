@@ -1,0 +1,165 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_margin_register">5dp</dimen>
+    <dimen name="activity_margin_mainscreen">30dp</dimen>
+    <dimen name="activity_margin_feedback">20dp</dimen>
+    <dimen name="font_small">11sp</dimen>
+    <dimen name="rating_min_height">18dip</dimen>
+    <dimen name="rating_max_height">18dip</dimen>
+    <dimen name="padding_button_text">50dp</dimen>
+    <dimen name="dimen_margin_my_location">70dp</dimen>
+    <dimen name="dimen_vehicle_margin">60dp</dimen>
+
+    <integer name="margin_marker">150</integer>
+    <dimen name="cover_width">380dp</dimen>
+
+    <dimen name="width">75dp</dimen>
+    <dimen name="height">75dp</dimen>
+    <dimen name="menu_item_size">18dp</dimen>
+    <dimen name="history_image">57dp</dimen>
+    <dimen name="refferal_margin">80dp</dimen>
+
+    <integer  name="img_width">500</integer >
+    <integer  name="img_height">620</integer >
+
+    <!-- Towber Dimension -->
+    <dimen name="extra_big_font">135sp</dimen>
+    <dimen name="map_margin_bottom">60dp</dimen>
+    <dimen name="margin_legt_name_star">110dp</dimen>
+    <dimen name="dimen_margin_call_trip">87dp</dimen>
+
+    <!-- Newly Added for Profile Screen -->
+
+    <integer  name="dimen_analog_clock">220</integer >
+
+    <dimen name="dimen_profile_margin_left">55dp</dimen>
+    <dimen name="dimen_profile_margin_top">-10dp</dimen>
+    <dimen name="dimen_profile_padding">25dp</dimen>
+    <dimen name="dimen_profile_padding_bottom">50dp</dimen>
+    <dimen name="dimen_profile_image_height">90dp</dimen>
+    <dimen name="dimen_profile_image_width">90dp</dimen>
+    <dimen name="dimen_profile_textsize">30sp</dimen>
+
+    <!-- Newly Added For History Item -->
+
+    <dimen name="dimen_history_margin_left">6dp</dimen>
+    <dimen name="dimen_history_margin_top">3dp</dimen>
+    <dimen name="dimen_history_image_height">60dp</dimen>
+    <dimen name="dimen_history_text_margin_left">5dp</dimen>
+    <dimen name="dimen_history_image_width">60dp</dimen>
+    <dimen name="dimen_history_image_padding">20dp</dimen>
+    <dimen name="dimen_history_padding">2dp</dimen>
+    <dimen name="dimen_history_one">10dp</dimen>
+    <dimen name="map_height">115sp</dimen>
+
+    <!-- Popup Window Padding -->
+    <dimen name="padding_top">20dp</dimen>
+    <dimen name="font_size_popup">13sp</dimen>
+
+    <!-- Big Popup -->
+    <dimen name="popup_margin_left">41dp</dimen>
+    <dimen name="popup_margin_top">52dp</dimen>
+    <dimen name="popup_margin_top_first_notification">37dp</dimen>
+    <dimen name="popup_margin_top_between_notification">22dp</dimen>
+    <dimen name="popup_margin_left_image">23dp</dimen>
+    <dimen name="popup_margin_text">10dp</dimen>
+    <dimen name="font_size_popup_big">15sp</dimen>
+
+    <!-- Newly Added for Bill Layout -->
+
+    <dimen name="dimen_bill_margin_one">10dp</dimen>
+    <dimen name="dimen_bill_margin_two">5dp</dimen>
+    <dimen name="dimen_bill_margin_three">2dp</dimen>
+    <dimen name="dimen_bill_padding_one">12dp</dimen>
+    <dimen name="dimen_bill_padding_two">10dp</dimen>
+    <dimen name="dimen_bill_text">40sp</dimen>
+    <dimen name="dimen_bill_line">10dp</dimen>
+    <dimen name="dimen_bill_second_top">15dp</dimen>
+    <dimen name="dimen_invoice_text">40sp</dimen>
+    <dimen name="dimen_invoice_baseprice">20sp</dimen>
+    <dimen name="invoice_base_price_small">15sp</dimen>
+    <dimen name="invoice_price_font">20sp</dimen>
+
+    <!-- Newly Added for Feedback Screen -->
+    <dimen name="dimen_feedback_image_width">105dp</dimen>
+    <dimen name="dimen_feedback_image_height">105dp</dimen>
+    <dimen name="dimen_feedback_margin_left">155dp</dimen>
+    <dimen name="dimen_feedback_image_left">35dp</dimen>
+    <dimen name="dimen_feedback_text">26sp</dimen>
+    <dimen name="feedback_rating_min_height">32dip</dimen>
+    <dimen name="feedback_rating_max_height">32dip</dimen>
+    <dimen name="feedback_margin">30dp</dimen>
+    <dimen name="feedback_padding">5dp</dimen>
+    <dimen name="padding_minus">-5dp</dimen>
+    <dimen name="feedback_margin_one">15dp</dimen>
+    <dimen name="feedback_margin_two">25dp</dimen>
+    <dimen name="feedback_margin_three">15dp</dimen>
+    <dimen name="feedback_text_size">18sp</dimen>
+
+    <dimen name="social_image_dimens">60dp</dimen>
+    <dimen name="social_image_width">60dp</dimen>
+
+    <!-- Menu -->
+
+    <dimen name="menu_img_width">125dp</dimen>
+    <dimen name="menu_img_height">125dp</dimen>
+
+    <!-- Newly Added for Forgot Password -->
+    <dimen name="dimen_fp_margin">15dp</dimen>
+    <dimen name="dimen_fp_margin_top">20dp</dimen>
+    <dimen name="fp_font_size">20sp</dimen>
+    <dimen name="driver_photo_size">80dp</dimen>
+    <dimen name="service_selection_width">608dp</dimen>
+    <dimen name="pin_minute_value">12sp</dimen>
+    <dimen name="pin_minute_text">8.5sp</dimen>
+
+    <dimen name="preview_width">120dp</dimen>
+    <dimen name="preview_height">120dp</dimen>
+
+    <integer  name="dimen_preview">240</integer >
+
+    <dimen name="home_image_size">130dp</dimen>
+
+    <!-- Newly Added for SignIn -->
+    <dimen name="dimen_et_margin_top">8dp</dimen>
+    <dimen name="dimen_fb_padding">17dp</dimen>
+
+    <!-- Newly Added for Referral -->
+    <dimen name="dimen_referral_margin_top">45dp</dimen>
+    <dimen name="dimen_referral_margin_bottom">35dp</dimen>
+
+    <!-- Newly Added for Dialog Screens -->
+    <dimen name="dimen_dialog_text">40sp</dimen>
+
+    <dimen name="dimen_for_back_car">55dp</dimen>
+
+    <!-- report_issue Resolution -->
+    <dimen name="image_hight">200dp</dimen>
+    <dimen name="image_width">220dp</dimen>
+
+    <!-- Newly Added for map Screens -->
+    <dimen name="dimen_type_margin">40dp</dimen>
+    <dimen name="image_type_height_width">80dp</dimen>
+
+    <!-- Newly Added for trip -->
+    <dimen name="dimen_margin_left_photo">14dp</dimen>
+
+    <!-- Newly Added for font size -->
+    <dimen name="size_label">11.68sp</dimen>
+    <dimen name="size_general_small">14.6sp</dimen>
+    <dimen name="size_general">17.52sp</dimen>
+    <dimen name="size_menu_name">20.44sp</dimen>
+    <dimen name="size_dialog_small">21.9sp</dimen>
+    <dimen name="size_name">25.21sp</dimen>
+    <dimen name="size_dialog_notification">28.08sp</dimen>
+    <dimen name="size_price">29.20sp</dimen>
+    <dimen name="size_eta_minfare">30.44sp</dimen>
+    <dimen name="size_referral_code">33.3sp</dimen>
+    <dimen name="size_dialog_big">42.31sp</dimen>
+    <dimen name="size_bill_total">47.84sp</dimen>
+    <dimen name="notification_window">360dp</dimen>
+
+</resources>

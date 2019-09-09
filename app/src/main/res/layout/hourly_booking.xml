@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar_hourly"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@drawable/background_with_shadow">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:gravity="end"
+                android:paddingRight="10dp"
+                android:text="@string/title_rentale"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_18ssp" />
+
+            <ImageButton
+                android:id="@+id/hourly_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:padding="5dp"
+                app:srcCompat="@drawable/ic_back_blue" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_hourly">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lay_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toolbar_hourly"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/lightblue700"
+                        android:textSize="@dimen/_15ssp"
+                        android:layout_marginBottom="@dimen/_3sdp"
+                        android:text="@string/txt_hourly_note"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:textSize="@dimen/_12ssp"
+                        android:textColor="@color/deeporange200"
+                        android:text="@string/txt_pickup_loc" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/et_hourly_source_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:hint="@string/txt_current_loc"
+                        android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:padding="@dimen/_5sdp"
+                        android:textColor="@color/lightblue700"
+                        android:textColorHint="@color/lightblue700"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/et_hourly_destination_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:hint="@string/txt_dest_hint"
+                        android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:padding="@dimen/_5sdp"
+                        android:textColor="@color/lightblue700"
+                        android:textColorHint="@color/lightblue700"
+                        android:textSize="@dimen/_14ssp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay_search"
+                android:layout_margin="@dimen/_5sdp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et_no_hours"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/background_rectango_stroke_blue"
+                    android:hint="@string/txt_enter_hur"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:textColorHint="@color/lightblue700"
+                    android:textColor="@color/lightblue700"
+                    android:textSize="@dimen/_12ssp"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/set_vehicle"
+                    android:textColor="@color/deeporange200"
+                    android:textSize="@dimen/_12ssp"/>
+
+                <Spinner
+                    android:id="@+id/sp_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:padding="@dimen/_2sdp"
+                    android:background="@drawable/background_rectango_stroke_blue"/>
+
+                <TextView
+                    android:id="@+id/customBoldRegularTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/fare_detials"
+                    android:textColor="@color/ripple_blue"
+                    android:textSize="@dimen/_14ssp" />
+
+                <RelativeLayout
+                    android:id="@+id/hourly_fare"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="visible">
+
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:weightSum="2">
+
+                        <TableRow
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/textView1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/background_rectango_stroke_blue"
+                                android:gravity="center"
+                                android:paddingBottom="@dimen/_3sdp"
+                                android:paddingStart="@dimen/_2sdp"
+                                android:paddingTop="@dimen/_3sdp"
+                                android:text="@string/price_package"
+                                android:textColor="@color/lightblue700"
+                                android:textSize="@dimen/_14ssp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/trip_fair"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/background_rectango_stroke_blue"
+                                android:gravity="center"
+                                android:paddingBottom="@dimen/_3sdp"
+                                android:paddingLeft="@dimen/_2sdp"
+                                android:paddingTop="@dimen/_3sdp"
+                                android:text="--"
+                                android:textColor="@color/lightblue700"
+                                android:textSize="@dimen/_14ssp"
+                                android:textStyle="bold" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/textView2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/background_rectango_stroke_blue"
+                                android:gravity="center"
+                                android:paddingBottom="@dimen/_3sdp"
+                                android:paddingLeft="@dimen/_2sdp"
+                                android:paddingTop="@dimen/_3sdp"
+                                android:text="@string/distance"
+                                android:textColor="@color/lightblue700"
+                                android:textSize="@dimen/_14ssp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/text_distance"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/background_rectango_stroke_blue"
+                                android:gravity="center"
+                                android:paddingBottom="@dimen/_3sdp"
+                                android:paddingStart="@dimen/_2sdp"
+                                android:paddingTop="@dimen/_3sdp"
+                                android:text="--"
+                                android:textColor="@color/lightblue700"
+                                android:textSize="@dimen/_14ssp"
+                                android:textStyle="bold" />
+                        </TableRow>
+
+                    </TableLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/hourly_book_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/background_gradient_line"
+                    android:clickable="true"
+                    android:text="@string/btn_book"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp" />
+
+                <TextView
+                    android:id="@+id/hourly_book_btn_later"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="@dimen/_3sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:padding="@dimen/_5sdp"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:text="@string/btn_later"
+                    android:textColor="@color/deeporange600"
+                    android:textStyle="italic|bold"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

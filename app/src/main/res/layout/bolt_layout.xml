@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/rating_color_bg"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar_bolt"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@drawable/background_with_shadow">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/bolt_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="10dp"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_back_blue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="end"
+                android:layout_centerVertical="true"
+                android:paddingRight="@dimen/_10sdp"
+                android:text="@string/title_bolt"
+                android:textColor="@color/lightblueA700"
+                android:visibility="visible"
+                android:textSize="@dimen/_16sdp" />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+    <ScrollView
+        android:id="@+id/scroll_bolt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lay_msg_send"
+        android:layout_below="@+id/toolbar_bolt"
+        android:scrollbars="none"
+        android:paddingBottom="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/first_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="5dp"
+                android:background="@drawable/bubble_send"
+                android:text="hi"
+                android:visibility="gone"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/bolt_msg_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/first_msg"
+                android:layout_margin="5dp"
+                android:background="@drawable/bubble_b"
+                android:text="do you want to book ambulance?"
+                android:visibility="gone"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:id="@+id/btns_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bolt_msg_1"
+                android:layout_margin="15dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="1">
+
+                <Button
+                    android:id="@+id/btn_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/custom_button"
+                    android:text="Yes"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/custom_button"
+                    android:text="No"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/bolt_msg_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btns_layout"
+                android:layout_margin="5dp"
+                android:background="@drawable/bubble_b"
+                android:text="Enter source address!"
+                android:visibility="gone"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:id="@+id/source_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/bolt_msg_2"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_margin="4dp"
+                    card_view:cardCornerRadius="5dp"
+                    card_view:cardElevation="3dp"
+                    card_view:cardUseCompatPadding="true">
+
+                    <ImageView
+                        android:id="@+id/iv_source_map"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/defult_user" />
+
+                    <TextView
+                        android:id="@+id/tv_s_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:background="@color/white"
+                        android:padding="10dp"
+                        android:text="Mahesh"
+                        android:textColor="@color/black" />
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/bolt_msg_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/source_layout"
+                android:layout_margin="5dp"
+                android:background="@drawable/bubble_b"
+                android:text="Enter drop address!"
+                android:visibility="gone"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:id="@+id/destination_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/bolt_msg_3"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_margin="4dp"
+                    card_view:cardCornerRadius="5dp"
+                    card_view:cardElevation="3dp"
+                    card_view:cardUseCompatPadding="true">
+
+                    <ImageView
+                        android:id="@+id/iv_dest_map"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/defult_user" />
+
+                    <TextView
+                        android:id="@+id/tv_dest_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:background="@color/white"
+                        android:padding="10dp"
+                        android:text="Mahesh"
+                        android:textColor="@color/black" />
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/bolt_msg_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/destination_layout"
+                android:layout_margin="5dp"
+                android:background="@drawable/bubble_b"
+                android:text="Select ambulance type!"
+                android:visibility="gone"
+                android:textColor="@color/black" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycel_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bolt_msg_4"
+                android:layout_margin="5dp"
+                android:visibility="gone"
+                android:orientation="horizontal"></android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/tv_approximate_price"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recycel_type"
+                android:background="@drawable/back_type"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="$ 00"
+                android:visibility="gone"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:id="@+id/btns_request"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_approximate_price"
+                android:layout_margin="15dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="1">
+
+                <Button
+                    android:id="@+id/btn_create_request"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/custom_button"
+                    android:text="Request"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/custom_button"
+                    android:text="Cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/lay_msg_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/background_oval_stroke"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <EditText
+            android:id="@+id/et_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.8"
+            android:background="@null"
+            android:hint="@string/ent_msg"
+            android:padding="8dp"
+            android:singleLine="true" />
+
+        <ImageView
+            android:id="@+id/btn_send"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_weight="0.2"
+            android:padding="6dp"
+            app:srcCompat="@drawable/send" />
+    </LinearLayout>
+</RelativeLayout>

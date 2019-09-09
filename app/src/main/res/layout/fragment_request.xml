@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/map_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?actionBarSize"
+        android:layout_alignParentBottom="true">
+
+        <fragment
+            android:id="@+id/user_request_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/req_cabs"
+            tools:context=".MainActivity"/>
+
+        <include
+            android:id="@+id/req_cabs"
+            layout="@layout/request_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_250sdp"
+            android:layout_alignParentBottom="true"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+
+    <ImageButton
+        android:visibility="gone"
+        android:id="@+id/btn_mylocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center"
+        android:layout_weight="0.2"
+        android:background="@null"
+        android:padding="10dp"
+        app:srcCompat="@drawable/ic_gps_fixed_indicator" />
+
+</RelativeLayout>-->
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/map_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?actionBarSize"
+        android:layout_alignParentBottom="true">
+        <LinearLayout
+            android:background="@color/background123go"
+            android:weightSum="9"
+            android:visibility="visible"
+            android:id="@+id/linearshowDirection"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:text="Your Select : "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="12sp"
+                android:id="@+id/Show_NameRoutes"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:text="Duration:"
+                android:textColor="#FFFFFF" />
+            <!--<TextView-->
+                <!--android:textColor="#000"-->
+                <!--android:id="@+id/Show_Distance"-->
+                <!--android:layout_weight="3"-->
+                <!--android:text="Distance:"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent" />-->
+        </LinearLayout>
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/linearshowDirection"
+            android:id="@+id/ClickRoutesA"
+            app:cardCornerRadius="15dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="invisible"
+            app:cardBackgroundColor="#FF0000"
+            >
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/ClickRoutesA"
+            android:id="@+id/ClickRoutesB"
+            app:cardCornerRadius="15dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:cardBackgroundColor="#00FF00"
+            android:visibility="invisible"
+            >
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/ClickRoutesB"
+            android:id="@+id/ClickRoutesC"
+            app:cardCornerRadius="15dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:cardBackgroundColor="#7883CF"
+            android:visibility="invisible"
+            >
+        </android.support.v7.widget.CardView>
+
+        <fragment
+            android:layout_below="@+id/linearshowDirection"
+            android:id="@+id/user_request_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="sg.go.user.MainActivity"/>
+
+    </RelativeLayout>
+
+    <FrameLayout
+
+        android:id="@+id/request_map_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:behavior_peekHeight="@dimen/_40sdp"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+        android:elevation="@dimen/_5sdp"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/req_cabs"
+            layout="@layout/request_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="visible" />
+
+    </FrameLayout>
+
+
+    <ImageButton
+        android:visibility="gone"
+        android:id="@+id/btn_mylocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center"
+        android:layout_weight="0.2"
+        android:background="@null"
+        android:padding="10dp"
+        app:srcCompat="@drawable/ic_gps_fixed_indicator" />
+
+</android.support.design.widget.CoordinatorLayout>

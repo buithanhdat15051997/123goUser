@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="facebook_api_id" translatable="false">364142401087637</string>
+    <string name="sender_id" translatable="false">460240570470</string>
+    <!--<string name="google_app_id">460240570470</string>-->
+
+    <string name="map_key" translatable="false">AIzaSyDGMXyrnV4NT8YJZuoVEuY128rd5HfmEfA</string>
+    <string name="google_server_key" translatable="false"> AIzaSyBIJRYgGt0vga6GSOCvLj-d7D2twyyaKQY </string>
+    <!--<string name="map_key">AIzaSyAUmA0zZKA3jXuSKpxbVoF9K6u5z8TNkyg</string>-->
+
+    <string name="notification_channel_id" translatable="false"> 00112233 </string>
+    <string name="notification_channel_name" translatable="false"> HALP User </string>
+    <string name="notification_channel_name_description" translatable="false">HALP User</string>
+
+</resources>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="sg.go.user.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <android.support.v7.widget.Toolbar
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/background123go">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/app_logo"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_logoapp" />
+
+                <!--<ImageButton
+                    android:id="@+id/bnt_menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    android:background="@null"
+                    app:srcCompat="@drawable/menu"/>-->
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+        <FrameLayout
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+    <!--<fragment
+        android:id="@+id/navigation_drawer"
+        android:name="com.nikola.user.BaseFragment.AccountFragmentndroid:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:layout="@layout/fragment_account"
+        tools:layout="@layout/fragment_account" />-->
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/main_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="#AD0288D1"
+        app:itemTextColor="@color/white"
+        app:itemIconSize="@dimen/_20sdp"
+        app:itemIconTint="@color/white"
+        app:itemTextAppearanceActive="@dimen/_5ssp"
+        app:itemHorizontalTranslationEnabled="true"
+        android:textAlignment="center"
+        android:animateLayoutChanges="true"
+        app:labelVisibilityMode="selected"/>
+
+</LinearLayout>
+    <!--android:background="@color/lightblueA700"-->

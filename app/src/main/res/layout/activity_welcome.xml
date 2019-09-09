@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_ambulance"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/sp_country_reg"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:popupBackground="@color/lightblueA700" />
+
+        <ImageView
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_below="@id/sp_country_reg"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/app_name"
+            android:gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/background_user_login" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_250sdp"
+        android:layout_weight="1"
+
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/welcome_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/background_oval_stroke"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:shadowDy="0"
+            android:text="@string/welcom_btn"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
+
+    <!--android:background="@drawable/background_footer_halfcircle"-->

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@null"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_40sdp"
+        android:layout_marginRight="@dimen/_40sdp"
+        android:orientation="vertical"
+        android:background="@drawable/background_with_shadow">
+
+        <TextView
+            android:id="@+id/driver_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="@string/txt_driver"
+            android:textColor="@color/lightblueA700"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:textSize="@dimen/_12ssp"
+            android:gravity="center"/>
+
+        <com.aurelhubert.simpleratingbar.SimpleRatingBar
+            android:id="@+id/driver_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_margin="@dimen/_5sdp"
+            app:drawablePadding="@dimen/_5sdp"
+            app:maxRating="5"
+            app:rating="3"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
