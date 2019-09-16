@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,9 +10,11 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.v7.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/toolbar_search_place"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="?android:attr/actionBarSize"
         android:background="@drawable/background_with_shadow">
 
@@ -42,14 +45,62 @@
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
-    <LinearLayout
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp">
+
+        <fragment
+            android:id="@+id/search_place_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="sg.go.user.MainActivity"/>
+
+        <ImageView
+            android:id="@+id/pin_drop_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:src="@mipmap/pickup_location" />
+
+        <ImageView
+            android:id="@+id/btn_pickLoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_search"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/linearTop2"
+            android:padding="@dimen/_4sdp"
+            android:visibility="visible"
+            android:layout_marginEnd="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_90sdp"
+            app:srcCompat="@drawable/ic_gps_fixed_indicator"
+            tools:ignore="NotSibling" />
+        <Button
+            android:visibility="gone"
+            android:id="@+id/btn_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/deeporange200"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/txt_next"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16ssp"/>
+    </RelativeLayout>
+<!--    <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar_search_place"
         android:orientation="horizontal"
-        android:weightSum="1">
+        android:weightSum="1">-->
 
-        <LinearLayout
+      <!--  <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.1"
@@ -95,59 +146,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.9"
-            android:orientation="vertical">
-
-            <AutoCompleteTextView
-                android:id="@+id/et_source_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:background="@drawable/background_rectango_stroke_blue"
-                android:hint="@string/txt_current_loc"
-                android:imeOptions="actionSearch"
-                android:padding="@dimen/_10sdp"
-                android:singleLine="true"
-                android:textColor="@color/lightblueA700"
-                android:textColorHint="@color/lightblueA700"
-                android:textSize="@dimen/_12ssp" />
-
-            <AutoCompleteTextView
-                android:id="@+id/et_stop_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:background="@drawable/background_rectango_stroke_blue"
-                android:hint="@string/add_stop"
-                android:imeOptions="actionSearch"
-                android:padding="@dimen/_10sdp"
-                android:visibility="gone"
-                android:singleLine="true"
-                android:textColor="@color/lightblueA700"
-                android:textColorHint="@color/lightblueA700"
-                android:textSize="@dimen/_12ssp" />
-
-            <AutoCompleteTextView
-                android:id="@+id/et_destination_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:background="@drawable/background_rectango_stroke_blue"
-                android:hint="@string/txt_dest_hint"
-                android:imeOptions="actionSearch"
-                android:inputType="text"
-                android:padding="@dimen/_10sdp"
-                android:singleLine="true"
-                android:textSize="@dimen/_12ssp"
-                android:textColor="@color/lightblueA700"
-                android:textColorHint="@color/lightblueA700"/>
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -167,48 +165,196 @@
 
         </LinearLayout>
 
-    </LinearLayout>
-
+    </LinearLayout>-->
     <RelativeLayout
+        android:layout_marginTop="500dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_10sdp">
-
-        <fragment
-            android:id="@+id/search_place_map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context="sg.go.user.MainActivity"/>
-
-        <ImageView
-            android:id="@+id/pin_drop_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="gone"
-            android:src="@mipmap/pickup_location" />
-
-        <ImageView
-            android:id="@+id/btn_pickLoc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/btn_search"
-            android:layout_alignParentRight="true"
-            android:padding="@dimen/_5sdp"
-            android:visibility="gone"
-            app:srcCompat="@drawable/ic_gps_fixed_indicator" />
-
+        android:layout_height="wrap_content">
         <Button
-            android:id="@+id/btn_search"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:id="@+id/btnRoutes1"
+            android:textColor="@color/lightblue400"
+            android:background="@drawable/background_rectango_stroke_orange"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@color/deeporange200"
-            android:padding="@dimen/_5sdp"
-            android:text="@string/txt_next"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_16ssp"/>
+            android:layout_height="30dp"
+            android:visibility="invisible"
+            android:textSize="10sp"
+            >
+        </Button>
+        <Button
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/btnRoutes1"
+            android:id="@+id/btnRoutes2"
+            android:textColor="@color/lightblue400"
+            android:background="@drawable/background_rectango_stroke_green"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="10sp"
+            android:visibility="invisible"
+            >
+        </Button>
+        <Button
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="@dimen/_70sdp"
+            android:id="@+id/btnRoutes3"
+            android:textColor="@color/lightblue400"
+            android:background="@drawable/background_rectango_stroke_routes_three"
+            android:layout_below="@+id/btnRoutes2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="10sp"
+            android:visibility="invisible"
+            tools:ignore="NotSibling">
+        </Button>
 
     </RelativeLayout>
-</LinearLayout>
+<android.support.v7.widget.CardView
+    app:cardCornerRadius="@dimen/_5sdp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:background="@drawable/background_rectango_gradient"
+        android:id="@+id/linearTop"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.9"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:weightSum="10"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="center"
+                android:padding="@dimen/_4sdp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_pickup"
+                />
+
+            <AutoCompleteTextView
+                android:layout_weight="9"
+                android:id="@+id/et_source_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:hint="@string/txt_current_loc"
+                android:imeOptions="actionSearch"
+                android:padding="@dimen/_10sdp"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/white"
+
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/_12ssp" />
+
+        </LinearLayout>
+
+        <AutoCompleteTextView
+            android:id="@+id/et_stop_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/background_rectango_stroke_blue"
+            android:hint="@string/add_stop"
+            android:imeOptions="actionSearch"
+            android:padding="@dimen/_10sdp"
+            android:visibility="gone"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:backgroundTintMode="screen"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/_12ssp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:background="@drawable/background_gradient_line"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_2sdp"
+            android:layout_marginStart="@dimen/_2sdp"
+            android:layout_weight="0.25"/>
+
+        <LinearLayout
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:id="@+id/linearTop2"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:padding="@dimen/_5sdp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/ic_destination"
+                android:gravity="center"
+
+                android:layout_gravity="center"
+                />
+
+            <!-- android:background="@drawable/background_rectango_stroke_blue"-->
+            <AutoCompleteTextView
+                android:layout_weight="9"
+                android:id="@+id/et_destination_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_3sdp"
+                android:hint="@string/txt_dest_hint"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:padding="@dimen/_10sdp"
+                android:singleLine="true"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/white"
+
+                android:textColorHint="@color/white"/>
+
+        </LinearLayout>
+        <!--      //  -->
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
+
+
+    <!-- BottomSheet-->
+    <FrameLayout
+        android:visibility="gone"
+        android:layout_marginBottom="@dimen/_100sdp"
+        android:id="@+id/request_map_bottom_sheet1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:behavior_peekHeight="@dimen/_200sdp"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+        android:elevation="@dimen/_5sdp"
+        android:orientation="vertical"
+        tools:ignore="MissingPrefix">
+
+        <include
+            android:id="@+id/req_cabs1"
+            layout="@layout/request_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="visible" />
+    </FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

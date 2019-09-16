@@ -111,20 +111,21 @@
                 android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_billing_info_table_price_content_warning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:padding="@dimen/_10sdp"
                 android:layout_weight="0.15"
-                android:text="@string/trip_remark"
-                android:textSize="@dimen/_10ssp"
+                android:hint="@string/trip_remark"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/_12ssp"
                 android:textColor="@color/white"
                 android:textStyle="bold"/>
 
         </LinearLayout>
-
+       <!-- android:text="@string/trip_remark"-->
         <LinearLayout
             android:id="@+id/billing_info_request_group"
             android:layout_width="match_parent"

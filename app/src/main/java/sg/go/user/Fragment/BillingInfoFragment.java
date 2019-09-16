@@ -15,12 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.braintreepayments.api.dropin.DropInActivity;
 import com.braintreepayments.api.dropin.DropInRequest;
 import com.braintreepayments.api.dropin.DropInResult;
+import com.bumptech.glide.Glide;
 import com.skyfishjy.library.RippleBackground;
 
 import org.json.JSONException;
@@ -67,29 +70,31 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
     @BindView(R.id.btn_pay_bypaypal)
     Button mBtn_pay_bypaypal;
 
-    @BindView(R.id.tv_billing_info_a_and_e_value)
-    TextView mTv_billing_info_a_and_e_value;
 
-    @BindView(R.id.tv_billing_info_imh_value)
-    TextView mTv_billing_info_imh_value;
+//    @BindView(R.id.tv_billing_info_imh_value)
+//    TextView mTv_billing_info_imh_value;
 
-    @BindView(R.id.tv_billing_info_ferry_terminals_value)
-    TextView mTv_billing_info_ferry_terminals_value;
+//    @BindView(R.id.tv_billing_info_ferry_terminals_value)
+//    TextView mTv_billing_info_ferry_terminals_value;
 
-    @BindView(R.id.tv_billing_info_staircase_value)
-    TextView mTv_billing_info_staircase_value;
+//    @BindView(R.id.tv_billing_info_staircase_value)
+//    TextView mTv_billing_info_staircase_value;
 
-    @BindView(R.id.tv_billing_info_tarmac_value)
-    TextView mTv_billing_info_tarmac_value;
+//    @BindView(R.id.tv_billing_info_tarmac_value)
+//    TextView mTv_billing_info_tarmac_value;
 
-    @BindView(R.id.tv_billing_info_weight_value)
-    TextView mTv_billing_info_weight_value;
+//    @BindView(R.id.tv_billing_info_table_price_content_warning)
+//    TextView tv_billing_info_table_price_content_warning;
 
-    @BindView(R.id.tv_billing_info_oxygen_tank_value)
-    TextView mTv_billing_info_oxygen_tank_value;
+/*    @BindView(R.id.img_billing_info_img_typeCar)
+    ImageView img_billing_info_img_typeCar;
+
+    @BindView(R.id.tv_billing_info_name_typeCar)
+    TextView mTv_billing_info_name_typeCar;*/
 
     @BindView(R.id.tv_billing_info_pickup_type_value)
     TextView mTv_billing_info_pickup_type_value;
+
     //kiểu của bạn hào
     @BindView(R.id.billing_info_payment_group)
     LinearLayout billing_info_payment_group;
@@ -158,8 +163,10 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
         mView = inflater.inflate(R.layout.fragment_billing_info, container, false);
         ButterKnife.bind(this, mView);
 
-        tv_billing_info_kilo_distance3.setText(RequestMapFragment.Distance_Request);
-        tv_billing_info_kilo_dola2.setText(RequestMapFragment.Time_Request);
+        tv_billing_info_kilo_distance3.setText(SearchPlaceFragment.Distance_Request_Home);
+        tv_billing_info_kilo_dola2.setText(SearchPlaceFragment.Time_Request_Home);
+
+//        mRequestOptional.setRemark(tv_billing_info_table_price_content_warning.getText().toString());
 
 
         if (mRequestOptional != null){
@@ -169,9 +176,18 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
             billing_info_table_price_notice_group.setVisibility(View.VISIBLE);
             billing_info_request_group.setVisibility(View.VISIBLE);
 
+            /*---- SET NAME - IMAGE ----*/
+//            mTv_billing_info_name_typeCar.setText(mRequestOptional.getNameType_send_billinginfo().toString());
+//
+//            Glide.with(activity).load(mRequestOptional.getImgType_send_billinginfo()).into(img_billing_info_img_typeCar);
+
             getBillingInfo(mRequestOptional);
 
         }else {
+
+            /*---- SET NAME - IMAGE ----*/
+//            mTv_billing_info_name_typeCar.setText(mRequestOptional.getNameType_send_billinginfo().toString());
+//            Glide.with(activity).load(mRequestOptional.getImgType_send_billinginfo()).into(img_billing_info_img_typeCar);
 
             mTv_billing_info_notice.setVisibility(View.VISIBLE);
             billing_info_payment_group.setVisibility(View.VISIBLE);
@@ -220,6 +236,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                 getPaymentByCash();
 
             }
+
             break;
 
             case R.id.btn_pay_bypaypal:{
@@ -227,11 +244,12 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                 getBrainTreeClientToken();
 
             }
+
             break;
 
             case R.id.tv_billing_info_confirm:{
 
-                new PreferenceHelper(activity).putOverViewPolyline(RequestMapFragment.OverView_Polyline.toString());
+                new PreferenceHelper(activity).putOverViewPolyline(SearchPlaceFragment.OverView_Polyline_Home.toString());
 
                // Log.d("Dat_Preference",new PreferenceHelper(activity).putOverViewPolyline(RequestMapFragment.OverView_Polyline);
 
@@ -244,10 +262,11 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
             break;
 
             case R.id.tv_billing_info_deny:{
-
-                activity.addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+                // back fragment
+                getActivity().onBackPressed();
+//                activity.
+//                activity.addFragment(new SearchPlaceFragment(), true, Const.SEARCH_FRAGMENT, true);
                 new RequestOptional().setOverView_Polyline("");
-
             }
             break;
         }
@@ -289,6 +308,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 // ---------------GUI  BILLINFO-------------------
 
     private void getBillingInfo(RequestOptional requestOptional){
+           /*--- Check Internet ---*/
 
         if (!EbizworldUtils.isNetworkAvailable(getActivity())) {
 
@@ -297,31 +317,19 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
         }
 
         HashMap<String, String> hashMap = new HashMap<>();
-        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
-
-            hashMap.put(Const.Params.URL, Const.ServiceType.BILLING_INFO);
-
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-
-            hashMap.put(Const.Params.URL, Const.NursingHomeService.BILLING_INFO);
-
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)){
-
-            hashMap.put(Const.Params.URL, Const.HospitalService.BILLING_INFO);
-
-        }
-
+        hashMap.put(Const.Params.URL, Const.ServiceType.BILLING_INFO);
         hashMap.put(Const.Params.ID, new PreferenceHelper(activity).getUserId());
         hashMap.put(Const.Params.TOKEN, new PreferenceHelper(activity).getSessionToken());
-        hashMap.put(Const.Params.A_AND_E, String.valueOf(requestOptional.getA_and_e()));
-        hashMap.put(Const.Params.IMH, String.valueOf(requestOptional.getImh()));
-        hashMap.put(Const.Params.FERRY_TERMINALS, String.valueOf(requestOptional.getFerry_terminals()));
-        hashMap.put(Const.Params.STAIRCASE, String.valueOf(requestOptional.getStaircase()));
-        hashMap.put(Const.Params.TARMAC, String.valueOf(requestOptional.getTarmac()));
-        hashMap.put(Const.Params.WEIGHT, String.valueOf(requestOptional.getWeight()));
-        hashMap.put(Const.Params.OXYGEN, String.valueOf(requestOptional.getOxygen()));
-        hashMap.put(Const.Params.CASE_TYPE, String.valueOf(requestOptional.getCaseType()));
-        hashMap.put("km",RequestMapFragment.Distance_Request.replaceAll(" km","").toString());
+        hashMap.put(Const.Params.SERVICE_TYPE_CAR,String.valueOf(mRequestOptional.getOperator_id()));
+//        hashMap.put(Const.Params.A_AND_E, String.valueOf(requestOptional.getA_and_e()));
+//        hashMap.put(Const.Params.IMH, String.valueOf(requestOptional.getImh()));
+//        hashMap.put(Const.Params.FERRY_TERMINALS, String.valueOf(requestOptional.getFerry_terminals()));
+//        hashMap.put(Const.Params.STAIRCASE, String.valueOf(requestOptional.getStaircase()));
+//        hashMap.put(Const.Params.TARMAC, String.valueOf(requestOptional.getTarmac()));
+//        hashMap.put(Const.Params.WEIGHT, String.valueOf(requestOptional.getWeight()));
+//        hashMap.put(Const.Params.OXYGEN, String.valueOf(requestOptional.getOxygen()));
+//        hashMap.put(Const.Params.CASE_TYPE, String.valueOf(requestOptional.getCaseType()));
+        hashMap.put(Const.Params.SERVICE_KILOMET,String.valueOf(mRequestOptional.getKm_send_billinginfo()));
 
         EbizworldUtils.appLogDebug("HaoLS", "Get Billing info: " + hashMap.toString());
 
@@ -462,24 +470,8 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 //        startGetRequestStatus();
         HashMap<String, String> map = new HashMap<String, String>();
 
-        if (getActivity() != null){
 
-            if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)){
-
-                map.put(Const.Params.URL, Const.ServiceType.REQUEST_AMBULANCE);
-
-            }else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-
-                map.put(Const.Params.URL, Const.NursingHomeService.SEND_REQUEST_URL);
-
-            }else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.HospitalService.HOSPITAL)){
-
-                map.put(Const.Params.URL, Const.HospitalService.SEND_REQUEST_URL);
-
-            }
-
-        }
-
+        map.put(Const.Params.URL, Const.ServiceType.REQUEST_AMBULANCE);
         map.put(Const.Params.ID, new PreferenceHelper(activity).getUserId());
         map.put(Const.Params.TOKEN, new PreferenceHelper(activity).getSessionToken());
 
@@ -489,34 +481,46 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
         map.put(Const.Params.D_LONGITUDE, String.valueOf(requestOptional.getDrop_lng()));
         map.put(Const.Params.D_LATITUDE, String.valueOf(requestOptional.getDrop_lat()));
 
-       /* map.put(Const.Params.IS_ADSTOP, String.valueOf(requestOptional.getIsAddStop()));
-        map.put(Const.Params.ADSTOP_LONGITUDE, String.valueOf(requestOptional.getAddStop_lng()));
-        map.put(Const.Params.ADSTOP_LATITUDE, String.valueOf(requestOptional.getAddStop_lat()));
-        map.put(Const.Params.ADSTOP_ADDRESS, requestOptional.getAddStop_address());*/
+//        map.put(Const.Params.IS_ADSTOP, String.valueOf(requestOptional.getIsAddStop()));
+//        map.put(Const.Params.ADSTOP_LONGITUDE, String.valueOf(requestOptional.getAddStop_lng()));
+//        map.put(Const.Params.ADSTOP_LATITUDE, String.valueOf(requestOptional.getAddStop_lat()));
+//        map.put(Const.Params.ADSTOP_ADDRESS, requestOptional.getAddStop_address());
+//new PreferenceHelper(getActivity()).getRequestType()
 
-        map.put(Const.Params.SERVICE_TYPE, new PreferenceHelper(getActivity()).getRequestType());
+        //
+        if(requestOptional.getOperator_id() != 0){
+            map.put(Const.Params.SERVICE_TYPE, String.valueOf(requestOptional.getOperator_id()));
+        }else {
+            map.put(Const.Params.SERVICE_TYPE,new PreferenceHelper(getActivity()).getRequestType());
+        }
+
+
         map.put(Const.Params.S_ADDRESS, requestOptional.getPic_address());
         map.put(Const.Params.D_ADDRESS, requestOptional.getDrop_address());
-        map.put(Const.Params.REQ_STATUS_TYPE, String.valueOf(requestOptional.getRequest_status_type()));
-        map.put(Const.Params.PROMOCODE, requestOptional.getPromoCode());
-        map.put(Const.Params.REMARK, requestOptional.getRemark());
 
-        map.put(Const.Params.A_AND_E,String.valueOf(requestOptional.getA_and_e()));
-        map.put(Const.Params.IMH,String.valueOf(requestOptional.getImh()));
-        map.put(Const.Params.FERRY_TERMINALS,String.valueOf(requestOptional.getFerry_terminals()));
-        map.put(Const.Params.STAIRCASE,String.valueOf(requestOptional.getStaircase()));
-        map.put(Const.Params.TARMAC,String.valueOf(requestOptional.getTarmac()));
-        map.put(Const.Params.FAMILY_MEMBER, String.valueOf(requestOptional.getFamily_member()));
-        map.put(Const.Params.HOUSE_UNIT, requestOptional.getHouseUnit());
-        map.put(Const.Params.WEIGHT, String.valueOf(requestOptional.getWeight()));
-        map.put(Const.Params.OXYGEN,String.valueOf(requestOptional.getOxygen()));
-        map.put(Const.Params.CASE_TYPE, String.valueOf(requestOptional.getCaseType()));
+        map.put(Const.Params.REQ_STATUS_TYPE, String.valueOf(requestOptional.getRequest_status_type()));
+       map.put(Const.Params.PROMOCODE, requestOptional.getPromoCode());
+
+           map.put(Const.Params.REMARK,requestOptional.getRemark());
+
+
+
+//        map.put(Const.Params.A_AND_E,String.valueOf(requestOptional.getA_and_e()));
+//        map.put(Const.Params.IMH,String.valueOf(requestOptional.getImh()));
+//        map.put(Const.Params.FERRY_TERMINALS,String.valueOf(requestOptional.getFerry_terminals()));
+//        map.put(Const.Params.STAIRCASE,String.valueOf(requestOptional.getStaircase()));
+//        map.put(Const.Params.TARMAC,String.valueOf(requestOptional.getTarmac()));
+//        map.put(Const.Params.FAMILY_MEMBER, String.valueOf(requestOptional.getFamily_member()));
+//        map.put(Const.Params.HOUSE_UNIT, requestOptional.getHouseUnit());
+//        map.put(Const.Params.WEIGHT, String.valueOf(requestOptional.getWeight()));
+//        map.put(Const.Params.OXYGEN,String.valueOf(requestOptional.getOxygen()));
+//        map.put(Const.Params.CASE_TYPE, String.valueOf(requestOptional.getCaseType()));
 
 
 //        map.put("overview_polyline", String.valueOf(requestOptional.getOverView_Polyline()));
         map.put("overview_polyline", new PreferenceHelper(activity).getOverViewPolyline());
 
-        map.put("km",RequestMapFragment.Distance_Request.replaceAll(" km","").toString());
+        map.put("km",requestOptional.getKm_send_billinginfo().toString());
 
         Log.d("GetRequest_Diver", "Request ambulance: " + map.toString());
         new VolleyRequester(activity, Const.POST, map, Const.ServiceCode.REQUEST_AMBULANCE,
@@ -587,6 +591,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
         switch (serviceCode){
 
             case Const.ServiceCode.BILLING_INFO:{
+
                 EbizworldUtils.appLogInfo("HaoLS", "Billing info: " + response);
                 Commonutils.progressdialog_hide();
 
@@ -597,47 +602,45 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
                         JSONObject jsonObject = object.getJSONObject(Const.Params.BILLING_INFO);
                         Log.d("DatBilling", String.valueOf(jsonObject));
-
-                        if (jsonObject.has(Const.Params.A_AND_E)){
-
-                            mTv_billing_info_a_and_e_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.A_AND_E));
-                        }
-
-                        if (jsonObject.has(Const.Params.IMH)){
-
-                            mTv_billing_info_imh_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.IMH));
-                        }
-
-                        if (jsonObject.has(Const.Params.FERRY_TERMINALS)){
-
-                            mTv_billing_info_ferry_terminals_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.FERRY_TERMINALS));
-                        }
-
-                        if (jsonObject.has(Const.Params.STAIRCASE)){
-
-                            mTv_billing_info_staircase_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.STAIRCASE));
-                        }
-
-                        if (jsonObject.has(Const.Params.TARMAC)){
-
-                            mTv_billing_info_tarmac_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.TARMAC));
-                        }
-
-                        if (jsonObject.has(Const.Params.WEIGHT)){
-
-                            mTv_billing_info_weight_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.WEIGHT));
-                        }
-
-                        if (jsonObject.has(Const.Params.OXYGEN)){
-
-                            mTv_billing_info_oxygen_tank_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.OXYGEN));
-                        }
-
-                        if (jsonObject.has(Const.Params.CASE_TYPE)){
-
-                            mTv_billing_info_pickup_type_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.CASE_TYPE));
-                        }
-
+//                        if (jsonObject.has(Const.Params.A_AND_E)){
+//
+//                            mTv_billing_info_a_and_e_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.A_AND_E));
+//                        }
+//
+//                        if (jsonObject.has(Const.Params.IMH)){
+//
+//                            mTv_billing_info_imh_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.IMH));
+//                        }
+//
+//                        if (jsonObject.has(Const.Params.FERRY_TERMINALS)){
+//
+//                            mTv_billing_info_ferry_terminals_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.FERRY_TERMINALS));
+//                        }
+//
+//                        if (jsonObject.has(Const.Params.STAIRCASE)){
+//
+//                            mTv_billing_info_staircase_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.STAIRCASE));
+//                        }
+//
+//                        if (jsonObject.has(Const.Params.TARMAC)){
+//
+//                            mTv_billing_info_tarmac_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.TARMAC));
+//                        }
+//
+//                        if (jsonObject.has(Const.Params.WEIGHT)){
+//
+//                            mTv_billing_info_weight_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.WEIGHT));
+//                        }
+//
+//                        if (jsonObject.has(Const.Params.OXYGEN)){
+//
+//                            mTv_billing_info_oxygen_tank_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.OXYGEN));
+//                        }
+//
+//                        if (jsonObject.has(Const.Params.CASE_TYPE)){
+//
+//                            mTv_billing_info_pickup_type_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.CASE_TYPE));
+//                        }
                         if (jsonObject.has(Const.Params.TOTAL)){
 
                             mTv_billing_info_total_price.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.TOTAL));
@@ -645,14 +648,15 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                         }
 
                     }else {
-
-                        activity.addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+                        Toast.makeText(activity, "Fail BillingInfo", Toast.LENGTH_SHORT).show();
+//                        activity.addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
 
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                     EbizworldUtils.appLogError("HaoLS", "Get billing info failed: " + e.toString());
-                    activity.addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+
+//                    activity.addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
                 }
 
             }
@@ -662,6 +666,8 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                 EbizworldUtils.appLogInfo("HaoLS", "create req_response succeeded: " + response);
 
                 if (response != null){
+
+                    Log.d("DatCheckReponse",response.toString());
 
                     try {
                         JSONObject job1 = new JSONObject(response);
@@ -681,14 +687,16 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
                             }
 
-                        }/* else if (job1.getString("success").equals("false")) {
-
-                            if (job1.getString("error_code").equalsIgnoreCase("166")) {
-                                Intent payment = new Intent(activity, AddPaymentFragment.class);
-                                startActivity(payment);
-                            }
-
-                        }*/else {
+                        }
+//                         else if (job1.getString("success").equals("false")) {
+//
+//                            if (job1.getString("error_code").equalsIgnoreCase("166")) {
+//                                Intent payment = new Intent(activity, AddPaymentFragment.class);
+//                                startActivity(payment);
+//                            }
+//
+//                        }
+                        else {
 
                             // startgetProvider();
                             if (requestDialog != null && requestDialog.isShowing()) {
@@ -859,13 +867,13 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                             }else {
 
                                 mTv_billing_info_total_price.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getTrip_total_price());
-                                mTv_billing_info_a_and_e_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getA_and_e());
-                                mTv_billing_info_imh_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getImh());
-                                mTv_billing_info_ferry_terminals_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getFerry_terminals());
-                                mTv_billing_info_staircase_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getStaircase());
-                                mTv_billing_info_tarmac_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getTarmac());
-                                mTv_billing_info_weight_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getWeight());
-                                mTv_billing_info_oxygen_tank_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getOxygen_tank());
+                             //   mTv_billing_info_a_and_e_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getA_and_e());
+                            //    mTv_billing_info_imh_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getImh());
+                            //    mTv_billing_info_ferry_terminals_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getFerry_terminals());
+                           //     mTv_billing_info_staircase_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getStaircase());
+                         //       mTv_billing_info_tarmac_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getTarmac());
+                            //    mTv_billing_info_weight_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getWeight());
+//                                mTv_billing_info_oxygen_tank_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getOxygen_tank());
                                 mTv_billing_info_pickup_type_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getPickup_type());
 
                             }

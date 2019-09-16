@@ -9,7 +9,7 @@
     <size android:width="@dimen/_300sdp"
         android:height="@dimen/_5sdp"/>
 
-    <gradient android:startColor="@color/wallet_color"
+    <gradient android:startColor="@color/white"
         android:endColor="@color/white"/>
 
 </shape>

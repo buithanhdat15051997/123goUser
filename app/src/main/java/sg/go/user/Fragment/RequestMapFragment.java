@@ -126,8 +126,8 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
     private TextView btn_request_cab, tv_no_seats, tv_estimate_fare,
             tv_cashtype, tv_total_dis, tv_promocode, txt_ShowNameRoutes;
     ///CARDVIEW
-    private CardView cardShowRedA, cardShowRedB, cardShowRedC;
-    private ArrayList<CardView> arrayListCardShow;
+    private Button cardShowRedA, cardShowRedB, cardShowRedC;
+    private ArrayList<Button> arrayListCardShow;
 
     private CheckBox cb_ferry_terminals_value, cb_staircase_value, cb_a_and_e_value, cb_imh_value, cb_tarmac_value;
     private Spinner spn_weight_value, spn_family_member_value;
@@ -1359,10 +1359,13 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
 
     private void setVisiableCardShow()
     {
+        String color3[] = {"#FF0000", "#00FF00", "#7883CF"};
         for(int i = 0; i <  polylineData.size();i++)
         {
-//            if(i==0)break;
             arrayListCardShow.get(i).setVisibility(View.VISIBLE);
+            arrayListCardShow.get(i).setBackgroundColor(Color.parseColor(color3[i]));
+//            arrayListCardShow.get(i).setText();
+
         }
     }
 

@@ -68,7 +68,6 @@ public class WelcomeActivity extends AppCompatActivity implements MediaPlayer.On
 
             }
 
-
             Locale.setDefault(myLocale);
             Configuration config = new Configuration();
             config.locale = myLocale;

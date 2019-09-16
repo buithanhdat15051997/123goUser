@@ -108,9 +108,7 @@ public class VolleyRequester {
 
                         //seekbar.cancel();
                         if(response!=null){
-
                             asyncTaskCompleteListener.onTaskCompleted(response, servicecode);
-
                         }
 
                     }
@@ -120,7 +118,6 @@ public class VolleyRequester {
                     public void onErrorResponse(VolleyError error) {
 
                         if (error instanceof NoConnectionError) {
-
                             //String msg = "No network connection.Please check your internet";
                            // Commonutils.showtoast(msg, activity);
                             EbizworldUtils.appLogError("HaoLS", "onErrorResponse " + error.toString());

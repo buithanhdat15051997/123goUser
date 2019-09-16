@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
                 mBottomNavigationView.inflateMenu(R.menu.consumer_bottom_navigation_menu);
                 mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
-                addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+                addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
 
             }
 
@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
                 }else {
 
-                    addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+                    addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
                 }
 
 
@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
                 }else {
 
-                    addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+                    addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
                 }
 
             }
@@ -372,7 +372,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
             }*/else {
 
-                addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+                addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
                 mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
             }
 
@@ -1006,7 +1006,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
                 case R.id.action_home:{
 
-                    addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+                    addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
 
                 }
                 return true;

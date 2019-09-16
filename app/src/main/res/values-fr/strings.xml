@@ -111,7 +111,7 @@
     <string name="txt_tap_any_button_change_option">Appuyez sur n\'importe quel bouton ci-dessous pour changer d\'option</string>
     <string name="txt_use_this_screen_cc_payment">Veuillez utiliser cet écran pour revenir au paiement CC.</string>
     <string name="txt_signup">Inscrivez-vous</string>
-    <string name="txt_next">Prochaine</string>
+    <string name="txt_next">Sélectionnez le type de voitures</string>
     <string name="txt_phone_number">Numéro de téléphone</string>
     <string name="txt_confirm_phone_number">Confirmer le numéro de téléphone</string>
     <string name="txt_choose_account">Choisir un compte</string>
@@ -354,7 +354,7 @@
     <string name="no_history">--- Aucun historique de trajet disponible ---</string>
     <string name="no_stair">Pas d\'escalier</string>
     <string name="optional">En option</string>
-    <string name="oxygen_liter">Oxygène (Litre)</string>
+    <string name="oxygen_liter"> Photos de voitures sélectionnées </string>
     <string name="oxygen_tank">Bouteille d\'oxygène</string>
     <string name="patient_name">Nom du patient</string>
     <string name="pay_now">Payez maintenant</string>
@@ -377,7 +377,7 @@
     <string name="staircase_less_80">Temps total</string>
     <string name="street_name">nom de rue</string>
     <string name="stretcher">Civière</string>
-    <string name="airport_tarmac">Aéroport (Tarmac)</string>
+    <string name="airport_tarmac">Types Voitures sélectionnées</string>
     <string name="tax_price">Prix ​​taxe</string>
     <string name="txt_apply_promo">Appliquer le PromoCode</string>
     <string name="txt_braintree1">Vous ne serez débité qu\'après votre voyage!</string>

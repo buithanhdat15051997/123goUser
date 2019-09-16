@@ -21,7 +21,7 @@
     <string name="ferry_terminals"> Distance: </string>
     <string name="a_and_e"> A&amp;E </string>
     <string name="imh"> IMH </string>
-    <string name="airport_tarmac">Airport (Tarmac)</string>
+    <string name="airport_tarmac">Type car selected</string>
     <string name="base_price"> Base price </string>
     <string name="distance_price"> Distance price </string>
     <string name="extra_time_price"> Extra time price </string>
@@ -63,7 +63,7 @@
     <string name="stretcher"> Stretcher </string>
     <string name="wheel_chair"> Wheel chair </string>
     <string name="oxygen">Oxygen</string>
-    <string name="oxygen_liter"> Oxygen (Liters) </string>
+    <string name="oxygen_liter"> Picture car selected </string>
     <string name="escorts"> Escorts </string>
     <string name="patient_name"> Patient name </string>
     <string name="additional_patient_information"> Additional Patient\'s information </string>
@@ -79,7 +79,7 @@
     <string name="please_select_your_payment_option">Please select your payment option below</string>
     <string name="txt_schedule_warning_content">The duration of the pick-up time and the medical time is too little with the time of the trip. Are you sure you want to book a schedule?</string>
     <string name="txt_schedule_warning_title"> Schedule alerts </string>
-    <string name="ambulance_operator_notice">was chosen! Choose another 123go diver below if you want!</string>
+    <string name="ambulance_operator_notice">Choose another 123go diver below if you want!</string>
     <string name="another_ambulance_operator">Choose another ambulance operator here!</string>
     <string name="edittext_empty_notice"> This field cannot be empty</string>
     <string name="txt_hourly_booking"> Rent by hour </string>
@@ -344,7 +344,7 @@
     <string name="txt_done">Done</string>
     <string name="txt_select_payment_note">Tap any button below to change option</string>
     <string name="txt_select_payment_note2">Please use this screen, to toggle back to CC payment.</string>
-    <string name="txt_next">Next</string>
+    <string name="txt_next">Select Type Car</string>
     <string name="txt_back">Back</string>
     <string name="txt_confirm_phone">Confirm phone number</string>
     <string name="txt_choose_account">Choose an account</string>

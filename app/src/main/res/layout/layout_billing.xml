@@ -143,7 +143,7 @@
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_weight="0.25"/>
 
-        <TextView
+  <!--      <TextView
             android:id="@+id/tv_billing_info_ferry_terminals_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
             android:textSize="@dimen/_12ssp"
             android:textStyle="italic"
             android:textAlignment="center"
-            android:layout_weight="0.4"/>
+            android:layout_weight="0.4"/>-->
 
 
     </LinearLayout>
@@ -188,7 +188,7 @@
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_weight="0.25"/>
 
-        <TextView
+<!--        <TextView
             android:id="@+id/tv_billing_info_staircase_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -197,7 +197,7 @@
             android:textSize="@dimen/_12ssp"
             android:textStyle="italic"
             android:textAlignment="center"
-            android:layout_weight="0.4"/>
+            android:layout_weight="0.4"/>-->
 
 
     </LinearLayout>
@@ -302,11 +302,11 @@
         android:weightSum="1">
 
         <TextView
-            android:id="@+id/tv_billing_info_tarmac_text"
+            android:id="@+id/tv_billing_info_name_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/airport_tarmac"
-            android:textColor="@color/lightblueA700"
+            android:textColor="@color/white"
             android:textSize="@dimen/_12ssp"
             android:textStyle="italic"
             android:textAlignment="center"
@@ -322,11 +322,11 @@
             android:layout_weight="0.25"/>
 
         <TextView
-            android:id="@+id/tv_billing_info_tarmac_value"
+            android:id="@+id/tv_billing_info_name_typeCar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="$ 0"
-            android:textColor="@color/lightblueA700"
+            android:text="Car"
+            android:textColor="@color/white"
             android:textSize="@dimen/_12ssp"
             android:textStyle="italic"
             android:textAlignment="center"
@@ -336,7 +336,7 @@
     </LinearLayout>
 
     <!--Weight group-->
-    <LinearLayout
+<!--    <LinearLayout
         android:visibility="gone"
         android:id="@+id/billing_info_weight_group"
         android:layout_width="match_parent"
@@ -378,7 +378,7 @@
             android:layout_weight="0.4"/>
 
 
-    </LinearLayout>
+    </LinearLayout>-->
 
     <!--Oxygen group-->
     <LinearLayout
@@ -392,11 +392,11 @@
         android:weightSum="1">
 
         <TextView
-            android:id="@+id/tv_billing_info_oxygen_tank_text"
+            android:id="@+id/tv_billing_info_img_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/oxygen_liter"
-            android:textColor="@color/lightblueA700"
+            android:textColor="@color/white"
             android:textSize="@dimen/_12ssp"
             android:textStyle="italic"
             android:textAlignment="center"
@@ -411,10 +411,10 @@
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_weight="0.25"/>
 
-        <TextView
-            android:id="@+id/tv_billing_info_oxygen_tank_value"
+        <ImageView
+            android:id="@+id/img_billing_info_img_typeCar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="$ 0"
             android:textColor="@color/lightblueA700"
             android:textSize="@dimen/_12ssp"

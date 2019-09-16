@@ -8,13 +8,13 @@
     <TextView
         android:id="@+id/tv_optional"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
+        android:layout_height="@dimen/_20sdp"
         android:background="@color/lightblue700"
         android:gravity="center"
         android:text="@string/txt_next"
         android:textAllCaps="true"
         android:textColor="@color/white"
-        android:textSize="@dimen/_18ssp" />
+        android:textSize="@dimen/_10ssp" />
 
 
     <android.support.v4.widget.NestedScrollView
@@ -32,6 +32,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:orientation="vertical">
 
                 <TextView
@@ -49,11 +51,21 @@
                     android:singleLine="true"
                     android:text="@string/ambulance_operator_notice"
                     android:textColor="@color/lightblue700"
-                    android:textSize="@dimen/_12ssp"
+                    android:textSize="@dimen/_10ssp"
                     android:textStyle="bold|italic" />
 
+                <!--Recycler View-->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/Recyc_Type_Car"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+
+
+                <!-- WheelView -->
                 <com.zyyoona7.wheel.WheelView
-                    android:visibility="visible"
                     android:id="@+id/wheel_view_ambulance_operator"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_100sdp"
@@ -62,6 +74,7 @@
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:padding="@dimen/_5sdp"
+                    android:visibility="gone"
                     app:wv_curved="true"
                     app:wv_curvedArcDirection="center"
                     app:wv_dividerColor="@color/lightblue700"
@@ -531,6 +544,7 @@
                 android:background="@color/dark_grey" />
 
             <EditText
+                android:visibility="gone"
                 android:id="@+id/trip_remark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -633,10 +647,10 @@
             </LinearLayout>
 
             <TextView
-
+                android:visibility="gone"
                 android:id="@+id/btn_request_cab"
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
+                android:layout_height="30dp"
                 android:layout_margin="6dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -646,7 +660,7 @@
                 android:text="@string/txt_req_cab"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_10ssp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -654,604 +668,604 @@
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
 
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/tv_optional"
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:gravity="center"
-        android:text="@string/optional"
-        android:textSize="@dimen/_18ssp"
-        android:textColor="@color/white"
-        android:background="@color/lightblue700"
-        android:textAllCaps="true"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_optional"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:gravity="center"
+            android:text="@string/optional"
+            android:textSize="@dimen/_18ssp"
+            android:textColor="@color/white"
+            android:background="@color/lightblue700"
+            android:textAllCaps="true"/>
 
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:background="@color/white">
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="center"
+                android:orientation="vertical"
+                android:background="@color/white">
 
-                <TextView
-                    android:id="@+id/tv_ambulance_operator_notice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingStart="@dimen/_10sdp"
-                    android:paddingEnd="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_3sdp"
-                    android:paddingTop="@dimen/_3sdp"
-                    android:text="@string/ambulance_operator_notice"
-                    android:textColor="@color/deeporange600"
-                    android:textSize="@dimen/_12ssp"
-                    android:textStyle="bold|italic"
-                    android:singleLine="true"
-                    android:ellipsize="marquee"
-                    android:marqueeRepeatLimit="marquee_forever"
-                    android:scrollHorizontally="true"/>
-
-                <com.zyyoona7.wheel.WheelView
-                    android:id="@+id/wheel_view_ambulance_operator"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_100sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:padding="@dimen/_5sdp"
-                    app:wv_textSize="@dimen/_16ssp"
-                    app:wv_normalItemTextColor="@color/deeporange600"
-                    app:wv_selectedItemTextColor="@color/deeporange600"
-                    app:wv_lineSpacing="@dimen/_5sdp"
-                    app:wv_textAlign="center"
-                    app:wv_showDivider="true"
-                    app:wv_curved="true"
-                    app:wv_curvedArcDirection="center"
-                    app:wv_dividerType="fill"
-                    app:wv_dividerPaddingForWrap="@dimen/_2sdp"
-                    app:wv_dividerColor="@color/deeporange600"/>
-
-                &lt;!&ndash;Horizontal Ambulance Operators&ndash;&gt;
                 <LinearLayout
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="1"
-                    android:gravity="center">
+                    android:orientation="vertical">
 
-
-                    <RelativeLayout
+                    <TextView
+                        android:id="@+id/tv_ambulance_operator_notice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:layout_gravity="center"
-                        android:layout_weight="0.3">
-
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/list_vehicle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginEnd="@dimen/_5sdp"
-                            android:layout_marginBottom="@dimen/_5sdp"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:padding="@dimen/_5sdp"
-                            android:focusable="true"
-                            android:orientation="horizontal" />
-
-                        <ProgressBar
-                            android:id="@+id/load_progress"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_centerInParent="true"/>
-
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/any_ambulance_operator_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_2sdp"
-                        android:layout_marginBottom="@dimen/_2sdp"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:layout_weight="0.7">
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_3sdp"
+                        android:paddingTop="@dimen/_3sdp"
+                        android:text="@string/ambulance_operator_notice"
+                        android:textColor="@color/deeporange600"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold|italic"
+                        android:singleLine="true"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"/>
 
-                        <ImageView
-                            android:id="@+id/type_picutre"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="@dimen/_40sdp"
-                            android:layout_margin="@dimen/_3sdp"
-                            android:gravity="center"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/frontal_ambulance_cab" />
+                    <com.zyyoona7.wheel.WheelView
+                        android:id="@+id/wheel_view_ambulance_operator"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:padding="@dimen/_5sdp"
+                        app:wv_textSize="@dimen/_16ssp"
+                        app:wv_normalItemTextColor="@color/deeporange600"
+                        app:wv_selectedItemTextColor="@color/deeporange600"
+                        app:wv_lineSpacing="@dimen/_5sdp"
+                        app:wv_textAlign="center"
+                        app:wv_showDivider="true"
+                        app:wv_curved="true"
+                        app:wv_curvedArcDirection="center"
+                        app:wv_dividerType="fill"
+                        app:wv_dividerPaddingForWrap="@dimen/_2sdp"
+                        app:wv_dividerColor="@color/deeporange600"/>
 
-                        <View
-                            android:id="@+id/view_select"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="@dimen/_5sdp"
-                            android:background="@drawable/background_gradient_line"
-                            android:visibility="invisible"/>
+                    &lt;!&ndash;Horizontal Ambulance Operators&ndash;&gt;
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1"
+                        android:gravity="center">
 
-                        <TextView
-                            android:id="@+id/tv_type_name"
+
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
+                            android:background="@color/white"
                             android:layout_gravity="center"
-                            android:text=""
-                            android:textColor="@color/lightblueA700"
-                            android:textSize="@dimen/_13ssp"
-                            android:scrollHorizontally="true"/>
+                            android:layout_weight="0.3">
+
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/list_vehicle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:layout_marginBottom="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:padding="@dimen/_5sdp"
+                                android:focusable="true"
+                                android:orientation="horizontal" />
+
+                            <ProgressBar
+                                android:id="@+id/load_progress"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerInParent="true"/>
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:id="@+id/any_ambulance_operator_group"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_marginBottom="@dimen/_2sdp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_weight="0.7">
+
+                            <ImageView
+                                android:id="@+id/type_picutre"
+                                android:layout_width="@dimen/_70sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_margin="@dimen/_3sdp"
+                                android:gravity="center"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/frontal_ambulance_cab" />
+
+                            <View
+                                android:id="@+id/view_select"
+                                android:layout_width="@dimen/_70sdp"
+                                android:layout_height="@dimen/_5sdp"
+                                android:background="@drawable/background_gradient_line"
+                                android:visibility="invisible"/>
+
+                            <TextView
+                                android:id="@+id/tv_type_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:text=""
+                                android:textColor="@color/lightblueA700"
+                                android:textSize="@dimen/_13ssp"
+                                android:scrollHorizontally="true"/>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
+                    &lt;!&ndash;Button another operators&ndash;&gt;
+                    <Button
+                        android:visibility="gone"
+                        android:id="@+id/btn_another_ambulance_operator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_3sdp"
+                        android:paddingTop="@dimen/_3sdp"
+                        android:background="@color/lightblueA700"
+                        android:text="@string/another_ambulance_operator"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="italic|bold"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"/>
+
                 </LinearLayout>
 
-                &lt;!&ndash;Button another operators&ndash;&gt;
-                <Button
-                    android:visibility="gone"
-                    android:id="@+id/btn_another_ambulance_operator"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_margin="@dimen/_5sdp"
-                    android:paddingStart="@dimen/_10sdp"
-                    android:paddingEnd="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_3sdp"
-                    android:paddingTop="@dimen/_3sdp"
-                    android:background="@color/lightblueA700"
-                    android:text="@string/another_ambulance_operator"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_12ssp"
-                    android:textStyle="italic|bold"
-                    android:ellipsize="marquee"
-                    android:marqueeRepeatLimit="marquee_forever"
-                    android:scrollHorizontally="true"/>
+                    android:layout_height="@dimen/_50sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
-            </LinearLayout>
+                    <CheckBox
+                        android:id="@+id/tv_a_and_e_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/a_and_e"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:backgroundTint="@color/lightblueA700"
+                        android:buttonTint="@color/lightblueA700"
+                        android:layout_weight="1"
+                        style="@style/Widget.AppCompat.CompoundButton.CheckBox"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_50sdp"
-                android:orientation="horizontal"
-                android:gravity="center">
+                    <CheckBox
+                        android:id="@+id/tv_imh_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/imh"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:backgroundTint="@color/lightblueA700"
+                        android:buttonTint="@color/lightblueA700"
+                        android:layout_weight="1"/>
 
-                <CheckBox
-                    android:id="@+id/tv_a_and_e_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:text="@string/a_and_e"
-                    android:textColor="@color/lightblueA700"
-                    android:textSize="@dimen/_12ssp"
-                    android:backgroundTint="@color/lightblueA700"
-                    android:buttonTint="@color/lightblueA700"
-                    android:layout_weight="1"
-                    style="@style/Widget.AppCompat.CompoundButton.CheckBox"/>
-
-                <CheckBox
-                    android:id="@+id/tv_imh_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:text="@string/imh"
-                    android:textColor="@color/lightblueA700"
-                    android:textSize="@dimen/_12ssp"
-                    android:backgroundTint="@color/lightblueA700"
-                    android:buttonTint="@color/lightblueA700"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_50sdp"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <CheckBox
-                    android:id="@+id/tv_ferry_terminals_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:gravity="center"
-                    android:text="@string/ferry_terminals"
-                    android:textColor="@color/lightblueA700"
-                    android:textSize="@dimen/_12ssp"
-                    android:backgroundTint="@color/lightblueA700"
-                    android:buttonTint="@color/lightblueA700"
-                    android:layout_weight="1"
-                    style="@style/Widget.AppCompat.CompoundButton.CheckBox"/>
-
-                <CheckBox
-                    android:id="@+id/tv_staircase_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:gravity="center"
-                    android:text="@string/staircase_less_80"
-                    android:textColor="@color/lightblueA700"
-                    android:textSize="@dimen/_12ssp"
-                    android:backgroundTint="@color/lightblueA700"
-                    android:buttonTint="@color/lightblueA700"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
-
-            <CheckBox
-                android:id="@+id/tv_tarmac_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:gravity="center"
-                android:text="@string/tarmac"
-                android:textColor="@color/lightblueA700"
-                android:textSize="@dimen/_12ssp"
-                android:backgroundTint="@color/lightblueA700"
-                android:buttonTint="@color/lightblueA700"
-                android:layout_weight="1"
-                style="@style/Widget.AppCompat.CompoundButton.CheckBox"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_50sdp"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <TextView
-                    android:gravity="center"
-                    android:id="@+id/tv_family_member"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:text="@string/family_member"
-                    android:textColor="@color/deeporange600"
-                    android:textSize="@dimen/_12ssp"
-                    android:textStyle="bold|italic"
-                    android:layout_weight="1"/>
-
-                <Spinner
-                    android:id="@+id/spn_family_member_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@drawable/background_rectango_stroke_blue"
-                    android:hint="@string/family_member"
-                    android:inputType="number"
-                    android:padding="@dimen/_2sdp"
-                    android:singleLine="true"
-                    android:textColor="@color/lightblueA700"
-                    android:textSize="@dimen/_12ssp"
-                    android:layout_weight="1"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_50sdp"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <TextView
-                    android:gravity="center"
-                    android:id="@+id/tv_weight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:text="@string/weight"
-                    android:textColor="@color/deeporange600"
-                    android:textSize="@dimen/_12ssp"
-                    android:textStyle="bold|italic"
-                    android:layout_weight="1"/>
-
-                <Spinner
-                    android:id="@+id/spn_weight_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@drawable/background_rectango_stroke_blue"
-                    android:hint="@string/weight"
-                    android:inputType="number"
-                    android:padding="@dimen/_2sdp"
-                    android:singleLine="true"
-                    android:textColor="@color/lightblueA700"
-                    android:textSize="@dimen/_12ssp"
-                    android:layout_weight="1"/>
-
-
-            </LinearLayout>
-
-            &lt;!&ndash; Assistive Device&ndash;&gt;
-            &lt;!&ndash;<LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_50sdp"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <TextView
-                    android:gravity="center"
-                    android:id="@+id/tv_assistive_device"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:text="@string/assistive_device"
-                    android:textColor="@color/deeporange600"
-                    android:textSize="@dimen/_12ssp"
-                    android:textStyle="bold|italic"
-                    android:layout_weight="1"/>
-
-                <Spinner
-                    android:id="@+id/tv_assistive_device_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:background="@drawable/background_rectango_stroke_blue"
-                    android:hint="@string/assistive_device"
-                    android:inputType="number"
-                    android:padding="@dimen/_2sdp"
-                    android:singleLine="true"
-                    android:textColor="@color/lightblueA700"
-                    android:textSize="@dimen/_12ssp"
-                    android:layout_weight="1"/>
-
-
-            </LinearLayout>&ndash;&gt;
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_50sdp"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <TextView
-                    android:gravity="center"
-                    android:id="@+id/tv_oxygen_tank"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:text="@string/oxygen_tank"
-                    android:textColor="@color/deeporange600"
-                    android:textSize="@dimen/_12ssp"
-                    android:textStyle="bold|italic"
-                    android:layout_weight="1"/>
-
-                <Spinner
-                    android:id="@+id/tv_oxygen_tank_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:background="@drawable/background_rectango_stroke_blue"
-                    android:hint="@string/oxygen_tank"
-                    android:inputType="number"
-                    android:padding="@dimen/_2sdp"
-                    android:singleLine="true"
-                    android:textColor="@color/lightblueA700"
-                    android:textSize="@dimen/_12ssp"
-                    android:layout_weight="1"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_50sdp"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <TextView
-                    android:gravity="center"
-                    android:id="@+id/tv_pickup_type"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:text="@string/pickup_type"
-                    android:textColor="@color/deeporange600"
-                    android:textSize="@dimen/_12ssp"
-                    android:textStyle="bold|italic"
-                    android:layout_weight="1"/>
-
-                <Spinner
-                    android:id="@+id/tv_pickup_type_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:background="@drawable/background_rectango_stroke_blue"
-                    android:hint="@string/pickup_type"
-                    android:inputType="number"
-                    android:padding="@dimen/_2sdp"
-                    android:singleLine="true"
-                    android:textColor="@color/lightblueA700"
-                    android:textSize="@dimen/_12ssp"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/instruction_lay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/list_vehicle"
-                android:layout_margin="4dp"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/alert_circle_outline" />
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="8dp"
-                    android:text="@string/txt_fare_note"
-                    android:textColor="@color/lightblueA700"
-                    android:textSize="@dimen/_13ssp" />
-
-            </LinearLayout>
-
-            <View
-                android:id="@+id/v_"
-                android:layout_width="wrap_content"
-                android:layout_height="0.01dp"
-                android:layout_below="@+id/instruction_lay"
-                android:layout_margin="5dp"
-                android:background="@color/dark_grey" />
-
-            <EditText
-                android:id="@+id/trip_remark"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_oval_stroke"
-                android:padding="@dimen/_10sdp"
-                android:layout_margin="@dimen/_5sdp"
-                android:hint="@string/trip_remark"
-                android:textColorHint="@color/deeporange200"
-                android:textSize="@dimen/_12ssp"
-                android:textColor="@color/deeporange600"
-                android:textStyle="italic"
-                android:inputType="text"
-                android:enabled="true"
-                android:imeOptions="actionDone"
-                android:lines="1"/>
-
-            &lt;!&ndash;Payment option&ndash;&gt;
-            <RelativeLayout
-                android:visibility="gone"
-                android:id="@+id/lay_payment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/v_"
-                android:layout_margin="5dp"
-                android:orientation="horizontal"
-                android:padding="5dp">
+                </LinearLayout>
 
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:id="@+id/tv_ferry_terminals_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:text="@string/ferry_terminals"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:backgroundTint="@color/lightblueA700"
+                        android:buttonTint="@color/lightblueA700"
+                        android:layout_weight="1"
+                        style="@style/Widget.AppCompat.CompoundButton.CheckBox"/>
+
+                    <CheckBox
+                        android:id="@+id/tv_staircase_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:text="@string/staircase_less_80"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:backgroundTint="@color/lightblueA700"
+                        android:buttonTint="@color/lightblueA700"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/tv_tarmac_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_margin="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:text="@string/tarmac"
+                    android:textColor="@color/lightblueA700"
+                    android:textSize="@dimen/_12ssp"
+                    android:backgroundTint="@color/lightblueA700"
+                    android:buttonTint="@color/lightblueA700"
+                    android:layout_weight="1"
+                    style="@style/Widget.AppCompat.CompoundButton.CheckBox"/>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
                     <TextView
-                        android:id="@+id/tv_cashtype"
-                        android:layout_width="wrap_content"
+                        android:gravity="center"
+                        android:id="@+id/tv_family_member"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="8dp"
-                        android:text="@string/txt_select_payment"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/family_member"
+                        android:textColor="@color/deeporange600"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold|italic"
+                        android:layout_weight="1"/>
+
+                    <Spinner
+                        android:id="@+id/spn_family_member_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:hint="@string/family_member"
+                        android:inputType="number"
+                        android:padding="@dimen/_2sdp"
+                        android:singleLine="true"
                         android:textColor="@color/lightblueA700"
-                        android:textSize="@dimen/_15ssp" />
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_weight="1"/>
+
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:gravity="center"
+                        android:id="@+id/tv_weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/weight"
+                        android:textColor="@color/deeporange600"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold|italic"
+                        android:layout_weight="1"/>
+
+                    <Spinner
+                        android:id="@+id/spn_weight_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:hint="@string/weight"
+                        android:inputType="number"
+                        android:padding="@dimen/_2sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_weight="1"/>
+
+
+                </LinearLayout>
+
+                &lt;!&ndash; Assistive Device&ndash;&gt;
+                &lt;!&ndash;<LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:gravity="center"
+                        android:id="@+id/tv_assistive_device"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/assistive_device"
+                        android:textColor="@color/deeporange600"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold|italic"
+                        android:layout_weight="1"/>
+
+                    <Spinner
+                        android:id="@+id/tv_assistive_device_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:hint="@string/assistive_device"
+                        android:inputType="number"
+                        android:padding="@dimen/_2sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_weight="1"/>
+
+
+                </LinearLayout>&ndash;&gt;
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:gravity="center"
+                        android:id="@+id/tv_oxygen_tank"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/oxygen_tank"
+                        android:textColor="@color/deeporange600"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold|italic"
+                        android:layout_weight="1"/>
+
+                    <Spinner
+                        android:id="@+id/tv_oxygen_tank_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:hint="@string/oxygen_tank"
+                        android:inputType="number"
+                        android:padding="@dimen/_2sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_weight="1"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:gravity="center"
+                        android:id="@+id/tv_pickup_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/pickup_type"
+                        android:textColor="@color/deeporange600"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold|italic"
+                        android:layout_weight="1"/>
+
+                    <Spinner
+                        android:id="@+id/tv_pickup_type_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:hint="@string/pickup_type"
+                        android:inputType="number"
+                        android:padding="@dimen/_2sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/instruction_lay"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="5dp"
-                    android:orientation="horizontal">
+                    android:layout_below="@+id/list_vehicle"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/account_outline" />
-
+                        app:srcCompat="@drawable/alert_circle_outline" />
 
                     <TextView
-                        android:id="@+id/tv_no_seats"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="8dp"
-                        android:text=""
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_18ssp" />
+                        android:text="@string/txt_fare_note"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_13ssp" />
 
                 </LinearLayout>
 
-            </RelativeLayout>
+                <View
+                    android:id="@+id/v_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.01dp"
+                    android:layout_below="@+id/instruction_lay"
+                    android:layout_margin="5dp"
+                    android:background="@color/dark_grey" />
 
-            <LinearLayout
-                android:id="@+id/promo_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/lay_payment"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="horizontal"
-                android:padding="3dp"
-                android:visibility="gone">
+                <EditText
+                    android:id="@+id/trip_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_oval_stroke"
+                    android:padding="@dimen/_10sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:hint="@string/trip_remark"
+                    android:textColorHint="@color/deeporange200"
+                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/deeporange600"
+                    android:textStyle="italic"
+                    android:inputType="text"
+                    android:enabled="true"
+                    android:imeOptions="actionDone"
+                    android:lines="1"/>
 
-                <ImageView
+                &lt;!&ndash;Payment option&ndash;&gt;
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/lay_payment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/v_"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:id="@+id/tv_cashtype"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="8dp"
+                            android:text="@string/txt_select_payment"
+                            android:textColor="@color/lightblueA700"
+                            android:textSize="@dimen/_15ssp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="5dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/account_outline" />
+
+
+                        <TextView
+                            android:id="@+id/tv_no_seats"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="8dp"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_18ssp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/promo_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lay_payment"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/ticket_percent" />
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal"
+                    android:padding="3dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/ticket_percent" />
+
+                    <TextView
+                        android:id="@+id/tv_promocode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="8dp"
+                        android:text="@string/txt_apply_promo"
+                        android:textColor="@color/lightblueA700"
+                        android:textSize="@dimen/_15ssp" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/tv_promocode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="8dp"
-                    android:text="@string/txt_apply_promo"
-                    android:textColor="@color/lightblueA700"
-                    android:textSize="@dimen/_15ssp" />
+                    android:id="@+id/btn_request_cab"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_margin="6dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/deeporange200"
+                    android:gravity="center"
+                    android:shadowDy="0"
+                    android:text="@string/txt_req_cab"
+                    android:textAllCaps="false"
+                    android:textColor="@color/deeporange600"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"/>
+
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/btn_request_cab"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_margin="6dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/deeporange200"
-                android:gravity="center"
-                android:shadowDy="0"
-                android:text="@string/txt_req_cab"
-                android:textAllCaps="false"
-                android:textColor="@color/deeporange600"
-                android:textSize="@dimen/_14ssp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-    </ScrollView>
-</LinearLayout>-->
+        </ScrollView>
+    </LinearLayout>-->
 

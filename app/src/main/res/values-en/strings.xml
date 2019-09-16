@@ -251,7 +251,7 @@
     <string name="txt_done">Done</string>
     <string name="txt_select_payment_note">Tap any button below to change option</string>
     <string name="txt_select_payment_note2">Please use this screen, to toggle back to CC payment.</string>
-    <string name="txt_next">Next</string>
+    <string name="txt_next">Select Type Car</string>
     <string name="txt_confirm_phone">Confirm phone number</string>
     <string name="txt_choose_account">Choose an account</string>
     <string name="txt_fb">Facebook</string>
@@ -343,7 +343,7 @@
     <string name="submit">" SUBMIT "</string>
     <string name="txt_trip_schedule_fail">Trip Scheduled Failed!</string>
     <string name="txt_trip_schedule_successfully">Trip Scheduled Successfully!</string>
-    <string name="ambulance_operator_notice">was chosen! Choose another 123go diver below if you want!</string>
+    <string name="ambulance_operator_notice">Choose another 123go diver below if you want!</string>
     <string name="add_schedule">Add schedule</string>
     <string name="done">Done</string>
     <string name="edittext_empty_notice">" This field cannot be empty"</string>
@@ -375,7 +375,7 @@
     <string name="low_stair">Low stairs</string>
     <string name="mobile">Mobile</string>
     <string name="no_stair">No Stairs</string>
-    <string name="oxygen_liter">Oxygen (Liters)</string>
+    <string name="oxygen_liter"> Picture car selected </string>
     <string name="stair">Stairs</string>
     <string name="something_was_wrong">Something was wrong</string>
     <string name="street_name">Street name</string>
@@ -414,7 +414,7 @@
     <string name="pickup_type">Pickup type</string>
     <string name="a_and_e">" A&amp;E "</string>
     <string name="imh">IMH</string>
-    <string name="airport_tarmac">Airport (Tarmac)</string>
+    <string name="airport_tarmac">Type car selected</string>
     <string name="any_ambulance">Any 123Go Diver</string>
     <string name="family_member">Family member</string>
     <string name="optional">Optional</string>

@@ -24,7 +24,8 @@
     <color name="paypal_color">#009CDE</color>
     <color name="wallet_color">#0070BA</color>
     <color name="paygate_color">#28306D</color>
-    <color name="dark_green">#228B22</color>
+    <color name="dark_green">#00FF00</color>
+    <color name="routes3">#7883CF</color>
 
 
     <!---123Gâu-->
@@ -33,11 +34,18 @@
 
     //color Main text
     <color name="lightblueA700"> #00A9EA </color>
-    <color name="lightblue100"> #C2EDFF </color>
+
+    <color name="lightblue100"> #79D4F7 </color>
+
     <color name="lightblue400"> #5EAFD0 </color>
-    <color name="lightblue700"> #4589BE </color>
+
+    <color name="lightblue500">#3265CC</color>
+
+
+    <color name="lightblue700">#449EC5</color>
+
     <color name="gray600"> #757474 </color>
-    <color name="redA700"> #C80F09 </color>
+    <color name="redA700"> #FF0000 </color>
     <color name="deeporange200"> #F1B290 </color>
     <color name="deeporange600"> #ED5225 </color>
 

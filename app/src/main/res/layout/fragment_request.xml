@@ -90,39 +90,33 @@
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="match_parent" />-->
         </LinearLayout>
-        <android.support.v7.widget.CardView
+        <Button
             android:layout_marginTop="10dp"
             android:layout_below="@+id/linearshowDirection"
             android:id="@+id/ClickRoutesA"
-            app:cardCornerRadius="15dp"
-            android:layout_width="30dp"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
             android:visibility="invisible"
-            app:cardBackgroundColor="#FF0000"
             >
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
+        </Button>
+        <Button
             android:layout_marginTop="10dp"
             android:layout_below="@+id/ClickRoutesA"
             android:id="@+id/ClickRoutesB"
-            app:cardCornerRadius="15dp"
-            android:layout_width="30dp"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
-            app:cardBackgroundColor="#00FF00"
             android:visibility="invisible"
             >
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
+        </Button>
+        <Button
             android:layout_marginTop="10dp"
             android:layout_below="@+id/ClickRoutesB"
             android:id="@+id/ClickRoutesC"
-            app:cardCornerRadius="15dp"
-            android:layout_width="30dp"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
-            app:cardBackgroundColor="#7883CF"
             android:visibility="invisible"
             >
-        </android.support.v7.widget.CardView>
+        </Button>
 
         <fragment
             android:layout_below="@+id/linearshowDirection"

@@ -53,8 +53,8 @@ public class SplashAnimation extends AppCompatActivity implements AsyncTaskCompl
 
         EbizworldUtils.appLogError("HaoLS","version " + versionCode + " pref: " + new PreferenceHelper(this).getAppVersion());
         /*getVersionCheck();*/
-        animateToHomeScreen();
-        startProgressAnimation();
+//        animateToHomeScreen();
+//        startProgressAnimation();
 
 
         new Handler().postDelayed(new Runnable() {
@@ -67,7 +67,7 @@ public class SplashAnimation extends AppCompatActivity implements AsyncTaskCompl
                 finish();
 
             }
-        },5000);
+        },3000);
     }
 
     private void getVersionCheck() {

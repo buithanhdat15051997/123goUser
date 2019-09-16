@@ -1495,10 +1495,10 @@ public class HomeMapFragment extends BaseFragment implements LocationHelper.OnLo
 
         final TextView tv_billing_info_notice = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_notice);
         final TextView tv_billing_info_total_price = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_total_price);
-        final TextView tv_billing_info_staircase_value = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_staircase_value);
-        final TextView tv_billing_info_tarmac_value = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_tarmac_value);
-        final TextView tv_billing_info_weight_value = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_weight_value);
-        final TextView tv_billing_info_oxygen_tank_value = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_oxygen_tank_value);
+       // final TextView tv_billing_info_staircase_value = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_staircase_value);
+       // final TextView tv_billing_info_tarmac_value = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_tarmac_value);
+       // final TextView tv_billing_info_weight_value = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_weight_value);
+       // final TextView tv_billing_info_oxygen_tank_value = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_oxygen_tank_value);
         final TextView tv_billing_info_pickup_type_value = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_pickup_type_value);
         final TextView tv_billing_info_confirm = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_confirm);
         final TextView tv_billing_info_deny = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_deny);
@@ -1508,10 +1508,10 @@ public class HomeMapFragment extends BaseFragment implements LocationHelper.OnLo
         tv_billing_info_notice.setVisibility(View.GONE);
 
         tv_billing_info_total_price.setText(currency + " " + total);
-        tv_billing_info_staircase_value.setText(currency + " " + staircase);
-        tv_billing_info_tarmac_value.setText(currency + " " + tarmac);
-        tv_billing_info_weight_value.setText(currency + " " + weight);
-        tv_billing_info_oxygen_tank_value.setText(currency + " " + oxygen);
+       // tv_billing_info_staircase_value.setText(currency + " " + staircase);
+       // tv_billing_info_tarmac_value.setText(currency + " " + tarmac);
+       // tv_billing_info_weight_value.setText(currency + " " + weight);
+       // tv_billing_info_oxygen_tank_value.setText(currency + " " + oxygen);
         tv_billing_info_pickup_type_value.setText(currency + " " + caseType);
 
         tv_billing_info_confirm.setOnClickListener(new View.OnClickListener() {

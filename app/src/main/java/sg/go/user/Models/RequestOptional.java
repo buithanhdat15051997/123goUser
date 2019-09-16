@@ -20,8 +20,8 @@ public class RequestOptional implements Parcelable {
     private String addStop_address;
     private int operator_id;
     private int request_status_type;
-    private String promoCode;
-    private String remark;
+    private String promoCode = "";
+    private String remark = "";
     private String houseUnit;
     private int a_and_e;
     private int imh;
@@ -32,6 +32,42 @@ public class RequestOptional implements Parcelable {
     private int weight;
     private int oxygen;
     private int caseType;
+
+
+    private String km_send_billinginfo;
+    private  String time_send_billinginfo;
+    private  String imgType_send_billinginfo;
+    private  String nameType_send_billinginfo;
+
+    public String getImgType_send_billinginfo() {
+        return imgType_send_billinginfo;
+    }
+
+    public void setImgType_send_billinginfo(String imgType_send_billinginfo) {
+        this.imgType_send_billinginfo = imgType_send_billinginfo;
+    }
+
+    public String getNameType_send_billinginfo() {
+        return nameType_send_billinginfo;
+    }
+
+    public void setNameType_send_billinginfo(String nameType_send_billinginfo) {
+        this.nameType_send_billinginfo = nameType_send_billinginfo;
+    }
+
+
+
+    public String getKm_send_billinginfo() {
+        return km_send_billinginfo;
+    }
+
+    public void setKm_send_billinginfo(String km_send_billinginfo) {
+        this.km_send_billinginfo = km_send_billinginfo;
+    }
+
+    public static Creator<RequestOptional> getCREATOR() {
+        return CREATOR;
+    }
 
     private  String OverView_Polyline;
 

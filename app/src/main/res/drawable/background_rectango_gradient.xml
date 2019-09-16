@@ -7,7 +7,7 @@
 
     <corners android:radius="@dimen/_5sdp"/>
 
-    <gradient android:startColor="@color/wallet_color"
-        android:endColor="@color/white"/>
+    <gradient android:startColor="@color/lightblue100"
+        android:endColor="@color/lightblue500"/>
 
 </shape>

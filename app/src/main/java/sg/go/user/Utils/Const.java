@@ -51,7 +51,9 @@ public class Const {
     public static final String ACCOUNT_FRAGMENT = "acount_fragment";
     public static final String NURSE_REGISTER_SCHEDULE_FRAGMENT = "nurse_register_schedule_fragment";
     public static final String SCHEDULE_LIST_FRAGMENT = "list_schedule_fragment";
+
     public static final String BILLING_INFO_FRAGMENT = "billing_info_fragment";
+
     public static final String HISTORY_PAYMENT_FRAGMENT = "history_payment_fragment";
 
 
@@ -219,6 +221,9 @@ public class Const {
         public static final String LATER ="later";
         public static final String PLATE_NO = "plate_no";
         public static final String TIME_OF_DISCHARGE = "time_discharge";
+
+        public  static  final  String SERVICE_TYPE_CAR="service_type";
+        public  static  final  String SERVICE_KILOMET="km";
     }
 
     public class ServiceType {
