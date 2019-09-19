@@ -292,7 +292,7 @@
 
     <!--Tarmac group-->
     <LinearLayout
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/billing_info_tarmac_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -382,7 +382,7 @@
 
     <!--Oxygen group-->
     <LinearLayout
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/billing_info_oxygen_tank_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

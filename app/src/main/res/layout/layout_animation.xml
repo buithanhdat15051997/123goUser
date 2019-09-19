@@ -12,10 +12,21 @@
 
         <ImageView
             android:id="@+id/tv_app_name"
-            android:layout_width="100dp"
-            android:layout_height="80dp"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
             android:layout_centerInParent="true"
             android:src="@drawable/background_user_login"/>
+        <com.github.ybq.android.spinkit.SpinKitView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spin_kitSplash"
+            android:visibility="visible"
+            android:layout_below="@+id/tv_app_name"
+            android:layout_centerInParent="true"
+            style="@style/SpinKitView.Large.Circle"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/paygate_color"/>
 
 
     </RelativeLayout>

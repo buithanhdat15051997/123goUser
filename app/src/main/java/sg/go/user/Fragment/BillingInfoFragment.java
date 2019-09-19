@@ -83,14 +83,15 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 //    @BindView(R.id.tv_billing_info_tarmac_value)
 //    TextView mTv_billing_info_tarmac_value;
 
-//    @BindView(R.id.tv_billing_info_table_price_content_warning)
-//    TextView tv_billing_info_table_price_content_warning;
+    @BindView(R.id.tv_billing_info_table_price_content_warning)
+    TextView tv_billing_info_table_price_content_warning;
 
-/*    @BindView(R.id.img_billing_info_img_typeCar)
+    @BindView(R.id.img_billing_info_img_typeCar)
     ImageView img_billing_info_img_typeCar;
 
     @BindView(R.id.tv_billing_info_name_typeCar)
-    TextView mTv_billing_info_name_typeCar;*/
+    TextView mTv_billing_info_name_typeCar;
+
 
     @BindView(R.id.tv_billing_info_pickup_type_value)
     TextView mTv_billing_info_pickup_type_value;
@@ -177,17 +178,17 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
             billing_info_request_group.setVisibility(View.VISIBLE);
 
             /*---- SET NAME - IMAGE ----*/
-//            mTv_billing_info_name_typeCar.setText(mRequestOptional.getNameType_send_billinginfo().toString());
-//
-//            Glide.with(activity).load(mRequestOptional.getImgType_send_billinginfo()).into(img_billing_info_img_typeCar);
+            mTv_billing_info_name_typeCar.setText(new PreferenceHelper(activity).getTypeCarBillingInfo());
+            Glide.with(activity).load(new PreferenceHelper(activity).getImageTypeCarBillingInfo()).into(img_billing_info_img_typeCar);
 
             getBillingInfo(mRequestOptional);
 
         }else {
 
-            /*---- SET NAME - IMAGE ----*/
-//            mTv_billing_info_name_typeCar.setText(mRequestOptional.getNameType_send_billinginfo().toString());
-//            Glide.with(activity).load(mRequestOptional.getImgType_send_billinginfo()).into(img_billing_info_img_typeCar);
+            /*---- SET NAME - IMAGE  TYPE CAR ----*/
+            mTv_billing_info_name_typeCar.setText(new PreferenceHelper(activity).getTypeCarBillingInfo());
+            Glide.with(activity).load(new PreferenceHelper(activity).getImageTypeCarBillingInfo()).into(img_billing_info_img_typeCar);
+
 
             mTv_billing_info_notice.setVisibility(View.VISIBLE);
             billing_info_payment_group.setVisibility(View.VISIBLE);
@@ -264,7 +265,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
             case R.id.tv_billing_info_deny:{
                 // back fragment
                 getActivity().onBackPressed();
-//                activity.
+
 //                activity.addFragment(new SearchPlaceFragment(), true, Const.SEARCH_FRAGMENT, true);
                 new RequestOptional().setOverView_Polyline("");
             }
@@ -460,6 +461,8 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
     // ---------------GUI  REQUEST AMBULANCE -------------------
     private void RequestAmbulance(RequestOptional requestOptional) {
 
+        String REMARK1 = tv_billing_info_table_price_content_warning.getText().toString();
+
         if (!EbizworldUtils.isNetworkAvailable(activity)) {
 
             EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
@@ -499,9 +502,14 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
         map.put(Const.Params.D_ADDRESS, requestOptional.getDrop_address());
 
         map.put(Const.Params.REQ_STATUS_TYPE, String.valueOf(requestOptional.getRequest_status_type()));
-       map.put(Const.Params.PROMOCODE, requestOptional.getPromoCode());
+        map.put(Const.Params.PROMOCODE, requestOptional.getPromoCode());
 
-           map.put(Const.Params.REMARK,requestOptional.getRemark());
+        if(REMARK1.isEmpty() || REMARK1.equals("")){
+            map.put(Const.Params.REMARK,requestOptional.getRemark());
+        }else {
+            map.put(Const.Params.REMARK,REMARK1);
+        }
+
 
 
 

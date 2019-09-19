@@ -6,7 +6,7 @@ package sg.go.user.Utils;
 public class Const {
 
 
-    public static String PREF_NAME = "AMBULANCE2U_PRERENCE";
+    public static String PREF_NAME = "123go";
     public static final int GET = 0;
     public static final int POST = 1;
     public static final int TIMEOUT = 30000;

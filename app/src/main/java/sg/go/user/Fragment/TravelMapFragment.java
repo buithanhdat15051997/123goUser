@@ -1452,7 +1452,8 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                     if (jsonObject.getString("success").equals("true")) {
 
                         new PreferenceHelper(activity).clearRequestData();
-                        activity.addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+                        getActivity().onBackPressed();
+                       // activity.addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true);
 
                     } else {
                         Commonutils.progressdialog_hide();
@@ -1560,7 +1561,8 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                                                 new PreferenceHelper(activity).clearRequestData();
                                                 //googleMap.clear();
                                                 dialog.dismiss();
-                                                activity.addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+                                                getActivity().onBackPressed();
+                                                // activity.addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true);
 
                                             }
                                         });

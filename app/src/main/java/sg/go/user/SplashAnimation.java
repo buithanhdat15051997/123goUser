@@ -11,7 +11,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+
+
+import com.github.ybq.android.spinkit.style.Circle;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,11 +40,17 @@ public class SplashAnimation extends AppCompatActivity implements AsyncTaskCompl
     private SplashAnimationHelper.SplashRouteAnimation splashRouteAnimation;
     int versionCode;
     int mDriver_Version_Code;
+    ProgressBar progressBarSplash;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_animation);
         splashAnimationLayout = (RelativeLayout)findViewById(R.id.splashAnimationLayout);
+        progressBarSplash = findViewById(R.id.spin_kitSplash);
+        com.github.ybq.android.spinkit.style.Circle fadingCircle = new Circle();
+        progressBarSplash.setIndeterminateDrawable(fadingCircle);
+
+
         try {
             PackageInfo packageInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
             versionCode = packageInfo.versionCode;
@@ -62,9 +73,9 @@ public class SplashAnimation extends AppCompatActivity implements AsyncTaskCompl
             public void run() {
                 Intent i = new Intent(SplashAnimation.this, WelcomeActivity.class);
                 startActivity(i);
-
                 // close this activity
                 finish();
+                progressBarSplash.setVisibility(View.GONE);
 
             }
         },3000);

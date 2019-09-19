@@ -137,17 +137,17 @@ public class RatingFragment extends BaseFragment {
 
             Glide.with(activity)
                     .load(requestDetail.getDriver_picture())
-                    .apply(new RequestOptions().error(R.drawable.driver))
+                    .apply(new RequestOptions().error(R.drawable.carambulance))
                     .into(iv_feedback_user);
 
             Glide.with(activity)
                     .load(google_img_url)
-                    .apply(new RequestOptions().error(R.drawable.driver))
+                    .apply(new RequestOptions().error(R.drawable.carambulance))
                     .into(iv_feedback_location);
 
             Glide.with(activity)
                     .load(requestDetail.getVehical_img())
-                    .apply(new RequestOptions().error(R.drawable.driver))
+                    .apply(new RequestOptions().error(R.drawable.carambulance))
                     .into(iv_feedback_vehicle);
 
             text_distance.setText(requestDetail.getTrip_distance() + " " + requestDetail.getDistance_unit());

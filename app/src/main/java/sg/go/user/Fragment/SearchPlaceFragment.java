@@ -233,12 +233,12 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
             Log.d(TAG, "Routes    1   :" + json);
             routeArray = json.getJSONArray("routes");
 
-            Distance_Request_Home = routeArray.getJSONObject(0)
-                    .getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
-
-            Time_Request_Home = routeArray
-                    .getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
-            OverView_Polyline_Home = routeArray.getJSONObject(0).getJSONObject("overview_polyline").getString("points");
+//            Distance_Request_Home = routeArray.getJSONObject(0)
+//                    .getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
+//
+//            Time_Request_Home = routeArray
+//                    .getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
+//            OverView_Polyline_Home = routeArray.getJSONObject(0).getJSONObject("overview_polyline").getString("points");
 
 
             String color[] = {"#ff0000", "#00ff00", "#7883cf"};
@@ -299,8 +299,8 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                                         Log.d("DatTest3Routes", String.valueOf(routeArray.getJSONObject(j).getJSONObject("overview_polyline").getString("points")));
 
                                         OverView_Polyline_Home = routeArray.getJSONObject(j).getJSONObject("overview_polyline").getString("points");
-
                                         Distance_Request_Home = routeArray.getJSONObject(j).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
+
                                         Time_Request_Home = routeArray.getJSONObject(j).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
 //                                        txt_ShowNameRoutes.setText("Name Routes :"+ txt_Name[j]);
                                         //  txt_ShowNameRoutes.setText("Name Routes:"+txt_Name[j]+"  Duration:" + Time_Request+"  Distance:" + Distance_Request);
@@ -540,7 +540,6 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL,false);
 
         Recyc_Type_Car.setLayoutManager(linearLayoutManager);
-
 
 
          /* BUTTON SHOW */
@@ -1388,7 +1387,8 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                                 }
 
-                                /*--- On Click Item RecyclerView*/
+                                /*--- Event On Click Item RecyclerView Type Car ---*/
+
                                 typeCarRequest_Adapter_Home = new TypeCarRequestAdapter(activity, typeCarRequest_ArrayList_home, new TypeCarRequestAdapter.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(View view, int position) {
@@ -1399,8 +1399,12 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                                         if (mRequestOptional_Home != null) {
 
-                                            mRequestOptional_Home.setNameType_send_billinginfo(typeCarRequest_ArrayList_home.get(position).getName_Type_Car_Request());
-                                            mRequestOptional_Home.setImgType_send_billinginfo(typeCarRequest_ArrayList_home.get(position).getImga_Type_Car_Request());
+                                    /*        mRequestOptional_Home.setNameType_send_billinginfo(typeCarRequest_ArrayList_home.get(position).getName_Type_Car_Request());
+                                            mRequestOptional_Home.setImgType_send_billinginfo(typeCarRequest_ArrayList_home.get(position).getImga_Type_Car_Request());*/
+
+                                            // Save PreferenceHelper
+                                            new PreferenceHelper(activity).putTypeCarBillingInfo(typeCarRequest_ArrayList_home.get(position).getName_Type_Car_Request());
+                                            new PreferenceHelper(activity).putImageTypeCarBillingInfo(typeCarRequest_ArrayList_home.get(position).getImga_Type_Car_Request());
 
                                             Bundle bundle = new Bundle();
                                             bundle.putParcelable(Const.Params.REQUEST_OPTIONAL, mRequestOptional_Home);

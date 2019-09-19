@@ -58,7 +58,6 @@ public class ChatActivity extends AppCompatActivity implements AsyncTaskComplete
         db = new DatabaseHandler(this);
         chatToolbar = (Toolbar) findViewById(R.id.toolbar_chat);
 
-
         setSupportActionBar(chatToolbar);
         getSupportActionBar().setTitle(null);
 
@@ -68,12 +67,13 @@ public class ChatActivity extends AppCompatActivity implements AsyncTaskComplete
         chat_lv = (ListView) findViewById(R.id.chat_lv);
         et_message = (EditText) findViewById(R.id.et_message);
         btn_send = (ImageView) findViewById(R.id.btn_send);
-     /*   messages = db.get_Chat("" + new PreferenceHelper(this).getRequestId());
-        if (messages != null && messages.size() > 0) {
-            messageAdapter = new ChatAdapter(getApplicationContext(), R.layout.list_item_chat_message, messages);
-            // messageAdapter.notifyDataSetChanged();
-            chat_lv.setAdapter(messageAdapter);
-        }*/
+
+//        messages = db.get_Chat("" + new PreferenceHelper(this).getRequestId());
+//        if (messages != null && messages.size() > 0) {
+//            messageAdapter = new ChatAdapter(getApplicationContext(), R.layout.list_item_chat_message, messages);
+//            // messageAdapter.notifyDataSetChanged();
+//            chat_lv.setAdapter(messageAdapter);
+//        }
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,24 +118,23 @@ public class ChatActivity extends AppCompatActivity implements AsyncTaskComplete
 
         HashMap<String, String> map = new HashMap<>();
 
-        if (new PreferenceHelper(ChatActivity.this).getLoginType().equals(Const.PatientService.PATIENT)){
+//        if (new PreferenceHelper(ChatActivity.this).getLoginType().equals(Const.PatientService.PATIENT)){
 
             map.put(Const.Params.URL, Const.ServiceType.USER_MESSAGE_NOTIFY + Const.Params.ID + "="
                     + new PreferenceHelper(ChatActivity.this).getUserId() + "&" + Const.Params.TOKEN + "="
                     + new PreferenceHelper(ChatActivity.this).getSessionToken() + "&" + Const.Params.REQUEST_ID + "=" + new PreferenceHelper(ChatActivity.this).getRequestId());
-
-        }else if (new PreferenceHelper(ChatActivity.this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-
-            map.put(Const.Params.URL, Const.NursingHomeService.CHAT_NOTIFICATION_URL + Const.Params.ID + "="
-                    + new PreferenceHelper(ChatActivity.this).getUserId() + "&" + Const.Params.TOKEN + "="
-                    + new PreferenceHelper(ChatActivity.this).getSessionToken() + "&" + Const.Params.REQUEST_ID + "=" + new PreferenceHelper(ChatActivity.this).getRequestId());
-
-        }else if (new PreferenceHelper(ChatActivity.this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-
-            map.put(Const.Params.URL, Const.HospitalService.CHAT_NOTIFICATION_URL + Const.Params.ID + "="
-                    + new PreferenceHelper(ChatActivity.this).getUserId() + "&" + Const.Params.TOKEN + "="
-                    + new PreferenceHelper(ChatActivity.this).getSessionToken() + "&" + Const.Params.REQUEST_ID + "=" + new PreferenceHelper(ChatActivity.this).getRequestId());
-        }
+//        }else if (new PreferenceHelper(ChatActivity.this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+//
+//            map.put(Const.Params.URL, Const.NursingHomeService.CHAT_NOTIFICATION_URL + Const.Params.ID + "="
+//                    + new PreferenceHelper(ChatActivity.this).getUserId() + "&" + Const.Params.TOKEN + "="
+//                    + new PreferenceHelper(ChatActivity.this).getSessionToken() + "&" + Const.Params.REQUEST_ID + "=" + new PreferenceHelper(ChatActivity.this).getRequestId());
+//
+//        }else if (new PreferenceHelper(ChatActivity.this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+//
+//            map.put(Const.Params.URL, Const.HospitalService.CHAT_NOTIFICATION_URL + Const.Params.ID + "="
+//                    + new PreferenceHelper(ChatActivity.this).getUserId() + "&" + Const.Params.TOKEN + "="
+//                    + new PreferenceHelper(ChatActivity.this).getSessionToken() + "&" + Const.Params.REQUEST_ID + "=" + new PreferenceHelper(ChatActivity.this).getRequestId());
+//        }
 
         EbizworldUtils.appLogDebug("HaoLS", "send_notification: " + map.toString());
 
@@ -152,19 +151,19 @@ public class ChatActivity extends AppCompatActivity implements AsyncTaskComplete
         Commonutils.progressdialog_show(this,"Getting Chat");
         HashMap<String, String> map = new HashMap<String, String>();
 
-        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)){
+//        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)){
 
             map.put(Const.Params.URL, Const.ServiceType.MESSAGE_GET);
 
-        }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-
-            map.put(Const.Params.URL, Const.NursingHomeService.GET_CHAT_URL);
-
-        }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
-
-            map.put(Const.Params.URL, Const.HospitalService.GET_CHAT_URL);
-
-        }
+//        }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+//
+//            map.put(Const.Params.URL, Const.NursingHomeService.GET_CHAT_URL);
+//
+//        }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+//
+//            map.put(Const.Params.URL, Const.HospitalService.GET_CHAT_URL);
+//
+//        }
 
 
         map.put(Const.Params.ID, new PreferenceHelper(this).getUserId());
@@ -187,9 +186,9 @@ public class ChatActivity extends AppCompatActivity implements AsyncTaskComplete
         try {
             messageObj.put("message", message);
          //   messageObj.put("sender", new PreferenceHelper(this).getUserId());
-           /* messageObj.put("type", "sent");
-            messageObj.put("data_type", "TEXT");
-            messageObj.put("status", "1");*/
+//            messageObj.put("type", "sent");
+//            messageObj.put("data_type", "TEXT");
+//            messageObj.put("status", "1");
             messageObj.put("provider_id",new PreferenceHelper(this).getDriver_id());
             messageObj.put("request_id", new PreferenceHelper(this).getRequestId());
 
@@ -207,22 +206,22 @@ public class ChatActivity extends AppCompatActivity implements AsyncTaskComplete
 
         try {
 
-            if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)){
+//            if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)){
 
                 mSocket = IO.socket(Const.ServiceType.SOCKET_URL + Const.Params.TYPE + "=" + Const.PatientService.PATIENT +
                         "&" + Const.Params.ID + "=" + new PreferenceHelper(this).getUserId());
 
-            }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-
-                mSocket = IO.socket(Const.ServiceType.SOCKET_URL + Const.Params.TYPE + "=" + Const.NursingHomeService.NURSING_HOME +
-                        "&" + Const.Params.ID + "=" + new PreferenceHelper(this).getUserId());
-
-            }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
-
-                mSocket = IO.socket(Const.ServiceType.SOCKET_URL + Const.Params.TYPE + "=" + Const.HospitalService.HOSPITAL +
-                        "&" + Const.Params.ID + "=" + new PreferenceHelper(this).getUserId());
-
-            }
+//            }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+//
+//                mSocket = IO.socket(Const.ServiceType.SOCKET_URL + Const.Params.TYPE + "=" + Const.NursingHomeService.NURSING_HOME +
+//                        "&" + Const.Params.ID + "=" + new PreferenceHelper(this).getUserId());
+//
+//            }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+//
+//                mSocket = IO.socket(Const.ServiceType.SOCKET_URL + Const.Params.TYPE + "=" + Const.HospitalService.HOSPITAL +
+//                        "&" + Const.Params.ID + "=" + new PreferenceHelper(this).getUserId());
+//
+//            }
 
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
@@ -290,28 +289,28 @@ public class ChatActivity extends AppCompatActivity implements AsyncTaskComplete
                                 for (int i = 0; i < jarray.length(); i++) {
                                     Log.e("asher","data4 ");
                                     JSONObject taxiobj = jarray.getJSONObject(i);
-                              /*  AmbulanceOperator type = new AmbulanceOperator();
-                                type.setCurrencey_unit(job.optString("currency"));
-                                type.setId(taxiobj.getString("id"));
-                                type.setAmbulanceCost(taxiobj.getString("estimated_fare"));
-                                type.setAmbulanceImage(taxiobj.getString("picture"));
-                                type.setAmbulanceOperator(taxiobj.getString("name"));
-                                type.setAmbulance_price_min(taxiobj.getString("price_per_min"));
-                                type.setAmbulance_price_distance(taxiobj.getString("price_per_unit_distance"));
-                                type.setAmbulanceSeats(taxiobj.getString("number_seat"));
-                                type.setBasefare(taxiobj.optString("min_fare"));
-                                typesList.add(type);*/
+//                                AmbulanceOperator type = new AmbulanceOperator();
+//                                type.setCurrencey_unit(job.optString("currency"));
+//                                type.setId(taxiobj.getString("id"));
+//                                type.setAmbulanceCost(taxiobj.getString("estimated_fare"));
+//                                type.setAmbulanceImage(taxiobj.getString("picture"));
+//                                type.setAmbulanceOperator(taxiobj.getString("name"));
+//                                type.setAmbulance_price_min(taxiobj.getString("price_per_min"));
+//                                type.setAmbulance_price_distance(taxiobj.getString("price_per_unit_distance"));
+//                                type.setAmbulanceSeats(taxiobj.getString("number_seat"));
+//                                type.setBasefare(taxiobj.optString("min_fare"));
+//                                typesList.add(type);
                                     EbizworldUtils.appLogDebug("HaoLS","data2 "+taxiobj.getString("type")+" "+taxiobj.getString("message"));
                                     showChat(taxiobj.getString("type"),"",taxiobj.getString("message"));
 
 
-                           /*     messages.add(new ChatObject(job.getString("message"), job.getString("type"), "", ""
-                                        + new PreferenceHelper(this).getRequestId(),
-                                        new PreferenceHelper(this).getUserId(),receiver_id));
-
-                                ChatAdapter chatAdabter = new ChatAdapter(ChatActivity.this, R.layout.list_item_chat_message, messages);
-
-                                chat_lv.setAdapter(chatAdabter);*/
+//                                messages.add(new ChatObject(job.getString("message"), job.getString("type"), "", ""
+//                                        + new PreferenceHelper(this).getRequestId(),
+//                                        new PreferenceHelper(this).getUserId(),receiver_id));
+//
+//                                ChatAdapter chatAdabter = new ChatAdapter(ChatActivity.this, R.layout.list_item_chat_message, messages);
+//
+//                                chat_lv.setAdapter(chatAdabter);
 
 
                                 }

@@ -37,17 +37,46 @@ public class PreferenceHelper {
     private final String LOGIN_TYPE = "login_type";
     private  final  String OVERVIEW_POLYLINE="overview_polyline";
 
+    private  final  String TYPECAR_BILLING_INFO ="name_typecar_billing_info";
+    private  final  String IMAGE_BILLING_INFO  ="image_typecar_billing_info";
+
 
 
     private Context context;
 
     public PreferenceHelper(Context context) {
-        app_prefs = context.getSharedPreferences(Const.PREF_NAME,
-                Context.MODE_PRIVATE);
+        app_prefs = context.getSharedPreferences(Const.PREF_NAME,Context.MODE_PRIVATE);
         this.context = context;
     }
+    /*------- Save Type Car And Image Type Car-------*/
 
-   /*------- Save Overview_Polyline -------*/
+    public  void putTypeCarBillingInfo(String typecar_billing_info){
+
+        Editor editor = app_prefs.edit();
+        editor.putString(TYPECAR_BILLING_INFO,typecar_billing_info);
+        editor.apply();
+
+    }
+    public String getTypeCarBillingInfo(){
+
+        return app_prefs.getString(TYPECAR_BILLING_INFO,"");
+    }
+
+
+    public  void putImageTypeCarBillingInfo(String Imagetypecar_billing_info){
+
+        Editor editor = app_prefs.edit();
+        editor.putString(IMAGE_BILLING_INFO,Imagetypecar_billing_info);
+        editor.apply();
+
+    }
+    public String getImageTypeCarBillingInfo(){
+
+        return app_prefs.getString(IMAGE_BILLING_INFO,"");
+    }
+
+
+    /*------- Save Overview_Polyline -------*/
   public void  putOverViewPolyline(String overviewpolyline_type){
 
         Editor editor = app_prefs.edit();
