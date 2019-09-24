@@ -45,6 +45,9 @@
     <string name="trip_summary">TRIP SUMMARY</string>
     <string name="rate_ride">RATE YOUR RIDE</string>
 
+    <string name="recharge_wallet">Recharge To Wallet</string>
+
+
 
     <string name="txt_male">male</string>
     <string name="txt_female">female</string>
@@ -436,5 +439,8 @@
     <string name="email_mobile">Email or Phone number</string>
     <string name="hospital_discharge_warning_content">For hospital discharge case, please use schedule function</string>
     <string name="hospital_discharge_warning_title">Notice for Discharge</string>
+    <string name="txt_total_pay_wallet">Total Money: </string>
+    <string name="title_wallet">Your Wallet</string>
+    <string name="edt_hint_input_money_wallet">"Input Money: "</string>
 </resources>
 

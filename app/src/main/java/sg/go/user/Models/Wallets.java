@@ -5,6 +5,27 @@ package sg.go.user.Models;
  */
 
 public class Wallets {
+
+    private String Total_Recharge_Wallet, Recharge_Wallet;
+
+    public String getTotal_Recharge_Wallet() {
+        return Total_Recharge_Wallet;
+    }
+
+    public void setTotal_Recharge_Wallet(String total_Recharge_Wallet) {
+        Total_Recharge_Wallet = total_Recharge_Wallet;
+    }
+
+    public String getRecharge_Wallet() {
+        return Recharge_Wallet;
+    }
+
+    public void setRecharge_Wallet(String recharge_Wallet) {
+        Recharge_Wallet = recharge_Wallet;
+    }
+
+
+
     private String gateway_id,gateway_name,gateway_key,gateway_mode;
 
     public String getGateway_id() {

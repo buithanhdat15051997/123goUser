@@ -1,7 +1,9 @@
 package sg.go.user.Fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -70,6 +72,10 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
     @BindView(R.id.btn_pay_bypaypal)
     Button mBtn_pay_bypaypal;
 
+//    @BindView(R.id.btn_pay_wallet_demo)
+//    Button btn_pay_wallet_demo;
+
+
 
 //    @BindView(R.id.tv_billing_info_imh_value)
 //    TextView mTv_billing_info_imh_value;
@@ -122,6 +128,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
     private Dialog requestDialog;
     private TextView cancel_req_create;
     private Handler checkRequestStatusHandler;
+    private Button btn_pay_wallet_demo;
 
     private Runnable requestStatusCheckRunnable = new Runnable() {
 
@@ -199,6 +206,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
         }
 
+      //  btn_pay_wallet_demo.setOnClickListener(this);
         mBtn_pay_bycash.setOnClickListener(this);
         mBtn_pay_bypaypal.setOnClickListener(this);
 
@@ -237,8 +245,10 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                 getPaymentByCash();
 
             }
-
             break;
+
+
+
 
             case R.id.btn_pay_bypaypal:{
 
@@ -265,13 +275,43 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
             case R.id.tv_billing_info_deny:{
                 // back fragment
                 getActivity().onBackPressed();
-
 //                activity.addFragment(new SearchPlaceFragment(), true, Const.SEARCH_FRAGMENT, true);
                 new RequestOptional().setOverView_Polyline("");
             }
             break;
         }
     }
+
+    private void DialogPaymentWithWallet() {
+                Log.d("dat_test","vao day");
+
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
+         final AlertDialog OptionDialog = alertDialog.create();
+
+        alertDialog.setTitle("Payment With Your Wallet");
+        alertDialog.setMessage("");
+        alertDialog.setCancelable(false);
+
+        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+               OptionDialog.dismiss();
+            }
+        });
+
+        OptionDialog.show();
+
+    }
+
+
+    /*---- GET PAYPAL  ----*/
 
     private void getBrainTreeClientToken() {
 
@@ -336,6 +376,8 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
         new VolleyRequester(activity, Const.POST, hashMap, Const.ServiceCode.BILLING_INFO, this);
     }
+
+    /*--- GET PAYPAL ---*/
 
     private void postNonceToServer(String nonce) {
 
@@ -980,7 +1022,6 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                                 EbizworldUtils.showShortToast(getResources().getString(R.string.payment_by_cash_failed), activity);
 
                             }
-
                         }
 
                     } catch (JSONException e) {

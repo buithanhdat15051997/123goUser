@@ -27,6 +27,8 @@
     <string name="extra_time_price"> Extra time price </string>
     <string name="tax_price"> Tax price </string>
 
+
+
     //1km/1$ 123go
     <string name="staircase_less_80"> Total time: </string>
     //
@@ -360,6 +362,12 @@
     <string name="txt_pay_cash">Pay by Cash</string>
     <string name="txt_pay_paypal">Pay by Paypal</string>
     <string name="txt_pay_wallet">Pay by Wallet</string>
+    <string name="title_wallet">Your Wallet</string>
+    <string name="txt_total_pay_wallet">Total Money: </string>
+    <string name="edt_hint_input_money_wallet">Input Money: </string>
+
+
+
     <string name="txt_pay_card">Pay by Card</string>
 
     <string name="txt_error_select_details">Please Select valid details!</string>
@@ -437,6 +445,11 @@
     <string name="txt_trip_schedule_successfully">Trip Scheduled Successfully!</string>
     <string name="done">Done</string>
     <string name="apply">Apply</string>
+
+
+    <string name="recharge_wallet">Recharge To Wallet</string>
+
+
 
 
 </resources>

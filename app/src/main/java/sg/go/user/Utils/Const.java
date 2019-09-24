@@ -37,6 +37,7 @@ public class Const {
     public static final String PLACES_AUTOCOMPLETE_API_KEY = "AIzaSyDGMXyrnV4NT8YJZuoVEuY128rd5HfmEfA";
 
     //Fragments
+    public static final String WALLET_FRAGMENT = "wallet_fragment";
     public static final String HOME_MAP_FRAGMENT = "home_map_fragment";
     public static final String TRAVEL_MAP_FRAGMENT = "fragment_travel_map";
     public static final String RATING_FRAGMENT = "rating_fragment";
@@ -239,6 +240,9 @@ public class Const {
 
 
         public static final String BASE_URL = HOST_URL + "userApi/";
+
+        public static final String EWALLET = BASE_URL + "ewallet";
+
         public static final String LOGIN = BASE_URL + "login";
         public static final String REGISTER = BASE_URL + "register";
         public static final String UPDATE_PROFILE = BASE_URL + "updateProfile";
@@ -463,6 +467,11 @@ public class Const {
         public static final int POST_PAYPAL_NONCE = 132;
         public static final int PAYMENT_CASH = 131;
         public static final int HISTORY_PAYMENT = 130;
+
+        public static final int GET_BRAIN_TREE_TOKEN_URL_WALLET = 1997;
+        public static final int REQUEST_PAYPAL_WALLET = 7991;
+        public static final int SHOW_RECHARGE_WALLET = 1998;
+
     }
 
     public class PermissionRequestCode{

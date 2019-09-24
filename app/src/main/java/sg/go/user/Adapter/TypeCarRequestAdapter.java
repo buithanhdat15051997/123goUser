@@ -46,6 +46,8 @@ public class TypeCarRequestAdapter extends RecyclerView.Adapter<TypeCarRequestAd
 
         viewholderTypeCar.txt_Item_Type_Car.setText(typeCar_Request_ArrayList.get(i).getName_Type_Car_Request());
 
+        viewholderTypeCar.txt_Item_Type_service_fee.setText(typeCar_Request_ArrayList.get(i).getName_Type_service_fee()+" S$");
+
         if(typeCar_Request_ArrayList.get(i).getImga_Type_Car_Request() != null){
 
             Glide.with(context_typecar_request).load(typeCar_Request_ArrayList.get(i).getImga_Type_Car_Request()).into(viewholderTypeCar.img_Item_Type_Car);
@@ -73,14 +75,16 @@ public class TypeCarRequestAdapter extends RecyclerView.Adapter<TypeCarRequestAd
 
     public class ViewholderTypeCar extends RecyclerView.ViewHolder {
 
-        TextView txt_Item_Type_Car;
+        TextView txt_Item_Type_Car,txt_Item_Type_service_fee;
         ImageView img_Item_Type_Car;
+
 
         public ViewholderTypeCar(@NonNull View itemView) {
             super(itemView);
 
             txt_Item_Type_Car = itemView.findViewById(R.id.txt_Item_Type_Car);
             img_Item_Type_Car = itemView.findViewById(R.id.img_Item_Type_Car);
+            txt_Item_Type_service_fee = itemView.findViewById(R.id.txt_Item_Type_service_fee);
 
 
         }

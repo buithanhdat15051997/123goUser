@@ -40,6 +40,9 @@ public class PreferenceHelper {
     private  final  String TYPECAR_BILLING_INFO ="name_typecar_billing_info";
     private  final  String IMAGE_BILLING_INFO  ="image_typecar_billing_info";
 
+    private final  String RECHARGE_WALLET= "recharge_wallet";
+    private final  String TOTAL_RECHARGE_WALLET = "total_recharge_wallet";
+
 
 
     private Context context;
@@ -48,6 +51,34 @@ public class PreferenceHelper {
         app_prefs = context.getSharedPreferences(Const.PREF_NAME,Context.MODE_PRIVATE);
         this.context = context;
     }
+
+
+    /*------- Save Total Money Recharge Wallet -------*/
+
+    public  void putTotalRechargeWallet(String total_recharge_wallet){
+        Editor editor = app_prefs.edit();
+        editor.putString(TOTAL_RECHARGE_WALLET,total_recharge_wallet);
+        editor.apply();
+    }
+
+    public String getTotalRechargeWallet(){
+
+        return app_prefs.getString(TOTAL_RECHARGE_WALLET,"");
+    }
+
+    public void putRechargeWallet(String recharge_wallet){
+        Editor editor = app_prefs.edit();
+        editor.putString(RECHARGE_WALLET,"recharge_wallet");
+        editor.apply();
+
+    }
+
+    public  String  getRechargeWallet(){
+        return app_prefs.getString(RECHARGE_WALLET,"");
+    }
+
+
+
     /*------- Save Type Car And Image Type Car-------*/
 
     public  void putTypeCarBillingInfo(String typecar_billing_info){
@@ -77,6 +108,7 @@ public class PreferenceHelper {
 
 
     /*------- Save Overview_Polyline -------*/
+
   public void  putOverViewPolyline(String overviewpolyline_type){
 
         Editor editor = app_prefs.edit();
@@ -89,6 +121,7 @@ public class PreferenceHelper {
 
         return app_prefs.getString(OVERVIEW_POLYLINE,"");
   }
+
 
 
     public void putLoginType(String login_type){

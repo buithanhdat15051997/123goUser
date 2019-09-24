@@ -1,26 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="100dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="110dp"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:layout_marginLeft="@dimen/_10sdp"
-    android:layout_marginRight="@dimen/_10sdp"
+    android:layout_marginLeft="@dimen/_5sdp"
+    android:layout_marginRight="@dimen/_8sdp"
     android:background="@drawable/btn_item_type_car"
-    android:layout_height="120dp">
+    android:layout_height="135dp">
+
     <ImageView
         android:id="@+id/img_Item_Type_Car"
         android:src="@drawable/ic_logoapp"
-        android:layout_width="80dp"
         android:layout_gravity="center"
-        android:layout_height="70dp" />
+        android:layout_width="70dp"
+        android:layout_height="60dp" />
+
     <TextView
+        android:id="@+id/txt_Item_Type_Car"
+        android:layout_width="110dp"
+        android:maxLines="1"
+        android:textSize="@dimen/_10sdp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="type car"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:textSize="@dimen/_9sdp"
         android:textColor="@color/white"
         android:textStyle="bold|italic"
-        android:id="@+id/txt_Item_Type_Car"
-        android:text="type car"
+        android:id="@+id/txt_Item_Type_service_fee"
+        android:text="service fee"
         android:gravity="center"
         android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="30dp" />
+        android:layout_height="15dp" />
+
 
 </LinearLayout>

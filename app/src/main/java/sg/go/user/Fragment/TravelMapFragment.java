@@ -1914,7 +1914,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                             if (driver_car == null && null != driver_latlan && null != googleMap) {
                                 driver_car = googleMap.addMarker(new MarkerOptions()
                                         .position(driver_latlan)
-                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ambulance_car))
+                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.carambulance))
                                         .title(getResources().getString(R.string.txt_driver)));
 
                                 AnimateMarker.animateMarker(activity, driver_location, driver_car, googleMap, bearing);

@@ -37,6 +37,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +57,7 @@ import sg.go.user.Utils.MarkerUtils.SmoothMoveMarker;
 import sg.go.user.Utils.PreferenceHelper;
 
 import com.aurelhubert.simpleratingbar.SimpleRatingBar;
+import com.github.ybq.android.spinkit.style.Circle;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
@@ -148,14 +150,16 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
     /*---- Bottom sheet ----*/
     private BottomSheetBehavior bottomSheetBehavior1;
     private FrameLayout bottomSheetLayout1;
-    private TextView btn_request_cab_home,mTv_ambulance_operator_notice_home,tv_optional_home;
+    private TextView btn_request_cab_home, mTv_ambulance_operator_notice_home, tv_optional_home;
     private EditText trip_remark_home;
 
     /*--- Adapter Type Car ----*/
     private TypeCarRequestAdapter typeCarRequest_Adapter_Home;
     private ArrayList<TypeCarRequest> typeCarRequest_ArrayList_home;
-    private RecyclerView  Recyc_Type_Car;
+    private RecyclerView Recyc_Type_Car;
     private RequestOptional mRequestOptional_Home;
+
+    ProgressBar progressBarHome;
 
 
     @Override
@@ -223,7 +227,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         }
     }
 
-        /*Draw Polylines 3 Routes*/
+    /*Draw Polylines 3 Routes*/
     public void drawPath(String result) {
 
         try {
@@ -308,7 +312,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                                         PickUpMarker.setIcon((BitmapDescriptorFactory
                                                 .fromBitmap(getMarkerBitmapFromView(Time_Request_Home))));
                                         //  txt_ShowNameRoutes.setBackgroundColor(Color.parseColor(color[j]));
-                                     //   Toast.makeText(activity, Distance_Request_Home + " " + Time_Request_Home, Toast.LENGTH_SHORT).show();
+                                        //   Toast.makeText(activity, Distance_Request_Home + " " + Time_Request_Home, Toast.LENGTH_SHORT).show();
 
                                         polylineData.get(j).setZIndex(1);
 
@@ -336,55 +340,66 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         }
 
         // ------- VISIBLE AND EVENT CLICK CARDVIEW -------
-         setVisiableCardShowMain();
-         ClickButtonRoutes();
+        setVisiableCardShowMain();
+        ClickButtonRoutes();
 
 
     }
 
     private void ClickButtonRoutes() {
-        for ( int j = 0; j< polylineData.size(); j++)
-        {
+        for (int j = 0; j < polylineData.size(); j++) {
             final int finalJ = j;
             arrayListButtonShow.get(j).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                 //   Toast.makeText(activity, "hihi", Toast.LENGTH_SHORT).show();
+                    //   Toast.makeText(activity, "hihi", Toast.LENGTH_SHORT).show();
                     ClickPolylinesHome(finalJ);
                 }
             });
         }
     }
-  private  void GetfindDistanceAndTimeforTypes(LatLng pic_latlan, LatLng drop_latlan){
-      if (!EbizworldUtils.isNetworkAvailable(activity)) {
 
-          EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
-          return;
-      }
+    private void GetfindDistanceAndTimeforTypes(LatLng pic_latlan, LatLng drop_latlan) {
+        if (!EbizworldUtils.isNetworkAvailable(activity)) {
 
-      HashMap<String, String> map = new HashMap<>();
+            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
+            return;
+        }
 
-      map.put(Const.Params.URL, Const.GOOGLE_MATRIX_URL + Const.Params.ORIGINS + "="
-              + String.valueOf(pic_latlan.latitude) + "," + String.valueOf(pic_latlan.longitude) + "&" + Const.Params.DESTINATION + "="
-              + String.valueOf(drop_latlan.latitude) + "," + String.valueOf(drop_latlan.longitude) + "&" + Const.Params.MODE + "="
-              + "driving" + "&" + Const.Params.LANGUAGE + "="
-              + "en-EN" + "&" + "key=" + Const.GOOGLE_API_KEY + "&" + Const.Params.SENSOR + "="
-              + String.valueOf(false));
+        HashMap<String, String> map = new HashMap<>();
 
-      EbizworldUtils.appLogDebug("HaoLS", "distance api " + map.toString());
+        map.put(Const.Params.URL, Const.GOOGLE_MATRIX_URL + Const.Params.ORIGINS + "="
+                + String.valueOf(pic_latlan.latitude) + "," + String.valueOf(pic_latlan.longitude) + "&" + Const.Params.DESTINATION + "="
+                + String.valueOf(drop_latlan.latitude) + "," + String.valueOf(drop_latlan.longitude) + "&" + Const.Params.MODE + "="
+                + "driving" + "&" + Const.Params.LANGUAGE + "="
+                + "en-EN" + "&" + "key=" + Const.GOOGLE_API_KEY + "&" + Const.Params.SENSOR + "="
+                + String.valueOf(false));
 
-      new VolleyRequester(activity, Const.GET, map, 123456, this);
+        EbizworldUtils.appLogDebug("HaoLS", "distance api " + map.toString());
 
-  }
+        new VolleyRequester(activity, Const.GET, map, 123456, this);
+
+    }
+
     private void ClickPolylinesHome(int finalJ) {
-       if(fromLocation!=null && toLocation != null){
-           GetfindDistanceAndTimeforTypes(fromLocation,toLocation);
-       }else {
-           Toast.makeText(activity, "null", Toast.LENGTH_SHORT).show();
-       }
+
+        if (!EbizworldUtils.isNetworkAvailable(activity)) {
+
+            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
+            return;
+        }
+
+        // progressBar
+        progressBarHome.setVisibility(View.VISIBLE);
 
 
-        poly_line_click_home =polylineData.get(finalJ);
+        if (fromLocation != null && toLocation != null) {
+            GetfindDistanceAndTimeforTypes(fromLocation, toLocation);
+        } else {
+            Toast.makeText(activity, "null", Toast.LENGTH_SHORT).show();
+        }
+
+        poly_line_click_home = polylineData.get(finalJ);
 
         Log.d("DatTest3Routes", String.valueOf(polylineData.get(finalJ)));
 
@@ -441,13 +456,13 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
             @Override
             public void onClick(View view) {
                 bottomSheetLayout1.setVisibility(View.GONE);
-                if (bottomSheetBehavior1.getState() == BottomSheetBehavior.STATE_COLLAPSED){
+                if (bottomSheetBehavior1.getState() == BottomSheetBehavior.STATE_COLLAPSED) {
 
                     bottomSheetBehavior1.setState(BottomSheetBehavior.STATE_EXPANDED);
 
                     bottomSheetLayout1.setVisibility(View.VISIBLE);
 
-                }else {
+                } else {
                     bottomSheetBehavior1.setState(BottomSheetBehavior.STATE_COLLAPSED);
 
                 }
@@ -459,18 +474,18 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
     private void setVisiableCardShowMain() {
         String color2[] = {"#FF0000", "#00FF00", "#7883CF"};
-        String txt_Name2[] = {"A","B","C"};
-        for(int i = 0; i <polylineData.size();i++){
+        String txt_Name2[] = {"A", "B", "C"};
+        for (int i = 0; i < polylineData.size(); i++) {
 
             arrayListButtonShow.get(i).setVisibility(View.VISIBLE);
 //            arrayListButtonShow.get(i).setBackgroundColor(Color.parseColor(color2[i]));
 
             try {
-                Distance_Request_Home= routeArray.getJSONObject(i).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
+                Distance_Request_Home = routeArray.getJSONObject(i).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
 
                 Time_Request_Home = routeArray.getJSONObject(i).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
 
-                arrayListButtonShow.get(i).setText(txt_Name2[i]+" :"+Distance_Request_Home+"       "+Time_Request_Home);
+                arrayListButtonShow.get(i).setText(txt_Name2[i] + " :" + Distance_Request_Home + "       " + Time_Request_Home);
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -531,18 +546,26 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         View view = inflater.inflate(R.layout.fragment_searchplace, container, false);
 
         typeCarRequest_ArrayList_home = new ArrayList<>();
+
+        progressBarHome = view.findViewById(R.id.spin_kitHome);
+
+        com.github.ybq.android.spinkit.style.Circle fadingCircle = new Circle();
+
+        progressBarHome.setIndeterminateDrawable(fadingCircle);
+
+
 //                typeCarRequest_ArrayList.add(0,new TypeCarRequest("Any",R.drawable.ic_logoapp));
         /*---- Adapter Tyoe Car*/
         Recyc_Type_Car = view.findViewById(R.id.Recyc_Type_Car);
 
         Recyc_Type_Car.setHasFixedSize(true);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false);
 
         Recyc_Type_Car.setLayoutManager(linearLayoutManager);
 
 
-         /* BUTTON SHOW */
+        /* BUTTON SHOW */
         arrayListButtonShow = new ArrayList<>();
         cardShowRedA = view.findViewById(R.id.btnRoutes1);
         cardShowRedB = view.findViewById(R.id.btnRoutes2);
@@ -556,31 +579,34 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         bottomSheetLayout1 = (FrameLayout) view.findViewById(R.id.request_map_bottom_sheet1);
         btn_request_cab_home = (TextView) view.findViewById(R.id.btn_request_cab);
         trip_remark_home = (EditText) view.findViewById(R.id.trip_remark);
+
         mTv_ambulance_operator_notice_home = (TextView) view.findViewById(R.id.tv_ambulance_operator_notice);
+        mTv_ambulance_operator_notice_home.setSelected(true);
+
         tv_optional_home = view.findViewById(R.id.tv_optional);
         bottomSheetBehavior1 = BottomSheetBehavior.from(bottomSheetLayout1);
         bottomSheetBehavior1.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View view, int i) {
-                switch (i){
+                switch (i) {
 
-                    case BottomSheetBehavior.STATE_HIDDEN:{
+                    case BottomSheetBehavior.STATE_HIDDEN: {
 
                         EbizworldUtils.appLogDebug("HaoLS", "BottomSheet hidden");
                         bottomSheetBehavior1.setPeekHeight(tv_optional_home.getHeight());
                     }
                     break;
 
-                    case BottomSheetBehavior.STATE_COLLAPSED:{
+                    case BottomSheetBehavior.STATE_COLLAPSED: {
 
                         EbizworldUtils.appLogDebug("HaoLS", "BottomSheet collapsed");
                         bottomSheetBehavior1.setPeekHeight(tv_optional_home.getHeight());
-                        tv_optional_home.setText(getResources().getString(R.string.txt_next));
+                        tv_optional_home.setText(getResources().getString(R.string.txt_back));
 
                     }
                     break;
 
-                    case BottomSheetBehavior.STATE_EXPANDED:{
+                    case BottomSheetBehavior.STATE_EXPANDED: {
 
                         tv_optional_home.setText(getResources().getString(R.string.txt_back));
                         EbizworldUtils.appLogDebug("HaoLS", "BottomSheet expanded");
@@ -593,10 +619,6 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
             }
         });
-
-
-
-
 
 
         et_source_address = (AutoCompleteTextView) view.findViewById(R.id.et_source_address);
@@ -624,7 +646,6 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 //                }
 //            }
 //        });
-
 
 
         search_back.requestFocus();
@@ -953,16 +974,21 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         return view;
     }
 
+
     private void getDiverOperators(String dis, String dur) {
+
         if (!EbizworldUtils.isNetworkAvailable(activity)) {
 
             EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
             return;
         }
+
         HashMap<String, String> map = new HashMap<String, String>();
         map.put(Const.Params.URL, Const.ServiceType.OPERATORS_URL);
+
         map.put(Const.Params.ID, new PreferenceHelper(activity).getUserId());
         map.put(Const.Params.TOKEN, new PreferenceHelper(activity).getSessionToken());
+
         map.put(Const.Params.DISTANCE, dis);
         map.put(Const.Params.TIME, dur);
 
@@ -1289,8 +1315,8 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         switch (serviceCode) {
             case 123456:
 
-                if (response != null){
-                    Log.d("123456789",response.toString());
+                if (response != null) {
+                    Log.d("123456789", response.toString());
 
                     try {
                         JSONObject jsonObject = new JSONObject(response);
@@ -1342,24 +1368,27 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
             case Const.ServiceCode.AMBULANCE_OPERATOR:
                 if (response != null) {
-                    // clear arraylist
-                    Log.d("Dat_operator1",response.toString());
 
-                    if(typeCarRequest_ArrayList_home.size()>0){
+                    progressBarHome.setVisibility(View.GONE);
+
+                    // clear arraylist
+                    Log.d("Dat_operator1", response.toString());
+
+                    if (typeCarRequest_ArrayList_home.size() > 0) {
 
                         typeCarRequest_ArrayList_home.clear();
                     }
                     try {
                         JSONObject job = new JSONObject(response);
-                        Log.d("Dat_operator2",job.toString());
+                        Log.d("Dat_operator2", job.toString());
 
                         if (job.getString("success").equals("true")) {
 
 
                             JSONArray jarray = new JSONArray();
-                                jarray = job.getJSONArray("operator");
+                            jarray = job.getJSONArray("operator");
 
-                                Log.d("Dat_operator3",jarray.toString());
+                            Log.d("Dat_operator3", jarray.toString());
 
                             if (jarray.length() > 0) {
 
@@ -1381,9 +1410,10 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                                     type.setBasefare(jarrayJSONObject.optString("min_fare"));
                                     /* ADD ARRAYLIST TYPE CAR */
 
-                                    Log.d("aaaaaa",jarrayJSONObject.getString("name")+jarrayJSONObject.getString("picture").toString());
+                                    //  Log.d("aaaaaa",jarrayJSONObject.getString("name")+jarrayJSONObject.getString("picture").toString());
+
                                     typeCarRequest_ArrayList_home.add(new TypeCarRequest(jarrayJSONObject.getString("name").toString(),
-                                            jarrayJSONObject.getString("picture").toString()));
+                                            jarrayJSONObject.getString("picture").toString(), jarrayJSONObject.getString("service_fee").toString()));
 
                                 }
 
@@ -1395,7 +1425,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                                         getTripOptional_Home(position + 1);
 
-                                       // Toast.makeText(activity, position + 1 + " Select: " + typeCarRequest_ArrayList_home.get(position).getImga_Type_Car_Request() + "   " + typeCarRequest_ArrayList_home.get(position).getName_Type_Car_Request(), Toast.LENGTH_SHORT).show();
+                                        // Toast.makeText(activity, position + 1 + " Select: " + typeCarRequest_ArrayList_home.get(position).getImga_Type_Car_Request() + "   " + typeCarRequest_ArrayList_home.get(position).getName_Type_Car_Request(), Toast.LENGTH_SHORT).show();
 
                                         if (mRequestOptional_Home != null) {
 
@@ -1408,10 +1438,13 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                                             Bundle bundle = new Bundle();
                                             bundle.putParcelable(Const.Params.REQUEST_OPTIONAL, mRequestOptional_Home);
+
                                             BillingInfoFragment billingInfoFragment = new BillingInfoFragment();
                                             billingInfoFragment.setArguments(bundle);
                                             activity.addFragment(billingInfoFragment, true, Const.BILLING_INFO_FRAGMENT, true);
-//                                            Commonutils.progressdialog_show(activity, "Loading...");
+
+                                        } else {
+                                            Toast.makeText(activity, "Null", Toast.LENGTH_SHORT).show();
                                         }
 
 
@@ -1481,7 +1514,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                             // Log.d(TAG, "onTaskCompleted: "+des_latLng);
 
                             if (DropMarker == null && des_latLng != null) {
-                               // DropMarker.setPosition(des_latLng);
+                                // DropMarker.setPosition(des_latLng);
                                 MarkerOptions markerOpt = new MarkerOptions();
                                 markerOpt.position(des_latLng);
 //                                markerOpt.title(et_destination_address.getText().toString());
@@ -1545,14 +1578,13 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                         if (fromLocation != null && des_latLng != null) {
                             Log.d(TAG, "ve duong");
-                            if (polylineData != null){
+                            if (polylineData != null) {
 //                                routeArray
-                                for(Polyline line : polylineData)
-                                {
+                                for (Polyline line : polylineData) {
                                     line.remove();
                                 }
                                 polylineData.clear();
-                                Log.d(TAG, "soduong: "+polylineData.size());
+                                Log.d(TAG, "soduong: " + polylineData.size());
                             }
                             fitmarkers_toMap(fromLocation, des_latLng);
                             getDirections(fromLocation.latitude, fromLocation.longitude, toLocation.latitude, toLocation.longitude);
@@ -1560,9 +1592,9 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }else {
+                } else {
 
-                   // Toast.makeText(activity, "Hihi", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(activity, "Hihi", Toast.LENGTH_SHORT).show();
                 }
                 break;
 
@@ -1652,10 +1684,13 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                 }
                 break;
             case Const.ServiceCode.GOOGLE_DIRECTION_API:
+
                 if (response != null) {
+
                     Log.d(TAG, "Reponse   1:" + response);
                     drawPath(response);
                 }
+
                 break;
             case Const.ServiceCode.ADDRESS_API_BASE:
                 Log.d("getApigoogle", "lay vi tri dang text");
@@ -1819,7 +1854,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         }
 
     }
-   /*---- SEND BUNDLE TO BILLINGINFO FRAGMENT  ----*/
+    /*---- SEND BUNDLE TO BILLINGINFO FRAGMENT  ----*/
 
     private void getTripOptional_Home(int possitionType_Car) {
 
@@ -1836,9 +1871,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         mRequestOptional_Home.setPic_address(et_source_address.getText().toString().trim());
         mRequestOptional_Home.setDrop_address(et_destination_address.getText().toString().trim());
 
-        mRequestOptional_Home.setKm_send_billinginfo(Distance_Request_Home.replaceAll(" km","").toString());
-
-
+        mRequestOptional_Home.setKm_send_billinginfo(Distance_Request_Home.replaceAll(" km", "").toString());
 
 
     }
@@ -2025,6 +2058,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
     public void onMapClick(LatLng latLng) {
 
     }
+
     private Bitmap getMarkerBitmapFromView(String eta) {
         String time = eta.replaceAll("\\s+", "\n");
         View customMarkerView = ((LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.eta_info_window, null);

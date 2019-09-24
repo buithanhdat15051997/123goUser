@@ -763,7 +763,7 @@
                     android:gravity="start|top"
                     android:hint="@string/additional_patient_information"
                     android:textColorHint="@color/lightblue700"
-                    android:textColor="@color/white"
+                    android:textColor="@color/lightblue700"
                     android:textSize="@dimen/_12ssp"/>
 
                 <LinearLayout

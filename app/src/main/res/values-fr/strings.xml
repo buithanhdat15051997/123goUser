@@ -46,6 +46,8 @@
     <string name="trip_summary">Résumé du voyage</string>
     <string name="rate_ride">Evaluez votre trajet</string>
 
+
+
     <string name="txt_add_payment_option">Appuyez sur l\'icône orange ci-dessous \nPour ajouter de nouvelles options de paiement.</string>
     <string name="txt_no_ride_history">---Aucune histoire de ride disponible---</string>
     <string name="txt_airport_ride_booking">Réservation de l\'aéroport</string>
@@ -445,5 +447,9 @@
     <string name="email_mobile">Email ou numéro de téléphone</string>
     <string name="hospital_discharge_warning_content">Pour les cas de sortie d\'hôpital, veuillez utiliser la fonction de planification</string>
     <string name="hospital_discharge_warning_title">Avis de sortie</string>
+    <string name="txt_total_pay_wallet">Total Money: </string>
+    <string name="recharge_wallet">Recharge au portefeuille</string>
+    <string name="title_wallet">Votre Portefeuille</string>
+    <string name="edt_hint_input_money_wallet">Argent d\'entrée</string>
 </resources>
 

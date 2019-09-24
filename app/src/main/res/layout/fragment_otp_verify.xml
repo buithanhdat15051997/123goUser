@@ -130,7 +130,7 @@
                 app:ccp_autoDetectCountry="true"
                 app:ccp_autoDetectLanguage="true"
                 app:ccp_autoFormatNumber="true"
-                app:ccp_contentColor="@color/lightblueA700"
+                app:ccp_contentColor="@color/white"
                 app:ccp_textSize="@dimen/_12sdp"
                 app:ccp_clickable="false"/>
 

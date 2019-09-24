@@ -7,20 +7,20 @@
     android:background="@drawable/background_main_login"
     android:orientation="vertical">
 
-    <LinearLayout
 
+    <LinearLayout
         android:id="@+id/profile_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
 
-        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:orientation="vertical">
         <ImageView
             android:src="@drawable/ic_logoapp"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_100sdp" />
+            android:layout_height="@dimen/_80sdp" />
         <TextView
             android:id="@+id/tv_profile"
             android:layout_width="wrap_content"
@@ -32,21 +32,24 @@
             android:textSize="@dimen/_14ssp"
             android:textAllCaps="true"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_account_icon"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_100sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
-            android:src="@drawable/defult_user"
-            app:civ_border_color="@color/white"
-            app:civ_border_width="@dimen/_2sdp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_account_icon"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/defult_user"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="@dimen/_2sdp" />
+
+
 
         <TextView
             android:id="@+id/tv_account_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_5sdp"
@@ -56,17 +59,30 @@
             android:textSize="@dimen/_20sdp" />
 
     </LinearLayout>
+    <Button
+        android:layout_marginTop="@dimen/_230sdp"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/btn_pay_wallet_demo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_weight="1"
+        android:background="@drawable/ic_account_balance_wallet"
+        />
+
 
     <ListView
         android:id="@+id/lv_drawer_user_settings"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_below="@id/profile_group"
+        android:layout_height="250dp"
         android:layout_above="@id/tv_build_version"
+        android:layout_below="@id/profile_group"
+        android:layout_marginTop="@dimen/_5sdp"
 
+        android:layout_marginBottom="38dp"
         android:divider="@null"
-        android:scrollbars="none"/>
+        android:scrollbars="none" />
 
     <TextView
         android:id="@+id/tv_build_version"

@@ -151,6 +151,7 @@ public class HomeMapFragment extends BaseFragment implements LocationHelper.OnLo
     private View view_between_schedule_current_location;
     private static Marker pickup_marker, drop_marker, my_marker;
     MarkerOptions pickup_opt;
+
     /*private FloatingActionButton btn_floating_hourly, btn_floating_airport, btn_floating_bolt;*/
 
     int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
@@ -239,9 +240,10 @@ public class HomeMapFragment extends BaseFragment implements LocationHelper.OnLo
         btn_mylocation = (ImageButton) view.findViewById(R.id.btn_mylocation);
         btn_add_schedule = (ImageButton) view.findViewById(R.id.btn_add_schedule);
         view_between_schedule_current_location = (View) view.findViewById(R.id.view_between_schedule_current_location);
-        /*btn_floating_hourly = (FloatingActionButton) view.findViewById(R.id.btn_floating_hourly);
-        btn_floating_airport = (FloatingActionButton) view.findViewById(R.id.btn_floating_airport);
-        btn_floating_bolt = (FloatingActionButton) view.findViewById(R.id.btn_floating_bolt);*/
+
+//        btn_floating_hourly = (FloatingActionButton) view.findViewById(R.id.btn_floating_hourly);
+//        btn_floating_airport = (FloatingActionButton) view.findViewById(R.id.btn_floating_airport);
+//        btn_floating_bolt = (FloatingActionButton) view.findViewById(R.id.btn_floating_bolt);
 
         HomemapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.home_map);
         btn_mylocation.setOnClickListener(this);

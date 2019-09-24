@@ -40,15 +40,21 @@
                     android:id="@+id/tv_ambulance_operator_notice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ellipsize="marquee"
                     android:gravity="center"
-                    android:marqueeRepeatLimit="marquee_forever"
                     android:paddingStart="@dimen/_10sdp"
                     android:paddingTop="@dimen/_3sdp"
                     android:paddingEnd="@dimen/_10sdp"
                     android:paddingBottom="@dimen/_3sdp"
-                    android:scrollHorizontally="true"
+
+
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:singleLine="true"
+                    android:scrollHorizontally="true"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit ="marquee_forever"
+
+
                     android:text="@string/ambulance_operator_notice"
                     android:textColor="@color/lightblue700"
                     android:textSize="@dimen/_10ssp"

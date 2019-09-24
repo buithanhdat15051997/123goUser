@@ -278,6 +278,5 @@
     <orderEntry type="library" name="Gradle: com.github.bumptech.glide:glide:4.3.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-tasks:16.0.1@aar" level="project" />
     <orderEntry type="module" module-name="reclv_animation" />
-    <orderEntry type="module" module-name="reclv_animation" />
   </component>
 </module>
