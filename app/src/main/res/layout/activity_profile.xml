@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@drawable/background_main_login"
+    android:background="@color/color_background_main"
     >
 
     <RelativeLayout
@@ -14,7 +14,7 @@
             android:id="@+id/toolbar_profile"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/lightblueA700"
+            android:background="@color/color_background_main"
             android:layout_centerHorizontal="true"
             android:gravity="center">
 
@@ -34,6 +34,8 @@
                     android:padding="10dp"
                     app:srcCompat="@drawable/ic_back_white" />
 
+
+
                 <TextView
                     android:id="@+id/tv_edit_profile"
                     android:layout_width="wrap_content"
@@ -43,7 +45,7 @@
                     android:gravity="end"
                     android:paddingRight="@dimen/_5sdp"
                     android:text="@string/btn_edit"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black_text"
                     android:textSize="@dimen/_16ssp"
                     android:textStyle="bold|italic"/>
 
@@ -60,6 +62,7 @@
         android:scrollbars="none">
 
         <LinearLayout
+            android:background="@drawable/background_main_app"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -110,8 +113,8 @@
                     android:paddingStart="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_10sdp"
                     android:singleLine="true"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/black_text"
+                    android:textColorHint="@color/black_text"
                     android:textSize="@dimen/_20ssp" />
 
                 <LinearLayout
@@ -136,7 +139,7 @@
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
                         android:maxLines="2"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
                         android:textStyle="italic|bold"/>
 
@@ -146,13 +149,13 @@
                         android:layout_height="@dimen/_30sdp"
                         android:layout_weight="0.3"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:background="@drawable/background_oval_stroke"
                         android:hint="@string/family_member_name"
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
                         android:singleLine="true"
-                        android:textColor="@color/lightblue700"
-                        android:textColorHint="@color/lightblue700"
+                        android:textColor="@color/black_text"
+                        android:textColorHint="@color/black_text"
                         android:textSize="@dimen/_12ssp" />
 
                 </LinearLayout>
@@ -179,7 +182,7 @@
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
                         android:maxLines="2"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
                         android:textStyle="italic|bold"/>
 
@@ -189,14 +192,14 @@
                         android:layout_height="@dimen/_30sdp"
                         android:layout_weight="0.3"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:background="@drawable/background_oval_stroke"
                         android:hint="@string/mobile"
                         android:inputType="phone"
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
                         android:singleLine="true"
-                        android:textColor="@color/lightblue700"
-                        android:textColorHint="@color/lightblue700"
+                        android:textColor="@color/black_text"
+                        android:textColorHint="@color/black_text"
                         android:textSize="@dimen/_12ssp" />
 
                 </LinearLayout>
@@ -223,7 +226,7 @@
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
                         android:maxLines="2"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
                         android:textStyle="italic|bold"/>
 
@@ -233,14 +236,14 @@
                         android:layout_height="@dimen/_30sdp"
                         android:layout_weight="0.3"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:background="@drawable/background_oval_stroke"
                         android:hint="@string/email_address"
                         android:inputType="textEmailAddress"
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
                         android:singleLine="true"
-                        android:textColor="@color/lightblueA700"
-                        android:textColorHint="@color/lightblue700"
+                        android:textColor="@color/black_text"
+                        android:textColorHint="@color/black_text"
                         android:textSize="@dimen/_12ssp" />
 
                 </LinearLayout>
@@ -273,7 +276,7 @@
                             android:paddingStart="@dimen/_10sdp"
                             android:paddingEnd="@dimen/_10sdp"
                             android:maxLines="2"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black_text"
                             android:textStyle="bold|italic"
                             android:textSize="@dimen/_12ssp" />
 
@@ -283,14 +286,14 @@
                             android:layout_height="@dimen/_30sdp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_weight="0.3"
-                            android:background="@drawable/background_rectango_stroke_blue"
+                            android:background="@drawable/background_oval_stroke"
                             android:hint="@string/home_number"
                             android:inputType="number"
                             android:paddingStart="@dimen/_10sdp"
                             android:paddingEnd="@dimen/_10sdp"
                             android:singleLine="true"
-                            android:textColor="@color/lightblueA700"
-                            android:textColorHint="@color/lightblue700"
+                            android:textColor="@color/black_text"
+                            android:textColorHint="@color/black_text"
                             android:textSize="@dimen/_12ssp" />
                     </LinearLayout>
 
@@ -314,7 +317,7 @@
                             android:paddingEnd="@dimen/_10sdp"
                             android:maxLines="2"
                             android:text="@string/block_number"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black_text"
                             android:textStyle="bold|italic"
                             android:textSize="@dimen/_12ssp" />
 
@@ -324,14 +327,14 @@
                             android:layout_height="@dimen/_30sdp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_weight="0.3"
-                            android:background="@drawable/background_rectango_stroke_blue"
+                            android:background="@drawable/background_oval_stroke"
                             android:hint="@string/block_number"
                             android:inputType="number"
                             android:paddingStart="@dimen/_10sdp"
                             android:paddingEnd="@dimen/_10sdp"
                             android:singleLine="true"
-                            android:textColor="@color/lightblueA700"
-                            android:textColorHint="@color/lightblue700"
+                            android:textColor="@color/black_text"
+                            android:textColorHint="@color/black_text"
                             android:textSize="@dimen/_12ssp" />
                     </LinearLayout>
 
@@ -357,7 +360,7 @@
                             android:paddingStart="@dimen/_10sdp"
                             android:paddingEnd="@dimen/_10sdp"
                             android:maxLines="2"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black_text"
                             android:textStyle="bold|italic"
                             android:textSize="@dimen/_12ssp" />
 
@@ -367,14 +370,14 @@
                             android:layout_height="@dimen/_30sdp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_weight="0.3"
-                            android:background="@drawable/background_rectango_stroke_blue"
+                            android:background="@drawable/background_oval_stroke"
                             android:hint="@string/unit_number"
                             android:inputType="number"
                             android:paddingStart="@dimen/_10sdp"
                             android:paddingEnd="@dimen/_10sdp"
                             android:singleLine="true"
-                            android:textColor="@color/lightblueA700"
-                            android:textColorHint="@color/lightblue700"
+                            android:textColor="@color/black_text"
+                            android:textColorHint="@color/black_text"
                             android:textSize="@dimen/_12ssp" />
 
                     </LinearLayout>
@@ -399,7 +402,7 @@
                             android:paddingStart="@dimen/_10sdp"
                             android:paddingEnd="@dimen/_10sdp"
                             android:maxLines="2"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black_text"
                             android:textStyle="bold|italic"
                             android:textSize="@dimen/_12ssp" />
 
@@ -409,13 +412,13 @@
                             android:layout_height="@dimen/_30sdp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_weight="0.3"
-                            android:background="@drawable/background_rectango_stroke_blue"
+                            android:background="@drawable/background_oval_stroke"
                             android:hint="@string/postal"
                             android:paddingStart="@dimen/_10sdp"
                             android:paddingEnd="@dimen/_10sdp"
                             android:singleLine="true"
-                            android:textColor="@color/lightblueA700"
-                            android:textColorHint="@color/lightblue700"
+                            android:textColor="@color/black_text"
+                            android:textColorHint="@color/black_text"
                             android:textSize="@dimen/_12ssp" />
 
                     </LinearLayout>
@@ -444,7 +447,7 @@
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
                         android:maxLines="2"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
                         android:textStyle="italic|bold"/>
 
@@ -454,13 +457,13 @@
                         android:layout_height="@dimen/_30sdp"
                         android:layout_weight="0.3"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:background="@drawable/background_oval_stroke"
                         android:hint="@string/street_name"
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
                         android:maxLines="2"
-                        android:textColor="@color/lightblueA700"
-                        android:textColorHint="@color/lightblue700"
+                        android:textColor="@color/black_text"
+                        android:textColorHint="@color/black_text"
                         android:textSize="@dimen/_12ssp" />
 
                 </LinearLayout>
@@ -487,7 +490,7 @@
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
                         android:maxLines="2"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
                         android:textStyle="italic|bold"/>
 
@@ -497,13 +500,13 @@
                         android:layout_height="@dimen/_30sdp"
                         android:layout_weight="0.3"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:background="@drawable/background_oval_stroke"
                         android:hint="@string/preferred_username"
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
                         android:singleLine="true"
-                        android:textColor="@color/lightblueA700"
-                        android:textColorHint="@color/lightblue700"
+                        android:textColor="@color/black_text"
+                        android:textColorHint="@color/black_text"
                         android:textSize="@dimen/_12ssp" />
 
                 </LinearLayout>
@@ -527,7 +530,7 @@
                         android:layout_weight="0.7"
                         android:gravity="center"
                         android:text="@string/weight"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
                         android:textStyle="italic|bold"
                         android:singleLine="true"
@@ -592,7 +595,7 @@
                         android:layout_toEndOf="@id/cb_lift_landing"
                         android:text="@string/stair"
                         android:textColor="@color/white"
-                        android:backgroundTint="@color/lightblue700"
+                        android:backgroundTint="@color/black_text"
                         android:textStyle="italic"
                         android:textSize="@dimen/_12sdp"/>
 
@@ -605,8 +608,8 @@
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_below="@id/cb_lift_landing"
                         android:text="@string/no_stair"
-                        android:textColor="@color/white"
-                        android:backgroundTint="@color/lightblue700"
+                        android:textColor="@color/black_text"
+                        android:backgroundTint="@color/black_text"
                         android:textStyle="italic"
                         android:textSize="@dimen/_12sdp"/>
 
@@ -620,8 +623,8 @@
                         android:layout_below="@id/cb_stairs"
                         android:layout_toEndOf="@id/cb_no_stairs"
                         android:text="@string/low_stair"
-                        android:textColor="@color/white"
-                        android:backgroundTint="@color/lightblue700"
+                        android:textColor="@color/black_text"
+                        android:backgroundTint="@color/black_text"
                         android:textStyle="italic"
                         android:textSize="@dimen/_12sdp"/>
 
@@ -632,7 +635,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/checkbox_group"
-                    android:background="@drawable/background_rectango_stroke_blue"
+                    android:background="@drawable/background_oval_stroke"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_5sdp"/>
@@ -661,7 +664,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.5"
                             android:text="@string/txt_patient_conditions"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black_text"
                             android:textSize="@dimen/_12ssp"
                             android:textStyle="italic|bold"
                             android:singleLine="true"
@@ -673,7 +676,7 @@
                             android:id="@+id/spn_patient_condition"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/background_rectango_stroke_blue"
+                            android:background="@drawable/background_oval_stroke"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_weight="0.5"/>
@@ -722,8 +725,8 @@
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_below="@id/cb_stretcher"
                             android:text="@string/oxygen"
-                            android:textColor="@color/white"
-                            android:backgroundTint="@color/lightblue700"
+                            android:textColor="@color/black_text"
+                            android:backgroundTint="@color/black_text"
                             android:textStyle="italic"
                             android:textSize="@dimen/_12sdp"/>
 
@@ -737,8 +740,8 @@
                             android:layout_below="@id/cb_wheel_chair"
                             android:layout_toEndOf="@id/cb_oxygen"
                             android:text="@string/escorts"
-                            android:textColor="@color/white"
-                            android:backgroundTint="@color/lightblue700"
+                            android:textColor="@color/black_text"
+                            android:backgroundTint="@color/black_text"
                             android:textStyle="italic"
                             android:textSize="@dimen/_12sdp"/>
                     </RelativeLayout>
@@ -757,13 +760,13 @@
                     android:paddingBottom="@dimen/_5sdp"
                     android:paddingStart="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_10sdp"
-                    android:background="@drawable/background_rectango_stroke_blue"
+                    android:background="@drawable/background_oval_stroke"
                     android:maxLines="3"
                     android:singleLine="false"
                     android:gravity="start|top"
                     android:hint="@string/additional_patient_information"
-                    android:textColorHint="@color/lightblue700"
-                    android:textColor="@color/lightblue700"
+                    android:textColorHint="@color/black_text"
+                    android:textColor="@color/black_text"
                     android:textSize="@dimen/_12ssp"/>
 
                 <LinearLayout
@@ -781,7 +784,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
                         android:text="@string/txt_payment_mode"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black_text"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="italic"
                         android:singleLine="true"
@@ -793,7 +796,7 @@
                         android:id="@+id/spn_payment_mode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/background_rectango_stroke_blue"
+                        android:background="@drawable/background_oval_stroke"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_5sdp"

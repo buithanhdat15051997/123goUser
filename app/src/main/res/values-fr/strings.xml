@@ -162,9 +162,9 @@
     <string name="txt_logout">Déconnexion</string>
     <string name="drawer_open">ouvrir</string>
     <string name="drawer_close">près</string>
-    <string name="txt_yes">Oui</string>
-    <string name="txt_no">Pas</string>
-    <string name="logout_text">Êtes-vous sûr de vouloir SignOut?</string>
+    <string name="txt_yes">CONFIRMER</string>
+    <string name="txt_no">ANNULER</string>
+    <string name="logout_text">Êtes-vous sûr de vouloir logOut?</string>
     <string name="txt_gmail">Connexion gmail!</string>
 
     <string name="txt_location">Emplacements</string>
@@ -451,5 +451,10 @@
     <string name="recharge_wallet">Recharge au portefeuille</string>
     <string name="title_wallet">Votre Portefeuille</string>
     <string name="edt_hint_input_money_wallet">Argent d\'entrée</string>
+    <string name="name_step_frag_one">Pilotes professionnels</string>
+    <string name="name_step_frag_two">Tarif le plus bas</string>
+    <string name="name_step_frag_three">Services 24/7</string>
+    <string name="body_text_step_wellcome">Le premier lieutenant et son skipper aussi feront leur très à l\'aise dans leur île tropicale nesb</string>
+    <string name="title_fragment_account">compte-rendu</string>
 </resources>
 

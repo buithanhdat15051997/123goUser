@@ -4,23 +4,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background_main_login"
     android:orientation="vertical">
+    <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar_user_profile"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/color_background_main">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--<ImageButton
+                android:id="@+id/history_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="10dp"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_back_blue" />-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="end"
+                android:layout_centerVertical="true"
+                android:paddingRight="@dimen/_10sdp"
+                android:text="@string/title_fragment_account"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
+        android:layout_below="@+id/toolbar_user_profile"
         android:id="@+id/profile_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:orientation="vertical">
-        <ImageView
-            android:src="@drawable/ic_logoapp"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_80sdp" />
         <TextView
             android:id="@+id/tv_profile"
             android:layout_width="wrap_content"
@@ -28,15 +54,14 @@
             android:gravity="center"
             android:layout_margin="@dimen/_3sdp"
             android:text="@string/txt_profile"
-            android:textColor="@color/white"
+            android:textColor="@color/black_text"
             android:textSize="@dimen/_14ssp"
             android:textAllCaps="true"/>
-
-
             <de.hdodenhof.circleimageview.CircleImageView
+
                 android:id="@+id/iv_account_icon"
-                android:layout_width="@dimen/_100sdp"
-                android:layout_height="@dimen/_100sdp"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:layout_gravity="center"
@@ -44,9 +69,6 @@
                 android:src="@drawable/defult_user"
                 app:civ_border_color="@color/white"
                 app:civ_border_width="@dimen/_2sdp" />
-
-
-
         <TextView
             android:id="@+id/tv_account_name"
             android:layout_width="wrap_content"
@@ -55,21 +77,22 @@
             android:layout_marginEnd="@dimen/_5sdp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/color_btn_main"
             android:textSize="@dimen/_20sdp" />
+        <Button
+            android:layout_toRightOf="@+id/tv_account_name"
+            android:layout_below="@+id/profile_group"
+            android:id="@+id/btn_pay_wallet_demo"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:background="@drawable/ic_account_balance_wallet"
+            />
+
+
 
     </LinearLayout>
-    <Button
-        android:layout_marginTop="@dimen/_230sdp"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/btn_pay_wallet_demo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:layout_marginEnd="@dimen/_5sdp"
-        android:layout_weight="1"
-        android:background="@drawable/ic_account_balance_wallet"
-        />
 
 
     <ListView

@@ -244,8 +244,8 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 //                    .getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
 //            OverView_Polyline_Home = routeArray.getJSONObject(0).getJSONObject("overview_polyline").getString("points");
 
-
-            String color[] = {"#ff0000", "#00ff00", "#7883cf"};
+            String color[] = {"#E23338", "#FC7242", "#1DCCC8"};
+          //  String color[] = {"#ff0000", "#00ff00", "#7883cf"};
             int i;
             for (i = 0; i < routeArray.length(); i++) {
 
@@ -294,7 +294,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                             //  linearLayoutShowDirec.setVisibility(View.VISIBLE);
 
                             String txt_Name[] = {" A", " B", " C"};
-                            String color[] = {"#FF0000", "#00FF00", "#7883CF"};
+                            String color[] = {"#E23338", "#FC7242", "#1DCCC8"};
                             for (int j = 0; j < polylineData.size(); j++) {
 
                                 if (polylineData.get(j).getColor() == polyline.getColor()) {
@@ -405,7 +405,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
         String txt_Name[] = {" A", " B", " C"};
 
-        String color[] = {"#FF0000", "#00FF00", "#7883CF"};
+        String color[] = {"#E23338", "#FC7242", "#1DCCC8"};
 
         for (int j = 0; j < polylineData.size(); j++) {
 
@@ -473,7 +473,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
     }
 
     private void setVisiableCardShowMain() {
-        String color2[] = {"#FF0000", "#00FF00", "#7883CF"};
+        String color2[] = {"#E23338", "#FC7242", "#1DCCC8"};
         String txt_Name2[] = {"A", "B", "C"};
         for (int i = 0; i < polylineData.size(); i++) {
 

@@ -87,6 +87,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private CallbackManager callbackManager;
     private String sPictureUrl;
     private String sLoginUserId, sLoginPassword;
+    private  RelativeLayout btn_register_social;
 
     private GoogleApiClient mGoogleApiClient;
     private String filePath = "";
@@ -99,7 +100,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private boolean isclicked = false;
     private ParseContent pcontent;
     private TextInputLayout input_layout_userid, input_layout_pass;
-    private TextView btn_register_social;
+   // private TextView btn_register_social;
     private static final int RC_SIGN_IN = 007;
     Dialog social_dialog;
     private ImageView social_img;
@@ -144,7 +145,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         /*btn_login_fb = (Button) findViewById(R.id.btn_login_fb);*/
         login_btn = (TextView) findViewById(R.id.login_btn);
         loc_pass = (ImageButton) findViewById(R.id.loc_pass);
-        btn_register_social = (TextView) findViewById(R.id.btn_register_social);
+        btn_register_social = (RelativeLayout) findViewById(R.id.btn_register_social);
 
         btn_cancel.setOnClickListener(this);
         /*btn_login_fb.setOnClickListener(this);*/

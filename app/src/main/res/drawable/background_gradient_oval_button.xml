@@ -7,8 +7,8 @@
     <size android:width="@dimen/_200sdp"
         android:height="@dimen/_50sdp"/>
 
-    <gradient android:startColor="@color/white"
-        android:endColor="@color/lightblue500"/>
+    <gradient android:startColor="@color/background123go"
+        android:endColor="@color/background123go"/>
     <!--<gradient android:startColor="@color/deeporange200"-->
         <!--android:endColor="@color/deeporange600"/>-->
 

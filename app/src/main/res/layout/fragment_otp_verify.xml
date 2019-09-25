@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_main_login"
+    android:background="#1dccc8"
     android:orientation="vertical">
 
     <RelativeLayout
+        android:background="@drawable/background_main_app"
+        android:layout_weight="1"
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal">
-
 
         <ImageView
             android:id="@+id/close_sign"
@@ -25,18 +26,26 @@
             app:srcCompat="@drawable/close" />
 
         <ImageView
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
             android:id="@+id/img_logo_application"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_170sdp"
-            android:layout_below="@id/close_sign"
-            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
             android:scaleType="fitCenter"
-            android:src="@drawable/background_user_login" />
+            android:src="@drawable/background_wellcome" />
+        <ImageView
+            android:layout_below="@+id/img_logo_application"
+            android:background="@drawable/background_login_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
 
     </RelativeLayout>
 
 
     <LinearLayout
+        android:background="#1dccc8"
         android:id="@+id/otp_type_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,8 +75,8 @@
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:text="@string/txt_sign_up"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_18ssp"
+                android:textColor="@color/black_text"
+                android:textSize="@dimen/_20ssp"
                 android:textAllCaps="true"/>
 
             <ImageView
@@ -96,7 +105,7 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:padding="@dimen/_5sdp"
                 android:text="@string/txt_otp_note"
-                android:textColor="@color/white"
+                android:textColor="@color/black_text"
                 android:textSize="@dimen/_14ssp" />
 
             <ImageView
@@ -105,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:padding="@dimen/_5sdp"
-                android:tint="@color/lightblueA700"
+                android:tint="@color/black_text"
                 app:srcCompat="@drawable/ic_edit" />
 
         </LinearLayout>
@@ -121,16 +130,16 @@
             <com.hbb20.CountryCodePicker
                 android:id="@+id/ccp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_40sdp"
                 android:layout_weight="0.6"
                 android:layout_marginStart="@dimen/_5sdp"
-                android:background="@drawable/background_oval_stroke"
+                android:background="@color/white"
                 android:gravity="center"
                 app:ccpDialog_textColor="@color/lightblueA700"
                 app:ccp_autoDetectCountry="true"
                 app:ccp_autoDetectLanguage="true"
                 app:ccp_autoFormatNumber="true"
-                app:ccp_contentColor="@color/white"
+                app:ccp_contentColor="@color/black_text"
                 app:ccp_textSize="@dimen/_12sdp"
                 app:ccp_clickable="false"/>
 
@@ -138,21 +147,21 @@
             <EditText
                 android:id="@+id/et_otp_mobile"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_40sdp"
                 android:layout_weight="0.4"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:paddingStart="@dimen/_20sdp"
                 android:paddingEnd="@dimen/_20sdp"
                 android:enabled="false"
-                android:background="@drawable/background_oval_stroke"
+                android:background="@color/white"
                 android:hint="@string/phn_no"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/black_text"
                 android:inputType="phone"
                 android:maxLines="1"
                 android:padding="@dimen/_5sdp"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="@color/black_text"
                 android:textSize="@dimen/_12ssp" />
 
         </LinearLayout>
@@ -186,7 +195,7 @@
                 android:maxLength="10"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:padding="@dimen/_5sdp"
-                android:textColor="@color/lightblueA700"
+                android:textColor="@color/black_text"
                 android:textSize="@dimen/_14ssp"
                 android:background="@color/white"/>
 
@@ -207,7 +216,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_no_otp"
-                android:textColor="@color/white"
+                android:textColor="@color/black_text"
                 android:textSize="@dimen/_14ssp" />
 
 
@@ -219,7 +228,7 @@
                 android:gravity="center"
                 android:text="@string/txt_resend"
                 android:padding="@dimen/_5sdp"
-                android:textColor="@color/white"
+                android:textColor="@color/black_text"
                 android:textSize="@dimen/_14ssp"
                 android:textStyle="bold|italic"/>
 
@@ -229,9 +238,12 @@
     <LinearLayout
         android:id="@+id/otp_conf_lay"
         android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:layout_marginStart="@dimen/_4sdp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/background_oval_stroke">
+        android:background="@color/color_btn_main">
 
 
             <TextView

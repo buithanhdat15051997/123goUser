@@ -71,7 +71,7 @@
             android:layout_above="@+id/btn_search"
             android:layout_below="@+id/linearTop2"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/_90sdp"
+            android:layout_marginTop="@dimen/_120sdp"
             android:layout_marginEnd="@dimen/_2sdp"
             android:padding="@dimen/_4sdp"
             android:visibility="visible"
@@ -208,7 +208,8 @@
             android:visibility="invisible"
             tools:ignore="NotSibling"></Button>
 
-        <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <com.github.ybq.android.spinkit.SpinKitView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/spin_kitHome"
             style="@style/SpinKitView.Large.Circle"
             android:layout_width="100dp"
@@ -234,24 +235,36 @@
             android:background="@drawable/background_rectango_gradient"
             android:orientation="vertical"
             android:paddingHorizontal="@dimen/_10sdp">
+            <TextView
+                android:text="Choose Destination"
+                android:layout_gravity="center"
+                android:textColor="@color/black_text"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <LinearLayout
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:orientation="horizontal"
-                android:weightSum="10">
+                >
 
                 <TextView
-                    android:layout_width="20dp"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_width="40dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_weight="1"
-                    android:background="@drawable/ic_pickup"
+                    android:layout_weight="2"
+                    android:text="From"
+                    android:textSize="@dimen/_8sdp"
                     android:gravity="center"
-                    android:padding="@dimen/_4sdp" />
+                     />
 
                 <AutoCompleteTextView
                     android:id="@+id/et_source_address"
@@ -259,15 +272,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:layout_marginRight="@dimen/_5sdp"
-                    android:layout_weight="9"
-                    android:backgroundTint="@color/white"
+                    android:layout_weight="7"
+                    android:backgroundTint="@null"
                     android:hint="@string/txt_current_loc"
                     android:imeOptions="actionSearch"
                     android:padding="@dimen/_10sdp"
                     android:singleLine="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black_text"
 
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/black_text"
                     android:textSize="@dimen/_12ssp" />
 
             </LinearLayout>
@@ -284,8 +297,8 @@
                 android:imeOptions="actionSearch"
                 android:padding="@dimen/_10sdp"
                 android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColor="@color/black_text"
+                android:textColorHint="@color/black_text"
                 android:textSize="@dimen/_12ssp"
                 android:visibility="gone" />
 
@@ -297,26 +310,28 @@
                 android:layout_marginTop="@dimen/_4sdp"
                 android:layout_marginEnd="@dimen/_2sdp"
                 android:layout_weight="0.25"
-                android:background="@drawable/background_gradient_line" />
+               />
 
             <LinearLayout
+                android:background="@color/white"
                 android:id="@+id/linearTop2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
                 android:orientation="horizontal"
-                android:weightSum="10">
+               >
 
                 <TextView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:background="@drawable/ic_destination"
+                   android:layout_marginStart="@dimen/_4sdp"
+                    android:text="To"
+                    android:textSize="@dimen/_8sdp"
                     android:gravity="center"
-
-                    android:padding="@dimen/_5sdp" />
+                    />
 
                 <!-- android:background="@drawable/background_rectango_stroke_blue"-->
                 <AutoCompleteTextView
@@ -327,15 +342,15 @@
                     android:layout_marginRight="@dimen/_5sdp"
                     android:layout_marginBottom="@dimen/_3sdp"
                     android:layout_weight="9"
-                    android:backgroundTint="@color/white"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:backgroundTint="@null"
                     android:hint="@string/txt_dest_hint"
                     android:imeOptions="actionSearch"
                     android:inputType="text"
                     android:padding="@dimen/_10sdp"
                     android:singleLine="true"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-
+                    android:textColor="@color/black_text"
+                    android:textColorHint="@color/black_text"
                     android:textSize="@dimen/_12ssp" />
 
             </LinearLayout>

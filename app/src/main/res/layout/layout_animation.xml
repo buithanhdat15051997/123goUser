@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background123go">
+    android:background="@drawable/background_main_app">
 
 
     <RelativeLayout
@@ -10,12 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:background="@drawable/background_full"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_300sdp">
+
+        </LinearLayout>
+
         <ImageView
             android:id="@+id/tv_app_name"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/background_user_login"/>
+            android:src="@drawable/background_wellcome"/>
         <com.github.ybq.android.spinkit.SpinKitView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/spin_kitSplash"

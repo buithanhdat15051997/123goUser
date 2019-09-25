@@ -217,7 +217,7 @@ public class SplashAnimation extends AppCompatActivity implements AsyncTaskCompl
                                                 finish();
 
                                             }
-                                        }, 5000);
+                                        }, 3000);
 
                             }
                         } else if (jsonObject.optString("success").equalsIgnoreCase("false")) {
@@ -234,7 +234,7 @@ public class SplashAnimation extends AppCompatActivity implements AsyncTaskCompl
                                     finish();
 
                                 }
-                            }, 5000);
+                            }, 3000);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

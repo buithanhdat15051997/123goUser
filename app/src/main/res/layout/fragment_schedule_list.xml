@@ -14,7 +14,7 @@
             android:id="@+id/toolbar_add_schedule"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/lightblue700">
+            android:background="@color/color_background_main">
 
             <RelativeLayout
                 android:layout_width="match_parent"

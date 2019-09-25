@@ -2,12 +2,14 @@ package sg.go.user;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,9 +17,15 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
+
+import java.util.ArrayList;
 import java.util.Locale;
 
+import sg.go.user.Adapter.Adapter_ViewPagerFragment;
+import sg.go.user.Adapter.GetStartedPictureAdapter;
 import sg.go.user.Adapter.SpinnerLanguageAdapter;
+import sg.go.user.Models.ItemGetstartedPicture;
 import sg.go.user.Utils.Const;
 import sg.go.user.Utils.PreferenceHelper;
 
@@ -33,6 +41,9 @@ public class WelcomeActivity extends AppCompatActivity implements MediaPlayer.On
     private Spinner sp_country_reg;
     private SpinnerLanguageAdapter adapter_language;
     private boolean is_selected = false;
+    private ViewPager viewpager_getstarted;
+    private DotsIndicator dots_indicator_getstarted;
+    private ArrayList<ItemGetstartedPicture> Array_itemGetstartedPictures;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +88,13 @@ public class WelcomeActivity extends AppCompatActivity implements MediaPlayer.On
         setContentView(R.layout.activity_welcome);
         getPermission();
         sp_country_reg = (Spinner) findViewById(R.id.sp_country_reg);
+
+        viewpager_getstarted = findViewById(R.id.viewpager_getstarted);
+        dots_indicator_getstarted = findViewById(R.id.dots_indicator_getstarted);
+
+        ShowViewPager();
+
+
         //  getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         welcome_btn = (Button) findViewById(R.id.welcome_btn);
         welcome_btn.setOnClickListener(new View.OnClickListener() {
@@ -147,12 +165,32 @@ public class WelcomeActivity extends AppCompatActivity implements MediaPlayer.On
 
     }
 
+    private void ShowViewPager() {
 
-    /*public void registerGcmReceiver(BroadcastReceiver mHandleMessageReceiver) {
-        if (mHandleMessageReceiver != null) {
-            new GCMRegisterHandler(this, mHandleMessageReceiver);
-        }
-    }*/
+//        Array_itemGetstartedPictures = new ArrayList<>();
+//        Array_itemGetstartedPictures.add(new ItemGetstartedPicture(R.drawable.img_viewpager_one));
+//        Array_itemGetstartedPictures.add(new ItemGetstartedPicture(R.drawable.img_viewpager_two));
+//        Array_itemGetstartedPictures.add(new ItemGetstartedPicture(R.drawable.img_viewpager_three));
+//        GetStartedPictureAdapter adapter_viewpager = new GetStartedPictureAdapter(WelcomeActivity.this,Array_itemGetstartedPictures);
+//        dots_indicator_getstarted.setViewPager(viewpager_getstarted);
+//        viewpager_getstarted.setAdapter(adapter_viewpager);
+        Adapter_ViewPagerFragment adapter_viewPagerFragment =new Adapter_ViewPagerFragment(getSupportFragmentManager(),3);
+
+        dots_indicator_getstarted.setViewPager(viewpager_getstarted);
+
+        viewpager_getstarted.setAdapter(adapter_viewPagerFragment);
+
+        viewpager_getstarted.setOffscreenPageLimit(3);//số lượng page lưu vào bộ nhớ cache để tránh tình trạng load lại
+
+
+    }
+
+
+//    public void registerGcmReceiver(BroadcastReceiver mHandleMessageReceiver) {
+//        if (mHandleMessageReceiver != null) {
+//            new GCMRegisterHandler(this, mHandleMessageReceiver);
+//        }
+//    }
 
     @SuppressLint("NewApi")
     private void getPermission() {

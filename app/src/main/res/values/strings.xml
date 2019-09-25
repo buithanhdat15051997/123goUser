@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">123GO</string>
-    <string name="welcom_btn">Get Started</string>
+    <string name="welcom_btn">Skip</string>
     <string name="app_title">HALP</string>
     <string name="login_label"> Login </string>
     <string name="who_you_are"> Who you are? </string>
@@ -31,6 +31,12 @@
 
     //1km/1$ 123go
     <string name="staircase_less_80"> Total time: </string>
+    <string name="name_step_frag_one">Professional Drivers</string>
+    <string name="name_step_frag_two">Lowest Fare</string>
+    <string name="name_step_frag_three">24/7 Services</string>
+    <string name="body_text_step_wellcome">The first mate and his Skipper too will do their very comfortable in their tropic island nesb</string>
+    <string name="title_fragment_account">Account</string>
+
     //
     <string name="oxygen_tank"> Oxygen tank </string>
     <string name="trips"> Trips </string>
@@ -109,12 +115,13 @@
     <string name="login_Password">Password</string>
     <string name="login_btn">Sign In</string>
     <string name="forgot_pass_btn">Forgot Password?</string>
-    <string name="new_user_btn">Do not have an account ?</string>
+    <string name="new_user_btn">New to 123GO ? Signup now</string>
     <string name="req_pass_btn">Request Password</string>
     <string name="register_btn">Register</string>
     <string name="forgot_txt_note">Please Enter Email Id to Receive Password</string>
     <string name="full_name">Fullname</string>
     <string name="last_Name">Last Name</string>
+
     <string name="your_password">Your Password</string>
     <string name="your_email">Your Email</string>
     <string name="phn_no">Phone Number</string>
@@ -183,7 +190,7 @@
     <string name="txt_logout">Logout</string>
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
-    <string name="logout_text">Are you sure you want to Signout?</string>
+    <string name="logout_text">Are you sure you want to logout?</string>
     <string name="txt_gmail">Connecting Gmail!</string>
 
     <string name="update_success_text">Profile Updated Successfully</string>
@@ -329,11 +336,11 @@
     <string name="txt_enter_hur">Enter No. of hours</string>
     <string name="txt_pickup">Pickup Location</string>
     <string name="txt_no_later">--- No Scheduled Rides Available ---</string>
-    <string name="txt_social_login">Or connect using a social account.</string>
+    <string name="txt_social_login">Login with.</string>
     <string name="txt_your_balance">Your Balance</string>
     <string name="txt_ent_amount">Enter Amount</string>
     <string name="txt_add_amount">Add Amount</string>
-    <string name="txt_sign_up">Sign Up</string>
+    <string name="txt_sign_up">Register</string>
     <string name="txt_otp_note">You will have your OTP sent to the following mobile number!</string>
     <string name="txt_otp_demo">For demo purpose we have pre-filled the Verification code,please click Proceed!</string>
     <string name="txt_ent_otp">Enter your Otp</string>
@@ -402,8 +409,8 @@
     <string name="txt_braintree2">Your Payment info will be stored securely.</string>
     <string name="btn_add_card">Add Card</string>
     <string name="cancel_txt">Are you sure? You want to Cancel this Ride</string>
-    <string name="txt_no">NO</string>
-    <string name="txt_yes">YES</string>
+    <string name="txt_no">CANCEL</string>
+    <string name="txt_yes">CONFIRM</string>
     <string name="txt_contact_driver">Contact Driver</string>
     <string name="txt_call">Call</string>
     <string name="txt_msg">Message</string>

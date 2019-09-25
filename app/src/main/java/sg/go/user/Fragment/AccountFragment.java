@@ -49,6 +49,7 @@ import sg.go.user.Models.Wallets;
 import sg.go.user.ProfileActivity;
 import sg.go.user.R;
 import sg.go.user.RealmController.RealmController;
+import sg.go.user.SignInActivity;
 import sg.go.user.Utils.Commonutils;
 import sg.go.user.Utils.Const;
 import sg.go.user.Utils.EbizworldUtils;
@@ -750,7 +751,7 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
 
                         }
 
-                        Intent i = new Intent(mMainActivity, WelcomeActivity.class);
+                        Intent i = new Intent(mMainActivity, SignInActivity.class);
                         startActivity(i);
                         mMainActivity.finish();
 
