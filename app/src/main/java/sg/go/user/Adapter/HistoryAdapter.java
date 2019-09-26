@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -97,12 +98,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.typesVie
     }
 
     public class typesViewHolder extends RecyclerView.ViewHolder {
-        private CircleImageView iv_history_img;
+        private ImageView iv_history_img;
         private TextView tv_history_date,tv_history_car_type,tv_history_source,tv_history_destination,tv_history_total,tv_history_driver_name;
 
         public typesViewHolder(View itemView) {
             super(itemView);
-            iv_history_img = (CircleImageView) itemView.findViewById(R.id.iv_history_img);
+            iv_history_img = (ImageView) itemView.findViewById(R.id.iv_history_img);
             tv_history_date = (TextView) itemView.findViewById(R.id.tv_history_date);
             tv_history_car_type = (TextView) itemView.findViewById(R.id.tv_history_car_type);
             tv_history_source = (TextView) itemView.findViewById(R.id.tv_history_source);

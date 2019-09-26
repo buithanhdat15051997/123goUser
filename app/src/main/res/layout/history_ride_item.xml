@@ -113,7 +113,7 @@
                     android:textColor="@color/gray600"
                     android:textSize="@dimen/_10ssp" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:id="@+id/iv_history_img"
                     android:layout_width="@dimen/_50sdp"
                     android:scaleType="fitXY"
