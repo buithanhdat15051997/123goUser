@@ -2,19 +2,21 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="110dp"
+    android:layout_width="120dp"
     android:orientation="vertical"
     android:layout_gravity="center"
     android:layout_marginLeft="@dimen/_5sdp"
-    android:layout_marginRight="@dimen/_8sdp"
-    android:background="@drawable/btn_item_type_car"
-    android:layout_height="135dp">
+    android:layout_marginRight="@dimen/_5sdp"
+    android:background="@color/white"
+    android:layout_height="130dp">
 
     <ImageView
+        android:scaleType="fitXY"
         android:id="@+id/img_Item_Type_Car"
-        android:src="@drawable/ic_logoapp"
+        android:src="@drawable/background_user_login"
         android:layout_gravity="center"
-        android:layout_width="70dp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_width="90dp"
         android:layout_height="60dp" />
 
     <TextView
@@ -26,12 +28,12 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="type car"
-        android:textColor="@color/white"
+        android:textColor="@color/black_text"
         android:textStyle="bold|italic" />
 
     <TextView
         android:textSize="@dimen/_9sdp"
-        android:textColor="@color/white"
+        android:textColor="@color/color_btn_main"
         android:textStyle="bold|italic"
         android:id="@+id/txt_Item_Type_service_fee"
         android:text="service fee"
@@ -40,5 +42,5 @@
         android:layout_width="match_parent"
         android:layout_height="15dp" />
 
-
+ <!--   android:background="@drawable/btn_item_type_car"-->
 </LinearLayout>

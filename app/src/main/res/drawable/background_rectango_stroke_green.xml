@@ -8,7 +8,7 @@
     <corners android:radius="@dimen/_5sdp"/>
 
     <stroke android:width="@dimen/_2sdp"
-        android:color="@color/color_btn_main"/>
+        android:color="@color/black_text"/>
 
     <solid android:color="@color/white"/>
 

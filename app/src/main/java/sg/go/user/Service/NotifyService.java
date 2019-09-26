@@ -63,7 +63,7 @@ public class NotifyService extends Service implements AsyncTaskCompleteListener 
 
     public void addNotification(String text) {
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext())
-                .setSmallIcon(R.drawable.ic_logoapp)
+                .setSmallIcon(R.drawable.background_user_login)
                 .setContentTitle("Notifications")
                 .setContentText(text);
         Intent notificationIntent = new Intent(getApplicationContext(), TravelMapFragment.class);

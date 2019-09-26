@@ -18,7 +18,7 @@
     <string name="schedule_detail"> Schedule Detail </string>
     <string name="submit_schedule_title"> REGISTER SCHEDULE </string>
     <string name="something_was_wrong"> Something was wrong </string>
-    <string name="ferry_terminals"> Distance: </string>
+    <string name="ferry_terminals"> Trip Distance: </string>
     <string name="a_and_e"> A&amp;E </string>
     <string name="imh"> IMH </string>
     <string name="airport_tarmac">Type car selected</string>
@@ -30,12 +30,15 @@
 
 
     //1km/1$ 123go
-    <string name="staircase_less_80"> Total time: </string>
+    <string name="staircase_less_80"> Trip Duration: </string>
     <string name="name_step_frag_one">Professional Drivers</string>
     <string name="name_step_frag_two">Lowest Fare</string>
     <string name="name_step_frag_three">24/7 Services</string>
     <string name="body_text_step_wellcome">The first mate and his Skipper too will do their very comfortable in their tropic island nesb</string>
     <string name="title_fragment_account">Account</string>
+    <string name="txt_bill_detail">Bill Detail</string>
+    <string name="txt_total_pay">Total Pay</string>
+    <string name="txt_title_rating">Ratings</string>
 
     //
     <string name="oxygen_tank"> Oxygen tank </string>
@@ -143,7 +146,7 @@
     <string name="txt_driver">Driver</string>
     <string name="total_fare">TOTAL FARE</string>
     <string name="trip_summary">TRIP SUMMARY</string>
-    <string name="rate_ride">RATE YOUR RIDE</string>
+    <string name="rate_ride">Rate your riding experience?</string>
     <string name="table_price_notice">The fare reflected is indicative only, Final fare will be subjected to changes as deemed by Diver.</string>
 
 
@@ -353,7 +356,7 @@
     <string name="txt_done">Done</string>
     <string name="txt_select_payment_note">Tap any button below to change option</string>
     <string name="txt_select_payment_note2">Please use this screen, to toggle back to CC payment.</string>
-    <string name="txt_next">Select Type Car</string>
+    <string name="txt_next">Car Picking</string>
     <string name="txt_back">Back</string>
     <string name="txt_confirm_phone">Confirm phone number</string>
     <string name="txt_choose_account">Choose an account</string>

@@ -44,7 +44,7 @@
     <string name="txt_driver">Pilote</string>
     <string name="total_fare">Tarif total</string>
     <string name="trip_summary">Résumé du voyage</string>
-    <string name="rate_ride">Evaluez votre trajet</string>
+    <string name="rate_ride">Évaluez votre expérience de conduite?</string>
 
 
 
@@ -456,5 +456,8 @@
     <string name="name_step_frag_three">Services 24/7</string>
     <string name="body_text_step_wellcome">Le premier lieutenant et son skipper aussi feront leur très à l\'aise dans leur île tropicale nesb</string>
     <string name="title_fragment_account">compte-rendu</string>
+    <string name="txt_bill_detail">Détail de projet de loi</string>
+    <string name="txt_total_pay">Rémunération totale</string>
+    <string name="txt_title_rating">Cotes</string>
 </resources>
 

@@ -75,8 +75,6 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 //    @BindView(R.id.btn_pay_wallet_demo)
 //    Button btn_pay_wallet_demo;
 
-
-
 //    @BindView(R.id.tv_billing_info_imh_value)
 //    TextView mTv_billing_info_imh_value;
 
@@ -99,8 +97,8 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
     TextView mTv_billing_info_name_typeCar;
 
 
-    @BindView(R.id.tv_billing_info_pickup_type_value)
-    TextView mTv_billing_info_pickup_type_value;
+//    @BindView(R.id.tv_billing_info_pickup_type_value)
+//    TextView mTv_billing_info_pickup_type_value;
 
     //kiểu của bạn hào
     @BindView(R.id.billing_info_payment_group)
@@ -731,7 +729,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                                 if (cancel_req_create != null){
 
                                     cancel_req_create.setEnabled(true);
-                                    cancel_req_create.setBackgroundColor(getResources().getColor(R.color.lightblueA700));
+                                    cancel_req_create.setBackgroundColor(getResources().getColor(R.color.color_background_main));
 
                                 }
 
@@ -924,7 +922,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                          //       mTv_billing_info_tarmac_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getTarmac());
                             //    mTv_billing_info_weight_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getWeight());
 //                                mTv_billing_info_oxygen_tank_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getOxygen_tank());
-                                mTv_billing_info_pickup_type_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getPickup_type());
+                             //   mTv_billing_info_pickup_type_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getPickup_type());
 
                             }
 

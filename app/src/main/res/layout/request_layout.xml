@@ -4,17 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+<RelativeLayout
+
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tv_optional"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_20sdp"
-        android:background="@color/lightblue700"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@color/white"
         android:gravity="center"
         android:text="@string/txt_next"
         android:textAllCaps="true"
-        android:textColor="@color/white"
+        android:textColor="@color/color_btn_main"
         android:textSize="@dimen/_10ssp" />
+    <ImageView
+        android:id="@+id/img_cancel_choss_type_car"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/crop__ic_cancel"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_30sdp" />
+
+</RelativeLayout>
 
 
     <android.support.v4.widget.NestedScrollView
@@ -36,32 +50,22 @@
                 android:layout_alignParentTop="true"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_ambulance_operator_notice"
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
                     android:gravity="center"
-                    android:paddingStart="@dimen/_10sdp"
-                    android:paddingTop="@dimen/_3sdp"
-                    android:paddingEnd="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_3sdp"
-
-
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:singleLine="true"
-                    android:scrollHorizontally="true"
-                    android:ellipsize="marquee"
-                    android:marqueeRepeatLimit ="marquee_forever"
-
-
-                    android:text="@string/ambulance_operator_notice"
-                    android:textColor="@color/lightblue700"
+                    android:background="@color/black_text"
                     android:textSize="@dimen/_10ssp"
                     android:textStyle="bold|italic" />
+<!--
+                android:text="@string/ambulance_operator_notice"
+-->
 
                 <!--Recycler View-->
                 <android.support.v7.widget.RecyclerView
+                    android:layout_marginTop="@dimen/_4sdp"
                     android:id="@+id/Recyc_Type_Car"
                     android:layout_gravity="center"
                     android:layout_width="match_parent"
@@ -149,7 +153,7 @@
                             android:layout_margin="@dimen/_3sdp"
                             android:gravity="center"
                             android:scaleType="centerInside"
-                            android:src="@drawable/ambulance_car" />
+                            android:src="@drawable/carambulance" />
 
                         <View
                             android:id="@+id/view_select"

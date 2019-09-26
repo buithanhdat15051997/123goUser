@@ -45,7 +45,7 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.MyHolder> {
 
         Glide.with(context)
                 .load(list.getAdImage())
-                .apply(new RequestOptions().error(R.drawable.ic_logoapp))
+                .apply(new RequestOptions().error(R.drawable.background_user_login))
                 .into(holder.imageView);
 
         Log.e("asher", "description  " + list.getAdImage());

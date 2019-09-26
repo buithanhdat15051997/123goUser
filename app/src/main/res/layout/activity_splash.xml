@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:scaleType="center"
-        android:src="@drawable/ic_logoapp" />
+        android:src="@drawable/background_user_login" />
 
     <!--<TextView
         android:layout_width="match_parent"

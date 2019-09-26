@@ -164,7 +164,7 @@ public class AmbulanceFCMService extends FirebaseMessagingService {
 
             NotificationCompat.Builder  mBuilder = new NotificationCompat.Builder(this, String.valueOf(getResources().getString(R.string.notification_channel_id)))
                     .setContentTitle(getResources().getString(R.string.app_name))  // required
-                    .setSmallIcon(R.drawable.ic_logoapp) // required
+                    .setSmallIcon(R.drawable.background_user_login) // required
                     .setContentText(body)  // required
                     .setDefaults(Notification.DEFAULT_ALL)
                     .setAutoCancel(true)
@@ -185,7 +185,7 @@ public class AmbulanceFCMService extends FirebaseMessagingService {
 
             //Dùng cho notificationManager.notify(...)
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-                    .setSmallIcon(R.drawable.ic_logoapp)
+                    .setSmallIcon(R.drawable.background_user_login)
                     .setContentTitle(getResources().getString(R.string.app_name))
                     .setContentText(body)
                     .setAutoCancel(true)

@@ -9,7 +9,7 @@
     <size android:width="@dimen/_300sdp"
         android:height="@dimen/_5sdp"/>
 
-    <gradient android:startColor="@color/white"
-        android:endColor="@color/white"/>
+    <gradient android:startColor="@color/black_text"
+        android:endColor="@color/black_text"/>
 
 </shape>

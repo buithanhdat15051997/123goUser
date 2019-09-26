@@ -16,12 +16,13 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_marginRight="@dimen/_10sdp"
-        android:background="@color/lightblueA700"
+        android:background="@color/color_btn_main"
         android:gravity="center"
         android:padding="@dimen/_5sdp"
         android:text="@string/txt_cancel"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:textSize="@dimen/_25ssp" />
 
 
@@ -29,7 +30,7 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:rb_color="#0099CC"
+        app:rb_color="@color/color_background_main"
         app:rb_duration="3000"
         app:rb_radius="@dimen/_30sdp"
         app:rb_rippleAmount="4"
@@ -50,7 +51,7 @@
             android:layout_below="@+id/centerImage"
             android:gravity="center"
             android:text="@string/txt_requesting"
-            android:textColor="@color/white"
+            android:textColor="@color/black_text"
             android:textSize="@dimen/_20ssp" />
     </com.skyfishjy.library.RippleBackground>
 

@@ -390,7 +390,7 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
 
             Glide.with(getActivity())
                     .load(history.getMap_image())
-                    .apply(new RequestOptions().error(R.drawable.ic_logoapp))
+                    .apply(new RequestOptions().error(R.drawable.background_user_login))
                     .into(iv_trip_map);
 
             detailedBill.show();
@@ -491,7 +491,7 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
 
             Glide.with(getActivity())
                     .load(history.getMap_image())
-                    .apply(new RequestOptions().error(R.drawable.ic_logoapp))
+                    .apply(new RequestOptions().error(R.drawable.background_user_login))
                     .into(iv_trip_map);
 
             detailedBill.show();
@@ -590,7 +590,7 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
 
             Glide.with(getActivity())
                     .load(history.getMap_image())
-                    .apply(new RequestOptions().error(R.drawable.ic_logoapp))
+                    .apply(new RequestOptions().error(R.drawable.background_user_login))
                     .into(iv_trip_map);
 
             detailedBill.show();

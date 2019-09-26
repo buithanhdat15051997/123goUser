@@ -27,7 +27,7 @@
                 android:layout_weight="0.3"
                 android:padding="@dimen/_10sdp"
                 android:scaleX="-1"
-                app:srcCompat="@drawable/ambulance_car"/>
+                app:srcCompat="@drawable/carambulance"/>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -42,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="00-00-0000"
-                    android:textColor="@color/lightblueA700"
+                    android:textColor="@color/black_text"
                     android:textSize="@dimen/_12ssp" />
 
                 <TextView
@@ -52,7 +52,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:singleLine="true"
                     android:text="car"
-                    android:textColor="@color/lightblueA700"
+                    android:textColor="@color/black_text"
                     android:textSize="@dimen/_14ssp" />
 
                 <TextView
@@ -64,7 +64,7 @@
                     android:drawablePadding="@dimen/_5sdp"
                     android:singleLine="true"
                     android:text="Source"
-                    android:textColor="@color/lightblueA700"
+                    android:textColor="@color/black_text"
                     android:textSize="@dimen/_12ssp" />
 
                 <TextView
@@ -77,7 +77,7 @@
                     android:drawablePadding="@dimen/_5sdp"
                     android:singleLine="true"
                     android:text="Destination"
-                    android:textColor="@color/lightblueA700"
+                    android:textColor="@color/black_text"
                     android:textSize="@dimen/_12ssp" />
             </LinearLayout>
 
@@ -96,7 +96,7 @@
                     android:layout_gravity="center"
                     android:text="$ 00"
                     android:layout_marginTop="@dimen/_1sdp"
-                    android:textColor="@color/lightblueA700"
+                    android:textColor="@color/color_btn_main"
                     android:textSize="@dimen/_14ssp" />
 
                 <TextView

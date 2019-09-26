@@ -423,12 +423,12 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
 
         List<AccountSettings> accountSettingsList = new ArrayList<>();
 
-        /*accountSettingsList.add(new AccountSettings(R.drawable.home_map_marker, getString(R.string.my_home)));
-        accountSettingsList.add(new AccountSettings(R.drawable.flash, getString(R.string.ask_bot)));
-        accountSettingsList.add(new AccountSettings(R.drawable.credit_card, getString(R.string.my_payment)));
-        accountSettingsList.add(new AccountSettings(R.drawable.wallet, getString(R.string.ambulance2u_wallet)));
-        accountSettingsList.add(new AccountSettings(R.drawable.ic_favorite_heart_button, getString(R.string.saved_places)));
-        accountSettingsList.add(new AccountSettings(R.drawable.clock_alert, getString(R.string.ride_history)));*/
+//        accountSettingsList.add(new AccountSettings(R.drawable.home_map_marker, getString(R.string.my_home)));
+//        accountSettingsList.add(new AccountSettings(R.drawable.flash, getString(R.string.ask_bot)));
+//        accountSettingsList.add(new AccountSettings(R.drawable.credit_card, getString(R.string.my_payment)));
+//        accountSettingsList.add(new AccountSettings(R.drawable.wallet, getString(R.string.ambulance2u_wallet)));
+//        accountSettingsList.add(new AccountSettings(R.drawable.ic_favorite_heart_button, getString(R.string.saved_places)));
+//        accountSettingsList.add(new AccountSettings(R.drawable.clock_alert, getString(R.string.ride_history)));
 
         if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)) {
 

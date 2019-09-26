@@ -31,10 +31,10 @@
             android:layout_below="@+id/tv_app_name"
             android:layout_centerInParent="true"
             style="@style/SpinKitView.Large.Circle"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
             android:layout_gravity="center"
-            app:SpinKit_Color="@color/paygate_color"/>
+            app:SpinKit_Color="@color/color_background_main"/>
 
 
     </RelativeLayout>

@@ -15,7 +15,7 @@
             android:id="@+id/toolbar_chat"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/background123go">
+            android:background="@color/color_background_main">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -77,13 +77,13 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/_10sdp"
-            android:background="@drawable/background_rectango_stroke_blue"
+
             android:hint="@string/typ_msg"
             android:maxLines="1"
             android:padding="@dimen/_10sdp"
-            android:textColor="@color/lightblueA700"
+            android:textColor="@color/black_text"
             android:singleLine="true"
-            android:textColorHint="@color/lightblueA700"
+            android:textColorHint="@color/black_text"
             android:textSize="@dimen/_13sdp" />
 
         <ImageView

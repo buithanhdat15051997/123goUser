@@ -31,6 +31,8 @@
     <!--new color-->
     <color name="black_text">#121212</color>
     <color name="color_btn_main">#fc7242</color>
+
+    <color name="color_btn_two">#F5BCA7</color>
     <color name="color_background_main">#1dccc8</color>
     <color name="color_red_main">#e23338</color>
 

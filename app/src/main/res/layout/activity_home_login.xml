@@ -182,7 +182,7 @@
             android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginBottom="@dimen/_30sdp"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_logoapp"/>
+            android:src="@drawable/background_user_login"/>
 
         <FrameLayout
             android:id="@+id/login_text_group"

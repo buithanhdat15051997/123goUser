@@ -2,7 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:layout_marginEnd="@dimen/_5sdp"
+    android:layout_marginStart="@dimen/_5sdp"
+    >
 
     <TextView
         android:id="@+id/tv_cancel_reason"
@@ -18,5 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0.01dp"
         android:layout_below="@+id/tv_cancel_reason"
-        android:background="@color/black"></View>
+        android:background="@color/black">
+
+    </View>
 </RelativeLayout>

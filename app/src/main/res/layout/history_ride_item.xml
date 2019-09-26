@@ -27,7 +27,7 @@
                 android:layout_weight="0.3"
                 android:padding="@dimen/_10sdp"
                 android:scaleX="-1"
-                app:srcCompat="@drawable/ambulance_car"/>
+                app:srcCompat="@drawable/carambulance"/>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -116,6 +116,7 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_history_img"
                     android:layout_width="@dimen/_50sdp"
+                    android:scaleType="fitXY"
                     android:layout_height="@dimen/_50sdp"
                     android:layout_gravity="center"
                     android:layout_marginBottom="@dimen/_5sdp"

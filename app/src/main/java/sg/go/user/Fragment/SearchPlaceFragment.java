@@ -158,6 +158,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
     private ArrayList<TypeCarRequest> typeCarRequest_ArrayList_home;
     private RecyclerView Recyc_Type_Car;
     private RequestOptional mRequestOptional_Home;
+    private ImageView img_cancel_choss_type_car;
 
     ProgressBar progressBarHome;
 
@@ -244,7 +245,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 //                    .getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
 //            OverView_Polyline_Home = routeArray.getJSONObject(0).getJSONObject("overview_polyline").getString("points");
 
-            String color[] = {"#E23338", "#FC7242", "#1DCCC8"};
+            String color[] = {"#E23338", "#212121", "#1DCCC8"};
           //  String color[] = {"#ff0000", "#00ff00", "#7883cf"};
             int i;
             for (i = 0; i < routeArray.length(); i++) {
@@ -294,7 +295,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                             //  linearLayoutShowDirec.setVisibility(View.VISIBLE);
 
                             String txt_Name[] = {" A", " B", " C"};
-                            String color[] = {"#E23338", "#FC7242", "#1DCCC8"};
+                            String color[] = {"#E23338", "#212121", "#1DCCC8"};
                             for (int j = 0; j < polylineData.size(); j++) {
 
                                 if (polylineData.get(j).getColor() == polyline.getColor()) {
@@ -347,13 +348,17 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
     }
 
     private void ClickButtonRoutes() {
+
         for (int j = 0; j < polylineData.size(); j++) {
+
             final int finalJ = j;
             arrayListButtonShow.get(j).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
                     //   Toast.makeText(activity, "hihi", Toast.LENGTH_SHORT).show();
                     ClickPolylinesHome(finalJ);
+
                 }
             });
         }
@@ -405,7 +410,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
         String txt_Name[] = {" A", " B", " C"};
 
-        String color[] = {"#E23338", "#FC7242", "#1DCCC8"};
+        String color[] = {"#E23338", "#212121", "#1DCCC8"};
 
         for (int j = 0; j < polylineData.size(); j++) {
 
@@ -452,7 +457,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         bottomSheetBehavior1.setState(BottomSheetBehavior.STATE_EXPANDED);
         bottomSheetBehavior1.setState(BottomSheetBehavior.STATE_COLLAPSED);
 
-        tv_optional_home.setOnClickListener(new View.OnClickListener() {
+        img_cancel_choss_type_car.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 bottomSheetLayout1.setVisibility(View.GONE);
@@ -473,12 +478,12 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
     }
 
     private void setVisiableCardShowMain() {
-        String color2[] = {"#E23338", "#FC7242", "#1DCCC8"};
+        String color2[] = {"#E23338", "#212121", "#1DCCC8"};
         String txt_Name2[] = {"A", "B", "C"};
         for (int i = 0; i < polylineData.size(); i++) {
 
             arrayListButtonShow.get(i).setVisibility(View.VISIBLE);
-//            arrayListButtonShow.get(i).setBackgroundColor(Color.parseColor(color2[i]));
+            arrayListButtonShow.get(i).setTextColor(Color.parseColor(color2[i]));
 
             try {
                 Distance_Request_Home = routeArray.getJSONObject(i).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
@@ -554,7 +559,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         progressBarHome.setIndeterminateDrawable(fadingCircle);
 
 
-//                typeCarRequest_ArrayList.add(0,new TypeCarRequest("Any",R.drawable.ic_logoapp));
+
         /*---- Adapter Tyoe Car*/
         Recyc_Type_Car = view.findViewById(R.id.Recyc_Type_Car);
 
@@ -579,9 +584,10 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         bottomSheetLayout1 = (FrameLayout) view.findViewById(R.id.request_map_bottom_sheet1);
         btn_request_cab_home = (TextView) view.findViewById(R.id.btn_request_cab);
         trip_remark_home = (EditText) view.findViewById(R.id.trip_remark);
+        img_cancel_choss_type_car = view.findViewById(R.id.img_cancel_choss_type_car);
 
-        mTv_ambulance_operator_notice_home = (TextView) view.findViewById(R.id.tv_ambulance_operator_notice);
-        mTv_ambulance_operator_notice_home.setSelected(true);
+      //  mTv_ambulance_operator_notice_home = (TextView) view.findViewById(R.id.tv_ambulance_operator_notice);
+       // mTv_ambulance_operator_notice_home.setSelected(true);
 
         tv_optional_home = view.findViewById(R.id.tv_optional);
         bottomSheetBehavior1 = BottomSheetBehavior.from(bottomSheetLayout1);
@@ -601,14 +607,14 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                         EbizworldUtils.appLogDebug("HaoLS", "BottomSheet collapsed");
                         bottomSheetBehavior1.setPeekHeight(tv_optional_home.getHeight());
-                        tv_optional_home.setText(getResources().getString(R.string.txt_back));
+                        tv_optional_home.setText(getResources().getString(R.string.txt_next));
 
                     }
                     break;
 
                     case BottomSheetBehavior.STATE_EXPANDED: {
 
-                        tv_optional_home.setText(getResources().getString(R.string.txt_back));
+                        tv_optional_home.setText(getResources().getString(R.string.txt_next));
                         EbizworldUtils.appLogDebug("HaoLS", "BottomSheet expanded");
                     }
                 }
@@ -752,7 +758,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
             }
         });
 // s? ki?n click to  d click
-        et_destination_address.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        et_destination_address.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 et_destination_address.setSelection(0);
@@ -1564,7 +1570,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                             if (StopMarker == null) {
                                 MarkerOptions markerOpt = new MarkerOptions();
                                 markerOpt.position(stop_latLng);
-                                markerOpt.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_pin_drop));
+                                markerOpt.icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_stop));
                                 StopMarker = googleMap.addMarker(markerOpt);
 
                             } else {
@@ -1805,11 +1811,11 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                            /* CameraUpdate location = CameraUpdateFactory.newLatLngZoom(
                                     driverslatlngs.get(i), 15);*/
                                 // Log.d("mahi","markers size"+driverslatlngs.get(i).toString());
-
+/*----Icon Driver----*/
                                 final MarkerOptions currentOption = new MarkerOptions();
                                 currentOption.position(driverslatlngs.get(i).getLatlan());
                                 currentOption.title(driverslatlngs.get(i).getDriver_name());
-                                currentOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.ambulance_car));
+                                currentOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.carambulance));
                                 if (googleMap != null) {
                                     final Marker[] driver_marker = new Marker[1];
                                     final int finalI = i;
@@ -1909,7 +1915,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                 if (null != googleMap) {
                     MarkerOptions markerOpt = new MarkerOptions();
                     markerOpt.position(currentLatLan);
-                    markerOpt.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_pick_marker));
+                    markerOpt.icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_stop));
                     PickUpMarker = googleMap.addMarker(markerOpt);
                     markermap.put(PickUpMarker, -1);
                     mMarkersMap.add(PickUpMarker);
@@ -1973,7 +1979,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                     if (null != googleMap) {
                         MarkerOptions markerOpt = new MarkerOptions();
                         markerOpt.position(currentLatLan);
-                        markerOpt.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_pick_marker));
+                        markerOpt.icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_stop));
                         PickUpMarker = googleMap.addMarker(markerOpt);
                         //  Log.d("ccccccccccc", "onMapReady: ");
 

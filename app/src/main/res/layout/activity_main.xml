@@ -29,7 +29,7 @@
                     android:layout_width="@dimen/_150sdp"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/ic_logoapp" />
+                    android:src="@drawable/background_user_login" />
 
                 <!--<ImageButton
                     android:id="@+id/bnt_menu"
@@ -64,10 +64,16 @@
         android:id="@+id/main_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@color/background123go"
-        app:itemTextColor="@color/black_text"
+        android:background="@color/feedback_fare"
+
+        app:itemBackground="@color/feedback_fare"
+
+        app:itemTextColor="@color/bnv_tab_item_foreground"
+
         app:itemIconSize="@dimen/_20sdp"
-        app:itemIconTint="@color/white"
+
+        app:itemIconTint="@color/bnv_tab_item_foreground"
+
         app:itemTextAppearanceActive="@dimen/_5ssp"
         app:itemHorizontalTranslationEnabled="true"
         android:textAlignment="center"

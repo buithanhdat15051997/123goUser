@@ -317,12 +317,12 @@ public class RatingFragment extends BaseFragment {
 
                             checkRequestStatusHandler.removeCallbacks(runnable);
 
-                            btn_submit_rating.setBackgroundColor(getResources().getColor(R.color.lightblueA700));
+                            btn_submit_rating.setBackgroundColor(getResources().getColor(R.color.color_btn_main));
                             btn_submit_rating.setEnabled(true);
 
                         }else {
 
-                            btn_submit_rating.setBackgroundColor(getResources().getColor(R.color.lightblue100));
+                            btn_submit_rating.setBackgroundColor(getResources().getColor(R.color.color_btn_two));
                             btn_submit_rating.setEnabled(false);
                         }
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="@dimen/_200sdp">
+    <TextView
+        android:layout_marginTop="@dimen/_50sdp"
+        android:id="@+id/txt_cancel_booking"
+        android:gravity="center"
+        android:maxLines="2"
+        android:textSize="@dimen/_18sdp"
+        android:textColor="@color/black_text"
+        android:text="You are sure you want to cancel this booking ?"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@+id/txt_cancel_booking"
+        android:orientation="horizontal"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/img_confrim_cancel_booking"
+            android:src="@drawable/ic_confirm_cancel_booking"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_height="@dimen/_30sdp" />
+        <ImageView
+            android:id="@+id/img_no_cancel_booking"
+            android:src="@drawable/ic_cancel_dialog_booking"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_30sdp" />
+    </LinearLayout>
+
+</RelativeLayout>

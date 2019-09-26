@@ -14,10 +14,13 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:text="@string/title_wallet"
+        android:textColor="@color/black_text"
         android:textSize="@dimen/_16sdp"
         android:textStyle="italic" />
 
     <View
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_1sdp"
         android:layout_below="@+id/btn_pay_cancel_wallet"
@@ -28,19 +31,20 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_below="@+id/txt_pay_ewallet"
-        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_30sdp"
-        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:text="@string/txt_total_pay_wallet"
+        android:textColor="@color/black_text"
         android:textSize="@dimen/_16sdp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_below="@+id/txt_total_money_wallet"
-        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_30sdp"
-        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:background="@drawable/background_edittext"
         android:orientation="horizontal"
         android:weightSum="10">
@@ -54,7 +58,8 @@
             android:layout_weight="8"
             android:background="@null"
             android:hint="@string/edt_hint_input_money_wallet"
-            android:inputType="numberDecimal|textMultiLine|textNoSuggestions|text|textCapSentences" />
+            android:inputType="numberDecimal|textMultiLine|textNoSuggestions|text|textCapSentences"
+            android:textColor="@color/black_text" />
 
         <ImageView
             android:layout_width="30dp"
@@ -70,8 +75,9 @@
         android:id="@+id/btn_pay_cancel_wallet"
         android:layout_width="50dp"
         android:layout_height="40dp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:layout_toRightOf="@+id/txt_pay_ewallet"
-        android:background="@drawable/background_rectango_stroke_routes_three"
+        android:background="@drawable/background_btn_cancel"
         android:src="@drawable/ic_clear_black_24dp" />
 
 
@@ -82,8 +88,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/_5sdp"
-        android:background="@drawable/background_rectango_stroke_routes_three"
+        android:background="@drawable/background_btn_confirm"
         android:gravity="center"
-        android:text="@string/recharge_wallet" />
+        android:text="@string/recharge_wallet"
+        android:textColor="@color/white" />
 
 </RelativeLayout>

@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_main_login"
+    android:background="@drawable/background_main_app"
     android:scrollbars="none">
 
     <LinearLayout
@@ -21,15 +21,15 @@
             android:text="@string/billing_info"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="@color/white"
+            android:textColor="@color/black_text"
             android:textSize="@dimen/_20ssp"
             android:textStyle="bold" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/background_gradient_line" />
 
@@ -43,7 +43,7 @@
             android:layout_marginBottom="@dimen/_10sdp"
             android:text="@string/please_select_your_payment_option"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black_text"
             android:textSize="@dimen/_10ssp"
             android:textStyle="italic" />
 
@@ -55,19 +55,19 @@
 
         <LinearLayout
             android:id="@+id/billing_info_payment_group"
-            android:layout_width="400dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btn_pay_bycash"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_100sdp"
+                android:layout_height="@dimen/_80sdp"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_weight="1"
@@ -85,7 +85,7 @@
             <Button
                 android:id="@+id/btn_pay_bypaypal"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_100sdp"
+                android:layout_height="@dimen/_80sdp"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_weight="1"
@@ -115,7 +115,7 @@
                 android:gravity="center"
                 android:padding="@dimen/_10sdp"
                 android:text="*"
-                android:textColor="@color/white"
+                android:textColor="@color/color_btn_main"
                 android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
 
@@ -127,8 +127,8 @@
                 android:layout_weight="0.15"
                 android:hint="@string/trip_remark"
                 android:padding="@dimen/_10sdp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColor="@color/black_text"
+                android:textColorHint="@color/black_text"
                 android:textSize="@dimen/_12ssp"
                 android:textStyle="bold" />
 
@@ -137,23 +137,23 @@
         <LinearLayout
             android:id="@+id/billing_info_request_group"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_100sdp"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_billing_info_confirm"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_weight="1"
-                android:background="@drawable/background_oval_stroke"
+                android:background="@drawable/background_btn_confirm"
                 android:gravity="center"
                 android:padding="@dimen/_10sdp"
                 android:text="@string/bt_confirm"
@@ -164,11 +164,12 @@
             <TextView
                 android:id="@+id/tv_billing_info_deny"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_weight="1"
-                android:background="@drawable/background_oval_stroke"
+                android:background="@drawable/background_rectango_gradient"
                 android:gravity="center"
                 android:padding="@dimen/_10sdp"
                 android:text="@string/txt_cancel"

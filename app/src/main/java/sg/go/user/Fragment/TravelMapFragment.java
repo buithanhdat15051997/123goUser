@@ -142,6 +142,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
     private ImageView pin_marker;
     RelativeLayout stopLay;
     TextView addStop, editDestination, optionsLine, line;
+    ImageView img_confrim_cancel_booking,img_no_cancel_booking;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -159,6 +160,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         driver_mobile_number = (TextView) mViewRoot.findViewById(R.id.driver_mobile_number);
         address_title = (TextView) mViewRoot.findViewById(R.id.address_title);
         tv_driver_status = (TextView) mViewRoot.findViewById(R.id.tv_driver_status);
+
         /*       sosCall = (ImageView) mViewRoot.findViewById(R.id.sosCall);
         sosCall.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -218,32 +220,60 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         cancel_trip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final iOSDialog cancelDialog = new iOSDialog(activity);
+                Log.d("cancelTrip","aaaaa");
 
-                cancelDialog.setTitle(getResources().getString(R.string.cancel_ride));
-                cancelDialog.setSubtitle(getResources().getString(R.string.cancel_txt));
+                final Dialog dialogcancel = new Dialog(activity);
 
-                cancelDialog.setNegativeLabel(getResources().getString(R.string.txt_no));
-                cancelDialog.setPositiveLabel(getResources().getString(R.string.txt_yes));
-                cancelDialog.setBoldPositiveLabel(false);
+                dialogcancel.setContentView(R.layout.dialog_cancel_booking);
 
-                cancelDialog.setNegativeListener(new View.OnClickListener() {
+                img_confrim_cancel_booking = dialogcancel.findViewById(R.id.img_confrim_cancel_booking);
+                img_no_cancel_booking=  dialogcancel.findViewById(R.id.img_no_cancel_booking);
+
+                dialogcancel.show();
+
+                img_confrim_cancel_booking.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        cancelDialog.dismiss();
-                    }
-                });
 
-                cancelDialog.setPositiveListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        // cancelRide();
+                        Log.d("cancelTrip","Vao Day");
                         getCancelRideReasonList();
                         stopCheckingforstatus();
-                        cancelDialog.dismiss();
+                        dialogcancel.dismiss();
                     }
                 });
-                cancelDialog.show();
+
+                img_no_cancel_booking.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialogcancel.dismiss();
+                    }
+                });
+//                final iOSDialog cancelDialog = new iOSDialog(activity);
+//
+//                cancelDialog.setTitle(getResources().getString(R.string.cancel_ride));
+//                cancelDialog.setSubtitle(getResources().getString(R.string.cancel_txt));
+//
+//                cancelDialog.setNegativeLabel(getResources().getString(R.string.txt_no));
+//                cancelDialog.setPositiveLabel(getResources().getString(R.string.txt_yes));
+//                cancelDialog.setBoldPositiveLabel(false);
+//
+//                cancelDialog.setNegativeListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        cancelDialog.dismiss();
+//                    }
+//                });
+//
+//                cancelDialog.setPositiveListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        // cancelRide();
+//                        getCancelRideReasonList();
+//                        stopCheckingforstatus();
+//                        cancelDialog.dismiss();
+//                    }
+//                });
+//                cancelDialog.show();
             }
         });
 
@@ -775,7 +805,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         cancelReasonLst = new ArrayList<CancelReason>();
 
         mPathPolygonPoints = new ArrayList<LatLng>();
-        mMarkerIcon = BitmapFactory.decodeResource(getResources(), R.drawable.ambulance_car);
+        mMarkerIcon = BitmapFactory.decodeResource(getResources(), R.drawable.carambulance);
 
         try {
             mSocket = IO.socket(Const.ServiceType.SOCKET_URL);

@@ -43,7 +43,7 @@
     <string name="txt_driver">Driver</string>
     <string name="total_fare">TOTAL FARE</string>
     <string name="trip_summary">TRIP SUMMARY</string>
-    <string name="rate_ride">RATE YOUR RIDE</string>
+    <string name="rate_ride">Rate your riding experience?</string>
 
     <string name="recharge_wallet">Recharge To Wallet</string>
 
@@ -254,7 +254,7 @@
     <string name="txt_done">Done</string>
     <string name="txt_select_payment_note">Tap any button below to change option</string>
     <string name="txt_select_payment_note2">Please use this screen, to toggle back to CC payment.</string>
-    <string name="txt_next">Select Type Car</string>
+    <string name="txt_next">Car Picking</string>
     <string name="txt_confirm_phone">Confirm phone number</string>
     <string name="txt_choose_account">Choose an account</string>
     <string name="txt_fb">Facebook</string>
@@ -356,11 +356,11 @@
     <string name="another_ambulance_operator">Choose another ambulance operator here!</string>
     <string name="txt_hourly_booking">Rent by hour</string>
 
-    <string name="ferry_terminals">" Distance: "</string>
+    <string name="ferry_terminals">" Trip Distance:  "</string>
 
     <string name="oxygen_tank">" Oxygen tank"</string>
     <string name="trips">" Trips"</string>
-    <string name="staircase_less_80">Total time: </string>
+    <string name="staircase_less_80">" Trip Duration:  "</string>
     <string name="history_payment">" History Payment "</string>
     <string name="base_price">" Base price"</string>
     <string name="extra_time_price">" Extra time price "</string>
@@ -447,5 +447,8 @@
     <string name="name_step_frag_three">24/7 Services</string>
     <string name="body_text_step_wellcome">The first mate and his Skipper too will do their very comfortable in their tropic island nesb</string>
     <string name="title_fragment_account">Account</string>
+    <string name="txt_bill_detail">Bill Detail</string>
+    <string name="txt_total_pay">Total Pay</string>
+    <string name="txt_title_rating">Ratings</string>
 </resources>
 

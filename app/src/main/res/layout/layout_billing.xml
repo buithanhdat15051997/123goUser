@@ -1,469 +1,508 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+<TextView
+    android:id="@+id/txt_billdetail_billinginfo"
+    android:text="@string/txt_total_pay"
+    android:gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/_30sdp"
+    android:textSize="@dimen/_18sdp"
+    android:textColor="@color/black_text"
+    android:layout_marginStart="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginEnd="@dimen/_5sdp"
+    android:layout_marginBottom="@dimen/_10sdp"
+    />
     <TextView
+        android:layout_toRightOf="@+id/txt_billdetail_billinginfo"
         android:id="@+id/tv_billing_info_total_price"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_30sdp"
         android:layout_gravity="center"
-        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_100sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_5sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/background_rectango_stroke_blue"
         android:gravity="center"
-        android:text="$0"
+        android:text="S$0"
         android:textAlignment="center"
-        android:textColor="@color/lightblue700"
+        android:textColor="@color/color_btn_main"
         android:textSize="@dimen/_18ssp"
         android:textStyle="bold" />
 
-    <!--A and E group-->
-    <LinearLayout
-        android:visibility="gone"
-        android:id="@+id/tv_billing_info_a_and_e_group"
+    <TextView
+        android:text="@string/txt_bill_detail"
+        android:textColor="@color/black_text"
+        android:textSize="@dimen/_12sdp"
+        android:layout_below="@+id/tv_billing_info_total_price"
+        android:id="@+id/txt_show_bill_detail"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_below="@+id/txt_show_bill_detail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="@dimen/_5sdp"
-        android:weightSum="1">
-
-        <TextView
-            android:id="@+id/tv_billing_info_a_and_e_text"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/background_gradient_line"
+/>
+    <!--    &lt;!&ndash;A and E group&ndash;&gt;
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/tv_billing_info_a_and_e_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/a_and_e"
-            android:textColor="@color/lightblueA700"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
-            android:textAlignment="center"
-            android:layout_weight="0.35"/>
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/_5sdp"
+            android:weightSum="1">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@drawable/background_gradient_line"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_weight="0.25"/>
+            <TextView
+                android:id="@+id/tv_billing_info_a_and_e_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/a_and_e"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="italic"
+                android:textAlignment="center"
+                android:layout_weight="0.35"/>
 
-        <TextView
-            android:id="@+id/tv_billing_info_a_and_e_value"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"
+                android:background="@drawable/background_gradient_line"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_weight="0.25"/>
+
+            <TextView
+                android:id="@+id/tv_billing_info_a_and_e_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="$ 0"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="italic"
+                android:textAlignment="center"
+                android:layout_weight="0.4"/>
+
+
+        </LinearLayout>
+
+        &lt;!&ndash;IMH group&ndash;&gt;
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/tv_billing_info_imh_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="$ 0"
-            android:textColor="@color/lightblueA700"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
-            android:textAlignment="center"
-            android:layout_weight="0.4"/>
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/_5sdp"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/tv_billing_info_imh_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/imh"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="italic"
+                android:textAlignment="center"
+                android:layout_weight="0.35"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"
+                android:background="@drawable/background_gradient_line"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_weight="0.25"/>
+
+            <TextView
+                android:id="@+id/tv_billing_info_imh_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="$ 0"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="italic"
+                android:textAlignment="center"
+                android:layout_weight="0.4"/>
 
 
-    </LinearLayout>
+        </LinearLayout>
 
-    <!--IMH group-->
+        &lt;!&ndash;Ferry Terminals group&ndash;&gt;
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/tv_billing_info_ferry_terminals_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/_5sdp"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/tv_billing_info_ferry_terminals_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ferry_terminals"
+                android:textColor="@color/lightblueA700"
+                android:maxLines="2"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="italic"
+                android:textAlignment="center"
+                android:layout_weight="0.35"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"
+                android:background="@drawable/background_gradient_line"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_weight="0.25"/>
+
+      &lt;!&ndash;      <TextView
+                android:id="@+id/tv_billing_info_ferry_terminals_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="$ 0"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="italic"
+                android:textAlignment="center"
+                android:layout_weight="0.4"/>&ndash;&gt;
+
+
+        </LinearLayout>
+
+        &lt;!&ndash;Staircase group&ndash;&gt;
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/tv_billing_info_staircase_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/_5sdp"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/tv_billing_info_staircase_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/staircase_less_80"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="italic"
+                android:textAlignment="center"
+                android:layout_weight="0.35"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"
+                android:background="@drawable/background_gradient_line"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_weight="0.25"/>
+
+    &lt;!&ndash;        <TextView
+                android:id="@+id/tv_billing_info_staircase_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="$ 0"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="italic"
+                android:textAlignment="center"
+                android:layout_weight="0.4"/>&ndash;&gt;
+
+
+        </LinearLayout>-->
     <LinearLayout
-        android:visibility="gone"
-        android:id="@+id/tv_billing_info_imh_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="@dimen/_5sdp"
-        android:weightSum="1">
-
-        <TextView
-            android:id="@+id/tv_billing_info_imh_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/imh"
-            android:textColor="@color/lightblueA700"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
-            android:textAlignment="center"
-            android:layout_weight="0.35"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@drawable/background_gradient_line"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_weight="0.25"/>
-
-        <TextView
-            android:id="@+id/tv_billing_info_imh_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="$ 0"
-            android:textColor="@color/lightblueA700"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
-            android:textAlignment="center"
-            android:layout_weight="0.4"/>
-
-
-    </LinearLayout>
-
-    <!--Ferry Terminals group-->
-    <LinearLayout
-        android:visibility="gone"
-        android:id="@+id/tv_billing_info_ferry_terminals_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="@dimen/_5sdp"
-        android:weightSum="1">
-
-        <TextView
-            android:id="@+id/tv_billing_info_ferry_terminals_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/ferry_terminals"
-            android:textColor="@color/lightblueA700"
-            android:maxLines="2"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
-            android:textAlignment="center"
-            android:layout_weight="0.35"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@drawable/background_gradient_line"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_weight="0.25"/>
-
-  <!--      <TextView
-            android:id="@+id/tv_billing_info_ferry_terminals_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="$ 0"
-            android:textColor="@color/lightblueA700"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
-            android:textAlignment="center"
-            android:layout_weight="0.4"/>-->
-
-
-    </LinearLayout>
-
-    <!--Staircase group-->
-    <LinearLayout
-        android:visibility="gone"
-        android:id="@+id/tv_billing_info_staircase_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="@dimen/_5sdp"
-        android:weightSum="1">
-
-        <TextView
-            android:id="@+id/tv_billing_info_staircase_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/staircase_less_80"
-            android:textColor="@color/lightblueA700"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
-            android:textAlignment="center"
-            android:layout_weight="0.35"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@drawable/background_gradient_line"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_weight="0.25"/>
-
-<!--        <TextView
-            android:id="@+id/tv_billing_info_staircase_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="$ 0"
-            android:textColor="@color/lightblueA700"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
-            android:textAlignment="center"
-            android:layout_weight="0.4"/>-->
-
-
-    </LinearLayout>
-    <LinearLayout
-
         android:id="@+id/tv_billing_info_kilo_distance1"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/_100sdp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_billing_info_total_price"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="@dimen/_5sdp"
-        android:weightSum="1">
+        android:orientation="vertical"
+        android:padding="@dimen/_5sdp">
 
         <TextView
             android:id="@+id/tv_billing_info_kilo_distance2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ferry_terminals"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
             android:textAlignment="center"
-            android:layout_weight="0.35"/>
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="italic" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@drawable/background_gradient_line"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_weight="0.25"/>
+        <!--     <View
+                 android:layout_width="match_parent"
+                 android:layout_height="@dimen/_2sdp"
+                 android:background="@drawable/background_gradient_line"
+                 android:layout_gravity="center_vertical"
+                 android:layout_marginEnd="@dimen/_5sdp"
+                 android:layout_marginStart="@dimen/_5sdp"
+                 android:layout_weight="0.25"/>-->
 
         <TextView
             android:id="@+id/tv_billing_info_kilo_distance3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="0 km"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
             android:textAlignment="center"
-            android:layout_weight="0.4"/>
+            android:textColor="@color/color_btn_main"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="italic" />
 
 
     </LinearLayout>
 
 
     <LinearLayout
-
         android:id="@+id/tv_billing_info_kilo_dola"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/_100sdp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="@dimen/_5sdp"
-        android:weightSum="1">
+        android:layout_below="@+id/tv_billing_info_total_price"
+        android:layout_marginStart="@dimen/_100sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_toRightOf="@+id/tv_billing_info_kilo_distance1"
+        android:orientation="vertical"
+        android:padding="@dimen/_5sdp">
 
         <TextView
             android:id="@+id/tv_billing_info_kilo_dola1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/staircase_less_80"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
             android:textAlignment="center"
-            android:layout_weight="0.35"/>
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="italic" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@drawable/background_gradient_line"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_weight="0.25"/>
+        <!--     <View
+                 android:layout_width="match_parent"
+                 android:layout_height="@dimen/_2sdp"
+                 android:background="@drawable/background_gradient_line"
+                 android:layout_gravity="center_vertical"
+                 android:layout_marginEnd="@dimen/_5sdp"
+                 android:layout_marginStart="@dimen/_5sdp"
+                 android:layout_weight="0.25"/>-->
 
         <TextView
             android:id="@+id/tv_billing_info_kilo_dola2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="0.4"
             android:text="$ 0"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
             android:textAlignment="center"
-            android:layout_weight="0.4"/>
+            android:textColor="@color/color_btn_main"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="italic" />
 
 
     </LinearLayout>
 
     <!--Tarmac group-->
     <LinearLayout
-        android:visibility="visible"
         android:id="@+id/billing_info_tarmac_group"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/_100sdp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_below="@+id/tv_billing_info_kilo_dola"
         android:gravity="center"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:padding="@dimen/_5sdp"
-        android:weightSum="1">
+        android:visibility="visible"
+        >
 
         <TextView
             android:id="@+id/tv_billing_info_name_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="0.35"
             android:text="@string/airport_tarmac"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
             android:textAlignment="center"
-            android:layout_weight="0.35"/>
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="italic" />
+        <!--
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@drawable/background_gradient_line"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_weight="0.25"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2sdp"
+                    android:background="@drawable/background_gradient_line"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_weight="0.25"/>
+        -->
 
         <TextView
             android:id="@+id/tv_billing_info_name_typeCar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="0.4"
             android:text="Car"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
             android:textAlignment="center"
-            android:layout_weight="0.4"/>
+            android:textColor="@color/color_btn_main"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="italic" />
 
 
     </LinearLayout>
 
     <!--Weight group-->
-<!--    <LinearLayout
-        android:visibility="gone"
-        android:id="@+id/billing_info_weight_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="@dimen/_5sdp"
-        android:weightSum="1">
-
-        <TextView
-            android:id="@+id/tv_billing_info_weight_text"
+    <!--    <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/billing_info_weight_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/weight"
-            android:textColor="@color/lightblueA700"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
-            android:textAlignment="center"
-            android:layout_weight="0.35"/>
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:weightSum="1">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@drawable/background_gradient_line"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_weight="0.25"/>
+            <TextView
+                android:id="@+id/tv_billing_info_weight_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/weight"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="italic"
+                android:textAlignment="center"
+                android:layout_weight="0.35"/>
 
-        <TextView
-            android:id="@+id/tv_billing_info_weight_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="$ 0"
-            android:textColor="@color/lightblueA700"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
-            android:textAlignment="center"
-            android:layout_weight="0.4"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"
+                android:background="@drawable/background_gradient_line"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_weight="0.25"/>
+
+            <TextView
+                android:id="@+id/tv_billing_info_weight_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="$ 0"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="italic"
+                android:textAlignment="center"
+                android:layout_weight="0.4"/>
 
 
-    </LinearLayout>-->
+        </LinearLayout>-->
 
     <!--Oxygen group-->
     <LinearLayout
-        android:visibility="visible"
         android:id="@+id/billing_info_oxygen_tank_group"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/_100sdp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:layout_below="@+id/tv_billing_info_kilo_dola"
+        android:layout_marginStart="@dimen/_100sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_toRightOf="@+id/billing_info_tarmac_group"
+        android:orientation="vertical"
         android:padding="@dimen/_5sdp"
-        android:weightSum="1">
+        android:visibility="visible"
+       >
 
         <TextView
             android:id="@+id/tv_billing_info_img_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/oxygen_liter"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
-            android:textAlignment="center"
-            android:layout_weight="0.35"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@drawable/background_gradient_line"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_weight="0.25"/>
+            android:text="@string/oxygen_liter"
+            android:textAlignment="center"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="italic" />
+
+        <!--     <View
+                 android:layout_width="match_parent"
+                 android:layout_height="@dimen/_2sdp"
+                 android:background="@drawable/background_gradient_line"
+                 android:layout_gravity="center_vertical"
+                 android:layout_marginEnd="@dimen/_5sdp"
+                 android:layout_marginStart="@dimen/_5sdp"
+                 android:layout_weight="0.25"/>-->
 
         <ImageView
             android:id="@+id/img_billing_info_img_typeCar"
-            android:layout_width="match_parent"
+            android:layout_width="100dp"
+            android:layout_gravity="center"
             android:layout_height="50dp"
             android:text="$ 0"
-            android:textColor="@color/lightblueA700"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
             android:textAlignment="center"
-            android:layout_weight="0.4"/>
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="italic" />
     </LinearLayout>
 
     <!--Case type group-->
-    <LinearLayout
-        android:visibility="gone"
-        android:id="@+id/billing_info_pickup_type_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/_5sdp"
-        android:gravity="center"
-        android:weightSum="1">
-        <TextView
-            android:id="@+id/tv_billing_info_pickup_type_text"
+    <!--    <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/billing_info_pickup_type_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/case_type"
-            android:textColor="@color/lightblueA700"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
-            android:textAlignment="center"
-            android:layout_weight="0.35"/>
+            android:orientation="horizontal"
+            android:padding="@dimen/_5sdp"
+            android:gravity="center"
+            android:weightSum="1">
+            <TextView
+                android:id="@+id/tv_billing_info_pickup_type_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/case_type"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="italic"
+                android:textAlignment="center"
+                android:layout_weight="0.35"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@drawable/background_gradient_line"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_weight="0.25"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"
+                android:background="@drawable/background_gradient_line"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_weight="0.25"/>
 
-        <TextView
-            android:id="@+id/tv_billing_info_pickup_type_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="$ 0"
-            android:textColor="@color/lightblueA700"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="italic"
-            android:textAlignment="center"
-            android:layout_weight="0.4"/>
+            <TextView
+                android:id="@+id/tv_billing_info_pickup_type_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="$ 0"
+                android:textColor="@color/lightblueA700"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="italic"
+                android:textAlignment="center"
+                android:layout_weight="0.4"/>
 
-    </LinearLayout>
+        </LinearLayout>-->
 
-</LinearLayout>
+</RelativeLayout>

@@ -76,13 +76,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_weight="0.5"
-                android:background="@color/color_btn_main"
+                android:background="@drawable/background_btn_confirm"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"
                 android:text="@string/txt_yes"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_14sdp" />
 
             <TextView
                 android:id="@+id/btn_logout_no"
@@ -90,7 +90,7 @@
                 android:layout_height="@dimen/_40sdp"
                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_weight="0.5"
-                android:background="@color/color_red_main"
+                android:background="@drawable/background_btn_cancel"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"
                 android:text="@string/txt_no"

@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1dccc8"
+    android:background="@drawable/background_main_app"
     android:orientation="vertical">
 
     <RelativeLayout
-        android:background="@drawable/background_main_app"
         android:layout_weight="1"
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -22,7 +21,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:padding="@dimen/_5sdp"
-            android:tint="@color/lightblueA700"
+            android:tint="@color/black_text"
             app:srcCompat="@drawable/close" />
 
         <ImageView
@@ -233,31 +232,34 @@
                 android:textStyle="bold|italic"/>
 
         </LinearLayout>
+        <TextView
+            android:background="@color/color_btn_main"
+            android:id="@+id/btn_confirm_otp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_gravity="end"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/txt_proceed"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16ssp" />
     </LinearLayout>
 
-    <LinearLayout
+ <!--   <LinearLayout
         android:id="@+id/otp_conf_lay"
         android:layout_width="match_parent"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_4sdp"
-        android:layout_marginStart="@dimen/_4sdp"
+
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/color_btn_main">
+        android:background="@color/color_background_main"
+       >
 
 
-            <TextView
-                android:id="@+id/btn_confirm_otp"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_gravity="end"
-                android:background="@null"
-                android:gravity="center"
-                android:padding="@dimen/_5sdp"
-                android:text="@string/txt_proceed"
-                android:textAllCaps="true"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_16ssp" />
-    </LinearLayout>
+
+    </LinearLayout>-->
 
 </LinearLayout>

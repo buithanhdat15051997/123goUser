@@ -21,7 +21,7 @@
             android:layout_gravity="center"
             android:layout_centerVertical="true"
             android:scaleType="centerCrop"
-            android:background="@drawable/ic_help_profile"/>
+           />
 
         <TextView
             android:id="@+id/tv_user_settings_title"
@@ -47,4 +47,5 @@
 
 
     </LinearLayout>-->
+  <!--  android:background="@drawable/ic_help_profile"-->
 </LinearLayout>

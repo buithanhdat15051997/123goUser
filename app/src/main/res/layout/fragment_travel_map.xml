@@ -58,8 +58,8 @@
             android:text="Driver status"
             android:gravity="center"
             android:padding="@dimen/_5sdp"
-            android:textColor="@color/lightblueA700"
-            android:textSize="@dimen/_12ssp" />
+            android:textColor="@color/color_btn_main"
+            android:textSize="@dimen/_14ssp" />
 
         <TextView
             android:id="@+id/address_title"
@@ -84,7 +84,7 @@
             android:singleLine="true"
             android:text="@string/txt_current_location"
             android:textColor="@color/deeporange600"
-            android:textSize="@dimen/_12ssp" />
+            android:textSize="@dimen/_10ssp" />
 
         <RelativeLayout
             android:id="@+id/stopLay"
@@ -174,7 +174,7 @@
                     android:layout_height="wrap_content"
                     android:text="Cristiano Ronaldo"
                     android:textAllCaps="true"
-                    android:textColor="@color/lightblueA700"
+                    android:textColor="@color/black_text"
                     android:textSize="@dimen/_13ssp" />
 
                 <TextView
@@ -183,7 +183,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:text="PGL 777777"
-                    android:textColor="@color/lightblueA700"
+                    android:textColor="@color/black_text"
                     android:textSize="@dimen/_11ssp" />
 
                 <TextView
@@ -192,7 +192,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="Bugati Chirion"
-                    android:textColor="@color/lightblueA700"
+                    android:textColor="@color/black_text"
                     android:textSize="@dimen/_11ssp" />
 
                 <TextView

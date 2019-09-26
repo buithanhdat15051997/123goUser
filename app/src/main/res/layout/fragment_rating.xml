@@ -48,7 +48,7 @@
                         android:layout_marginRight="@dimen/_10sdp"
                         android:text="@string/total_fare"
                         android:textSize="@dimen/_16ssp"
-                        android:textColor="@color/lightblueA700"/>
+                        android:textColor="@color/black_text"/>
 
                     <View
                         android:layout_width="@dimen/_80sdp"
@@ -98,7 +98,7 @@
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_marginRight="@dimen/_10sdp"
                         android:text="@string/trip_summary"
-                        android:textColor="@color/lightblueA700"
+                        android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"/>
 
                     <View
@@ -106,6 +106,8 @@
                         android:layout_height="@dimen/_2sdp"
                         android:background="@drawable/background_gradient_line" />
                 </LinearLayout>
+
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -169,7 +171,7 @@
                             android:layout_gravity="center"
                             android:padding="@dimen/_5sdp"
                             android:text="00.00"
-                            android:textColor="@color/lightblueA700"
+                            android:textColor="@color/color_btn_main"
                             android:textSize="@dimen/_12sdp" />
                     </LinearLayout>
 
@@ -194,7 +196,7 @@
                             android:layout_gravity="center"
                             android:padding="@dimen/_5sdp"
                             android:text="00.00"
-                            android:textColor="@color/lightblueA700"
+                            android:textColor="@color/color_btn_main"
                             android:textSize="@dimen/_12sdp" />
 
                     </LinearLayout>
@@ -275,19 +277,47 @@
                 android:gravity="center"
                 android:background="@color/white"
                 android:orientation="vertical">
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_gravity="center"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_2sdp"
+                        android:background="@drawable/background_gradient_line" />
+                    <TextView
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:textColor="@color/black_text"
+                        android:textSize="@dimen/_14ssp"
+                        android:text="@string/txt_title_rating"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <View
+                        android:layout_gravity="center"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_2sdp"
+                        android:background="@drawable/background_gradient_line" />
+
+                </LinearLayout>
 
                 <LinearLayout
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_30sdp"
                     android:layout_marginRight="@dimen/_30sdp"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
-                    <View
+             <!--       <View
                         android:layout_width="@dimen/_60sdp"
                         android:layout_height="@dimen/_2sdp"
-                        android:background="@drawable/background_gradient_line" />
+                        android:background="@drawable/background_gradient_line" />-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -295,13 +325,24 @@
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_marginRight="@dimen/_10sdp"
                         android:text="@string/rate_ride"
-                        android:textColor="@color/lightblueA700"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_btn_main"
                         android:textSize="@dimen/_14sdp" />
+                    <TextView
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="@dimen/_11sdp"
+                        android:text="You feedback will help to improve our driving experience"
+                        android:textColor="@color/gray600"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
-                    <View
+                 <!--   <View
                         android:layout_width="@dimen/_60sdp"
                         android:layout_height="@dimen/_2sdp"
-                        android:background="@drawable/background_gradient_line"/>
+                        android:background="@drawable/background_gradient_line"/>-->
                 </LinearLayout>
 
                 <com.aurelhubert.simpleratingbar.SimpleRatingBar
@@ -310,6 +351,9 @@
                     android:layout_height="@dimen/_20sdp"
                     android:layout_margin="@dimen/_10sdp"
                     app:drawablePadding="@dimen/_10sdp"
+                    app:srb_fillColor="@color/color_btn_main"
+                    app:srb_backgroundColor="@color/white"
+                    app:srb_borderColor="@color/color_btn_main"
                     app:maxRating="5"
                     app:rating="3"/>
 
@@ -326,7 +370,7 @@
         android:layout_height="@dimen/_40sdp"
         android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/_10sdp"
-        android:background="@color/lightblue100"
+        android:background="@color/color_btn_main"
         android:enabled="false"
         android:gravity="center"
         android:text="@string/txt_sub_rating"

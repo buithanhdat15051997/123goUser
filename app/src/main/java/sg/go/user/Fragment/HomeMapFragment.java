@@ -1501,7 +1501,7 @@ public class HomeMapFragment extends BaseFragment implements LocationHelper.OnLo
        // final TextView tv_billing_info_tarmac_value = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_tarmac_value);
        // final TextView tv_billing_info_weight_value = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_weight_value);
        // final TextView tv_billing_info_oxygen_tank_value = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_oxygen_tank_value);
-        final TextView tv_billing_info_pickup_type_value = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_pickup_type_value);
+      //  final TextView tv_billing_info_pickup_type_value = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_pickup_type_value);
         final TextView tv_billing_info_confirm = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_confirm);
         final TextView tv_billing_info_deny = (TextView) dialogBillingInfo.findViewById(R.id.tv_billing_info_deny);
         final LinearLayout billing_info_payment_group = (LinearLayout) dialogBillingInfo.findViewById(R.id.billing_info_payment_group);
@@ -1514,7 +1514,7 @@ public class HomeMapFragment extends BaseFragment implements LocationHelper.OnLo
        // tv_billing_info_tarmac_value.setText(currency + " " + tarmac);
        // tv_billing_info_weight_value.setText(currency + " " + weight);
        // tv_billing_info_oxygen_tank_value.setText(currency + " " + oxygen);
-        tv_billing_info_pickup_type_value.setText(currency + " " + caseType);
+       // tv_billing_info_pickup_type_value.setText(currency + " " + caseType);
 
         tv_billing_info_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
