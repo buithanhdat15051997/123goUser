@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@color/color_background_main"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background_main">
 
     <RelativeLayout
         android:id="@+id/actionbar_lay"
@@ -14,15 +14,15 @@
             android:id="@+id/toolbar_profile"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/color_background_main"
             android:layout_centerHorizontal="true"
+            android:background="@color/color_btn_main"
             android:gravity="center">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_marginStart="@dimen/_10sdp">
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp">
 
                 <ImageButton
                     android:id="@+id/profile_back"
@@ -35,7 +35,6 @@
                     app:srcCompat="@drawable/ic_back_white" />
 
 
-
                 <TextView
                     android:id="@+id/tv_edit_profile"
                     android:layout_width="wrap_content"
@@ -45,9 +44,9 @@
                     android:gravity="end"
                     android:paddingRight="@dimen/_5sdp"
                     android:text="@string/btn_edit"
-                    android:textColor="@color/black_text"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/_16ssp"
-                    android:textStyle="bold|italic"/>
+                    android:textStyle="bold|italic" />
 
             </RelativeLayout>
 
@@ -62,32 +61,56 @@
         android:scrollbars="none">
 
         <LinearLayout
-            android:background="@drawable/background_main_app"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:background="@drawable/background_main_app"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:id="@+id/profile_img_lay"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_100sdp"
                 android:layout_below="@+id/actionbar_lay"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_marginBottom="@dimen/_20sdp" >
+                android:background="@color/color_background_main">
 
-                <ImageView
-                    android:id="@+id/img_profile_image"
-                    android:layout_width="@dimen/_200sdp"
-                    android:layout_height="@dimen/_200sdp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:text="@string/txt_name_profilepicture"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="bold" />
+
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerInParent="true"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/defult_user"
-                    android:padding="@dimen/_3sdp"
-                    android:background="@drawable/background_rectango_gradient"/>
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:innerRadius="0dp"
+                    android:shape="ring"
+                    app:cardCornerRadius="@dimen/_30sdp">
+
+                    <ImageView
+                        android:id="@+id/img_profile_image"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        android:padding="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/defult_user" />
+
+                </android.support.v7.widget.CardView>
 
             </RelativeLayout>
 
@@ -100,33 +123,48 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <EditText
-                    android:id="@+id/edt_fullname"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_50sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_toLeftOf="@+id/edt_fullname"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:text="@string/txt_name_profile"
+                    android:textColor="@color/black_text"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="italic" />
+
+                <EditText
+                    android:id="@+id/edt_fullname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:background="@drawable/background_rectango_gradient"
+                    android:background="@color/white"
                     android:gravity="center"
                     android:hint="@string/patient_name"
                     android:paddingStart="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_10sdp"
                     android:singleLine="true"
-                    android:textColor="@color/black_text"
-                    android:textColorHint="@color/black_text"
-                    android:textSize="@dimen/_20ssp" />
+                    android:textColor="@color/color_btn_main"
+                    android:textColorHint="@color/color_btn_main"
+                    android:textSize="@dimen/_16ssp" />
 
                 <LinearLayout
                     android:id="@+id/family_member_name_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/edt_fullname"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:gravity="center"
+                    android:orientation="horizontal"
                     android:weightSum="1">
 
                     <TextView
@@ -135,20 +173,20 @@
                         android:layout_height="@dimen/_30sdp"
                         android:layout_weight="0.7"
                         android:gravity="center"
-                        android:text="@string/family_member_name"
+                        android:maxLines="2"
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
-                        android:maxLines="2"
+                        android:text="@string/family_member_name"
                         android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
-                        android:textStyle="italic|bold"/>
+                        android:textStyle="italic|bold" />
 
                     <EditText
                         android:id="@+id/edt_family_member_name"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
-                        android:layout_weight="0.3"
                         android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_weight="0.3"
                         android:background="@drawable/background_oval_stroke"
                         android:hint="@string/family_member_name"
                         android:paddingStart="@dimen/_10sdp"
@@ -165,11 +203,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/family_member_name_group"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:gravity="center"
+                    android:orientation="horizontal"
                     android:weightSum="1">
 
                     <TextView
@@ -178,20 +216,20 @@
                         android:layout_height="@dimen/_30sdp"
                         android:layout_weight="0.7"
                         android:gravity="center"
-                        android:text="@string/mobile"
+                        android:maxLines="2"
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
-                        android:maxLines="2"
+                        android:text="@string/mobile"
                         android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
-                        android:textStyle="italic|bold"/>
+                        android:textStyle="italic|bold" />
 
                     <EditText
                         android:id="@+id/edt_patient_mobile"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
-                        android:layout_weight="0.3"
                         android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_weight="0.3"
                         android:background="@drawable/background_oval_stroke"
                         android:hint="@string/mobile"
                         android:inputType="phone"
@@ -209,11 +247,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/mobile_group"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:gravity="center"
+                    android:orientation="horizontal"
                     android:weightSum="1">
 
                     <TextView
@@ -222,20 +260,20 @@
                         android:layout_height="@dimen/_30sdp"
                         android:layout_weight="0.7"
                         android:gravity="center"
-                        android:text="@string/email_address"
+                        android:maxLines="2"
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
-                        android:maxLines="2"
+                        android:text="@string/email_address"
                         android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
-                        android:textStyle="italic|bold"/>
+                        android:textStyle="italic|bold" />
 
                     <EditText
                         android:id="@+id/edt_email"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
-                        android:layout_weight="0.3"
                         android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_weight="0.3"
                         android:background="@drawable/background_oval_stroke"
                         android:hint="@string/email_address"
                         android:inputType="textEmailAddress"
@@ -259,26 +297,26 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:gravity="center"
+                        android:orientation="horizontal"
                         android:weightSum="1">
 
                         <TextView
                             android:id="@+id/tv_home_number"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_30sdp"
-                            android:gravity="center"
                             android:layout_weight="0.7"
-                            android:text="@string/home_number"
+                            android:gravity="center"
+                            android:maxLines="2"
                             android:paddingStart="@dimen/_10sdp"
                             android:paddingEnd="@dimen/_10sdp"
-                            android:maxLines="2"
+                            android:text="@string/home_number"
                             android:textColor="@color/black_text"
-                            android:textStyle="bold|italic"
-                            android:textSize="@dimen/_12ssp" />
+                            android:textSize="@dimen/_12ssp"
+                            android:textStyle="bold|italic" />
 
                         <EditText
                             android:id="@+id/edt_home_number"
@@ -300,26 +338,26 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:gravity="center"
+                        android:orientation="horizontal"
                         android:weightSum="1">
 
                         <TextView
                             android:id="@+id/tv_block_number"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_30sdp"
-                            android:gravity="center"
                             android:layout_weight="0.7"
+                            android:gravity="center"
+                            android:maxLines="2"
                             android:paddingStart="@dimen/_10sdp"
                             android:paddingEnd="@dimen/_10sdp"
-                            android:maxLines="2"
                             android:text="@string/block_number"
                             android:textColor="@color/black_text"
-                            android:textStyle="bold|italic"
-                            android:textSize="@dimen/_12ssp" />
+                            android:textSize="@dimen/_12ssp"
+                            android:textStyle="bold|italic" />
 
                         <EditText
                             android:id="@+id/edt_block_number"
@@ -339,30 +377,29 @@
                     </LinearLayout>
 
 
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:gravity="center"
+                        android:orientation="horizontal"
                         android:weightSum="1">
 
                         <TextView
                             android:id="@+id/tv_unit_number"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_30sdp"
-                            android:gravity="center"
                             android:layout_weight="0.7"
-                            android:text="@string/unit_number"
+                            android:gravity="center"
+                            android:maxLines="2"
                             android:paddingStart="@dimen/_10sdp"
                             android:paddingEnd="@dimen/_10sdp"
-                            android:maxLines="2"
+                            android:text="@string/unit_number"
                             android:textColor="@color/black_text"
-                            android:textStyle="bold|italic"
-                            android:textSize="@dimen/_12ssp" />
+                            android:textSize="@dimen/_12ssp"
+                            android:textStyle="bold|italic" />
 
                         <EditText
                             android:id="@+id/edt_unit_number"
@@ -385,26 +422,26 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:gravity="center"
+                        android:orientation="horizontal"
                         android:weightSum="1">
 
                         <TextView
                             android:id="@+id/tv_postal"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_30sdp"
-                            android:gravity="center"
                             android:layout_weight="0.7"
-                            android:text="@string/postal"
+                            android:gravity="center"
+                            android:maxLines="2"
                             android:paddingStart="@dimen/_10sdp"
                             android:paddingEnd="@dimen/_10sdp"
-                            android:maxLines="2"
+                            android:text="@string/postal"
                             android:textColor="@color/black_text"
-                            android:textStyle="bold|italic"
-                            android:textSize="@dimen/_12ssp" />
+                            android:textSize="@dimen/_12ssp"
+                            android:textStyle="bold|italic" />
 
                         <EditText
                             android:id="@+id/edt_postal"
@@ -430,11 +467,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/group_address"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:gravity="center"
+                    android:orientation="horizontal"
                     android:weightSum="1">
 
                     <TextView
@@ -443,25 +480,25 @@
                         android:layout_height="@dimen/_30sdp"
                         android:layout_weight="0.7"
                         android:gravity="center"
-                        android:text="@string/street_name"
+                        android:maxLines="2"
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
-                        android:maxLines="2"
+                        android:text="@string/street_name"
                         android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
-                        android:textStyle="italic|bold"/>
+                        android:textStyle="italic|bold" />
 
                     <EditText
                         android:id="@+id/edt_street_name"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
-                        android:layout_weight="0.3"
                         android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_weight="0.3"
                         android:background="@drawable/background_oval_stroke"
                         android:hint="@string/street_name"
+                        android:maxLines="2"
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
-                        android:maxLines="2"
                         android:textColor="@color/black_text"
                         android:textColorHint="@color/black_text"
                         android:textSize="@dimen/_12ssp" />
@@ -473,11 +510,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/street_name_group"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:gravity="center"
+                    android:orientation="horizontal"
                     android:weightSum="1">
 
                     <TextView
@@ -486,20 +523,20 @@
                         android:layout_height="@dimen/_30sdp"
                         android:layout_weight="0.7"
                         android:gravity="center"
-                        android:text="@string/preferred_username"
+                        android:maxLines="2"
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingEnd="@dimen/_10sdp"
-                        android:maxLines="2"
+                        android:text="@string/preferred_username"
                         android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
-                        android:textStyle="italic|bold"/>
+                        android:textStyle="italic|bold" />
 
                     <EditText
                         android:id="@+id/edt_preferred_username"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
-                        android:layout_weight="0.3"
                         android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_weight="0.3"
                         android:background="@drawable/background_oval_stroke"
                         android:hint="@string/preferred_username"
                         android:paddingStart="@dimen/_10sdp"
@@ -512,15 +549,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/preferred_username_group"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
                     android:weightSum="1">
 
                     <TextView
@@ -528,15 +565,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.7"
+                        android:ellipsize="marquee"
                         android:gravity="center"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:singleLine="true"
                         android:text="@string/weight"
+                        android:textAlignment="center"
                         android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
-                        android:textStyle="italic|bold"
-                        android:singleLine="true"
-                        android:ellipsize="marquee"
-                        android:marqueeRepeatLimit="marquee_forever"
-                        android:textAlignment="center"/>
+                        android:textStyle="italic|bold" />
 
                     <EditText
                         android:id="@+id/edt_weight"
@@ -562,17 +599,17 @@
                 android:id="@+id/lay_name_second"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:padding="8dp">
 
                 <RelativeLayout
-                    android:visibility="gone"
                     android:id="@+id/checkbox_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginBottom="@dimen/_5sdp">
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:visibility="gone">
 
                     <CheckBox
                         android:id="@+id/cb_lift_landing"
@@ -580,11 +617,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
+                        android:backgroundTint="@color/lightblue700"
                         android:text="@string/lift_landing"
                         android:textColor="@color/white"
-                        android:backgroundTint="@color/lightblue700"
-                        android:textStyle="italic"
-                        android:textSize="@dimen/_12sdp"/>
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="italic" />
 
                     <CheckBox
                         android:id="@+id/cb_stairs"
@@ -593,40 +630,40 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_toEndOf="@id/cb_lift_landing"
+                        android:backgroundTint="@color/black_text"
                         android:text="@string/stair"
                         android:textColor="@color/white"
-                        android:backgroundTint="@color/black_text"
-                        android:textStyle="italic"
-                        android:textSize="@dimen/_12sdp"/>
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="italic" />
 
                     <CheckBox
                         android:id="@+id/cb_no_stairs"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_below="@id/cb_lift_landing"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:backgroundTint="@color/black_text"
                         android:text="@string/no_stair"
                         android:textColor="@color/black_text"
-                        android:backgroundTint="@color/black_text"
-                        android:textStyle="italic"
-                        android:textSize="@dimen/_12sdp"/>
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="italic" />
 
                     <CheckBox
                         android:id="@+id/cb_low_stairs"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_below="@id/cb_stairs"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_toEndOf="@id/cb_no_stairs"
+                        android:backgroundTint="@color/black_text"
                         android:text="@string/low_stair"
                         android:textColor="@color/black_text"
-                        android:backgroundTint="@color/black_text"
-                        android:textStyle="italic"
-                        android:textSize="@dimen/_12sdp"/>
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="italic" />
 
                 </RelativeLayout>
 
@@ -635,27 +672,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/checkbox_group"
-                    android:background="@drawable/background_oval_stroke"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_5sdp"/>
+                    android:background="@drawable/background_oval_stroke" />
 
                 <RelativeLayout
                     android:id="@+id/patient_condition_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_below="@id/spn_ambulance_operator"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:layout_below="@id/spn_ambulance_operator">
+                    android:gravity="center">
 
                     <LinearLayout
                         android:id="@+id/patient_condition_group_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/_5sdp"
-                        android:orientation="horizontal"
                         android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_5sdp"
                         android:weightSum="1">
 
                         <TextView
@@ -663,33 +700,33 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.5"
-                            android:text="@string/txt_patient_conditions"
-                            android:textColor="@color/black_text"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic|bold"
-                            android:singleLine="true"
                             android:ellipsize="marquee"
                             android:marqueeRepeatLimit="marquee_forever"
-                            android:textAlignment="center"/>
+                            android:singleLine="true"
+                            android:text="@string/txt_patient_conditions"
+                            android:textAlignment="center"
+                            android:textColor="@color/black_text"
+                            android:textSize="@dimen/_12ssp"
+                            android:textStyle="italic|bold" />
 
                         <Spinner
                             android:id="@+id/spn_patient_condition"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/background_oval_stroke"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
-                            android:layout_weight="0.5"/>
+                            android:layout_weight="0.5"
+                            android:background="@drawable/background_oval_stroke" />
 
                     </LinearLayout>
 
                     <RelativeLayout
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
                         android:layout_below="@id/patient_condition_group_spinner"
-                        android:gravity="center">
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:visibility="gone">
 
                         <CheckBox
                             android:id="@+id/cb_stretcher"
@@ -697,11 +734,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
+                            android:backgroundTint="@color/lightblue700"
                             android:text="@string/stretcher"
                             android:textColor="@color/white"
-                            android:backgroundTint="@color/lightblue700"
-                            android:textStyle="italic"
-                            android:textSize="@dimen/_12sdp"/>
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="italic" />
 
                         <CheckBox
                             android:id="@+id/cb_wheel_chair"
@@ -710,98 +747,98 @@
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_toEndOf="@id/cb_stretcher"
+                            android:backgroundTint="@color/lightblue700"
                             android:text="@string/wheel_chair"
                             android:textColor="@color/white"
-                            android:backgroundTint="@color/lightblue700"
-                            android:textStyle="italic"
-                            android:textSize="@dimen/_12sdp"/>
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="italic" />
 
                         <CheckBox
                             android:id="@+id/cb_oxygen"
                             android:layout_width="@dimen/_100sdp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_below="@id/cb_stretcher"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:backgroundTint="@color/black_text"
                             android:text="@string/oxygen"
                             android:textColor="@color/black_text"
-                            android:backgroundTint="@color/black_text"
-                            android:textStyle="italic"
-                            android:textSize="@dimen/_12sdp"/>
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="italic" />
 
                         <CheckBox
                             android:id="@+id/cb_escorts"
                             android:layout_width="@dimen/_100sdp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_below="@id/cb_wheel_chair"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_toEndOf="@id/cb_oxygen"
+                            android:backgroundTint="@color/black_text"
                             android:text="@string/escorts"
                             android:textColor="@color/black_text"
-                            android:backgroundTint="@color/black_text"
-                            android:textStyle="italic"
-                            android:textSize="@dimen/_12sdp"/>
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="italic" />
                     </RelativeLayout>
 
                 </RelativeLayout>
 
                 <EditText
                     android:id="@+id/edt_additional_pation_information"
-                    android:layout_below="@id/patient_condition_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_below="@id/patient_condition_group"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:paddingTop="@dimen/_5sdp"
-                    android:paddingBottom="@dimen/_5sdp"
-                    android:paddingStart="@dimen/_10sdp"
-                    android:paddingEnd="@dimen/_10sdp"
                     android:background="@drawable/background_oval_stroke"
-                    android:maxLines="3"
-                    android:singleLine="false"
                     android:gravity="start|top"
                     android:hint="@string/additional_patient_information"
-                    android:textColorHint="@color/black_text"
+                    android:maxLines="3"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:singleLine="false"
                     android:textColor="@color/black_text"
-                    android:textSize="@dimen/_12ssp"/>
+                    android:textColorHint="@color/black_text"
+                    android:textSize="@dimen/_12ssp" />
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/edt_additional_pation_information"
-                    android:weightSum="1"
                     android:gravity="center"
-                    android:padding="@dimen/_5sdp">
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_5sdp"
+                    android:weightSum="1">
 
                     <TextView
                         android:id="@+id/tv_payment_mode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
-                        android:text="@string/txt_payment_mode"
-                        android:textColor="@color/black_text"
-                        android:textSize="@dimen/_14ssp"
-                        android:textStyle="italic"
-                        android:singleLine="true"
                         android:ellipsize="marquee"
                         android:marqueeRepeatLimit="marquee_forever"
-                        android:textAlignment="center"/>
+                        android:singleLine="true"
+                        android:text="@string/txt_payment_mode"
+                        android:textAlignment="center"
+                        android:textColor="@color/black_text"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="italic" />
 
                     <Spinner
                         android:id="@+id/spn_payment_mode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/background_oval_stroke"
                         android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
-                        android:layout_weight="0.5"/>
+                        android:layout_weight="0.5"
+                        android:background="@drawable/background_oval_stroke" />
                 </LinearLayout>
 
 

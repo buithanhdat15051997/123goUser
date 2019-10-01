@@ -1,6 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main_app"
+    android:layout_gravity="center_horizontal"
+    app:layout_constraintCircleRadius="@dimen/_50sdp">
+    <android.support.v7.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar_wallet"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/color_background_main">
 
-</android.support.constraint.ConstraintLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/img_wallet_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="@dimen/_10sdp"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_back_blue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="end"
+                android:layout_centerVertical="true"
+                android:paddingRight="@dimen/_10sdp"
+                android:text="@string/title_wallet"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+    <ImageView
+
+        android:src="@drawable/img_card_wallet"
+        android:layout_below="@+id/toolbar_wallet"
+        android:id="@+id/img_pay_ewallet"
+        android:layout_width="wrap_content"
+        android:layout_margin="@dimen/_15sdp"
+        android:layout_height="@dimen/_150sdp"
+
+ />
+
+    <View
+        android:layout_marginEnd="@dimen/_14sdp"
+        android:layout_marginStart="@dimen/_14sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_below="@+id/img_pay_ewallet"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:layout_below="@+id/img_pay_ewallet"
+        android:orientation="vertical"
+        android:id="@+id/linear_total_wallet"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center_vertical"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/_16sdp"
+            android:text="@string/txt_total_pay_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp" />
+        <TextView
+            android:id="@+id/txt_total_money_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_gravity="center_vertical"
+            android:hint="@string/txt_total_pay_wallet"
+            android:textColor="@color/color_btn_main"
+            android:textSize="@dimen/_16sdp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_below="@+id/linear_total_wallet"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/background_edittext"
+        android:orientation="horizontal"
+        android:weightSum="10">
+        <EditText
+            android:id="@+id/edt_input_money_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_weight="8"
+            android:background="@null"
+            android:hint="@string/edt_hint_input_money_wallet"
+            android:inputType="numberDecimal|textMultiLine|textNoSuggestions|text|textCapSentences"
+            android:textColor="@color/black_text" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_2sdp"
+            android:layout_weight="2"
+            android:src="@drawable/ic_dollar_wallet" />
+
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/btn_recharge_ewallet"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/background_rectango_gradient"
+        android:gravity="center"
+        android:text="@string/recharge_wallet"
+        android:textColor="@color/black_text" />
+
+</RelativeLayout>

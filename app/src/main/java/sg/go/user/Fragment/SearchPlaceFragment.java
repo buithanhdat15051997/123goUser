@@ -37,6 +37,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -134,11 +135,13 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
     private ArrayList<Polyline> polylineData;
     private JSONArray routeArray;
 
-    public static String Distance_Request_Home;
-    public static String Time_Request_Home;
+    private static String Distance_Request_Home;
+    private static String Time_Request_Home;
 
-    private Button cardShowRedA, cardShowRedB, cardShowRedC;
-    private ArrayList<Button> arrayListButtonShow;
+    private LinearLayout cardShowRedA, cardShowRedB, cardShowRedC;
+    private Button btn_red,btn_blue,btn_yellow;
+    private  ArrayList<Button> arrayListButtonShow;
+    private ArrayList<LinearLayout> arrayListLinearShow;
 
     public static String OverView_Polyline_Home;
     PolylineOptions options;
@@ -229,6 +232,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
     }
 
     /*Draw Polylines 3 Routes*/
+
     public void drawPath(String result) {
 
         try {
@@ -245,8 +249,8 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 //                    .getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
 //            OverView_Polyline_Home = routeArray.getJSONObject(0).getJSONObject("overview_polyline").getString("points");
 
-            String color[] = {"#E23338", "#212121", "#1DCCC8"};
-          //  String color[] = {"#ff0000", "#00ff00", "#7883cf"};
+            String color[]  = {"#E53935", "#42A5F5", "#FBC02D"};
+
             int i;
             for (i = 0; i < routeArray.length(); i++) {
 
@@ -295,7 +299,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                             //  linearLayoutShowDirec.setVisibility(View.VISIBLE);
 
                             String txt_Name[] = {" A", " B", " C"};
-                            String color[] = {"#E23338", "#212121", "#1DCCC8"};
+                            String color[] = {"#E53935", "#42A5F5", "#FBC02D"};
                             for (int j = 0; j < polylineData.size(); j++) {
 
                                 if (polylineData.get(j).getColor() == polyline.getColor()) {
@@ -342,6 +346,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
         // ------- VISIBLE AND EVENT CLICK CARDVIEW -------
         setVisiableCardShowMain();
+
         ClickButtonRoutes();
 
 
@@ -352,13 +357,19 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         for (int j = 0; j < polylineData.size(); j++) {
 
             final int finalJ = j;
-            arrayListButtonShow.get(j).setOnClickListener(new View.OnClickListener() {
+            arrayListLinearShow.get(j).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     //   Toast.makeText(activity, "hihi", Toast.LENGTH_SHORT).show();
                     ClickPolylinesHome(finalJ);
 
+                }
+            });
+            arrayListButtonShow.get(j).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ClickPolylinesHome(finalJ);
                 }
             });
         }
@@ -410,7 +421,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
         String txt_Name[] = {" A", " B", " C"};
 
-        String color[] = {"#E23338", "#212121", "#1DCCC8"};
+        String color[] = {"#E53935", "#42A5F5", "#FBC02D"};
 
         for (int j = 0; j < polylineData.size(); j++) {
 
@@ -460,6 +471,8 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         img_cancel_choss_type_car.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                progressBarHome.setVisibility(View.GONE);
                 bottomSheetLayout1.setVisibility(View.GONE);
                 if (bottomSheetBehavior1.getState() == BottomSheetBehavior.STATE_COLLAPSED) {
 
@@ -478,14 +491,19 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
     }
 
     private void setVisiableCardShowMain() {
-        String color2[] = {"#E23338", "#212121", "#1DCCC8"};
+
+        String color2[]= {"#E53935", "#42A5F5", "#FBC02D"};
         String txt_Name2[] = {"A", "B", "C"};
+
         for (int i = 0; i < polylineData.size(); i++) {
 
-            arrayListButtonShow.get(i).setVisibility(View.VISIBLE);
+            arrayListLinearShow.get(i).setVisibility(View.VISIBLE);
+//            arrayListButtonShow.get(i).setVisibility(View.VISIBLE);
+
             arrayListButtonShow.get(i).setTextColor(Color.parseColor(color2[i]));
 
             try {
+
                 Distance_Request_Home = routeArray.getJSONObject(i).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
 
                 Time_Request_Home = routeArray.getJSONObject(i).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
@@ -495,7 +513,6 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
 
         }
     }
@@ -570,15 +587,29 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         Recyc_Type_Car.setLayoutManager(linearLayoutManager);
 
 
-        /* BUTTON SHOW */
-        arrayListButtonShow = new ArrayList<>();
-        cardShowRedA = view.findViewById(R.id.btnRoutes1);
-        cardShowRedB = view.findViewById(R.id.btnRoutes2);
-        cardShowRedC = view.findViewById(R.id.btnRoutes3);
+        /* Linear SHOW */
+        arrayListLinearShow = new ArrayList<>();
 
-        arrayListButtonShow.add(cardShowRedA);
-        arrayListButtonShow.add(cardShowRedB);
-        arrayListButtonShow.add(cardShowRedC);
+        cardShowRedA = view.findViewById(R.id.LinearRoutes1);
+        cardShowRedB = view.findViewById(R.id.LinearRoutes2);
+        cardShowRedC = view.findViewById(R.id.LinearRoutes3);
+
+        arrayListLinearShow.add(cardShowRedA);
+        arrayListLinearShow.add(cardShowRedB);
+        arrayListLinearShow.add(cardShowRedC);
+
+        /*BUTTON SET TEXT AND COLOR*/
+
+        arrayListButtonShow = new ArrayList<>();
+
+        btn_red = view.findViewById(R.id.btnRedMarker);
+        btn_blue = view.findViewById(R.id.btnBlueMarker);
+        btn_yellow = view.findViewById(R.id.btnYellowMarker);
+
+        arrayListButtonShow.add(btn_red);
+        arrayListButtonShow.add(btn_blue);
+        arrayListButtonShow.add(btn_yellow);
+
 
         /*---- Bottom Sheet ----*/
         bottomSheetLayout1 = (FrameLayout) view.findViewById(R.id.request_map_bottom_sheet1);
@@ -662,6 +693,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
             @Override
             public void onClick(View view) {
                 if (null != googleMap && currentLatLan != null)
+                    btn_pickLoc.setVisibility(View.VISIBLE);
                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLan, 15));
                 PickUpMarker.setPosition(currentLatLan);
                 getCompleteAddressString(currentLatLan);
@@ -974,7 +1006,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
         }
         btn_search.setEnabled(false);
-        btn_search.setBackgroundColor(getResources().getColor(R.color.deeporange200));
+        btn_search.setBackgroundColor(getResources().getColor(R.color.color_btn_main));
 
 
         return view;
@@ -1205,7 +1237,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                     if (getActivity() != null) {
 
                         try {
-                            boolean success = googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.style_map));
+                            boolean success = googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.mapstyle));
 
                             if (!success) {
 
@@ -1431,16 +1463,12 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                                         getTripOptional_Home(position + 1);
 
-                                        // Toast.makeText(activity, position + 1 + " Select: " + typeCarRequest_ArrayList_home.get(position).getImga_Type_Car_Request() + "   " + typeCarRequest_ArrayList_home.get(position).getName_Type_Car_Request(), Toast.LENGTH_SHORT).show();
-
                                         if (mRequestOptional_Home != null) {
-
-                                    /*        mRequestOptional_Home.setNameType_send_billinginfo(typeCarRequest_ArrayList_home.get(position).getName_Type_Car_Request());
-                                            mRequestOptional_Home.setImgType_send_billinginfo(typeCarRequest_ArrayList_home.get(position).getImga_Type_Car_Request());*/
-
                                             // Save PreferenceHelper
                                             new PreferenceHelper(activity).putTypeCarBillingInfo(typeCarRequest_ArrayList_home.get(position).getName_Type_Car_Request());
                                             new PreferenceHelper(activity).putImageTypeCarBillingInfo(typeCarRequest_ArrayList_home.get(position).getImga_Type_Car_Request());
+                                            new PreferenceHelper(activity).putDistanceBillingInfo(mRequestOptional_Home.getKm_send_billinginfo());
+                                            new PreferenceHelper(activity).putTimeBillingInfo(mRequestOptional_Home.getTime_send_billinginfo());
 
                                             Bundle bundle = new Bundle();
                                             bundle.putParcelable(Const.Params.REQUEST_OPTIONAL, mRequestOptional_Home);
@@ -1640,7 +1668,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                                     if (null != getActivity() && isAdded()) {
                                         btn_search.setEnabled(true);
-                                        btn_search.setBackgroundColor(getResources().getColor(R.color.deeporange600));
+                                        btn_search.setBackgroundColor(getResources().getColor(R.color.color_btn_main));
                                     }
 
                                     if (DropMarker == null) {
@@ -1756,7 +1784,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                         }
                         if (null != getActivity() && isAdded()) {
                             btn_search.setEnabled(true);
-                            btn_search.setBackgroundColor(getResources().getColor(R.color.deeporange600));
+                            btn_search.setBackgroundColor(getResources().getColor(R.color.color_btn_main));
                         }
 
                     } catch (JSONException e) {
@@ -1878,6 +1906,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         mRequestOptional_Home.setDrop_address(et_destination_address.getText().toString().trim());
 
         mRequestOptional_Home.setKm_send_billinginfo(Distance_Request_Home.replaceAll(" km", "").toString());
+        mRequestOptional_Home.setTime_send_billinginfo(Time_Request_Home);
 
 
     }
@@ -1959,7 +1988,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
             if (getActivity() != null) {
 
                 try {
-                    boolean success = googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.style_map));
+                    boolean success = googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.mapstyle));
 
                     if (!success) {
 

@@ -1,7 +1,9 @@
 package sg.go.user.Fragment;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
@@ -20,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +41,8 @@ import java.util.List;
 import java.util.Locale;
 
 import sg.go.user.Adapter.AccountSettingsAdapter;
+import sg.go.user.AmbulanceWalletActivity;
+import sg.go.user.AskBotActivity;
 import sg.go.user.BuildConfig;
 import sg.go.user.HelpwebActivity;
 import sg.go.user.HttpRequester.VolleyRequester;
@@ -49,6 +55,7 @@ import sg.go.user.Models.Wallets;
 import sg.go.user.ProfileActivity;
 import sg.go.user.R;
 import sg.go.user.RealmController.RealmController;
+import sg.go.user.SavedPlacesActivity;
 import sg.go.user.SignInActivity;
 import sg.go.user.Utils.Commonutils;
 import sg.go.user.Utils.Const;
@@ -64,8 +71,8 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
 
     private ListView accountSettingsListView;
     private MainActivity mMainActivity;
+    private RelativeLayout relative_account;
     private ImageView accountIcon;
-    private Button btn_pay_wallet_demo;
     private TextView accountName, tv_build_version, txt_total_money_wallet;
     private View view;
     private Dialog dialog;
@@ -97,23 +104,14 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
 
         accountName = (TextView) view.findViewById(R.id.tv_account_name);
 
-        btn_pay_wallet_demo = view.findViewById(R.id.btn_pay_wallet_demo);
+        relative_account = view.findViewById(R.id.relative_account);
+
+      //  btn_pay_wallet_demo = view.findViewById(R.id.btn_pay_wallet_demo);
 
         tv_build_version = (TextView) view.findViewById(R.id.tv_build_version);
 
         wallets = new Wallets();
 
-        btn_pay_wallet_demo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                DialogPayWallet();
-
-                //    mMainActivity.addFragment(new WalletFragment(), true, Const.WALLET_FRAGMENT, true);
-
-            }
-        });
 
         if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)) {
 
@@ -140,73 +138,60 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
     }
 
     private void ApiGetWallet() {
-        if (!EbizworldUtils.isNetworkAvailable(activity)) {
 
-            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
-            return;
-        }
-
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put(Const.Params.URL, Const.ServiceType.EWALLET);
-
-        map.put(Const.Params.ID, new PreferenceHelper(activity).getUserId());
-        map.put(Const.Params.TOKEN, new PreferenceHelper(activity).getSessionToken());
-
-        Log.d("HaoLS", "Getting show wallet " + map.toString());
-        new VolleyRequester(activity, Const.POST, map, Const.ServiceCode.SHOW_RECHARGE_WALLET,
-                this);
     }
     private void DialogPayWallet() {
 
-        EbizworldUtils.getSimpleProgressDialog(mMainActivity,"Pls waiting",true);
-
-        ApiGetWallet();
-
-        Log.d("dat_test", "vao day");
-
-        final Dialog dialogRecharge_Wallet = new Dialog(activity);
-
-        dialogRecharge_Wallet.setContentView(R.layout.dialog_recharge_wallet);
-
-        txt_recharge_ewallet = dialogRecharge_Wallet.findViewById(R.id.txt_pay_ewallet);
-        btn_recharge_ewallet = dialogRecharge_Wallet.findViewById(R.id.btn_recharge_ewallet);
-        btn_recharge_cancel_wallet = dialogRecharge_Wallet.findViewById(R.id.btn_pay_cancel_wallet);
-        txt_total_money_wallet = dialogRecharge_Wallet.findViewById(R.id.txt_total_money_wallet);
-        edt_input_money_wallet = dialogRecharge_Wallet.findViewById(R.id.edt_input_money_wallet);
-        dialogRecharge_Wallet.show();
-
-        edt_input_money_wallet.addTextChangedListener(onTextChangedListener());
-
-
-        btn_recharge_cancel_wallet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                dialogRecharge_Wallet.dismiss();
-
-            }
-        });
-
-        btn_recharge_ewallet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Get_Money_Recharge_Wallet = edt_input_money_wallet.getText().toString();
-
-                if (Get_Money_Recharge_Wallet.isEmpty()) {
-
-                    EbizworldUtils.showLongToast("Please enter the amount", mMainActivity);
-
-                } else {
-
-                    Get_Money_Recharge_Wallet.replaceAll(",", "");
-                    EbizworldUtils.showLongToast("OK: " + Get_Money_Recharge_Wallet, mMainActivity);
-
-                }
-
-
-            }
-        });
+//        EbizworldUtils.getSimpleProgressDialog(mMainActivity,"Pls waiting",true);
+//
+//        ApiGetWallet();
+//
+//        Log.d("dat_test", "vao day");
+//
+//        final Dialog dialogRecharge_Wallet = new Dialog(activity);
+//        dialogRecharge_Wallet.setContentView(R.layout.dialog_recharge_wallet);
+//        dialogRecharge_Wallet.setCancelable(false);
+//        dialogRecharge_Wallet.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+//
+//        txt_recharge_ewallet = dialogRecharge_Wallet.findViewById(R.id.txt_pay_ewallet);
+//        btn_recharge_ewallet = dialogRecharge_Wallet.findViewById(R.id.btn_recharge_ewallet);
+//        btn_recharge_cancel_wallet = dialogRecharge_Wallet.findViewById(R.id.btn_pay_cancel_wallet);
+//        txt_total_money_wallet = dialogRecharge_Wallet.findViewById(R.id.txt_total_money_wallet);
+//        edt_input_money_wallet = dialogRecharge_Wallet.findViewById(R.id.edt_input_money_wallet);
+//        dialogRecharge_Wallet.show();
+//
+//        edt_input_money_wallet.addTextChangedListener(onTextChangedListener());
+//
+//
+//        btn_recharge_cancel_wallet.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                dialogRecharge_Wallet.dismiss();
+//
+//            }
+//        });
+//
+//        btn_recharge_ewallet.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Get_Money_Recharge_Wallet = edt_input_money_wallet.getText().toString();
+//
+//                if (Get_Money_Recharge_Wallet.isEmpty()) {
+//
+//                    EbizworldUtils.showLongToast("Please enter the amount", mMainActivity);
+//
+//                } else {
+//
+//                    Get_Money_Recharge_Wallet.replaceAll(",", "");
+//                    EbizworldUtils.showLongToast("OK: " + Get_Money_Recharge_Wallet, mMainActivity);
+//
+//                }
+//
+//
+//            }
+//        });
 
     }
 
@@ -328,9 +313,9 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
     private void nurseSetting() {
 
         Nurse nurse = RealmController.with(this).getNurse(Integer.valueOf(new PreferenceHelper(getActivity()).getUserId()));
+
         /*String name = new PreferenceHelper(mMainActivity).getUser_name();
         String pictureUrl = new PreferenceHelper(mMainActivity).getPicture();
-
         String pictureUrl = nurse.getmPictureUrl();*/
 
         tv_build_version.setText("Version: " + BuildConfig.VERSION_NAME);
@@ -432,15 +417,16 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
 
         if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)) {
 
-            /*accountSettingsList.add(new AccountSettings(R.drawable.ic_clock, getString(R.string.txt_hourly_booking)));*/
-            /*accountSettingsList.add(new AccountSettings(R.drawable.sale, getString(R.string.referral_title)));*/
-            /*accountSettingsList.add(new AccountSettings(R.drawable.ic_list_schedule, getString(R.string.later_title)));*/
+//            accountSettingsList.add(new AccountSettings(R.drawable.ic_clock, getString(R.string.txt_hourly_booking)));
+//            accountSettingsList.add(new AccountSettings(R.drawable.sale, getString(R.string.referral_title)));
+//            accountSettingsList.add(new AccountSettings(R.drawable.ic_list_schedule, getString(R.string.later_title)));
 
         }
 
         /*accountSettingsList.add(new AccountSettings(R.drawable.wallet, getString(R.string.history_payment)));*/
-        accountSettingsList.add(new AccountSettings(R.drawable.help_circle, getString(R.string.my_help)));
-        accountSettingsList.add(new AccountSettings(R.drawable.ic_power_off, getString(R.string.txt_logout)));
+        accountSettingsList.add(0,new AccountSettings(R.drawable.ic_account_wallet,getString(R.string.nikola_wallet)));
+        accountSettingsList.add(1,new AccountSettings(R.drawable.help_circle, getString(R.string.my_help)));
+        accountSettingsList.add(2,new AccountSettings(R.drawable.ic_power_off, getString(R.string.txt_logout)));
 
         return accountSettingsList;
 
@@ -458,48 +444,50 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
         if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             switch (position) {
-                /*case 0:
+                case 0:
+                    //  DialogPayWallet();
+                    mMainActivity.addFragment(new WalletFragment(), true, Const.WALLET_FRAGMENT, true);
                     break;
+//                case 1:
+//                    startActivity(new Intent(mMainActivity, AskBotActivity.class));
+//
+//                    break;
+//                case 0:
+//                    startActivity(new Intent(mMainActivity, AddPaymentFragment.class));
+//                    break;
+//                case 3:
+//                    startActivity(new Intent(mMainActivity, AmbulanceWalletActivity.class));
+//                    break;
+//
+//                case 5 :
+//                    startActivity(new Intent(mMainActivity, SavedPlacesActivity.class));
+//                    break;
+//                case 1:
+//                    startActivity(new Intent(mMainActivity, HistoryRideFragment.class));
+//                    break;
+//
+//                case 0:
+//
+//                    if (mMainActivity != null){
+//
+//                        mMainActivity.addFragment(new HourlyBookingFragment(), false, Const.HOURLY_BOOKING_FRAGMENT, true);
+//                    }
+//                    break;
+//
+//                case 0:
+//                    showrefferal();
+//                    break;
+//
+//                case 1:{
+//                    mMainActivity.addFragment(new HistoryPaymentFragment(), false, Const.HISTORY_PAYMENT_FRAGMENT, true);
+//                }
+//                break;
+
                 case 1:
-                    startActivity(new Intent(mMainActivity, AskBotActivity.class));
-
-                    break;
-                case 0:
-                    startActivity(new Intent(mMainActivity, AddPaymentFragment.class));
-                    break;
-                case 3:
-                    startActivity(new Intent(mMainActivity, AmbulanceWalletActivity.class));
-                    break;
-
-                case 5 :
-                    startActivity(new Intent(mMainActivity, SavedPlacesActivity.class));
-                    break;
-                case 1:
-                    startActivity(new Intent(mMainActivity, HistoryRideFragment.class));
-                    break;
-
-                case 0:
-
-                    if (mMainActivity != null){
-
-                        mMainActivity.addFragment(new HourlyBookingFragment(), false, Const.HOURLY_BOOKING_FRAGMENT, true);
-                    }
-                    break;
-
-                case 0:
-                    showrefferal();
-                    break;
-
-                case 1:{
-                    mMainActivity.addFragment(new HistoryPaymentFragment(), false, Const.HISTORY_PAYMENT_FRAGMENT, true);
-                }
-                break;*/
-
-                case 0:
                     startActivity(new Intent(mMainActivity, HelpwebActivity.class));
                     break;
 
-                case 1:
+                case 2:
                     showLogoutDialog();
                     break;
 
@@ -607,14 +595,26 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
         refrel_dialog.show();
     }
 
+    public static int getScreenWidth(Activity activity) {
+        Point size = new Point();
+        activity.getWindowManager().getDefaultDisplay().getSize(size);
+        return size.x;
+    }
+
     private void showLogoutDialog() {
 
-        dialog = new Dialog(mMainActivity, R.style.DialogThemeforview);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        dialog.setCancelable(false);
+        dialog = new Dialog(mMainActivity);
+        //, R.style.DialogThemeforview
+
+        dialog.setCancelable(true);
+
+        dialog.getWindow().setLayout((int) (getScreenWidth(getActivity()) * .9), WindowManager.LayoutParams.WRAP_CONTENT);
+
         dialog.setContentView(R.layout.dialog_logout);
+
         TextView btn_logout_yes = (TextView) dialog.findViewById(R.id.btn_logout_yes);
+
+        dialog.show();
 
         btn_logout_yes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -644,7 +644,7 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
             }
         });
 
-        dialog.show();
+
 
 
     }

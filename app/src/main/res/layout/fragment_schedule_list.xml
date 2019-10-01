@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_main_app"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -69,7 +70,7 @@
             android:id="@+id/ride_lv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/bt_very_light_gray"/>
+            android:background="@drawable/background_main_app"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
@@ -87,7 +88,15 @@
         android:text="@string/txt_no_later"
         android:textSize="20sp"
         android:visibility="gone"
-        android:textColor="@color/black"
+        android:textColor="@color/black_text"
         android:layout_height="wrap_content" />
+    <ImageView
+        android:visibility="visible"
+        android:layout_centerHorizontal="true"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_below="@+id/later_empty"
+        android:src="@drawable/logo_hide"
+        />
 
 </RelativeLayout>

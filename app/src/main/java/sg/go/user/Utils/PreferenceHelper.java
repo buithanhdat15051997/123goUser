@@ -40,8 +40,11 @@ public class PreferenceHelper {
     private  final  String TYPECAR_BILLING_INFO ="name_typecar_billing_info";
     private  final  String IMAGE_BILLING_INFO  ="image_typecar_billing_info";
 
-    private final  String RECHARGE_WALLET= "recharge_wallet";
+    private final  String PAYMENT_WALLET= "payment_wallet";
     private final  String TOTAL_RECHARGE_WALLET = "total_recharge_wallet";
+
+    private final  String DISTANCE_BILLING = "distance_billing";
+    private final  String TIME_BILLING ="time_billing";
 
 
 
@@ -60,22 +63,23 @@ public class PreferenceHelper {
         editor.putString(TOTAL_RECHARGE_WALLET,total_recharge_wallet);
         editor.apply();
     }
-
-    public String getTotalRechargeWallet(){
-
+    public  String  getRechargeWallet(){
         return app_prefs.getString(TOTAL_RECHARGE_WALLET,"");
     }
 
-    public void putRechargeWallet(String recharge_wallet){
+    public String getTotalPaymentWallet(){
+
+        return app_prefs.getString(PAYMENT_WALLET,"");
+    }
+
+    public void putTotalPaymentWallet(String payment_wallet){
         Editor editor = app_prefs.edit();
-        editor.putString(RECHARGE_WALLET,"recharge_wallet");
+        editor.putString(PAYMENT_WALLET,payment_wallet);
         editor.apply();
 
     }
 
-    public  String  getRechargeWallet(){
-        return app_prefs.getString(RECHARGE_WALLET,"");
-    }
+
 
 
 
@@ -104,7 +108,35 @@ public class PreferenceHelper {
     public String getImageTypeCarBillingInfo(){
 
         return app_prefs.getString(IMAGE_BILLING_INFO,"");
+
     }
+
+ /*------ Save Distance_request and Time_Request*/
+ public  void putDistanceBillingInfo(String Distance_billing_info){
+
+     Editor editor = app_prefs.edit();
+     editor.putString(DISTANCE_BILLING,Distance_billing_info);
+     editor.apply();
+
+ }
+    public String getDistanceBillingInfo(){
+
+        return app_prefs.getString(DISTANCE_BILLING,"");
+    }
+
+
+    public  void putTimeBillingInfo(String Time_billing_info){
+
+        Editor editor = app_prefs.edit();
+        editor.putString(TIME_BILLING,Time_billing_info);
+        editor.apply();
+
+    }
+    public String getTimeBillingInfo(){
+
+        return app_prefs.getString(TIME_BILLING,"");
+    }
+
 
 
     /*------- Save Overview_Polyline -------*/

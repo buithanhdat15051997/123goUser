@@ -31,6 +31,8 @@ import com.androidquery.callback.BitmapAjaxCallback;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import sg.go.user.Adapter.AmbulanceOperatorSpinnerAdapter;
 import sg.go.user.Adapter.SimpleSpinnerAdapter;
 import sg.go.user.HttpRequester.MultiPartRequester;
@@ -131,7 +133,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             edt_unit_number = (EditText) findViewById(R.id.edt_unit_number);
             edt_postal = (EditText) findViewById(R.id.edt_postal);
             edt_street_name = (EditText) findViewById(R.id.edt_street_name);
-            edt_weight = (EditText) findViewById(R.id.edt_weight);
+          //  edt_weight = (EditText) findViewById(R.id.edt_weight);
             cb_lift_landing = (CheckBox) findViewById(R.id.cb_lift_landing);
             cb_stairs = (CheckBox) findViewById(R.id.cb_stairs);
             cb_no_stairs = (CheckBox) findViewById(R.id.cb_no_stairs);
@@ -345,7 +347,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             edt_postal.setText(mPatient.getmPostal());
             edt_street_name.setText(mPatient.getmStreetName());
 
-            edt_weight.setText(String.valueOf(mPatient.getmWeight()));
+           // edt_weight.setText(String.valueOf(mPatient.getmWeight()));
 
             if (mPatient.getmLiftLanding() == 1){
 
@@ -566,7 +568,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         edt_unit_number.setEnabled(false);
         edt_postal.setEnabled(false);
         edt_street_name.setEnabled(false);
-        edt_weight.setEnabled(false);
+      //  edt_weight.setEnabled(false);
         cb_lift_landing.setEnabled(false);
         cb_stairs.setEnabled(false);
         cb_no_stairs.setEnabled(false);
@@ -625,7 +627,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         edt_unit_number.setEnabled(true);
         edt_postal.setEnabled(true);
         edt_street_name.setEnabled(true);
-        edt_weight.setEnabled(true);
+       // edt_weight.setEnabled(true);
         cb_lift_landing.setEnabled(true);
         cb_stairs.setEnabled(true);
         cb_no_stairs.setEnabled(true);
@@ -902,7 +904,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         map.put(Const.Params.POSTAL, edt_postal.getText().toString());
         map.put(Const.Params.STREET_NAME, edt_street_name.getText().toString());
         map.put(Const.Params.PREFERRED_USERNAME, edt_preferred_username.getText().toString());
-        map.put(Const.Params.WEIGHT, edt_weight.getText().toString());
+        map.put(Const.Params.WEIGHT, "");
 
         if (cb_lift_landing.isChecked()){
 

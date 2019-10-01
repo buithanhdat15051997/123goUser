@@ -106,6 +106,8 @@ public class Const {
         public static final String ID = "id";
         public static final String TOKEN = "token";
         public static final String SOCIAL_ID = "social_unique_id";
+
+        public static final String AMOUNT ="amount";
         public static final String URL = "url";
         public static final String PICTURE = "picture";
         public static final String EMAIL = "email";
@@ -279,6 +281,9 @@ public class Const {
         public static final String ADVERTISEMENTS = BASE_URL + "adsManagement";
         public static final String POST_PAYPAL_NONCE_URL = BASE_URL + "paymentcheckout";
         public static final String PAYMENT_CASH = BASE_URL + "paymentcash";
+
+        public static final String PAYMENT_WALLLET = BASE_URL +"paymentwallet";
+
         public static final String HISTORY_PAYMENT = BASE_URL + "historypayment";
         public static final String BILLING_INFO = BASE_URL + "billinfo";
 
@@ -467,6 +472,8 @@ public class Const {
         public static final int POST_PAYPAL_NONCE = 132;
         public static final int PAYMENT_CASH = 131;
         public static final int HISTORY_PAYMENT = 130;
+        public static final int PAYMENT_WALLET = 135;
+
 
         public static final int GET_BRAIN_TREE_TOKEN_URL_WALLET = 1997;
         public static final int REQUEST_PAYPAL_WALLET = 7991;

@@ -313,7 +313,7 @@ public class SignUpNextFragment extends BaseRegisterFragment implements AsyncTas
                                     /*input_layout_lname.setVisibility(View.GONE);*/
                                     input_layout_email.setVisibility(View.VISIBLE);
                                     user_email.setVisibility(View.VISIBLE);
-                                    btn_next.setText(getResources().getString(R.string.txt_next));
+                                    btn_next.setText(getResources().getString(R.string.txt_next_signup));
                                 }
                             }
 

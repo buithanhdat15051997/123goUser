@@ -73,14 +73,14 @@
                 android:layout_weight="1"
                 android:background="@drawable/ic_by_cash" />
 
-            <!--        <Button
-                        android:id="@+id/btn_pay_wallet_demo"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_100sdp"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_weight="1"
-                        android:background="@drawable/ic_logoapp" />-->
+            <Button
+                android:id="@+id/btn_pay_wallet_demo1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:background="@drawable/wallet" />
 
             <Button
                 android:id="@+id/btn_pay_bypaypal"
@@ -92,6 +92,14 @@
                 android:background="@drawable/ic_by_paypal" />
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_logo_hide_billinginfo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_180sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:src="@drawable/logo_hide"
+            android:visibility="gone" />
 
         <LinearLayout
             android:id="@+id/billing_info_table_price_notice_group"
@@ -164,9 +172,9 @@
             <TextView
                 android:id="@+id/tv_billing_info_deny"
                 android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_weight="1"
                 android:background="@drawable/background_rectango_gradient"

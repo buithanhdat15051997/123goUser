@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    android:id="@+id/relative_account"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -80,16 +82,16 @@
             android:gravity="center"
             android:textColor="@color/color_btn_main"
             android:textSize="@dimen/_20sdp" />
-        <Button
-            android:layout_toRightOf="@+id/tv_account_name"
-            android:layout_below="@+id/profile_group"
-            android:id="@+id/btn_pay_wallet_demo"
-            android:layout_width="40dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:background="@drawable/wallet"
-            />
+        <!--<Button-->
+            <!--android:layout_toRightOf="@+id/tv_account_name"-->
+            <!--android:layout_below="@+id/profile_group"-->
+            <!--android:id="@+id/btn_pay_wallet_demo"-->
+            <!--android:layout_width="@dimen/_50sdp"-->
+            <!--android:layout_height="@dimen/_45sdp"-->
+            <!--android:layout_marginStart="@dimen/_5sdp"-->
+            <!--android:layout_marginEnd="@dimen/_5sdp"-->
+            <!--android:background="@drawable/wallet"-->
+            <!--/>-->
 
 
 
@@ -99,14 +101,17 @@
     <ListView
         android:id="@+id/lv_drawer_user_settings"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
         android:layout_above="@id/tv_build_version"
         android:layout_below="@id/profile_group"
         android:layout_marginTop="@dimen/_5sdp"
-
-        android:layout_marginBottom="38dp"
         android:divider="@null"
         android:scrollbars="none" />
+    <ImageView
+        android:layout_below="@+id/lv_drawer_user_settings"
+        android:src="@drawable/logo_hide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tv_build_version"

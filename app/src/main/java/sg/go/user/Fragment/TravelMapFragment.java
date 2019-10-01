@@ -47,6 +47,7 @@ import com.aurelhubert.simpleratingbar.SimpleRatingBar;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+
 import sg.go.user.HttpRequester.VolleyRequester;
 import sg.go.user.Models.RequestOptional;
 import sg.go.user.R;
@@ -130,7 +131,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
     private boolean iscancelpopup = false;
     MarkerOptions pickup_opt;
     private LatLng delayLatlan;
-    private CircleImageView driver_car_img;
+    // private CircleImageView driver_car_img;
     private List<LatLng> mPathPolygonPoints;
     int mIndexCurrentPoint = 0;
     Bitmap mMarkerIcon;
@@ -142,7 +143,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
     private ImageView pin_marker;
     RelativeLayout stopLay;
     TextView addStop, editDestination, optionsLine, line;
-    ImageView img_confrim_cancel_booking,img_no_cancel_booking;
+    ImageView img_confrim_cancel_booking, img_no_cancel_booking;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -152,7 +153,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
 
         driver_img = (CircleImageView) mViewRoot.findViewById(R.id.img_driver);
-        driver_car_img = (CircleImageView) mViewRoot.findViewById(R.id.img_ambulance);
+        // driver_car_img = (CircleImageView) mViewRoot.findViewById(R.id.img_ambulance);
         tv_current_location = (TextView) mViewRoot.findViewById(R.id.tv_current_location);
         driver_name = (TextView) mViewRoot.findViewById(R.id.driver_name);
         driver_car_number = (TextView) mViewRoot.findViewById(R.id.driver_car_number);
@@ -220,14 +221,14 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         cancel_trip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("cancelTrip","aaaaa");
+                Log.d("cancelTrip", "aaaaa");
 
                 final Dialog dialogcancel = new Dialog(activity);
 
                 dialogcancel.setContentView(R.layout.dialog_cancel_booking);
 
                 img_confrim_cancel_booking = dialogcancel.findViewById(R.id.img_confrim_cancel_booking);
-                img_no_cancel_booking=  dialogcancel.findViewById(R.id.img_no_cancel_booking);
+                img_no_cancel_booking = dialogcancel.findViewById(R.id.img_no_cancel_booking);
 
                 dialogcancel.show();
 
@@ -235,7 +236,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                     @Override
                     public void onClick(View view) {
 
-                        Log.d("cancelTrip","Vao Day");
+                        Log.d("cancelTrip", "Vao Day");
                         getCancelRideReasonList();
                         stopCheckingforstatus();
                         dialogcancel.dismiss();
@@ -554,7 +555,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                 if (getActivity() != null) {
 
                     try {
-                        boolean success = gMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.style_map));
+                        boolean success = gMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.mapstyle));
 
                         if (!success) {
 
@@ -703,19 +704,19 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
         HashMap<String, String> map = new HashMap<>();
 
-        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             map.put(Const.Params.URL, Const.ServiceType.USER_MESSAGE_NOTIFY + Const.Params.ID + "="
                     + new PreferenceHelper(activity).getUserId() + "&" + Const.Params.TOKEN + "="
                     + new PreferenceHelper(activity).getSessionToken() + "&" + Const.Params.REQUEST_ID + "=" + new PreferenceHelper(activity).getRequestId());
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
             map.put(Const.Params.URL, Const.NursingHomeService.CHAT_NOTIFICATION_URL + Const.Params.ID + "="
                     + new PreferenceHelper(activity).getUserId() + "&" + Const.Params.TOKEN + "="
                     + new PreferenceHelper(activity).getSessionToken() + "&" + Const.Params.REQUEST_ID + "=" + new PreferenceHelper(activity).getRequestId());
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
             map.put(Const.Params.URL, Const.HospitalService.CHAT_NOTIFICATION_URL + Const.Params.ID + "="
                     + new PreferenceHelper(activity).getUserId() + "&" + Const.Params.TOKEN + "="
@@ -736,15 +737,15 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         Commonutils.progressdialog_show(activity, "Canceling...");
         HashMap<String, String> map = new HashMap<String, String>();
 
-        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             map.put(Const.Params.URL, Const.ServiceType.CANCEL_RIDE);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
             map.put(Const.Params.URL, Const.NursingHomeService.CANCEL_TRIP_URL);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
             map.put(Const.Params.URL, Const.HospitalService.CANCEL_REQUEST_URL);
 
@@ -774,15 +775,15 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         HashMap<String, String> map = new HashMap<String, String>();
 
 
-        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             map.put(Const.Params.URL, Const.ServiceType.CANCEL_REASON);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
             map.put(Const.Params.URL, Const.NursingHomeService.CANCEL_REASONS_URL);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
             map.put(Const.Params.URL, Const.HospitalService.CANCEL_REASONS_URL);
 
@@ -865,10 +866,10 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                     .apply(new RequestOptions().error(R.drawable.defult_user))
                     .into(driver_img);
 
-            Glide.with(activity)
-                    .load(requestDetail.getDriver_car_picture())
-                    .apply(new RequestOptions().error(R.drawable.carambulance))
-                    .into(driver_car_img);
+//            Glide.with(activity)
+//                    .load(requestDetail.getDriver_car_picture())
+//                    .apply(new RequestOptions().error(R.drawable.carambulance))
+//                    .into(driver_car_img);
 
             /*Glide.with(activity).load(R.drawable.defult_user).apply(new RequestOptions().error(R.drawable.defult_user)).into(driver_img);
             Glide.with(activity).load(R.drawable.carambulance).apply(new RequestOptions().error(R.drawable.carambulance)).into(driver_car_img);*/
@@ -1044,9 +1045,9 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
     public void drawPath(String result) {
 
-        Log.d("Dat_Preference",new PreferenceHelper(activity).getOverViewPolyline().toString());
+        Log.d("Dat_Preference", new PreferenceHelper(activity).getOverViewPolyline().toString());
 //        RequestOptional mOptinal = new RequestOptional();
-            //Tranform the string into a json object
+        //Tranform the string into a json object
 
 //        final JSONObject json;
 //        try {
@@ -1058,24 +1059,24 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 //            String encodedString = mOptinal.getOverView_Polyline().toString();
 
 
-    String encodedString = new PreferenceHelper(activity).getOverViewPolyline().toString();
+        String encodedString = new PreferenceHelper(activity).getOverViewPolyline().toString();
 
-    Log.d("Dat_PolylinesData",encodedString);
-    List<LatLng> list = decodePoly(encodedString);
+        Log.d("Dat_PolylinesData", encodedString);
+        List<LatLng> list = decodePoly(encodedString);
 
 
-    PolylineOptions options = new PolylineOptions().width(8).color(Color.BLACK).geodesic(true);
+        PolylineOptions options = new PolylineOptions().width(8).color(Color.BLACK).geodesic(true);
 
-    for (int z = 0; z < list.size(); z++) {
-        LatLng point = list.get(z);
-        options.add(point);
-    }
-    if (googleMap != null) {
-        if (poly_line != null) {
-            poly_line.remove();
+        for (int z = 0; z < list.size(); z++) {
+            LatLng point = list.get(z);
+            options.add(point);
         }
-        poly_line = googleMap.addPolyline(options);
-    }
+        if (googleMap != null) {
+            if (poly_line != null) {
+                poly_line.remove();
+            }
+            poly_line = googleMap.addPolyline(options);
+        }
 
 
 //        } catch (JSONException e) {
@@ -1161,15 +1162,15 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         }
         HashMap<String, String> map = new HashMap<String, String>();
 
-        if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             map.put(Const.Params.URL, Const.ServiceType.CHECKREQUEST_STATUS);
 
-        }else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
             map.put(Const.Params.URL, Const.NursingHomeService.REQUEST_STATUS_CHECK_URL);
 
-        }else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+        } else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
             map.put(Const.Params.URL, Const.HospitalService.CHECK_REQUEST_STATUS_URL);
 
@@ -1483,7 +1484,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
                         new PreferenceHelper(activity).clearRequestData();
                         getActivity().onBackPressed();
-                       // activity.addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true);
+                        // activity.addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true);
 
                     } else {
                         Commonutils.progressdialog_hide();
@@ -1602,7 +1603,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                             }
                             break;
 
-                        case Const.IS_ACCEPTED:{
+                        case Const.IS_ACCEPTED: {
 
                             jobStatus = Const.IS_ACCEPTED;
 
@@ -1628,7 +1629,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                         }
                         break;
 
-                        case Const.IS_DRIVER_DEPARTED:{
+                        case Const.IS_DRIVER_DEPARTED: {
 
                             jobStatus = Const.IS_DRIVER_DEPARTED;
                             address_title.setText(activity.getString(R.string.txt_pickup_address));
@@ -1652,7 +1653,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                         }
                         break;
 
-                        case Const.IS_DRIVER_ARRIVED:{
+                        case Const.IS_DRIVER_ARRIVED: {
 
                             jobStatus = Const.IS_DRIVER_ARRIVED;
                             address_title.setText(activity.getString(R.string.txt_drop_address));
@@ -1683,8 +1684,8 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                             EbizworldUtils.appLogDebug("HaoLS", "Driver arrived " + String.valueOf(jobStatus));
 
                         }
-                            break;
-                        case Const.IS_DRIVER_TRIP_STARTED:{
+                        break;
+                        case Const.IS_DRIVER_TRIP_STARTED: {
 
                             cancel_trip.setVisibility(View.GONE);
                             jobStatus = Const.IS_DRIVER_TRIP_STARTED;
@@ -1714,9 +1715,9 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
                             EbizworldUtils.appLogDebug("HaoLS", "Trip is started " + String.valueOf(jobStatus));
                         }
-                            break;
+                        break;
 
-                        case Const.IS_DRIVER_TRIP_ENDED:{
+                        case Const.IS_DRIVER_TRIP_ENDED: {
                             /*jobStatus = Const.IS_DRIVER_TRIP_ENDED;
                             address_title.setText(activity.getString(R.string.txt_drop_address));
                             address_title.setTextColor(ContextCompat.getColor(activity, R.color.red));
@@ -1746,7 +1747,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                                             true);
                             }*/
 
-                            if (!activity.currentFragment.equals(Const.BILLING_INFO_FRAGMENT) && !activity.isFinishing()){
+                            if (!activity.currentFragment.equals(Const.BILLING_INFO_FRAGMENT) && !activity.isFinishing()) {
 
                                 stopCheckingforstatus();
 
@@ -1760,8 +1761,8 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                             EbizworldUtils.appLogDebug("HaoLS", "Trip end " + String.valueOf(jobStatus));
 
                         }
-                            break;
-                        case Const.IS_BILLING:{
+                        break;
+                        case Const.IS_BILLING: {
 
                             jobStatus = Const.IS_DRIVER_TRIP_ENDED;
                             address_title.setText(activity.getString(R.string.txt_drop_address));
@@ -1793,9 +1794,9 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                             EbizworldUtils.appLogDebug("HaoLS", "Trip rated " + String.valueOf(jobStatus));
                         }
 
-                            break;
+                        break;
 
-                        case Const.IS_DRIVER_RATED:{
+                        case Const.IS_DRIVER_RATED: {
 
                             jobStatus = Const.IS_DRIVER_TRIP_ENDED;
                             address_title.setText(activity.getString(R.string.txt_drop_address));
@@ -1827,7 +1828,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                             EbizworldUtils.appLogDebug("HaoLS", "Trip rated " + String.valueOf(jobStatus));
                         }
 
-                            break;
+                        break;
                         default:
                             break;
 
@@ -2118,7 +2119,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
             if (getActivity() != null) {
 
                 try {
-                    boolean success = googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.style_map));
+                    boolean success = googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.mapstyle));
 
                     if (!success) {
 
@@ -2291,8 +2292,8 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
     }
 
-    private void getDirectionsWay ( double latitude, double longitude, double latitude1,
-                                    double longitude1, double latitideStop, double longitudeStop){
+    private void getDirectionsWay(double latitude, double longitude, double latitude1,
+                                  double longitude1, double latitideStop, double longitudeStop) {
 
         if (!EbizworldUtils.isNetworkAvailable(activity)) {
 
@@ -2311,7 +2312,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
     }
 
 
-    private void CancelReasonDialog ( final ArrayList<CancelReason> cancelReasonLst){
+    private void CancelReasonDialog(final ArrayList<CancelReason> cancelReasonLst) {
 
         final Dialog CancelReasondialog = new Dialog(activity, R.style.DialogThemeforview);
         CancelReasondialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

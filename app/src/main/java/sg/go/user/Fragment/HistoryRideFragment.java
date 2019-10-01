@@ -131,6 +131,7 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
             case Const.PatientService.PATIENT:{
 
                 new HistoryListAPI(activity, this).getPatientHistory(Const.ServiceCode.GET_HISTORY);
+                EbizworldUtils.showSimpleProgressDialog(activity,"Loading...",true);
 
             }
             break;
@@ -162,13 +163,13 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
 
                 case Const.ServiceCode.GET_HISTORY:
 
-                    /*EbizworldUtils.removeProgressDialog();*/
-
                     mSwipeRefreshLayout.setRefreshing(false);
 
                     EbizworldUtils.appLogInfo("HaoLS", "res his: " + response);
 
                     if (response != null) {
+
+                        EbizworldUtils.removeProgressDialog();
 
                         try {
 
@@ -189,7 +190,9 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
                                         history.setHistory_Sadd(jsonObject.getString("s_address"));
                                         history.setHistory_date(jsonObject.getString("date"));
                                         history.setProvider_name(jsonObject.getString("provider_name"));
+
                                         history.setHistory_type(jsonObject.getString("taxi_name"));
+
                                         history.setHistory_total(jsonObject.getString("total"));
                                         history.setHistory_picture(jsonObject.getString("picture"));
                                         history.setMap_image(jsonObject.getString("map_image"));
@@ -291,8 +294,12 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
                         } catch (JSONException e) {
                             e.printStackTrace();
                             EbizworldUtils.appLogDebug("HaoLS", "Get history ride failed " + e.toString());
+                            EbizworldUtils.removeProgressDialog();
                         }
 
+                    }else {
+
+                        EbizworldUtils.removeProgressDialog();
                     }
                     break;
             }

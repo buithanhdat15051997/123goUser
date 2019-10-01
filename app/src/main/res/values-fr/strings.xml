@@ -406,7 +406,7 @@
     <string name="txt_enter_card">S\'il vous plaît entrer le numéro de carte</string>
     <string name="txt_error">Erreur est survenue!</string>
     <string name="txt_error_date_time">S\'il vous plaît sélectionner la date et l\'heure!</string>
-    <string name="txt_no_later">--- Aucun trajet prévu disponible ---</string>
+    <string name="txt_no_later">" Aucun trajet prévu disponible "</string>
     <string name="txt_no_otp">Vous n\'avez pas reçu votre Otp?</string>
     <string name="txt_no_provider_error">Aucun fournisseur trouvé, veuillez essayer après un certain temps!</string>
     <string name="txt_otp_error">S\'il vous plaît entrez OTP!</string>
@@ -448,7 +448,7 @@
     <string name="hospital_discharge_warning_content">Pour les cas de sortie d\'hôpital, veuillez utiliser la fonction de planification</string>
     <string name="hospital_discharge_warning_title">Avis de sortie</string>
     <string name="txt_total_pay_wallet">Total Money: </string>
-    <string name="recharge_wallet">Recharge au portefeuille</string>
+    <string name="recharge_wallet">PROCÉDER À LA RÉMUNÉRATION</string>
     <string name="title_wallet">Votre Portefeuille</string>
     <string name="edt_hint_input_money_wallet">Argent d\'entrée</string>
     <string name="name_step_frag_one">Pilotes professionnels</string>
@@ -459,5 +459,17 @@
     <string name="txt_bill_detail">Détail de projet de loi</string>
     <string name="txt_total_pay">Rémunération totale</string>
     <string name="txt_title_rating">Cotes</string>
+    <string name="txt_name_profile">nom</string>
+    <string name="txt_name_profilepicture">PHOTO DE PROFIL</string>
+    <string name="txt_next_signup">confirmer</string>
+    <string name="txt_title_dialog_gps">Bonjour, Bienvenue à 123GO!</string>
+    <string name="txt_content_dialog_gps">Choisissez votre emplacement pour commencer à trouver le taxi près de chez vous</string>
+    <string name="txt_btn_gps">UTILISER L\'EMPLACEMENT ACTUEL</string>
+    <string name="txt_exit_gps">SÉLECTIONNEZ MANUELLEMENT</string>
+    <string name="txt_booking_success">Réservation Successfull!</string>
+    <string name="txt_content_booking_success">Votre taxi de réservation a été confirmé, notre plongeur sera ramassé dans 5 minutes, avoir un voyage heureux!</string>
+    <string name="btn_booking_success">RETOUR À LA MAISON</string>
+    <string name="txt_dialog_pay_ewallet">Paiement avec Portefeuille</string>
+    <string name="txt_content_pay_ewallet">Votre portefeuille sera déduit :</string>
 </resources>
 

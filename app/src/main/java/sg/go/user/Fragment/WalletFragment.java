@@ -4,9 +4,18 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.braintreepayments.api.dropin.DropInActivity;
 import com.braintreepayments.api.dropin.DropInRequest;
@@ -15,10 +24,14 @@ import com.braintreepayments.api.dropin.DropInResult;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.HashMap;
+import java.util.Locale;
 
 import sg.go.user.HttpRequester.VolleyRequester;
 import sg.go.user.Interface.AsyncTaskCompleteListener;
+import sg.go.user.MainActivity;
 import sg.go.user.Models.Wallets;
 import sg.go.user.R;
 import sg.go.user.Utils.Commonutils;
@@ -28,22 +41,207 @@ import sg.go.user.Utils.PreferenceHelper;
 
 public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteListener {
 
-    Wallets wallets;
+    private Wallets wallets;
+    private MainActivity mMainActivity;
+    private TextView txt_recharge_ewallet,txt_total_money_wallet;
+    private ImageView img_pay_ewallet;
+    private EditText edt_input_money_wallet;
+    private Button btn_recharge_ewallet;
     PreferenceHelper preferenceHelper_Wallet;
+    private Toolbar toolbar_wallet;
+    private String Get_Money_Recharge_Wallet;
+    private ImageButton img_wallet_back;
+    View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_wallet,container,false);
+        view = inflater.inflate(R.layout.fragment_wallet,container,false);
+
+        mMainActivity = (MainActivity) getActivity();
+
+        mapping();
+
+        ApiGetWallet();
+
         wallets = new Wallets();
 
         return view;
     }
 
+    private void mapping() {
+
+        img_pay_ewallet = view.findViewById(R.id.img_pay_ewallet);
+
+        btn_recharge_ewallet = view.findViewById(R.id.btn_recharge_ewallet);
+
+        txt_total_money_wallet = view.findViewById(R.id.txt_total_money_wallet);
+
+        edt_input_money_wallet = view.findViewById(R.id.edt_input_money_wallet);
+
+        toolbar_wallet = view.findViewById(R.id.toolbar_wallet);
+
+        img_wallet_back = view.findViewById(R.id.img_wallet_back);
+
+        edt_input_money_wallet.addTextChangedListener(onTextChangedListener());
+
+        img_wallet_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mMainActivity.addFragment(new AccountFragment(),true,Const.ACCOUNT_FRAGMENT,false);
+
+
+            }
+        });
+        btn_recharge_ewallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Get_Money_Recharge_Wallet = edt_input_money_wallet.getText().toString();
+
+                if (Get_Money_Recharge_Wallet.isEmpty()) {
+
+                    EbizworldUtils.showLongToast("Please enter the amount", activity);
+
+                } else {
+
+                    Get_Money_Recharge_Wallet.replaceAll(",", "");
+
+                    EbizworldUtils.showLongToast("OK: " + Get_Money_Recharge_Wallet, activity);
+
+                }
+
+            }
+        });
+
+
+
+    }
+
+    private TextWatcher onTextChangedListener() {
+        return new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                edt_input_money_wallet.removeTextChangedListener(this);
+
+                try {
+                    String origiString = editable.toString();
+
+                    Long longval;
+
+                    if (origiString.contains(",")) {
+
+                        origiString = origiString.replaceAll(",", "");
+
+                    }
+                    longval = Long.parseLong(origiString);
+
+                    DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+
+                    formatter.applyPattern("#,###,###,###");
+
+                    String formattedString = formatter.format(longval);
+
+                    //setting text after format to EditText
+                    edt_input_money_wallet.setText(formattedString);
+
+                    edt_input_money_wallet.setSelection(edt_input_money_wallet.getText().length());
+
+                } catch (NumberFormatException nfe) {
+                    nfe.printStackTrace();
+                }
+
+                edt_input_money_wallet.addTextChangedListener(this);
+            }
+        };
+
+
+    }
+
+    private void ApiGetWallet() {
+
+        if (!EbizworldUtils.isNetworkAvailable(activity)) {
+
+            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
+            return;
+        }
+
+        HashMap<String, String> map = new HashMap<String, String>();
+
+        map.put(Const.Params.URL, Const.ServiceType.EWALLET);
+
+        map.put(Const.Params.ID, new PreferenceHelper(activity).getUserId());
+
+        map.put(Const.Params.TOKEN, new PreferenceHelper(activity).getSessionToken());
+
+        Log.d("HaoLS", "Getting show wallet " + map.toString());
+        new VolleyRequester(activity, Const.POST, map, Const.ServiceCode.SHOW_RECHARGE_WALLET,
+                this);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+
+        }
+    }
+
     @Override
     public void onTaskCompleted(String response, int serviceCode) {
         switch (serviceCode){
+
+            case Const.ServiceCode.SHOW_RECHARGE_WALLET: {
+                Log.d("DatGetWallet", "" + response);
+
+                if (response != null) {
+
+                    JSONObject jsonObject = null;
+                    try {
+                        jsonObject = new JSONObject(response);
+                        if (jsonObject.getBoolean("success")) {
+
+                            String total_Money_Wallet = jsonObject.getString("e_wallet");
+
+                            txt_total_money_wallet.setText(getResources().getString(R.string.txt_total_pay_wallet) + " " + total_Money_Wallet + " S$");
+
+                            new PreferenceHelper(activity).putTotalRechargeWallet(total_Money_Wallet);
+
+
+
+                        } else {
+                            EbizworldUtils.showLongToast("error", activity);
+
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                } else {
+
+                    EbizworldUtils.showLongToast("error", activity);
+                    EbizworldUtils.removeProgressDialog();
+
+                }
+
+            }
+            break;
+
+
             case  Const.ServiceCode.GET_BRAIN_TREE_TOKEN_URL_WALLET:
             {
                 EbizworldUtils.appLogInfo("HaoLS", "GET_BRAIN_TREE_TOKEN_URL: " + response);

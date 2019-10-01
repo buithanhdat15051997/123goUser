@@ -5,10 +5,10 @@
     <size android:width="@dimen/_250sdp"
         android:height="@dimen/_40sdp"/>
 
-    <corners android:radius="@dimen/_5sdp"/>
+    <corners android:radius="@dimen/_1sdp"/>
 
-    <stroke android:width="@dimen/_2sdp"
-        android:color="@color/black_text"/>
+    <stroke android:width="@dimen/_1sdp"
+        android:color="#42A5F5"/>
 
     <solid android:color="@color/white"/>
 

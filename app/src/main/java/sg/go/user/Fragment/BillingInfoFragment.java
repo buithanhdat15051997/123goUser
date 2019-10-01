@@ -56,14 +56,12 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
     @BindView(R.id.tv_billing_info_total_price)
     TextView mTv_billing_info_total_price;
 
-
     // distance
     @BindView(R.id.tv_billing_info_kilo_distance3)
     TextView tv_billing_info_kilo_distance3;
 
-    @BindView(R.id.  tv_billing_info_kilo_dola2)
+    @BindView(R.id.tv_billing_info_kilo_dola2)
     TextView tv_billing_info_kilo_dola2;
-
 
 
     @BindView(R.id.btn_pay_bycash)
@@ -117,8 +115,8 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
     TextView tv_billing_info_deny;
 
 
-
     private View mView;
+    private TextView custom_simple_title_paymentwallet, custom_simple_content_paymentwallet, btn_yes1_paymentwallet, btn_no_paymentwallet;
     private MainActivity activity;
     private DatabaseHandler mDatabaseHandler;
     private RequestDetail mRequestDetail;
@@ -126,7 +124,12 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
     private Dialog requestDialog;
     private TextView cancel_req_create;
     private Handler checkRequestStatusHandler;
-    private Button btn_pay_wallet_demo;
+    private Button btn_pay_wallet_demo1;
+    private ImageView img_logo_hide_billinginfo;
+    private int Total_billing;
+    private Dialog dialog_payment_wallet;
+    private String TotalMoney;
+
 
     private Runnable requestStatusCheckRunnable = new Runnable() {
 
@@ -147,13 +150,13 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
         mDatabaseHandler = new DatabaseHandler(activity);
 
-        if (mDatabaseHandler != null){
+        if (mDatabaseHandler != null) {
 
             mDatabaseHandler.DeleteChat(String.valueOf(new PreferenceHelper(activity).getRequestId())); //Delete chat from Request ID
 
         }
 
-        if (getArguments() != null){
+        if (getArguments() != null) {
 
             mRequestOptional = getArguments().getParcelable(Const.Params.REQUEST_OPTIONAL);
 
@@ -169,42 +172,107 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
         mView = inflater.inflate(R.layout.fragment_billing_info, container, false);
         ButterKnife.bind(this, mView);
 
-        tv_billing_info_kilo_distance3.setText(SearchPlaceFragment.Distance_Request_Home);
-        tv_billing_info_kilo_dola2.setText(SearchPlaceFragment.Time_Request_Home);
+
+        btn_pay_wallet_demo1 = mView.findViewById(R.id.btn_pay_wallet_demo1);
+        img_logo_hide_billinginfo = mView.findViewById(R.id.img_logo_hide_billinginfo);
 
 //        mRequestOptional.setRemark(tv_billing_info_table_price_content_warning.getText().toString());
 
-
-        if (mRequestOptional != null){
+        if (mRequestOptional != null) {
 
             mTv_billing_info_notice.setVisibility(View.GONE);
             billing_info_payment_group.setVisibility(View.GONE);
             billing_info_table_price_notice_group.setVisibility(View.VISIBLE);
             billing_info_request_group.setVisibility(View.VISIBLE);
 
-            /*---- SET NAME - IMAGE ----*/
+
+            /*---- SET NAME - IMAGE - DISTANCE - TIME ----*/
+            tv_billing_info_kilo_distance3.setText(mRequestOptional.getKm_send_billinginfo() + " km");
+            tv_billing_info_kilo_dola2.setText(mRequestOptional.getTime_send_billinginfo());
+
             mTv_billing_info_name_typeCar.setText(new PreferenceHelper(activity).getTypeCarBillingInfo());
             Glide.with(activity).load(new PreferenceHelper(activity).getImageTypeCarBillingInfo()).into(img_billing_info_img_typeCar);
 
             getBillingInfo(mRequestOptional);
 
-        }else {
+        } else {
 
             /*---- SET NAME - IMAGE  TYPE CAR ----*/
             mTv_billing_info_name_typeCar.setText(new PreferenceHelper(activity).getTypeCarBillingInfo());
             Glide.with(activity).load(new PreferenceHelper(activity).getImageTypeCarBillingInfo()).into(img_billing_info_img_typeCar);
-
-
             mTv_billing_info_notice.setVisibility(View.VISIBLE);
             billing_info_payment_group.setVisibility(View.VISIBLE);
+            img_logo_hide_billinginfo.setVisibility(View.VISIBLE);
             billing_info_table_price_notice_group.setVisibility(View.GONE);
             billing_info_request_group.setVisibility(View.GONE);
+
+            /*---- SET NAME - IMAGE - DISTANCE - TIME ----*/
+            tv_billing_info_kilo_distance3.setText(new PreferenceHelper(activity).getDistanceBillingInfo() + " km");
+            tv_billing_info_kilo_dola2.setText(new PreferenceHelper(activity).getTimeBillingInfo());
 
             checkreqstatus(); //Get check status of request
 
         }
 
-      //  btn_pay_wallet_demo.setOnClickListener(this);
+        btn_pay_wallet_demo1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+//                builder.setTitle("Payment with Wallet");
+//                builder.setMessage("YOUR");
+//                builder.setCancelable(false);
+//                builder.setPositiveButton("COUTINUE TO PAYMENT", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        Toast.makeText(activity, "Không thoát được", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//                builder.setNegativeButton("Đăng xuất", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        dialogInterface.dismiss();
+//                    }
+//                });
+//                AlertDialog alertDialog = builder.create();
+//                alertDialog.show();
+                dialog_payment_wallet = new Dialog(activity);
+
+                dialog_payment_wallet.setContentView(R.layout.dialog_payment_with_wallet);
+
+                custom_simple_title_paymentwallet = dialog_payment_wallet.findViewById(R.id.custom_simple_title_paymentwallet);
+
+                custom_simple_content_paymentwallet = dialog_payment_wallet.findViewById(R.id.custom_simple_content_paymentwallet);
+
+                btn_yes1_paymentwallet = dialog_payment_wallet.findViewById(R.id.btn_yes1_paymentwallet);
+
+                btn_no_paymentwallet = dialog_payment_wallet.findViewById(R.id.btn_no_paymentwallet);
+
+                dialog_payment_wallet.show();
+
+                custom_simple_title_paymentwallet.setText(getResources().getString(R.string.txt_dialog_pay_ewallet));
+
+                custom_simple_content_paymentwallet.setText(getResources().getString(R.string.txt_content_pay_ewallet));
+
+                btn_yes1_paymentwallet.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        getPaymentWallet();
+                    }
+                });
+
+                btn_no_paymentwallet.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        dialog_payment_wallet.dismiss();
+
+                    }
+                });
+
+
+            }
+        });
         mBtn_pay_bycash.setOnClickListener(this);
         mBtn_pay_bypaypal.setOnClickListener(this);
 
@@ -212,6 +280,36 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
         tv_billing_info_deny.setOnClickListener(this);
 
         return mView;
+    }
+
+    private void getPaymentWallet() {
+
+        if (!EbizworldUtils.isNetworkAvailable(getActivity())) {
+
+            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
+            return;
+        }
+
+        Commonutils.progressdialog_show(activity, "Loading...");
+
+        HashMap<String, String> map = new HashMap<>();
+
+        map.put(Const.Params.URL, Const.ServiceType.PAYMENT_WALLLET);
+
+        map.put(Const.Params.ID, new PreferenceHelper(getActivity()).getUserId());
+
+        map.put(Const.Params.REQUEST_ID, String.valueOf(new PreferenceHelper(getActivity()).getRequestId()));
+
+        map.put(Const.Params.TOKEN, new PreferenceHelper(getActivity()).getSessionToken());
+
+        map.put(Const.Params.AMOUNT, new PreferenceHelper(getActivity()).getTotalPaymentWallet().toString());
+
+      //  map.put("amount", mRequestOptional.getTotal_money_price().toString());
+        //  map.put(Const.Params.REQUEST_ID, String.valueOf(new PreferenceHelper(getActivity()).getRequestId()));
+        EbizworldUtils.appLogDebug("HaoLS", "getPaymentByWallet: " + map.toString());
+
+        new VolleyRequester(getActivity(), Const.POST, map, Const.ServiceCode.PAYMENT_WALLET, this);
+
     }
 
     @Override
@@ -224,7 +322,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
     public void onDestroyView() {
         super.onDestroyView();
 
-        if(requestDialog != null && requestDialog.isShowing()){
+        if (requestDialog != null && requestDialog.isShowing()) {
 
             cancel_create_req();
 
@@ -236,19 +334,16 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()){
+        switch (v.getId()) {
 
-            case R.id.btn_pay_bycash:{
+            case R.id.btn_pay_bycash: {
 
                 getPaymentByCash();
 
             }
             break;
 
-
-
-
-            case R.id.btn_pay_bypaypal:{
+            case R.id.btn_pay_bypaypal: {
 
                 getBrainTreeClientToken();
 
@@ -256,13 +351,13 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
             break;
 
-            case R.id.tv_billing_info_confirm:{
+            case R.id.tv_billing_info_confirm: {
 
                 new PreferenceHelper(activity).putOverViewPolyline(SearchPlaceFragment.OverView_Polyline_Home.toString());
 
-               // Log.d("Dat_Preference",new PreferenceHelper(activity).putOverViewPolyline(RequestMapFragment.OverView_Polyline);
+                // Log.d("Dat_Preference",new PreferenceHelper(activity).putOverViewPolyline(RequestMapFragment.OverView_Polyline);
 
-                if (mRequestOptional != null){
+                if (mRequestOptional != null) {
 
                     RequestAmbulance(mRequestOptional);
 
@@ -270,7 +365,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
             }
             break;
 
-            case R.id.tv_billing_info_deny:{
+            case R.id.tv_billing_info_deny: {
                 // back fragment
                 getActivity().onBackPressed();
 //                activity.addFragment(new SearchPlaceFragment(), true, Const.SEARCH_FRAGMENT, true);
@@ -281,10 +376,10 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
     }
 
     private void DialogPaymentWithWallet() {
-                Log.d("dat_test","vao day");
+        Log.d("dat_test", "vao day");
 
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
-         final AlertDialog OptionDialog = alertDialog.create();
+        final AlertDialog OptionDialog = alertDialog.create();
 
         alertDialog.setTitle("Payment With Your Wallet");
         alertDialog.setMessage("");
@@ -300,7 +395,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
         alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-               OptionDialog.dismiss();
+                OptionDialog.dismiss();
             }
         });
 
@@ -321,15 +416,15 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
         HashMap<String, String> map = new HashMap<>();
 
-        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             map.put(Const.Params.URL, Const.ServiceType.GET_BRAIN_TREE_TOKEN_URL);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
             map.put(Const.Params.URL, Const.NursingHomeService.GET_BRAINTREE_TOKEN_URL);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
             map.put(Const.Params.URL, Const.HospitalService.GET_BRAINTREE_TOKEN_URL);
 
@@ -346,8 +441,8 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
 // ---------------GUI  BILLINFO-------------------
 
-    private void getBillingInfo(RequestOptional requestOptional){
-           /*--- Check Internet ---*/
+    private void getBillingInfo(RequestOptional requestOptional) {
+        /*--- Check Internet ---*/
 
         if (!EbizworldUtils.isNetworkAvailable(getActivity())) {
 
@@ -359,7 +454,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
         hashMap.put(Const.Params.URL, Const.ServiceType.BILLING_INFO);
         hashMap.put(Const.Params.ID, new PreferenceHelper(activity).getUserId());
         hashMap.put(Const.Params.TOKEN, new PreferenceHelper(activity).getSessionToken());
-        hashMap.put(Const.Params.SERVICE_TYPE_CAR,String.valueOf(mRequestOptional.getOperator_id()));
+        hashMap.put(Const.Params.SERVICE_TYPE_CAR, String.valueOf(mRequestOptional.getOperator_id()));
 //        hashMap.put(Const.Params.A_AND_E, String.valueOf(requestOptional.getA_and_e()));
 //        hashMap.put(Const.Params.IMH, String.valueOf(requestOptional.getImh()));
 //        hashMap.put(Const.Params.FERRY_TERMINALS, String.valueOf(requestOptional.getFerry_terminals()));
@@ -368,7 +463,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 //        hashMap.put(Const.Params.WEIGHT, String.valueOf(requestOptional.getWeight()));
 //        hashMap.put(Const.Params.OXYGEN, String.valueOf(requestOptional.getOxygen()));
 //        hashMap.put(Const.Params.CASE_TYPE, String.valueOf(requestOptional.getCaseType()));
-        hashMap.put(Const.Params.SERVICE_KILOMET,String.valueOf(mRequestOptional.getKm_send_billinginfo()));
+        hashMap.put(Const.Params.SERVICE_KILOMET, String.valueOf(mRequestOptional.getKm_send_billinginfo()));
 
         EbizworldUtils.appLogDebug("HaoLS", "Get Billing info: " + hashMap.toString());
 
@@ -389,19 +484,19 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
         Commonutils.progressdialog_show(activity, "Loading...");
         HashMap<String, String> map = new HashMap<>();
 
-        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
+//        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
 
-            map.put(Const.Params.URL, Const.ServiceType.POST_PAYPAL_NONCE_URL);
+        map.put(Const.Params.URL, Const.ServiceType.POST_PAYPAL_NONCE_URL);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-
-            map.put(Const.Params.URL, Const.NursingHomeService.POST_PAYPAL_NONCE_URL);
-
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)){
-
-            map.put(Const.Params.URL, Const.HospitalService.POST_PAYPAL_NONCE_URL);
-
-        }
+//        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+//
+//            map.put(Const.Params.URL, Const.NursingHomeService.POST_PAYPAL_NONCE_URL);
+//
+//        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+//
+//            map.put(Const.Params.URL, Const.HospitalService.POST_PAYPAL_NONCE_URL);
+//
+//        }
 
         map.put(Const.Params.ID, new PreferenceHelper(getActivity()).getUserId());
         map.put(Const.Params.TOKEN, new PreferenceHelper(getActivity()).getSessionToken());
@@ -414,7 +509,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
     }
 
-    private void getPaymentByCash(){
+    private void getPaymentByCash() {
 
         if (!EbizworldUtils.isNetworkAvailable(getActivity())) {
 
@@ -425,15 +520,15 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
         Commonutils.progressdialog_show(activity, "Loading...");
         HashMap<String, String> map = new HashMap<>();
 
-        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             map.put(Const.Params.URL, Const.ServiceType.PAYMENT_CASH);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
             map.put(Const.Params.URL, Const.NursingHomeService.PAYMENT_BY_CASH_URL);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
             map.put(Const.Params.URL, Const.HospitalService.PAYMENT_BY_CASH_URL);
 
@@ -459,15 +554,15 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
         HashMap<String, String> map = new HashMap<String, String>();
 
-        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             map.put(Const.Params.URL, Const.ServiceType.CHECKREQUEST_STATUS);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
             map.put(Const.Params.URL, Const.NursingHomeService.REQUEST_STATUS_CHECK_URL);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
             map.put(Const.Params.URL, Const.HospitalService.CHECK_REQUEST_STATUS_URL);
 
@@ -498,6 +593,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
             Log.d("HaoLS", "stop status handler");
         }
     }
+
     // ---------------GUI  REQUEST AMBULANCE -------------------
     private void RequestAmbulance(RequestOptional requestOptional) {
 
@@ -531,10 +627,10 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 //new PreferenceHelper(getActivity()).getRequestType()
 
         //
-        if(requestOptional.getOperator_id() != 0){
+        if (requestOptional.getOperator_id() != 0) {
             map.put(Const.Params.SERVICE_TYPE, String.valueOf(requestOptional.getOperator_id()));
-        }else {
-            map.put(Const.Params.SERVICE_TYPE,new PreferenceHelper(getActivity()).getRequestType());
+        } else {
+            map.put(Const.Params.SERVICE_TYPE, new PreferenceHelper(getActivity()).getRequestType());
         }
 
 
@@ -544,13 +640,11 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
         map.put(Const.Params.REQ_STATUS_TYPE, String.valueOf(requestOptional.getRequest_status_type()));
         map.put(Const.Params.PROMOCODE, requestOptional.getPromoCode());
 
-        if(REMARK1.isEmpty() || REMARK1.equals("")){
-            map.put(Const.Params.REMARK,requestOptional.getRemark());
-        }else {
-            map.put(Const.Params.REMARK,REMARK1);
+        if (REMARK1.isEmpty() || REMARK1.equals("")) {
+            map.put(Const.Params.REMARK, requestOptional.getRemark());
+        } else {
+            map.put(Const.Params.REMARK, REMARK1);
         }
-
-
 
 
 //        map.put(Const.Params.A_AND_E,String.valueOf(requestOptional.getA_and_e()));
@@ -568,7 +662,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 //        map.put("overview_polyline", String.valueOf(requestOptional.getOverView_Polyline()));
         map.put("overview_polyline", new PreferenceHelper(activity).getOverViewPolyline());
 
-        map.put("km",requestOptional.getKm_send_billinginfo().toString());
+        map.put("km", requestOptional.getKm_send_billinginfo().toString());
 
         Log.d("GetRequest_Diver", "Request ambulance: " + map.toString());
         new VolleyRequester(activity, Const.POST, map, Const.ServiceCode.REQUEST_AMBULANCE,
@@ -578,15 +672,15 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
     private void cancel_create_req() {
         HashMap<String, String> map = new HashMap<String, String>();
 
-        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             map.put(Const.Params.URL, Const.ServiceType.CANCEL_CREATE_REQUEST);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
             map.put(Const.Params.URL, Const.NursingHomeService.WAITING_CANCEL_REQUEST_URL);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
             map.put(Const.Params.URL, Const.HospitalService.WAITING_CANCEL_REQUEST_URL);
 
@@ -636,9 +730,58 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
     @Override
     public void onTaskCompleted(String response, int serviceCode) {
 
-        switch (serviceCode){
+        switch (serviceCode) {
+            case Const.ServiceCode.PAYMENT_WALLET: {
 
-            case Const.ServiceCode.BILLING_INFO:{
+                EbizworldUtils.appLogInfo("BTD", "payment_wallet: " + response);
+                Commonutils.progressdialog_hide();
+
+                if (response != null) {
+                    EbizworldUtils.appLogInfo("BTD", "payment_wallet: " + response);
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+
+                        if (jsonObject.getBoolean("success")) {
+
+                            dialog_payment_wallet.dismiss();
+
+                            if (!activity.currentFragment.equals(Const.RATING_FRAGMENT) && !activity.isFinishing()) {
+
+                                EbizworldUtils.appLogInfo("BTD", "payment_wallet: " + response);
+
+                                Bundle bundle = new Bundle();
+                                RatingFragment ratingFragment = new RatingFragment();
+                                bundle.putSerializable(Const.REQUEST_DETAIL, mRequestDetail);
+                                ratingFragment.setArguments(bundle);
+                                activity.addFragment(ratingFragment, false, Const.RATING_FRAGMENT, true);
+
+                            }
+
+
+                        } else if(jsonObject.getBoolean("success")==false){
+
+                            EbizworldUtils.showLongToast("Payment with Wallet Failed", activity);
+                            dialog_payment_wallet.dismiss();
+
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        EbizworldUtils.appLogError("HaoLS", "Get billing info failed: " + e.toString());
+                    }
+
+                } else {
+
+                    EbizworldUtils.showLongToast("Payment with Wallet Failed", activity);
+                    dialog_payment_wallet.dismiss();
+                }
+
+
+            }
+
+            break;
+
+            case Const.ServiceCode.BILLING_INFO: {
 
                 EbizworldUtils.appLogInfo("HaoLS", "Billing info: " + response);
                 Commonutils.progressdialog_hide();
@@ -646,7 +789,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                 try {
                     JSONObject object = new JSONObject(response);
 
-                    if (object.getString("success").equals("true")){
+                    if (object.getString("success").equals("true")) {
 
                         JSONObject jsonObject = object.getJSONObject(Const.Params.BILLING_INFO);
                         Log.d("DatBilling", String.valueOf(jsonObject));
@@ -689,13 +832,18 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 //
 //                            mTv_billing_info_pickup_type_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.CASE_TYPE));
 //                        }
-                        if (jsonObject.has(Const.Params.TOTAL)){
+                        if (jsonObject.has(Const.Params.TOTAL)) {
 
                             mTv_billing_info_total_price.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.TOTAL));
 
+                            new PreferenceHelper(activity).putTotalPaymentWallet(jsonObject.getString(Const.Params.TOTAL));
+
+                          //  mRequestOptional.setTotal_money_price(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.TOTAL));
+
+
                         }
 
-                    }else {
+                    } else {
                         Toast.makeText(activity, "Fail BillingInfo", Toast.LENGTH_SHORT).show();
 //                        activity.addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
 
@@ -713,9 +861,9 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
             case Const.ServiceCode.REQUEST_AMBULANCE:
                 EbizworldUtils.appLogInfo("HaoLS", "create req_response succeeded: " + response);
 
-                if (response != null){
+                if (response != null) {
 
-                    Log.d("DatCheckReponse",response.toString());
+                    Log.d("DatCheckReponse", response.toString());
 
                     try {
                         JSONObject job1 = new JSONObject(response);
@@ -724,9 +872,9 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                             new PreferenceHelper(activity).putRequestId(Integer.parseInt(job1.getString("request_id")));
                             startGetRequestStatus();
 
-                            if (requestDialog != null && requestDialog.isShowing()){
+                            if (requestDialog != null && requestDialog.isShowing()) {
 
-                                if (cancel_req_create != null){
+                                if (cancel_req_create != null) {
 
                                     cancel_req_create.setEnabled(true);
                                     cancel_req_create.setBackgroundColor(getResources().getColor(R.color.color_background_main));
@@ -763,19 +911,19 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                 }
                 break;
 
-            case Const.ServiceCode.GET_BRAIN_TREE_TOKEN_URL:{
+            case Const.ServiceCode.GET_BRAIN_TREE_TOKEN_URL: {
                 EbizworldUtils.appLogInfo("HaoLS", "GET_BRAIN_TREE_TOKEN_URL: " + response);
 
-                if (response != null && activity != null){
+                if (response != null && activity != null) {
 
                     try {
                         JSONObject jsonObject = new JSONObject(response);
 
-                        if (jsonObject.getString("success").equals("true")){
+                        if (jsonObject.getString("success").equals("true")) {
 
                             EbizworldUtils.showShortToast("Success " + jsonObject.getString("success"), activity);
 
-                            if (jsonObject.has("client_token")){
+                            if (jsonObject.has("client_token")) {
 
                                 DropInRequest dropInRequest = new DropInRequest()
                                         .clientToken(jsonObject.getString("client_token"));
@@ -783,9 +931,9 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                                 startActivityForResult(dropInRequest.getIntent(activity), Const.ServiceCode.REQUEST_PAYPAL);
                             }
 
-                        }else if (jsonObject.getString("success").equals("false")){
+                        } else if (jsonObject.getString("success").equals("false")) {
 
-                            if (jsonObject.has("error")){
+                            if (jsonObject.has("error")) {
 
                                 EbizworldUtils.showShortToast(jsonObject.getString("error"), activity);
 
@@ -819,26 +967,26 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                 }
                 break;
 
-            case Const.ServiceCode.CHECKREQUEST_STATUS:{
+            case Const.ServiceCode.CHECKREQUEST_STATUS: {
 
                 EbizworldUtils.appLogInfo("HaoLS", "check req status: " + response);
 
-                if (response != null){
+                if (response != null) {
 
                     try {
                         JSONObject jsonObject = new JSONObject(response);
 
-                        if (jsonObject.getString("success").equals("true")){
+                        if (jsonObject.getString("success").equals("true")) {
 
                             mRequestDetail = new ParseContent(activity).parseRequestStatusNormal(response);
 
-                            if (mRequestDetail == null){
+                            if (mRequestDetail == null) {
 
                                 return;
 
                             }
 
-                            if (mRequestOptional != null){
+                            if (mRequestOptional != null) {
 
                                 Bundle bundle = new Bundle();
 
@@ -899,36 +1047,36 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                                     case Const.IS_DRIVER_TRIP_STARTED:
 
                                         break;
-                                    case Const.IS_DRIVER_TRIP_ENDED:{
+                                    case Const.IS_DRIVER_TRIP_ENDED: {
 
                                     }
-                                        break;
-                                    case Const.IS_DRIVER_RATED:{
+                                    break;
+                                    case Const.IS_DRIVER_RATED: {
 
                                     }
-                                        break;
+                                    break;
                                     default:
                                         break;
 
                                 }
 
-                            }else {
+                            } else {
 
                                 mTv_billing_info_total_price.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getTrip_total_price());
-                             //   mTv_billing_info_a_and_e_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getA_and_e());
-                            //    mTv_billing_info_imh_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getImh());
-                            //    mTv_billing_info_ferry_terminals_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getFerry_terminals());
-                           //     mTv_billing_info_staircase_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getStaircase());
-                         //       mTv_billing_info_tarmac_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getTarmac());
-                            //    mTv_billing_info_weight_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getWeight());
+                                //   mTv_billing_info_a_and_e_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getA_and_e());
+                                //    mTv_billing_info_imh_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getImh());
+                                //    mTv_billing_info_ferry_terminals_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getFerry_terminals());
+                                //     mTv_billing_info_staircase_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getStaircase());
+                                //       mTv_billing_info_tarmac_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getTarmac());
+                                //    mTv_billing_info_weight_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getWeight());
 //                                mTv_billing_info_oxygen_tank_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getOxygen_tank());
-                             //   mTv_billing_info_pickup_type_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getPickup_type());
+                                //   mTv_billing_info_pickup_type_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getPickup_type());
 
                             }
 
-                        }else if (jsonObject.getString("success").equals("false")){
+                        } else if (jsonObject.getString("success").equals("false")) {
 
-                            if (jsonObject.has("error")){
+                            if (jsonObject.has("error")) {
 
                                 EbizworldUtils.showShortToast(jsonObject.getString("error"), activity);
 
@@ -947,18 +1095,18 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
             }
             break;
 
-            case Const.ServiceCode.POST_PAYPAL_NONCE:{
+            case Const.ServiceCode.POST_PAYPAL_NONCE: {
                 EbizworldUtils.appLogInfo("HaoLS", "Post paypal nonce: " + response);
                 Commonutils.progressdialog_hide();
 
-                if (response != null){
+                if (response != null) {
 
                     try {
                         JSONObject jsonObject = new JSONObject(response);
 
-                        if (jsonObject.getString("success").equals("true")){
+                        if (jsonObject.getString("success").equals("true")) {
 
-                            if (!activity.currentFragment.equals(Const.RATING_FRAGMENT) && !activity.isFinishing()){
+                            if (!activity.currentFragment.equals(Const.RATING_FRAGMENT) && !activity.isFinishing()) {
 
                                 Bundle bundle = new Bundle();
                                 RatingFragment ratingFragment = new RatingFragment();
@@ -967,9 +1115,9 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                                 activity.addFragment(ratingFragment, false, Const.RATING_FRAGMENT, true);
 
                             }
-                        }else if (jsonObject.getString("success").equals("false")){
+                        } else if (jsonObject.getString("success").equals("false")) {
 
-                            if (jsonObject.has("error")){
+                            if (jsonObject.has("error")) {
 
                                 EbizworldUtils.showShortToast(jsonObject.getString("error"), activity);
 
@@ -987,19 +1135,19 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
             }
             break;
 
-            case Const.ServiceCode.PAYMENT_CASH:{
+            case Const.ServiceCode.PAYMENT_CASH: {
 
                 EbizworldUtils.appLogInfo("HaoLS", "Payment Cash " + response);
                 Commonutils.progressdialog_hide();
 
-                if (response != null){
+                if (response != null) {
 
                     try {
                         JSONObject jsonObject = new JSONObject(response);
 
-                        if (jsonObject.getString("success").equals("true")){
+                        if (jsonObject.getString("success").equals("true")) {
 
-                            if (!activity.currentFragment.equals(Const.RATING_FRAGMENT) && !activity.isFinishing()){
+                            if (!activity.currentFragment.equals(Const.RATING_FRAGMENT) && !activity.isFinishing()) {
 
                                 Bundle bundle = new Bundle();
                                 RatingFragment ratingFragment = new RatingFragment();
@@ -1009,13 +1157,13 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
                             }
 
-                        }else if (jsonObject.getString("success").equals("false")){
+                        } else if (jsonObject.getString("success").equals("false")) {
 
-                            if (jsonObject.has("error")){
+                            if (jsonObject.has("error")) {
 
                                 EbizworldUtils.showShortToast(jsonObject.getString("error"), activity);
 
-                            }else {
+                            } else {
 
                                 EbizworldUtils.showShortToast(getResources().getString(R.string.payment_by_cash_failed), activity);
 
@@ -1036,23 +1184,23 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (requestCode == Const.ServiceCode.REQUEST_PAYPAL){
+        if (requestCode == Const.ServiceCode.REQUEST_PAYPAL) {
 
-            if (resultCode == Activity.RESULT_OK){
+            if (resultCode == Activity.RESULT_OK) {
 
                 DropInResult dropInResult = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
 
-                if (dropInResult.getPaymentMethodNonce() != null){
+                if (dropInResult.getPaymentMethodNonce() != null) {
 
                     postNonceToServer(dropInResult.getPaymentMethodNonce().getNonce());
                     EbizworldUtils.appLogDebug("HaoLS", "Billing Info Nonce: " + dropInResult.getPaymentMethodNonce().getNonce());
                 }
 
-            }else if (resultCode == Activity.RESULT_CANCELED){
+            } else if (resultCode == Activity.RESULT_CANCELED) {
 
                 EbizworldUtils.showShortToast("Request is canceled", activity);
 
-            }else {
+            } else {
 
                 Exception exception = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
                 EbizworldUtils.showShortToast(exception.toString(), activity);

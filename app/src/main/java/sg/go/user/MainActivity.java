@@ -31,6 +31,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,13 +70,19 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
     private Toolbar mainToolbar;
     private Bundle mbundle;
     private ParseContent pcontent;
-    private AlertDialog gpsAlertDialog, internetDialog;
+    private AlertDialog internetDialog;
+    private AlertDialog gpsAlertDialog1;
     private boolean isGpsDialogShowing = false, isRecieverRegistered = false, isNetDialogShowing = false;
     private boolean gpswindowshowing = false;
     AlertDialog.Builder gpsBuilder;
     private LocationManager manager;
 //  private ImageButton bnt_menu;
     private Dialog load_dialog;
+
+    private Button btn_select_gps;
+    private  TextView txt_exit_gps;
+
+    private Dialog gpsAlertDialog;
     private BottomNavigationView mBottomNavigationView;
 
    private BroadcastReceiver accountLogoutReceiver;
@@ -366,13 +374,17 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
                 addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true);
 
-            }/*else if (currentFragment.equals(Const.NURSE_REGISTER_SCHEDULE_FRAGMENT)){
+            }else if (currentFragment.equals(Const.WALLET_FRAGMENT)){
 
-                addFragment(new ScheduleListFragment(), false, Const.SCHEDULE_LIST_FRAGMENT, true);
+                addFragment(new AccountFragment(), false, Const.ACCOUNT_FRAGMENT, true);
 
-            }*/else {
+                mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
+
+            }
+            else {
 
                 addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+
                 mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
             }
 
@@ -442,41 +454,74 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
         exit_dialog.show();
     }
-
+/*---- Dialog GPS ----*/
     private void ShowGpsDialog() {
 
         isGpsDialogShowing = true;
 
-        gpsBuilder = new AlertDialog.Builder(
-                this);
+        gpsAlertDialog = new Dialog(this);
+
+        gpsAlertDialog.setContentView(R.layout.dialog_request_gps);
+
+        gpsAlertDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+
+        btn_select_gps = gpsAlertDialog.findViewById(R.id.btn_select_gps);
+
+        txt_exit_gps = gpsAlertDialog.findViewById(R.id.txt_exit_gps);
+
+        gpsAlertDialog.setCancelable(false);
 
 
-        gpsBuilder.setCancelable(false);
-        gpsBuilder
-                .setTitle(getResources().getString(R.string.txt_gps_off))
-                .setMessage(getResources().getString(R.string.txt_gps_msg))
-                .setPositiveButton(getResources().getString(R.string.txt_enable),
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-                                // continue with delete
-                                Intent intent = new Intent(
-                                        android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                                startActivity(intent);
-                                removeGpsDialog();
-                            }
-                        })
+        btn_select_gps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // continue with delete
+                Intent intent = new Intent(
+                        android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+                removeGpsDialog();
+            }
+        });
 
-                .setNegativeButton(getResources().getString(R.string.txt_exit),
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-                                // do nothing
-                                removeGpsDialog();
-                                finishAffinity();
-                            }
-                        });
-        gpsAlertDialog = gpsBuilder.create();
+        txt_exit_gps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                removeGpsDialog();
+                finishAffinity();
+
+            }
+        });
+
+
+
+//        gpsBuilder = new AlertDialog.Builder(
+//                this);
+//        gpsBuilder.setCancelable(false);
+//        gpsBuilder.setTitle(getResources().getString(R.string.txt_gps_off))
+//                .setMessage(getResources().getString(R.string.txt_gps_msg))
+//                .setPositiveButton(getResources().getString(R.string.txt_enable),
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog,
+//                                                int which) {
+//                                // continue with delete
+//                                Intent intent = new Intent(
+//                                        android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+//                                startActivity(intent);
+//                                removeGpsDialog();
+//                            }
+//                        })
+//
+//                .setNegativeButton(getResources().getString(R.string.txt_exit),
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog,
+//                                                int which) {
+//                                // do nothing
+//                                removeGpsDialog();
+//                                finishAffinity();
+//                            }
+//                        });
+//        gpsAlertDialog = gpsBuilder.create();
 
         gpsAlertDialog.show();
 
@@ -484,7 +529,9 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
 
     private void removeGpsDialog() {
+
         if (gpsAlertDialog != null && gpsAlertDialog.isShowing()) {
+
             gpsAlertDialog.dismiss();
             isGpsDialogShowing = false;
             gpsAlertDialog = null;
@@ -538,8 +585,11 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                 return;
             }
             ShowGpsDialog();
+
         } else {
+
             removeGpsDialog();
+
         }
 
         if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME) ||
@@ -634,11 +684,11 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
         internetDialog.show();
     }
 
+/*---- EVENT WHEN GPS WILL TURN OFF AND ON ----*/
 
     public BroadcastReceiver GpsChangeReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-
 
             if (intent.getAction() != null) {
 
@@ -648,6 +698,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                     // do something
 
                     removeGpsDialog();
+
                 } else {
                     // do something else
                     if (isGpsDialogShowing) {

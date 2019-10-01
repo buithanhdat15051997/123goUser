@@ -538,7 +538,7 @@ public class HomeMapFragment extends BaseFragment implements LocationHelper.OnLo
         if (getActivity() != null){
 
             try {
-                boolean success = mGoogleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.style_map));
+                boolean success = mGoogleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.mapstyle));
 
                 if (!success){
 

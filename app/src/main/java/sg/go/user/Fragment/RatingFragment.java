@@ -1,14 +1,19 @@
 package sg.go.user.Fragment;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,6 +31,7 @@ import sg.go.user.DatabaseHandler;
 import sg.go.user.HttpRequester.VolleyRequester;
 import sg.go.user.MainActivity;
 import sg.go.user.Models.RequestDetail;
+import sg.go.user.Models.RequestOptional;
 import sg.go.user.R;
 import sg.go.user.Utils.Commonutils;
 import sg.go.user.Utils.Const;
@@ -39,12 +45,14 @@ import sg.go.user.Utils.PreferenceHelper;
 
 public class RatingFragment extends BaseFragment {
     private RequestDetail requestDetail;
+    private RequestOptional RequestOptional;
     private TextView tv_total, text_time, text_distance, btn_submit_rating, tv_cancellation_fee;
     private SimpleRatingBar simple_rating_bar;
     private CircleImageView iv_feedback_vehicle, iv_feedback_user, iv_feedback_location;
     String google_img_url = "";
     int rating = 0;
     private AlertDialog.Builder paybuilder;
+    private Button btn_dialog_booking_success;
     private boolean ispayshowing = false;
     DatabaseHandler db;
     private LinearLayout layout_distance, toll_layout;
@@ -80,7 +88,7 @@ public class RatingFragment extends BaseFragment {
 
         View view = inflater.inflate(R.layout.fragment_rating, container,
                 false);
-        tv_total = (TextView) view.findViewById(R.id.tv_history_detail_total);
+        tv_total = (TextView) view.findViewById(R.id.tv_rating_detail_total);
         text_time = (TextView) view.findViewById(R.id.text_time);
         text_distance = (TextView) view.findViewById(R.id.text_distance);
         simple_rating_bar = (SimpleRatingBar) view.findViewById(R.id.simple_rating_bar);
@@ -94,6 +102,7 @@ public class RatingFragment extends BaseFragment {
         iv_feedback_location = (CircleImageView) view.findViewById(R.id.iv_feedback_location);
         layout_distance = (LinearLayout) view.findViewById(R.id.layout_distance);
         toll_layout = (LinearLayout) view.findViewById(R.id.toll_layout);
+
         rating = simple_rating_bar.getRating();
 
         simple_rating_bar.setListener(new SimpleRatingBar.SimpleRatingBarListener() {
@@ -122,13 +131,20 @@ public class RatingFragment extends BaseFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Bundle mBundle = getArguments();
+
         if (mBundle != null) {
+
             requestDetail = (RequestDetail) mBundle.getSerializable(
                     Const.REQUEST_DETAIL);
+
             google_img_url = getGoogleMapThumbnail(Double.valueOf(requestDetail.getD_lat()), Double.valueOf(requestDetail.getD_lng()));
             //EbizworldUtils.removeLoader();
+
             tv_total.setText(requestDetail.getCurrnecy_unit() + " " + requestDetail.getTrip_total_price());
+
+
             text_time.setText(requestDetail.getTrip_time() + " " + getResources().getString(R.string.min));
+
             tv_payment_type.setText(getResources().getString(R.string.txt_payment_type) + requestDetail.getPayment_mode());
 
             /*Picasso.get().load(requestDetail.getDriver_picture()).error(R.drawable.driver).into(iv_feedback_user);
@@ -161,7 +177,7 @@ public class RatingFragment extends BaseFragment {
 
             }*/
 
-            if (null != requestDetail.getCancellationFee() &&!requestDetail.getCancellationFee().equals("0")) {
+            if (null != requestDetail.getCancellationFee() && !requestDetail.getCancellationFee().equals("0")) {
                 tv_cancellation_fee.setVisibility(View.VISIBLE);
                 tv_cancellation_fee.setText(getResources().getString(R.string.txt_trip_cancel_fee) + " " + requestDetail.getCurrnecy_unit() + " " + requestDetail.getCancellationFee());
             } else {
@@ -172,7 +188,7 @@ public class RatingFragment extends BaseFragment {
                 toll_layout.setVisibility(View.GONE);
             } else {
                 toll_layout.setVisibility(View.VISIBLE);
-                tv_no_tolls.setText(getResources().getString(R.string.txt_toll)+":" + " " + requestDetail.getNo_tolls());
+                tv_no_tolls.setText(getResources().getString(R.string.txt_toll) + ":" + " " + requestDetail.getNo_tolls());
             }
             if (requestDetail.getRequest_type().equals("2") || requestDetail.getRequest_type().equals("3")) {
                 layout_distance.setVisibility(View.GONE);
@@ -209,7 +225,7 @@ public class RatingFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
 
-          /*TO clear all views */
+        /*TO clear all views */
         ViewGroup mContainer = (ViewGroup) getActivity().findViewById(R.id.content_frame);
         mContainer.removeAllViews();
     }
@@ -244,7 +260,7 @@ public class RatingFragment extends BaseFragment {
 
 
     public static String getGoogleMapThumbnail(double lati, double longi) {
-        String staticMapUrl = "http://maps.google.com/maps/api/staticmap?center=" + lati + "," + longi + "&markers=" + lati + "," + longi + "&zoom=14&size=150x120&sensor=false&key="+Const.GOOGLE_API_KEY;
+        String staticMapUrl = "http://maps.google.com/maps/api/staticmap?center=" + lati + "," + longi + "&markers=" + lati + "," + longi + "&zoom=14&size=150x120&sensor=false&key=" + Const.GOOGLE_API_KEY;
         return staticMapUrl;
     }
 
@@ -259,7 +275,7 @@ public class RatingFragment extends BaseFragment {
     public void onTaskCompleted(String response, int serviceCode) {
 
         switch (serviceCode) {
-            case Const.ServiceCode.PAYNOW:{
+            case Const.ServiceCode.PAYNOW: {
                 Log.d("HaoLS", "pay provider" + response);
                 if (response != null) {
 
@@ -280,7 +296,7 @@ public class RatingFragment extends BaseFragment {
 
                 }
             }
-                break;
+            break;
 
             case Const.ServiceCode.RATE_PROVIDER:
                 EbizworldUtils.appLogInfo("HaoLS", "rate provider" + response);
@@ -289,9 +305,27 @@ public class RatingFragment extends BaseFragment {
                     JSONObject job = new JSONObject(response);
                     if (job.getString("success").equals("true")) {
 
-                        new PreferenceHelper(activity).clearRequestData();
-                        Intent i = new Intent(activity, MainActivity.class);
-                        startActivity(i);
+                        Dialog dialog_booking_success = new Dialog(activity);
+
+                        dialog_booking_success.setContentView(R.layout.dialog_booking_success);
+
+//                        dialog_booking_success.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog_booking_success.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
+                        btn_dialog_booking_success = dialog_booking_success.findViewById(R.id.btn_dialog_booking_success);
+//                        dialog_booking_success.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                        dialog_booking_success.setCancelable(false);
+                        dialog_booking_success.show();
+                        btn_dialog_booking_success.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                new PreferenceHelper(activity).clearRequestData();
+                                Intent i = new Intent(activity, MainActivity.class);
+                                startActivity(i);
+                            }
+                        });
+
 
                     } else {
 
@@ -304,14 +338,14 @@ public class RatingFragment extends BaseFragment {
                 }
                 break;
 
-            case Const.ServiceCode.CHECKREQUEST_STATUS:{
+            case Const.ServiceCode.CHECKREQUEST_STATUS: {
                 EbizworldUtils.appLogInfo("HaoLS", "CHECKREQUEST_STATUS " + response);
 
-                if (response != null && activity != null){
+                if (response != null && activity != null) {
 
                     RequestDetail requestDetail = new ParseContent(activity).parseRequestStatusNormal(response);
 
-                    if (requestDetail != null){
+                    if (requestDetail != null) {
 
                         if (requestDetail.getTripStatus() == Const.IS_DRIVER_RATED) {
 
@@ -320,7 +354,7 @@ public class RatingFragment extends BaseFragment {
                             btn_submit_rating.setBackgroundColor(getResources().getColor(R.color.color_btn_main));
                             btn_submit_rating.setEnabled(true);
 
-                        }else {
+                        } else {
 
                             btn_submit_rating.setBackgroundColor(getResources().getColor(R.color.color_btn_two));
                             btn_submit_rating.setEnabled(false);
@@ -360,15 +394,15 @@ public class RatingFragment extends BaseFragment {
         }
         HashMap<String, String> map = new HashMap<String, String>();
 
-        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             map.put(Const.Params.URL, Const.ServiceType.CHECKREQUEST_STATUS);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
             map.put(Const.Params.URL, Const.NursingHomeService.REQUEST_STATUS_CHECK_URL);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
             map.put(Const.Params.URL, Const.HospitalService.CHECK_REQUEST_STATUS_URL);
 
@@ -391,15 +425,15 @@ public class RatingFragment extends BaseFragment {
         Commonutils.progressdialog_show(activity, "Rating...");
         HashMap<String, String> map = new HashMap<String, String>();
 
-        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             map.put(Const.Params.URL, Const.ServiceType.RATE_PROVIDER);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
             map.put(Const.Params.URL, Const.NursingHomeService.RATE_PROVIDER_URL);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
             map.put(Const.Params.URL, Const.HospitalService.RATE_PROVIDER_URL);
 

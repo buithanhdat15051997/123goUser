@@ -33,9 +33,18 @@ public class RequestOptional implements Parcelable {
     private int oxygen;
     private int caseType;
 
+    private String total_money_price;
 
+    public String getTotal_money_price() {
+        return total_money_price;
+    }
+
+    public void setTotal_money_price(String total_money_price) {
+        this.total_money_price = total_money_price;
+    }
+
+    private String Time_send_billinginfo;
     private String km_send_billinginfo;
-    private  String time_send_billinginfo;
     private  String imgType_send_billinginfo;
     private  String nameType_send_billinginfo;
 
@@ -63,6 +72,14 @@ public class RequestOptional implements Parcelable {
 
     public void setKm_send_billinginfo(String km_send_billinginfo) {
         this.km_send_billinginfo = km_send_billinginfo;
+    }
+
+    public String getTime_send_billinginfo() {
+        return Time_send_billinginfo;
+    }
+
+    public void setTime_send_billinginfo(String Time_send_billinginfo) {
+        this.Time_send_billinginfo = Time_send_billinginfo;
     }
 
     public static Creator<RequestOptional> getCREATOR() {

@@ -9,6 +9,7 @@
     <color name="main_color">#BCB9BD</color>
     <color name="circle_color">#FE9700</color>
     <color name="white">#ffffff</color>
+    <color name="white2">#E9E7E7</color>
     <color name="white_trans">#11ffffff</color>
     <color name="app_theam">#f7ec25</color>
     <color name="app_theam_end">#fcf00f</color>
@@ -34,14 +35,14 @@
 
     <color name="color_btn_two">#F5BCA7</color>
     <color name="color_background_main">#1dccc8</color>
-    <color name="color_red_main">#e23338</color>
+    <color name="color_red_main">#E53935</color>
 
     <!---123Gâu-->
     <color name="background123go">#1dccc8</color>
     <color name="gray900"> #212121 </color>
 
     //color Main text
-    <color name="lightblueA700"> #00A9EA </color>
+    <color name="lightblueA700"> #1dccc8 </color>
 
     <color name="lightblue100"> #79D4F7 </color>
 
@@ -50,7 +51,7 @@
     <color name="lightblue500">#3265CC</color>
 
 
-    <color name="lightblue700">#449EC5</color>
+    <color name="lightblue700">#1dccc8</color>
 
     <color name="gray600"> #757474 </color>
     <color name="redA700"> #FF0000 </color>

@@ -683,7 +683,7 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
             if (getActivity() != null){
 
                 try {
-                    boolean success = googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.style_map));
+                    boolean success = googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.mapstyle));
 
                     if (!success){
 

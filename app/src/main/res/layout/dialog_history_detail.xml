@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/background_main_app"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:padding="@dimen/_5sdp"
-        android:background="@color/lightblue700">
+        android:background="@color/color_background_main">
 
         <ImageView
             android:id="@+id/btn_close_history"
@@ -71,7 +71,7 @@
                     android:layout_weight="0.8"
                     android:gravity="center|start"
                     android:text="00-00-2017"
-                    android:textColor="@color/lightblue700"
+                    android:textColor="@color/color_background_main"
                     android:textSize="@dimen/_14ssp"
                     android:textStyle="bold|italic"/>
 
@@ -83,7 +83,7 @@
                     android:layout_weight="0.2"
                     android:gravity="center"
                     android:maxLines="2"
-                    android:background="@color/lightblue700"
+                    android:background="@color/color_btn_main"
                     android:text="000"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_16ssp" />
@@ -110,13 +110,13 @@
                     android:id="@+id/trip_source_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_pickup"
+                    android:drawableStart="@drawable/ic_destination_all"
                     android:drawablePadding="@dimen/_10sdp"
                     android:text="@string/txt_current_loc"
                     android:padding="@dimen/_10sdp"
                     android:maxLines="2"
                     android:singleLine="false"
-                    android:textColor="@color/lightblue700"
+                    android:textColor="@color/color_background_main"
                     android:textSize="@dimen/_14sdp" />
 
                 <View
@@ -133,13 +133,13 @@
                     android:id="@+id/trip_destination_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_destination"
+                    android:drawableStart="@drawable/ic_destination_all"
                     android:drawablePadding="@dimen/_10sdp"
                     android:text="@string/not_available"
                     android:padding="@dimen/_10sdp"
                     android:maxLines="2"
                     android:singleLine="false"
-                    android:textColor="@color/lightblue700"
+                    android:textColor="@color/color_background_main"
                     android:textSize="@dimen/_14sdp" />
             </LinearLayout>
 
@@ -176,7 +176,7 @@
                             android:layout_gravity="center"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:text="@string/txt_ride_with"
-                            android:textColor="@color/lightblue700"
+                            android:textColor="@color/color_background_main"
                             android:textSize="@dimen/_14sdp"/>
                     </LinearLayout>
 

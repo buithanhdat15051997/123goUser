@@ -87,7 +87,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private CallbackManager callbackManager;
     private String sPictureUrl;
     private String sLoginUserId, sLoginPassword;
-    private  RelativeLayout btn_register_social;
+    private LinearLayout btn_register_social;
 
     private GoogleApiClient mGoogleApiClient;
     private String filePath = "";
@@ -145,7 +145,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         /*btn_login_fb = (Button) findViewById(R.id.btn_login_fb);*/
         login_btn = (TextView) findViewById(R.id.login_btn);
         loc_pass = (ImageButton) findViewById(R.id.loc_pass);
-        btn_register_social = (RelativeLayout) findViewById(R.id.btn_register_social);
+        btn_register_social = (LinearLayout) findViewById(R.id.btn_register_social);
 
         btn_cancel.setOnClickListener(this);
         /*btn_login_fb.setOnClickListener(this);*/
@@ -294,6 +294,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 }
                 break;
             case R.id.btn_forgot_pass:
+
                 addFragment(new ForgotPasswordFragment(), false, Const.FORGOT_PASSWORD_FRAGMENT, true);
                 log_layout.setVisibility(View.GONE);
                 break;

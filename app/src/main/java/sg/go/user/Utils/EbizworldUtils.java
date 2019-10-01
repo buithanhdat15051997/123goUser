@@ -289,7 +289,6 @@ public class EbizworldUtils {
 
         if (context != null) {
 
-
             mProgressDialog = new Dialog(context, R.style.DialogSlideAnim_leftright);
             mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));

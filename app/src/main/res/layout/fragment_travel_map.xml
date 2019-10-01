@@ -46,8 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_10sdp"
         android:background="@drawable/background_with_shadow"
         android:orientation="vertical">
 
@@ -55,9 +55,9 @@
             android:id="@+id/tv_driver_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Driver status"
             android:gravity="center"
             android:padding="@dimen/_5sdp"
+            android:text="Driver status"
             android:textColor="@color/color_btn_main"
             android:textSize="@dimen/_14ssp" />
 
@@ -75,23 +75,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/_3sdp"
             android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
             android:ellipsize="marquee"
             android:marqueeRepeatLimit="marquee_forever"
             android:padding="@dimen/_5sdp"
             android:scrollHorizontally="true"
             android:singleLine="true"
             android:text="@string/txt_current_location"
-            android:textColor="@color/deeporange600"
+            android:textColor="@color/color_background_main"
             android:textSize="@dimen/_10ssp" />
 
         <RelativeLayout
             android:id="@+id/stopLay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
             android:visibility="gone">
 
             <TextView
@@ -128,37 +128,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/background_with_shadow"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/_5sdp"
+        android:paddingTop="@dimen/_30sdp">
 
         <LinearLayout
             android:id="@+id/ino_lay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_30sdp"
             android:gravity="center"
             android:orientation="horizontal">
-
-            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/img_ambulance"
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_height="@dimen/_60sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
-                    android:src="@drawable/carambulance"/>
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/img_driver"
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_height="@dimen/_60sdp"
-                    android:layout_gravity="center|end"
-                    android:src="@drawable/defult_user"/>
-
-            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -174,7 +156,7 @@
                     android:layout_height="wrap_content"
                     android:text="Cristiano Ronaldo"
                     android:textAllCaps="true"
-                    android:textColor="@color/black_text"
+                    android:textColor="@color/color_btn_main"
                     android:textSize="@dimen/_13ssp" />
 
                 <TextView
@@ -192,7 +174,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="Bugati Chirion"
-                    android:textColor="@color/black_text"
+                    android:textColor="@color/color_background_main"
                     android:textSize="@dimen/_11ssp" />
 
                 <TextView
@@ -201,7 +183,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:text="768354"
-                    android:textColor="@color/lightblueA700"
+                    android:textColor="@color/color_background_main"
                     android:textSize="@dimen/_11ssp"
                     android:visibility="gone" />
 
@@ -216,10 +198,10 @@
             android:layout_below="@+id/ino_lay"
             android:layout_centerInParent="true"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:visibility="gone"
-            android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:background="@color/lightblue100" />
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@color/lightblue100"
+            android:visibility="gone" />
 
         <LinearLayout
             android:id="@+id/optionsLay"
@@ -227,8 +209,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/v_line"
             android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_2sdp"
-            android:layout_marginTop="@dimen/_10sdp"
             android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="1.5">
@@ -267,7 +249,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/close"/>
+                    app:srcCompat="@drawable/close" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -296,7 +278,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txt_more"
-                    android:textColor="@color/lightblueA700"
+                    android:textColor="@color/color_background_main"
                     android:visibility="visible" />
             </LinearLayout>
 
@@ -326,33 +308,59 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
-                android:padding="@dimen/_10sdp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="Add Stop"
                 android:animateLayoutChanges="true"
-                android:textColor="@color/deeporange600" />
+                android:gravity="center"
+                android:padding="@dimen/_10sdp"
+                android:text="Add Stop"
+                android:textColor="@color/color_btn_main" />
 
             <TextView
                 android:id="@+id/lineCenter"
                 android:layout_width="@dimen/_2sdp"
                 android:layout_height="match_parent"
                 android:animateLayoutChanges="true"
-                android:background="@color/lightblue100" />
+                android:background="@color/color_background_main" />
 
             <TextView
                 android:id="@+id/editDrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/_5sdp"
-                android:animateLayoutChanges="true"
-                android:padding="@dimen/_10sdp"
                 android:layout_weight="1"
+                android:animateLayoutChanges="true"
                 android:gravity="center"
+                android:padding="@dimen/_10sdp"
                 android:text="Edit Drop"
                 android:textColor="@color/deeporange600" />
 
         </LinearLayout>
     </RelativeLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linear_img_driver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_100sdp">
+
+        <!--        <de.hdodenhof.circleimageview.CircleImageView
+                    android:visibility="gone"
+                    android:id="@+id/img_ambulance"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_marginRight="@dimen/_40sdp"
+                    android:src="@drawable/carambulance"/>-->
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_driver"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_gravity="center|end"
+            android:background="@drawable/background_oval_img"
+            android:src="@drawable/defult_user" />
+    </LinearLayout>
+
 
 </RelativeLayout>

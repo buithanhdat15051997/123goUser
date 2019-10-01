@@ -5,7 +5,7 @@
     <size android:width="@dimen/_250sdp"
         android:height="@dimen/_40sdp"/>
 
-    <corners android:radius="@dimen/_3sdp"/>
+    <corners android:radius="@dimen/_1sdp"/>
 
     <gradient android:startColor="@color/color_btn_main"
         android:endColor="@color/color_btn_main"/>

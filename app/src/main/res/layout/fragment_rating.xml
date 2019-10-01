@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -48,7 +47,7 @@
                         android:layout_marginRight="@dimen/_10sdp"
                         android:text="@string/total_fare"
                         android:textSize="@dimen/_16ssp"
-                        android:textColor="@color/black_text"/>
+                        android:textColor="@color/color_background_main"/>
 
                     <View
                         android:layout_width="@dimen/_80sdp"
@@ -58,13 +57,13 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/tv_history_detail_total"
+                    android:id="@+id/tv_rating_detail_total"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="@dimen/_5sdp"
                     android:text=""
-                    android:textColor="@color/lightblueA700"
+                    android:textColor="@color/color_btn_main"
                     android:textSize="@dimen/_20ssp"/>
 
                 <TextView
@@ -98,7 +97,7 @@
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_marginRight="@dimen/_10sdp"
                         android:text="@string/trip_summary"
-                        android:textColor="@color/black_text"
+                        android:textColor="@color/color_background_main"
                         android:textSize="@dimen/_12ssp"/>
 
                     <View
@@ -122,7 +121,7 @@
                         android:layout_width="@dimen/_60sdp"
                         android:layout_height="@dimen/_60sdp"
                         android:src="@drawable/defult_user"
-                        app:civ_border_color="@color/lightblueA700" />
+                        app:civ_border_color="@color/color_background_main" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/iv_feedback_user"
@@ -130,7 +129,7 @@
                         android:layout_height="@dimen/_60sdp"
                         android:layout_marginLeft="20dp"
                         android:src="@drawable/defult_user"
-                        app:civ_border_color="@color/lightblueA700" />
+                        app:civ_border_color="@color/color_background_main" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/iv_feedback_location"
@@ -138,7 +137,7 @@
                         android:layout_height="@dimen/_60sdp"
                         android:layout_marginLeft="20dp"
                         android:src="@drawable/defult_user"
-                        app:civ_border_color="@color/lightblueA700" />
+                        app:civ_border_color="@color/color_background_main" />
 
                 </LinearLayout>
 
@@ -291,7 +290,7 @@
                     <TextView
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:textColor="@color/black_text"
+                        android:textColor="@color/color_background_main"
                         android:textSize="@dimen/_14ssp"
                         android:text="@string/txt_title_rating"
                         android:gravity="center"
@@ -348,14 +347,20 @@
                 <com.aurelhubert.simpleratingbar.SimpleRatingBar
                     android:id="@+id/simple_rating_bar"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_20sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:layout_margin="@dimen/_10sdp"
+                    app:drawableHeight="@dimen/_25sdp"
                     app:drawablePadding="@dimen/_10sdp"
-                    app:srb_fillColor="@color/color_btn_main"
                     app:srb_backgroundColor="@color/white"
+                    app:defaultDrawable="@drawable/rating_default"
+                    app:selectedDrawable="@drawable/rating_selected"
                     app:srb_borderColor="@color/color_btn_main"
                     app:maxRating="5"
                     app:rating="3"/>
+                <ImageView
+                    android:src="@drawable/logo_hide"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp" />
 
 
             </LinearLayout>
@@ -370,7 +375,7 @@
         android:layout_height="@dimen/_40sdp"
         android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/_10sdp"
-        android:background="@color/color_btn_main"
+        android:background="@color/color_btn_two"
         android:enabled="false"
         android:gravity="center"
         android:text="@string/txt_sub_rating"

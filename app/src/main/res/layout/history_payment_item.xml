@@ -111,7 +111,7 @@
                     android:textColor="@color/deeporange600"
                     android:textSize="@dimen/_12sdp" />
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:visibility="gone"
                     android:id="@+id/iv_history_img"
                     android:layout_width="@dimen/_50sdp"
