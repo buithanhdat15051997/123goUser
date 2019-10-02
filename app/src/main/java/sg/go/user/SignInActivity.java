@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -87,7 +88,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private CallbackManager callbackManager;
     private String sPictureUrl;
     private String sLoginUserId, sLoginPassword;
-    private LinearLayout btn_register_social;
+    private RelativeLayout btn_register_social;
 
     private GoogleApiClient mGoogleApiClient;
     private String filePath = "";
@@ -141,11 +142,14 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         et_login_userid = (EditText) findViewById(R.id.et_login_userid);
         btn_forgot_pass = (TextView) findViewById(R.id.btn_forgot_pass);
         btn_new_user = (TextView) findViewById(R.id.btn_new_user);
+        //underline
+        btn_new_user.setPaintFlags(btn_new_user.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+
         log_layout = (RelativeLayout) findViewById(R.id.log_layout);
         /*btn_login_fb = (Button) findViewById(R.id.btn_login_fb);*/
         login_btn = (TextView) findViewById(R.id.login_btn);
         loc_pass = (ImageButton) findViewById(R.id.loc_pass);
-        btn_register_social = (LinearLayout) findViewById(R.id.btn_register_social);
+        btn_register_social = (RelativeLayout) findViewById(R.id.btn_register_social);
 
         btn_cancel.setOnClickListener(this);
         /*btn_login_fb.setOnClickListener(this);*/

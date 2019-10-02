@@ -603,12 +603,17 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
 
     private void showLogoutDialog() {
 
-        dialog = new Dialog(mMainActivity);
+        dialog = new Dialog(mMainActivity,R.style.Custom_Dialog);
         //, R.style.DialogThemeforview
 
         dialog.setCancelable(true);
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
 
-        dialog.getWindow().setLayout((int) (getScreenWidth(getActivity()) * .9), WindowManager.LayoutParams.WRAP_CONTENT);
+        Window window = dialog.getWindow();
+        if(window != null){
+            window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND); // This flag is required to set otherwise the setDimAmount method will not show any effect
+            window.setDimAmount(0.5f); //0 for no dim to 1 for full dim
+        }
 
         dialog.setContentView(R.layout.dialog_logout);
 
@@ -619,24 +624,25 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
         btn_logout_yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-         /*       dialog.dismiss();
-                new PreferenceHelper(mMainActivity).Logout();
-
-                BaseFragment.drop_latlan = null;
-                BaseFragment.pic_latlan = null;
-                BaseFragment.s_address = "";
-                BaseFragment.d_address = "";
-
-                new PreferenceHelper(mMainActivity).Logout();
-                Intent i = new Intent(mMainActivity, WelcomeActivity.class);
-                startActivity(i);
-                mMainActivity.finish();*/
+//                dialog.dismiss();
+//                new PreferenceHelper(mMainActivity).Logout();
+//
+//                BaseFragment.drop_latlan = null;
+//                BaseFragment.pic_latlan = null;
+//                BaseFragment.s_address = "";
+//                BaseFragment.d_address = "";
+//
+//                new PreferenceHelper(mMainActivity).Logout();
+//                Intent i = new Intent(mMainActivity, WelcomeActivity.class);
+//                startActivity(i);
+//                mMainActivity.finish();
                 logoutApi();
                 dialog.dismiss();
             }
         });
 
         TextView btn_logout_no = (TextView) dialog.findViewById(R.id.btn_logout_no);
+
         btn_logout_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

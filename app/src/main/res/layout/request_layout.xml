@@ -11,6 +11,7 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:textStyle="bold"
         android:id="@+id/tv_optional"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_30sdp"
@@ -19,7 +20,7 @@
         android:text="@string/txt_next"
         android:textAllCaps="true"
         android:textColor="@color/color_btn_main"
-        android:textSize="@dimen/_10ssp" />
+        android:textSize="@dimen/_14ssp" />
     <ImageView
         android:id="@+id/img_cancel_choss_type_car"
         android:layout_marginRight="@dimen/_15sdp"

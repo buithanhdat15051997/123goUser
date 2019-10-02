@@ -290,17 +290,17 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                 new IntentFilter(Const.NotificationType.TYPE_ACCOUNT_LOGOUT));
 
 
-       /* if(currentFragment.equals(Const.HOME_MAP_FRAGMENT)){
-            Log.e("mahi","coming 1");
-            addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
-        } else if(currentFragment.equals(Const.REQUEST_FRAGMENT)){
-            addFragment(new RequestMapFragment(), false, Const.REQUEST_FRAGMENT, true);
-        } else if(currentFragment.equals(Const.SEARCH_FRAGMENT)){
-            addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true);
-        } else if(currentFragment.equals("")) {
-            addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
-            Log.e("mahi","coming 2");
-        }*/
+//        if(currentFragment.equals(Const.HOME_MAP_FRAGMENT)){
+//            Log.e("mahi","coming 1");
+//            addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+//        } else if(currentFragment.equals(Const.REQUEST_FRAGMENT)){
+//            addFragment(new RequestMapFragment(), false, Const.REQUEST_FRAGMENT, true);
+//        } else if(currentFragment.equals(Const.SEARCH_FRAGMENT)){
+//            addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true);
+//        } else if(currentFragment.equals("")) {
+//            addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+//            Log.e("mahi","coming 2");
+//        }
     }
 
     /*public void registerGcmReceiver(BroadcastReceiver mHandleMessageReceiver) {
@@ -380,7 +380,16 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
                 mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
 
+            }else if(currentFragment.equals(Const.RATING_FRAGMENT)){
+
+                Toast.makeText(this, getResources().getString(R.string.txt_toast_event_back_rating).toString(), Toast.LENGTH_SHORT).show();
+
             }
+//            else if(currentFragment.equals(Const.BILLING_INFO_FRAGMENT)){
+//
+//                    Toast.makeText(this, "Cannot", Toast.LENGTH_SHORT).show();
+//
+//               }
             else {
 
                 addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);

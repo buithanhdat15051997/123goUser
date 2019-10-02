@@ -139,8 +139,8 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
     private static String Time_Request_Home;
 
     private LinearLayout cardShowRedA, cardShowRedB, cardShowRedC;
-    private Button btn_red,btn_blue,btn_yellow;
-    private  ArrayList<Button> arrayListButtonShow;
+    private Button btn_red, btn_blue, btn_yellow;
+    private ArrayList<Button> arrayListButtonShow;
     private ArrayList<LinearLayout> arrayListLinearShow;
 
     public static String OverView_Polyline_Home;
@@ -249,7 +249,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 //                    .getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
 //            OverView_Polyline_Home = routeArray.getJSONObject(0).getJSONObject("overview_polyline").getString("points");
 
-            String color[]  = {"#E53935", "#42A5F5", "#FBC02D"};
+            String color[] = {"#E53935", "#42A5F5", "#FBC02D"};
 
             int i;
             for (i = 0; i < routeArray.length(); i++) {
@@ -492,7 +492,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
     private void setVisiableCardShowMain() {
 
-        String color2[]= {"#E53935", "#42A5F5", "#FBC02D"};
+        String color2[] = {"#E53935", "#42A5F5", "#FBC02D"};
         String txt_Name2[] = {"A", "B", "C"};
 
         for (int i = 0; i < polylineData.size(); i++) {
@@ -617,8 +617,8 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         trip_remark_home = (EditText) view.findViewById(R.id.trip_remark);
         img_cancel_choss_type_car = view.findViewById(R.id.img_cancel_choss_type_car);
 
-      //  mTv_ambulance_operator_notice_home = (TextView) view.findViewById(R.id.tv_ambulance_operator_notice);
-       // mTv_ambulance_operator_notice_home.setSelected(true);
+        //  mTv_ambulance_operator_notice_home = (TextView) view.findViewById(R.id.tv_ambulance_operator_notice);
+        // mTv_ambulance_operator_notice_home.setSelected(true);
 
         tv_optional_home = view.findViewById(R.id.tv_optional);
         bottomSheetBehavior1 = BottomSheetBehavior.from(bottomSheetLayout1);
@@ -694,7 +694,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
             public void onClick(View view) {
                 if (null != googleMap && currentLatLan != null)
                     btn_pickLoc.setVisibility(View.VISIBLE);
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLan, 15));
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLan, 15));
                 PickUpMarker.setPosition(currentLatLan);
                 getCompleteAddressString(currentLatLan);
             }
@@ -790,7 +790,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
             }
         });
 // s? ki?n click to  d click
-        et_destination_address.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+        et_destination_address.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 et_destination_address.setSelection(0);
@@ -1493,20 +1493,36 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                         } else {
 
                             EbizworldUtils.appLogError("HaoLS", "Get Ambulance Operator failed");
+
                         }
 
 
                     } catch (JSONException e) {
+
                         e.printStackTrace();
                         EbizworldUtils.appLogError("HaoLS", "Get Ambulance Operator failed");
-                    }
 
+                    }
 
                 }
                 break;
 
             case Const.ServiceCode.LOCATION_API_BASE_SOURCE:
+
                 if (null != response) {
+
+                    // an linearlayout
+
+                    if (polylineData != null) {
+
+                        for (int z = 0; z < polylineData.size(); z++) {
+
+                            arrayListLinearShow.get(z).setVisibility(View.INVISIBLE);
+
+                        }
+
+                    }
+
                     try {
                         JSONObject job = new JSONObject(response);
                         JSONArray jarray = job.optJSONArray("results");
@@ -1546,6 +1562,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                             // googleMap.getUiSettings()
 
                             // Log.d(TAG, "onTaskCompleted: "+des_latLng);
+
 
                             if (DropMarker == null && des_latLng != null) {
                                 // DropMarker.setPosition(des_latLng);
@@ -1609,6 +1626,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                             et_stop_address.dismissDropDown();
                         }
+
 
                         if (fromLocation != null && des_latLng != null) {
                             Log.d(TAG, "ve duong");
@@ -1839,7 +1857,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                            /* CameraUpdate location = CameraUpdateFactory.newLatLngZoom(
                                     driverslatlngs.get(i), 15);*/
                                 // Log.d("mahi","markers size"+driverslatlngs.get(i).toString());
-/*----Icon Driver----*/
+                                /*----Icon Driver----*/
                                 final MarkerOptions currentOption = new MarkerOptions();
                                 currentOption.position(driverslatlngs.get(i).getLatlan());
                                 currentOption.title(driverslatlngs.get(i).getDriver_name());

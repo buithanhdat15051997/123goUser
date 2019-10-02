@@ -50,8 +50,8 @@
     <LinearLayout
         android:id="@+id/signup2_footer"
         android:layout_width="match_parent"
-        android:background="@color/color_background_main"
         android:layout_height="@dimen/_280sdp"
+        android:background="@color/color_background_main"
         android:orientation="vertical">
 
         <LinearLayout
@@ -104,27 +104,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:orientation="vertical">
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_layout_fullname"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:background="@color/white"
+                    android:layout_height="wrap_content"
                     android:textColorHint="@color/black_text">
+
                     <EditText
                         android:id="@+id/user_fullname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@null"
                         android:layout_gravity="center_vertical"
+                        android:background="@color/white"
                         android:hint="@string/full_name"
                         android:inputType="text"
                         android:padding="@dimen/_10sdp"
                         android:singleLine="true"
                         android:textColor="@color/black_text"
                         android:textColorHint="@color/black_text"
-                        android:textSize="@dimen/_14ssp" />
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold" />
                 </android.support.design.widget.TextInputLayout>
 
                 <!--<android.support.design.widget.TextInputLayout
@@ -157,7 +160,9 @@
                 android:id="@+id/input_layout_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_5sdp"
                 android:textColorHint="@color/black_text"
                 android:visibility="gone">
@@ -172,21 +177,23 @@
                     android:padding="@dimen/_10sdp"
                     android:singleLine="true"
                     android:textColor="@color/black_text"
-                    android:textSize="@dimen/_14ssp" />
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold" />
 
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:orientation="vertical">
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_layout_pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_40sdp"
                     android:textColorHint="@color/black_text"
                     android:visibility="gone"
                     app:passwordToggleDrawable="@mipmap/eye"
@@ -195,14 +202,15 @@
                     <EditText
                         android:id="@+id/user_password"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_40sdp"
                         android:background="@color/white"
                         android:hint="@string/login_Password"
                         android:inputType="textPassword"
                         android:padding="@dimen/_5sdp"
                         android:singleLine="true"
                         android:textColor="@color/black_text"
-                        android:textSize="@dimen/_14ssp" />
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -224,18 +232,17 @@
                             android:id="@+id/user_referral_code"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp"
-                            android:layout_weight="0.5"
                             android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_weight="0.5"
                             android:background="@color/white"
+                            android:gravity="center"
                             android:hint="@string/txt_referral_code"
                             android:inputType="text"
-                            android:paddingStart="@dimen/_20sdp"
-                            android:paddingEnd="@dimen/_20sdp"
-                            android:paddingBottom="@dimen/_5sdp"
                             android:singleLine="true"
                             android:textColor="@color/black_text"
                             android:textColorHint="@color/black_text"
                             android:textSize="@dimen/_14ssp"
+                            android:textStyle="bold"
                             android:visibility="gone" />
 
                         <TextView
@@ -245,10 +252,10 @@
                             android:layout_weight="1.5"
                             android:background="@color/white"
                             android:gravity="center"
-                            android:padding="@dimen/_5sdp"
                             android:text="@string/apply"
                             android:textColor="@color/black_text"
                             android:textSize="@dimen/_14ssp"
+                            android:textStyle="bold"
                             android:visibility="gone" />
 
                     </LinearLayout>
@@ -258,6 +265,7 @@
             </LinearLayout>
 
         </FrameLayout>
+
         <LinearLayout
             android:id="@+id/otp_next_lay"
             android:layout_width="match_parent"
@@ -266,14 +274,13 @@
             android:layout_marginStart="@dimen/_4sdp"
             android:layout_marginEnd="@dimen/_4sdp"
             android:background="@color/color_btn_main">
+
             <TextView
                 android:id="@+id/btn_next"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_gravity="end"
                 android:background="@null"
                 android:gravity="center"
-                android:padding="@dimen/_10sdp"
                 android:text="@string/txt_next_signup"
                 android:textAllCaps="true"
                 android:textColor="@color/white"

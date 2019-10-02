@@ -215,7 +215,7 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
 
                             String total_Money_Wallet = jsonObject.getString("e_wallet");
 
-                            txt_total_money_wallet.setText(getResources().getString(R.string.txt_total_pay_wallet) + " " + total_Money_Wallet + " S$");
+                            txt_total_money_wallet.setText(getResources().getString(R.string.txt_total_pay_wallet) +  " S$ "+ total_Money_Wallet );
 
                             new PreferenceHelper(activity).putTotalRechargeWallet(total_Money_Wallet);
 

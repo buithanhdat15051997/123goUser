@@ -15,8 +15,8 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
-            abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
-         }
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        }
 
     }
 
@@ -49,7 +49,7 @@ android {
         exclude 'META-INF/ASL2.0'
     }
 }
-   
+
 repositories {
 
     maven {

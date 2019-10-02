@@ -11,7 +11,6 @@
     android:layout_height="130dp">
 
     <ImageView
-        android:scaleType="fitXY"
         android:id="@+id/img_Item_Type_Car"
         android:src="@drawable/background_user_login"
         android:layout_gravity="center"

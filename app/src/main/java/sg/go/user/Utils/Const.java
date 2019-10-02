@@ -230,8 +230,8 @@ public class Const {
     }
 
     public class ServiceType {
-
-        public static final String SOCKET_URL = "http://ambulance2u.qooservices.cf:3000?";// dev socket server
+        public static final String SOCKET_URL = "http://go123.cf:4000?";// dev socket server
+      //  public static final String SOCKET_URL = "http://ambulance2u.qooservices.cf:3000?";// dev socket server
 //        public static final String HOST_URL = "http://ambulance2u.qooservices.cf/";// PL developing server
 
 //        public static final String SOCKET_URL = "https://halp.sg:3000?";// dev socket server

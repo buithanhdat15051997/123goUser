@@ -165,7 +165,6 @@ public class ChatActivity extends AppCompatActivity implements AsyncTaskComplete
 //
 //        }
 
-
         map.put(Const.Params.ID, new PreferenceHelper(this).getUserId());
         map.put(Const.Params.TOKEN, new PreferenceHelper(this).getSessionToken());
         map.put(Const.Params.REQUEST_ID, String.valueOf(new PreferenceHelper(this).getRequestId()));
@@ -238,6 +237,9 @@ public class ChatActivity extends AppCompatActivity implements AsyncTaskComplete
         mSocket.on("stop typing", onStopTyping);
         mSocket.on("new_message_from_provider",onNewMessageFromProvider);
         mSocket.connect();
+
+
+        Log.d("dat_chat",""+mSocket.toString());
     }
 
     @Override

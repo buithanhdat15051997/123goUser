@@ -69,16 +69,14 @@
         app:itemBackground="@color/feedback_fare"
 
         app:itemTextColor="@color/bnv_tab_item_foreground"
-
         app:itemIconSize="@dimen/_20sdp"
-
         app:itemIconTint="@color/bnv_tab_item_foreground"
 
-        app:itemTextAppearanceActive="@dimen/_5ssp"
+        app:itemTextAppearanceActive="@style/BottomNavigation.ActiveItemTextAppearance"
         app:itemHorizontalTranslationEnabled="true"
         android:textAlignment="center"
         android:animateLayoutChanges="true"
         app:labelVisibilityMode="selected"/>
 
 </LinearLayout>
-    <!--android:background="@color/lightblueA700"-->
+    <!--app:itemTextAppearanceInactive="@style/BottomNavigation.ActiveItemTextAppearance"-->

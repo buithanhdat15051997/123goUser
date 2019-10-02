@@ -427,7 +427,7 @@
     <string name="txt_select_payment_note">Appuyez sur n\'importe quel bouton ci-dessous pour changer d\'option</string>
     <string name="txt_select_payment_note2">Veuillez utiliser cet écran pour revenir au paiement CC.</string>
     <string name="txt_sign_up">S\'inscrire</string>
-    <string name="txt_social_login">Ou connectez-vous en utilisant un compte social.</string>
+    <string name="txt_social_login">Ou connectez-vous en utilisant un compte social</string>
     <string name="txt_warn">Attention!</string>
     <string name="typ_msg">Tapez votre message</string>
     <string name="waiting_start">En attente de départ</string>
@@ -470,6 +470,9 @@
     <string name="txt_content_booking_success">Votre taxi de réservation a été confirmé, notre plongeur sera ramassé dans 5 minutes, avoir un voyage heureux!</string>
     <string name="btn_booking_success">RETOUR À LA MAISON</string>
     <string name="txt_dialog_pay_ewallet">Paiement avec Portefeuille</string>
-    <string name="txt_content_pay_ewallet">Votre portefeuille sera déduit :</string>
+    <string name="txt_content_pay_ewallet">"Votre portefeuille sera déduit "</string>
+    <string name="txt_toast_event_back_rating">S\'il vous plaît noter les étoiles avant de quitter</string>
+    <string name="txt_signup_now">Inscrivez-vous maintenant</string>
+    <string name="dolo_singapor">S$</string>
 </resources>
 

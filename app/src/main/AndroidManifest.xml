@@ -14,59 +14,51 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-
-
     <permission
         android:name="android.permission.CALL_PRIVILEGED"
-        android:protectionLevel="signature"/>
-
-
-        <permission
-            android:name="android.permission.C2D_MESSAGE"
-            android:protectionLevel="signature" />
+        android:protectionLevel="signature" />
+    <permission
+        android:name="android.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
-        android:required="true"/>
+        android:required="true" />
 
     <application
-        android:name="sg.go.user.app.AppController"
+        android:name=".app.AppController"
         android:allowBackup="true"
+        android:debuggable="true"
         android:icon="@drawable/background_user_login"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
-
-        android:debuggable="true"
         android:testOnly="false"
-
         android:theme="@style/NoActionBarTheme"
-        tools:replace="android:allowBackup"
+        android:usesCleartextTraffic="true"
+        tools:ignore="HardcodedDebugMode"
+        tools:replace="android:allowBackup">
+        <activity
+            android:name=".WellcomeSkipActivity"
+            android:label="@string/title_activity_wellcome_skip"
+            android:theme="@style/NoActionBarTheme.NoActionBar"></activity>
 
-        tools:ignore="HardcodedDebugMode">
-
-        <uses-library android:name="org.apache.http.legacy"
+        <uses-library
+            android:name="org.apache.http.legacy"
             android:required="false" />
 
         <activity
-            android:name="sg.go.user.SplashActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
-
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait"></activity>
         <activity
-            android:name="sg.go.user.SplashAnimation"
+            android:name=".SplashAnimation"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -80,117 +72,116 @@
             android:value="@string/facebook_api_id" />
 
         <activity
-            android:name="sg.go.user.MainActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name="sg.go.user.WelcomeActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBarTheme"
-            android:windowSoftInputMode="stateHidden" />
-
-        <activity android:name="sg.go.user.Activity.HomeLoginActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBarTheme"
-            android:windowSoftInputMode="stateHidden"/>
-
-        <activity
-            android:name="sg.go.user.SignInActivity"
+            android:name=".WelcomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="sg.go.user.ChatActivity"
+            android:name=".Activity.HomeLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="sg.go.user.ProfileActivity"
+            android:name=".SignInActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"
             android:windowSoftInputMode="stateHidden" />
-
-        <!--<activity
+        <activity
+            android:name=".ChatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <!--
+<activity
             android:name=".HistoryRideFragment"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"
-            android:windowSoftInputMode="stateHidden" />-->
-
-        <!--<activity
+            android:windowSoftInputMode="stateHidden" />
+        -->
+        <!--
+<activity
             android:name=".AddPaymentFragment"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"
-            android:windowSoftInputMode="stateHidden" />-->
+            android:windowSoftInputMode="stateHidden" />
+        -->
         <activity
-            android:name="sg.go.user.AskBotActivity"
+            android:name=".AskBotActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="sg.go.user.HelpwebActivity"
+            android:name=".HelpwebActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"
             android:windowSoftInputMode="stateHidden" />
-        <!--<activity
+        <!--
+<activity
             android:name="ScheduleListFragment          android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"
-            android:windowSoftInputMode="stateHidden" />-->
+            android:windowSoftInputMode="stateHidden" />
+        -->
         <activity
-            android:name="sg.go.user.AmbulanceWalletActivity"
+            android:name=".AmbulanceWalletActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="sg.go.user.PayGateWeb"
+            android:name=".PayGateWeb"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.facebook.FacebookActivity"
-            android:screenOrientation="portrait"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             tools:replace="android:theme" />
-
-        <activity android:name="com.soundcloud.android.crop.CropImageActivity"
-            android:screenOrientation="portrait"/>
-
+        <activity
+            android:name="com.soundcloud.android.crop.CropImageActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask">
-
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
             <intent-filter>
-
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:scheme="${applicationId}.braintree" />
-
             </intent-filter>
-
         </activity>
 
         <service
             android:name="com.paypal.android.sdk.payments.PayPalService"
-            android:exported="false" />
-
-        <!-- Required to use PayPal -->
-        <activity android:name="com.paypal.android.sdk.payments.PayPalProfileSharingActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.paypal.android.sdk.payments.ProfileSharingConsentActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.paypal.android.sdk.payments.FuturePaymentInfoActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.paypal.android.sdk.payments.LoginActivity"
-            android:screenOrientation="portrait"/>
-
-        <!--Google Cloud Service-->
-        <!--<receiver
+            android:exported="false" /> <!-- Required to use PayPal -->
+        <activity
+            android:name="com.paypal.android.sdk.payments.PayPalProfileSharingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.paypal.android.sdk.payments.ProfileSharingConsentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.paypal.android.sdk.payments.FuturePaymentInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.paypal.android.sdk.payments.LoginActivity"
+            android:screenOrientation="portrait" /> <!-- Google Cloud Service -->
+        <!--
+<receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND">
@@ -216,59 +207,47 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </service>-->
-
-        <!--Notification BroadcastReceiver-->
-        <receiver android:name="sg.go.user.Service.AmbulanceNotificationPublisher"/>
-
-        <!--Schedule Broadcast-->
-        <receiver android:name="sg.go.user.BroadcastReceiver.FCMScheduleReceiver">
-
+        </service>
+        -->
+        <!-- Notification BroadcastReceiver -->
+        <receiver android:name=".Service.AmbulanceNotificationPublisher" /> <!-- Schedule Broadcast -->
+        <receiver android:name=".BroadcastReceiver.FCMScheduleReceiver">
             <intent-filter>
-
-                <action android:name="schedule"/>
-
+                <action android:name="schedule" />
             </intent-filter>
-
         </receiver>
-
-        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
-     See README(https://goo.gl/l4GJaQ) for more. -->
+        <!--
+ Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/background_user_login" />
-        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/deeporange600"/>
-
+            android:resource="@color/deeporange600" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/notification_channel_id" />
 
-        <service android:name="sg.go.user.FCMHandler.AmbulanceFCMService">
-
+        <service android:name=".FCMHandler.AmbulanceFCMService">
             <intent-filter>
-
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
-
             </intent-filter>
-
         </service>
-
         <service
-            android:name="sg.go.user.Service.NotifyService"
+            android:name=".Service.NotifyService"
             android:enabled="true"
-            android:exported="true" />
-
-        <!-- Goolge Maps API Key -->
+            android:exported="true" /> <!-- Goolge Maps API Key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" />
 
-
-        <activity android:name="sg.go.user.SavedPlacesActivity"/>
+        <activity android:name=".SavedPlacesActivity" />
     </application>
 
 </manifest>

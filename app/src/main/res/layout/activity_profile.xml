@@ -89,28 +89,30 @@
                     android:textStyle="bold" />
 
 
-                <android.support.v7.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerInParent="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/_20sdp"
-                    android:innerRadius="0dp"
-                    android:shape="ring"
-                    app:cardCornerRadius="@dimen/_30sdp">
+                <!--<android.support.v7.widget.CardView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                  <!---->
+                    <!--android:innerRadius="0dp"-->
+                    <!--android:shape="ring"-->
+                    <!--app:cardCornerRadius="@dimen/_30sdp">-->
 
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_20sdp"
                         android:id="@+id/img_profile_image"
-                        android:layout_width="@dimen/_60sdp"
-                        android:layout_height="@dimen/_60sdp"
                         android:padding="@dimen/_3sdp"
                         android:layout_gravity="center"
-                        android:scaleType="fitXY"
+                        app:civ_border_color="@color/white"
+                        app:civ_border_width="@dimen/_2sdp"
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="@dimen/_70sdp"
                         android:src="@drawable/defult_user" />
 
-                </android.support.v7.widget.CardView>
+                <!--</android.support.v7.widget.CardView>-->
 
             </RelativeLayout>
 

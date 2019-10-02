@@ -41,9 +41,10 @@ public class WelcomeActivity extends AppCompatActivity implements MediaPlayer.On
     private Spinner sp_country_reg;
     private SpinnerLanguageAdapter adapter_language;
     private boolean is_selected = false;
-    private ViewPager viewpager_getstarted;
-    private DotsIndicator dots_indicator_getstarted;
-    private ArrayList<ItemGetstartedPicture> Array_itemGetstartedPictures;
+
+//    private ViewPager viewpager_getstarted;
+//    private DotsIndicator dots_indicator_getstarted;
+//    private ArrayList<ItemGetstartedPicture> Array_itemGetstartedPictures;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,10 +90,10 @@ public class WelcomeActivity extends AppCompatActivity implements MediaPlayer.On
         getPermission();
         sp_country_reg = (Spinner) findViewById(R.id.sp_country_reg);
 
-        viewpager_getstarted = findViewById(R.id.viewpager_getstarted);
-        dots_indicator_getstarted = findViewById(R.id.dots_indicator_getstarted);
+//        viewpager_getstarted = findViewById(R.id.viewpager_getstarted);
+//        dots_indicator_getstarted = findViewById(R.id.dots_indicator_getstarted);
 
-        ShowViewPager();
+       // ShowViewPager();
 
 
         //  getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -100,9 +101,13 @@ public class WelcomeActivity extends AppCompatActivity implements MediaPlayer.On
         welcome_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 new PreferenceHelper(WelcomeActivity.this).putLoginType(Const.PatientService.PATIENT);
+
                 Intent i = new Intent(getApplicationContext(), SignInActivity.class);
+
                 ActivityOptions activityOptions = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.slide_in_right, R.anim.slide_out_left);
+
                 startActivity(i, activityOptions.toBundle());
             }
         });
@@ -174,13 +179,13 @@ public class WelcomeActivity extends AppCompatActivity implements MediaPlayer.On
 //        GetStartedPictureAdapter adapter_viewpager = new GetStartedPictureAdapter(WelcomeActivity.this,Array_itemGetstartedPictures);
 //        dots_indicator_getstarted.setViewPager(viewpager_getstarted);
 //        viewpager_getstarted.setAdapter(adapter_viewpager);
-        Adapter_ViewPagerFragment adapter_viewPagerFragment =new Adapter_ViewPagerFragment(getSupportFragmentManager(),3);
+    //    Adapter_ViewPagerFragment adapter_viewPagerFragment =new Adapter_ViewPagerFragment(getSupportFragmentManager(),3);
 
-        dots_indicator_getstarted.setViewPager(viewpager_getstarted);
-
-        viewpager_getstarted.setAdapter(adapter_viewPagerFragment);
-
-        viewpager_getstarted.setOffscreenPageLimit(3);//số lượng page lưu vào bộ nhớ cache để tránh tình trạng load lại
+//        dots_indicator_getstarted.setViewPager(viewpager_getstarted);
+//
+//        viewpager_getstarted.setAdapter(adapter_viewPagerFragment);
+//
+//        viewpager_getstarted.setOffscreenPageLimit(3);//số lượng page lưu vào bộ nhớ cache để tránh tình trạng load lại
 
 
     }

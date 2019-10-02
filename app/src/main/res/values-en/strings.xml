@@ -17,7 +17,7 @@
     <string name="login_Password">Password</string>
     <string name="login_btn">Sign In</string>
     <string name="forgot_pass_btn">Forgot Password?</string>
-    <string name="new_user_btn">New to 123GO ? Signup now</string>
+    <string name="new_user_btn">"New to 123GO ? "</string>
     <string name="req_pass_btn">Request Password</string>
     <string name="register_btn">Register</string>
     <string name="forgot_txt_note">Please Enter Email Id to Receive Password</string>
@@ -237,7 +237,7 @@
     <string name="txt_enter_hur">Enter No. of hours</string>
     <string name="txt_pickup">Pickup Location</string>
     <string name="txt_no_later">"No Scheduled Rides Available "</string>
-    <string name="txt_social_login">Login with.</string>
+    <string name="txt_social_login">Login with</string>
     <string name="txt_your_balance">Your Balance</string>
     <string name="txt_ent_amount">Enter Amount</string>
     <string name="txt_add_amount">Add Amount</string>
@@ -461,6 +461,9 @@
     <string name="txt_content_booking_success">Your booking taxi has been confirmed, our diver will pickedup in 5 minutes, have a happy journey!</string>
     <string name="btn_booking_success">BACK TO HOME</string>
     <string name="txt_dialog_pay_ewallet">Payment With Wallet</string>
-    <string name="txt_content_pay_ewallet">Your wallet will be deducted:</string>
+    <string name="txt_content_pay_ewallet">Your wallet will be deducted</string>
+    <string name="txt_toast_event_back_rating">Please rate stars before exiting</string>
+    <string name="txt_signup_now">Signup now</string>
+    <string name="dolo_singapor">S$</string>
 </resources>
 

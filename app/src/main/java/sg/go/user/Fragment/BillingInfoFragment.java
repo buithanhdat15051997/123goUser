@@ -304,7 +304,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
         map.put(Const.Params.AMOUNT, new PreferenceHelper(getActivity()).getTotalPaymentWallet().toString());
 
-      //  map.put("amount", mRequestOptional.getTotal_money_price().toString());
+        //  map.put("amount", mRequestOptional.getTotal_money_price().toString());
         //  map.put(Const.Params.REQUEST_ID, String.valueOf(new PreferenceHelper(getActivity()).getRequestId()));
         EbizworldUtils.appLogDebug("HaoLS", "getPaymentByWallet: " + map.toString());
 
@@ -758,7 +758,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                             }
 
 
-                        } else if(jsonObject.getBoolean("success")==false){
+                        } else if (jsonObject.getBoolean("success") == false) {
 
                             EbizworldUtils.showLongToast("Payment with Wallet Failed", activity);
                             dialog_payment_wallet.dismiss();
@@ -838,7 +838,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
                             new PreferenceHelper(activity).putTotalPaymentWallet(jsonObject.getString(Const.Params.TOTAL));
 
-                          //  mRequestOptional.setTotal_money_price(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.TOTAL));
+                            //  mRequestOptional.setTotal_money_price(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.TOTAL));
 
 
                         }

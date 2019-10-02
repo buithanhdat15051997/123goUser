@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:id="@+id/relative_account"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relative_account"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_main_app"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
+
     <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/toolbar_user_profile"
         android:layout_width="match_parent"
@@ -31,8 +31,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:gravity="end"
                 android:layout_centerVertical="true"
+                android:gravity="end"
                 android:paddingRight="@dimen/_10sdp"
                 android:text="@string/title_fragment_account"
                 android:textColor="@color/white"
@@ -42,57 +42,59 @@
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
-        android:layout_below="@+id/toolbar_user_profile"
         android:id="@+id/profile_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_user_profile"
         android:layout_gravity="center"
-        android:gravity="center"
         android:layout_marginTop="@dimen/_5sdp"
+        android:gravity="center"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/tv_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_margin="@dimen/_3sdp"
+            android:gravity="center"
             android:text="@string/txt_profile"
+            android:textAllCaps="true"
             android:textColor="@color/black_text"
-            android:textSize="@dimen/_14ssp"
-            android:textAllCaps="true"/>
-            <de.hdodenhof.circleimageview.CircleImageView
+            android:textSize="@dimen/_20ssp" />
 
-                android:id="@+id/iv_account_icon"
-                android:layout_width="@dimen/_80sdp"
-                android:layout_height="@dimen/_80sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:layout_gravity="center"
-                android:scaleType="centerCrop"
-                android:src="@drawable/defult_user"
-                app:civ_border_color="@color/white"
-                app:civ_border_width="@dimen/_2sdp" />
+        <de.hdodenhof.circleimageview.CircleImageView
+
+            android:id="@+id/iv_account_icon"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/defult_user"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="@dimen/_2sdp" />
+
         <TextView
             android:id="@+id/tv_account_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_gravity="center"
             android:gravity="center"
             android:textColor="@color/color_btn_main"
-            android:textSize="@dimen/_20sdp" />
+            android:textSize="@dimen/_18sdp" />
         <!--<Button-->
-            <!--android:layout_toRightOf="@+id/tv_account_name"-->
-            <!--android:layout_below="@+id/profile_group"-->
-            <!--android:id="@+id/btn_pay_wallet_demo"-->
-            <!--android:layout_width="@dimen/_50sdp"-->
-            <!--android:layout_height="@dimen/_45sdp"-->
-            <!--android:layout_marginStart="@dimen/_5sdp"-->
-            <!--android:layout_marginEnd="@dimen/_5sdp"-->
-            <!--android:background="@drawable/wallet"-->
-            <!--/>-->
-
+        <!--android:layout_toRightOf="@+id/tv_account_name"-->
+        <!--android:layout_below="@+id/profile_group"-->
+        <!--android:id="@+id/btn_pay_wallet_demo"-->
+        <!--android:layout_width="@dimen/_50sdp"-->
+        <!--android:layout_height="@dimen/_45sdp"-->
+        <!--android:layout_marginStart="@dimen/_5sdp"-->
+        <!--android:layout_marginEnd="@dimen/_5sdp"-->
+        <!--android:background="@drawable/wallet"-->
+        <!--/>-->
 
 
     </LinearLayout>
@@ -107,23 +109,23 @@
         android:layout_marginTop="@dimen/_5sdp"
         android:divider="@null"
         android:scrollbars="none" />
+
     <ImageView
-        android:layout_below="@+id/lv_drawer_user_settings"
-        android:src="@drawable/logo_hide"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lv_drawer_user_settings"
+        android:src="@drawable/logo_hide" />
 
     <TextView
         android:id="@+id/tv_build_version"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="center"
         android:layout_margin="@dimen/_3sdp"
+        android:gravity="center"
         android:text=""
         android:textColor="@color/white"
-        android:textSize="@dimen/_10sdp"/>
+        android:textSize="@dimen/_10sdp" />
 
 
-</RelativeLayout>
-    <!--android:background="@color/lightblue700"-->
+</RelativeLayout><!--android:background="@color/lightblue700"-->

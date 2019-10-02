@@ -72,7 +72,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private Toolbar promainToolbar;
     private ImageButton img_profile_back;
     private TextView tv_edit_profile;
-    private ImageView profile_image;
+    private CircleImageView profile_image;
     private EditText et_profile_email, edt_profile_mobile, edt_weight, edt_floor_number, edt_ward;
     private EditText edt_fullname, edt_contact_name, edt_contact_number, edt_preferred_username, edt_address;
     private EditText edt_family_member_name, edt_home_number, edt_block_number, edt_unit_number, edt_postal, edt_street_name, edt_additional_pation_information;
@@ -123,7 +123,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
             img_profile_back = (ImageButton) findViewById(R.id.profile_back);
             tv_edit_profile = (TextView) findViewById(R.id.tv_edit_profile);
-            profile_image = (ImageView) findViewById(R.id.img_profile_image);
+            profile_image = (CircleImageView) findViewById(R.id.img_profile_image);
             edt_fullname = (EditText) findViewById(R.id.edt_fullname);
             edt_family_member_name = (EditText) findViewById(R.id.edt_family_member_name);
             edt_profile_mobile = (EditText) findViewById(R.id.edt_patient_mobile);
@@ -182,7 +182,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
             img_profile_back = (ImageButton) findViewById(R.id.profile_back);
             tv_edit_profile = (TextView) findViewById(R.id.tv_edit_profile);
-            profile_image = (ImageView) findViewById(R.id.img_profile_image);
+            profile_image = (CircleImageView) findViewById(R.id.img_profile_image);
             edt_fullname = (EditText) findViewById(R.id.et_fullname);
             et_profile_email = (EditText) findViewById(R.id.et_profile_email);
             edt_profile_mobile = (EditText) findViewById(R.id.et_profile_mobile);
@@ -226,7 +226,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
             img_profile_back = (ImageButton) findViewById(R.id.profile_back);
             tv_edit_profile = (TextView) findViewById(R.id.tv_edit_profile);
-            profile_image = (ImageView) findViewById(R.id.img_profile_image);
+            profile_image = (CircleImageView) findViewById(R.id.img_profile_image);
             edt_fullname = (EditText) findViewById(R.id.et_fullname);
             et_profile_email = (EditText) findViewById(R.id.et_profile_email);
             edt_profile_mobile = (EditText) findViewById(R.id.et_profile_mobile);
