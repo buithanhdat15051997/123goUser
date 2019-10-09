@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_200sdp">
+    <TextView
+        android:layout_marginTop="@dimen/_50sdp"
+        android:id="@+id/txt_title_contact_numberPhone"
+        android:gravity="center"
+        android:maxLines="2"
+        android:textStyle="bold"
+        android:textSize="@dimen/_20sdp"
+        android:textColor="@color/black_text"
+        android:text="@string/txt_contact_driver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textColor="@color/color_background_main"
+        android:layout_below="@+id/txt_title_contact_numberPhone"
+        android:id="@+id/txt_contact_numberPhone"
+        android:layout_width="match_parent"
+        android:textSize="@dimen/_14sdp"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@+id/txt_contact_numberPhone"
+        android:orientation="horizontal"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/img_confrim_contact_phone"
+            app:srcCompat="@drawable/ic_phone"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_height="@dimen/_50sdp" />
+        <ImageView
+            android:id="@+id/img_confirm_contact_message"
+            app:srcCompat="@drawable/ic_message"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp" />
+    </LinearLayout>
+
+</RelativeLayout>

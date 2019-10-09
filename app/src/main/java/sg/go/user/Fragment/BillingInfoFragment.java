@@ -1096,7 +1096,9 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
             break;
 
             case Const.ServiceCode.POST_PAYPAL_NONCE: {
+
                 EbizworldUtils.appLogInfo("HaoLS", "Post paypal nonce: " + response);
+
                 Commonutils.progressdialog_hide();
 
                 if (response != null) {
@@ -1193,6 +1195,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                 if (dropInResult.getPaymentMethodNonce() != null) {
 
                     postNonceToServer(dropInResult.getPaymentMethodNonce().getNonce());
+
                     EbizworldUtils.appLogDebug("HaoLS", "Billing Info Nonce: " + dropInResult.getPaymentMethodNonce().getNonce());
                 }
 

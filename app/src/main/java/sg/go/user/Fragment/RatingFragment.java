@@ -309,13 +309,14 @@ public class RatingFragment extends BaseFragment {
 
                         dialog_booking_success.setContentView(R.layout.dialog_booking_success);
 
-//                        dialog_booking_success.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         dialog_booking_success.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
 
                         btn_dialog_booking_success = dialog_booking_success.findViewById(R.id.btn_dialog_booking_success);
-//                        dialog_booking_success.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+
                         dialog_booking_success.setCancelable(false);
+
                         dialog_booking_success.show();
+
                         btn_dialog_booking_success.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {

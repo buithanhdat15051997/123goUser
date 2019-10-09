@@ -45,6 +45,7 @@
     <string name="txt_booking_success">Booking Successfull!</string>
     <string name="txt_content_booking_success">Your booking taxi has been confirmed, our diver will pickedup in 5 minutes, have a happy journey!</string>
     <string name="btn_booking_success">BACK TO HOME</string>
+    <string name="txt_title_dialog_cancel_trip">You are sure you want to cancel this booking ?</string>
 
     <string name="txt_title_dialog_gps">Hello, Welcome to 123GO!</string>
     <string name="txt_content_dialog_gps">Choose your location to start find the taxi near you</string>
@@ -52,6 +53,8 @@
     <string name="txt_exit_gps">SELECT MANUALLY</string>
     <string name="txt_dialog_pay_ewallet">Payment With Wallet</string>
     <string name="txt_content_pay_ewallet">Your wallet will be deducted</string>
+
+    <string name="txt_content_ratings">You feedback will help to improve our driving experience</string>
 
     <string name="txt_toast_event_back_rating">Please rate stars before exiting</string>
 
@@ -106,7 +109,7 @@
     <string name="txt_schedule_warning_content">The duration of the pick-up time and the medical time is too little with the time of the trip. Are you sure you want to book a schedule?</string>
     <string name="txt_schedule_warning_title"> Schedule alerts </string>
     <string name="ambulance_operator_notice">Choose another 123go diver below if you want!</string>
-    <string name="another_ambulance_operator">Choose another ambulance operator here!</string>
+    <string name="another_ambulance_operator">Choose another type car here!</string>
     <string name="edittext_empty_notice"> This field cannot be empty</string>
     <string name="txt_hourly_booking"> Rent by hour </string>
     <string name="edittext_inapproriate_notice"> This field is invalid</string>
@@ -132,7 +135,7 @@
     <string name="email_mobile">Email or Phone number</string>
     <string name="login_Password">Password</string>
     <string name="login_btn">Sign In</string>
-    <string name="forgot_pass_btn">Forgot Password?</string>
+    <string name="forgot_pass_btn">Forgot Password</string>
     <string name="new_user_btn">New to 123GO ? </string>
     <string name="txt_signup_now">Signup now </string>
     <string name="req_pass_btn">Request Password</string>
@@ -162,7 +165,7 @@
     <string name="txt_driver">Driver</string>
     <string name="total_fare">TOTAL FARE</string>
     <string name="trip_summary">TRIP SUMMARY</string>
-    <string name="rate_ride">Rate your riding experience?</string>
+    <string name="rate_ride">Rate your riding trip experience?</string>
     <string name="table_price_notice">The fare reflected is indicative only, Final fare will be subjected to changes as deemed by Diver.</string>
 
 
@@ -248,7 +251,7 @@
     <string name="txt_fare_note">Long press on Car icon to get Approximate fare!</string>
     <string name="txt_pickup_address">Pickup Address</string>
     <string name="txt_drop_address">Drop Address</string>
-    <string name="txt_sub_rating">Submit</string>
+    <string name="txt_sub_rating">SUBMIT</string>
     <string name="txt_cancel">Cancel</string>
     <string name="et_promocode">Enter Promo Code</string>
     <string name="btn_apply_promo">Apply Promo</string>
@@ -301,7 +304,8 @@
     <string name="payment_note">Tap on the icon below \nto Add new Payment Options.</string>
     <string name="payment_note1">For Demo Purpose use the following card details</string>
     <string name="payment_note2">Card Number: 4242 4242 4242 4242\n Expiration: 12/20</string>
-    <string name="no_history">--- No Ride History Available ---</string>
+    <string name="no_history">" No Ride History Available "</string>
+
     <string name="no_places">--- No Saved Places ---</string>
     <string name="airport_title">Airport ride booking</string>
     <string name="airport_note">Use this screen to pre-book a ride to the Airport.</string>
@@ -392,8 +396,8 @@
     <string name="txt_pay_paypal">Pay by Paypal</string>
     <string name="txt_pay_wallet">Pay by Wallet</string>
     <string name="title_wallet">Your Wallet</string>
-    <string name="txt_total_pay_wallet">Total Money: </string>
-    <string name="edt_hint_input_money_wallet">Input Money: </string>
+    <string name="txt_total_pay_wallet">Total Money In Your Wallet: </string>
+    <string name="edt_hint_input_money_wallet">Enter Money:</string>
 
 
     <string name="txt_pay_card">Pay by Card</string>
@@ -468,7 +472,7 @@
     <string name="add_stop">Add Stop</string>
     <string name="txt_more">More</string>
     <string name="txt_update_number">Please update your mobile number</string>
-    <string name="not_available">-- Not Available --</string>
+    <string name="not_available"> Not Available </string>
     <string name="your_ride_with">your ride with</string>
     <string name="txt_trip_schedule_successfully">Trip Scheduled Successfully!</string>
     <string name="done">Done</string>

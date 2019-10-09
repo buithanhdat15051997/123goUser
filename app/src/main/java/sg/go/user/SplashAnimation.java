@@ -63,6 +63,7 @@ public class SplashAnimation extends AppCompatActivity implements AsyncTaskCompl
         }
 
         EbizworldUtils.appLogError("HaoLS","version " + versionCode + " pref: " + new PreferenceHelper(this).getAppVersion());
+
         /*getVersionCheck();*/
 //        animateToHomeScreen();
 //        startProgressAnimation();
@@ -71,7 +72,7 @@ public class SplashAnimation extends AppCompatActivity implements AsyncTaskCompl
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashAnimation.this, WelcomeActivity.class);
+                Intent i = new Intent(SplashAnimation.this, WellcomeSkipActivity.class);
                 startActivity(i);
                 // close this activity
                 finish();

@@ -15,6 +15,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
@@ -39,6 +40,7 @@ import com.company.ambulance2u.GCMHandler.GcmBroadcastReceiver;*/
 public class WelcomeActivity extends AppCompatActivity implements MediaPlayer.OnCompletionListener {
     private Button welcome_btn;
     private Spinner sp_country_reg;
+    private RelativeLayout relative_wellcome;
     private SpinnerLanguageAdapter adapter_language;
     private boolean is_selected = false;
 
@@ -87,8 +89,12 @@ public class WelcomeActivity extends AppCompatActivity implements MediaPlayer.On
                     this.getResources().getDisplayMetrics());
         }
         setContentView(R.layout.activity_welcome);
+
         getPermission();
+
         sp_country_reg = (Spinner) findViewById(R.id.sp_country_reg);
+
+        relative_wellcome = findViewById(R.id.relative_wellcome);
 
 //        viewpager_getstarted = findViewById(R.id.viewpager_getstarted);
 //        dots_indicator_getstarted = findViewById(R.id.dots_indicator_getstarted);
@@ -113,11 +119,11 @@ public class WelcomeActivity extends AppCompatActivity implements MediaPlayer.On
         });
 
 
-        /*if (TextUtils.isEmpty(new PreferenceHelper(this).getDeviceToken())) {
-
-            registerGcmReceiver(new GcmBroadcastReceiver());
-
-        }*/
+//        if (TextUtils.isEmpty(new PreferenceHelper(this).getDeviceToken())) {
+//
+//            registerGcmReceiver(new GcmBroadcastReceiver());
+//
+//        }
 
         String[] lst_currency = getResources().getStringArray(R.array.language);
         Integer[] currency_imageArray = {null, R.drawable.ic_united_states, R.drawable.ic_france};

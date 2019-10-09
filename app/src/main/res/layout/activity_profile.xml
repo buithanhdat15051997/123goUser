@@ -88,31 +88,28 @@
                     android:textSize="@dimen/_16ssp"
                     android:textStyle="bold" />
 
+                <android.support.v7.widget.CardView
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:innerRadius="0dp"
+                    android:shape="ring"
+                    app:cardCornerRadius="@dimen/_30sdp"
+                    >
+                <ImageView
+                    android:id="@+id/img_profile_image"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_gravity="center"
+                    android:scaleType="center"
+                    android:src="@drawable/defult_user" />
 
-                <!--<android.support.v7.widget.CardView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                  <!---->
-                    <!--android:innerRadius="0dp"-->
-                    <!--android:shape="ring"-->
-                    <!--app:cardCornerRadius="@dimen/_30sdp">-->
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerInParent="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="@dimen/_20sdp"
-                        android:id="@+id/img_profile_image"
-                        android:padding="@dimen/_3sdp"
-                        android:layout_gravity="center"
-                        app:civ_border_color="@color/white"
-                        app:civ_border_width="@dimen/_2sdp"
-                        android:layout_width="@dimen/_70sdp"
-                        android:layout_height="@dimen/_70sdp"
-                        android:src="@drawable/defult_user" />
-
-                <!--</android.support.v7.widget.CardView>-->
+                </android.support.v7.widget.CardView>
 
             </RelativeLayout>
 
@@ -125,43 +122,50 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/linear_name_profile"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_50sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_toLeftOf="@+id/edt_fullname"
                     android:gravity="center"
-                    android:maxLines="2"
-                    android:text="@string/txt_name_profile"
-                    android:textColor="@color/black_text"
-                    android:textSize="@dimen/_16ssp"
-                    android:textStyle="italic" />
-
-                <EditText
-                    android:id="@+id/edt_fullname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal"
+                    android:weightSum="1"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:hint="@string/patient_name"
-                    android:paddingStart="@dimen/_10sdp"
-                    android:paddingEnd="@dimen/_10sdp"
-                    android:singleLine="true"
-                    android:textColor="@color/color_btn_main"
-                    android:textColorHint="@color/color_btn_main"
-                    android:textSize="@dimen/_16ssp" />
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_weight="0.7"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="@string/txt_name_profile"
+                        android:textColor="@color/black_text"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:background="@drawable/background_oval_stroke"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_weight="0.3"
+                        android:id="@+id/edt_fullname"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+
+                        android:hint="@string/patient_name"
+                        android:singleLine="true"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_btn_main"
+                        android:textColorHint="@color/color_btn_main"
+                        android:textSize="@dimen/_14ssp" />
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/family_member_name_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/edt_fullname"
+                    android:layout_below="@id/linear_name_profile"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_7sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
@@ -181,9 +185,10 @@
                         android:text="@string/family_member_name"
                         android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
-                        android:textStyle="italic|bold" />
+                        android:textStyle="bold" />
 
                     <EditText
+                        android:gravity="center"
                         android:id="@+id/edt_family_member_name"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
@@ -196,7 +201,7 @@
                         android:singleLine="true"
                         android:textColor="@color/black_text"
                         android:textColorHint="@color/black_text"
-                        android:textSize="@dimen/_12ssp" />
+                        android:textSize="@dimen/_14ssp" />
 
                 </LinearLayout>
 
@@ -224,9 +229,10 @@
                         android:text="@string/mobile"
                         android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
-                        android:textStyle="italic|bold" />
+                        android:textStyle="bold" />
 
                     <EditText
+                        android:gravity="center"
                         android:id="@+id/edt_patient_mobile"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
@@ -240,7 +246,7 @@
                         android:singleLine="true"
                         android:textColor="@color/black_text"
                         android:textColorHint="@color/black_text"
-                        android:textSize="@dimen/_12ssp" />
+                        android:textSize="@dimen/_14ssp" />
 
                 </LinearLayout>
 
@@ -268,9 +274,10 @@
                         android:text="@string/email_address"
                         android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
-                        android:textStyle="italic|bold" />
+                        android:textStyle="bold" />
 
                     <EditText
+                        android:gravity="center"
                         android:id="@+id/edt_email"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
@@ -284,7 +291,7 @@
                         android:singleLine="true"
                         android:textColor="@color/black_text"
                         android:textColorHint="@color/black_text"
-                        android:textSize="@dimen/_12ssp" />
+                        android:textSize="@dimen/_14ssp" />
 
                 </LinearLayout>
 
@@ -318,9 +325,10 @@
                             android:text="@string/home_number"
                             android:textColor="@color/black_text"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="bold|italic" />
+                            android:textStyle="bold" />
 
                         <EditText
+                            android:gravity="center"
                             android:id="@+id/edt_home_number"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_30sdp"
@@ -334,7 +342,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black_text"
                             android:textColorHint="@color/black_text"
-                            android:textSize="@dimen/_12ssp" />
+                            android:textSize="@dimen/_14ssp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -359,9 +367,10 @@
                             android:text="@string/block_number"
                             android:textColor="@color/black_text"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="bold|italic" />
+                            android:textStyle="bold" />
 
                         <EditText
+                            android:gravity="center"
                             android:id="@+id/edt_block_number"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_30sdp"
@@ -375,7 +384,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black_text"
                             android:textColorHint="@color/black_text"
-                            android:textSize="@dimen/_12ssp" />
+                            android:textSize="@dimen/_14ssp" />
                     </LinearLayout>
 
 
@@ -401,9 +410,10 @@
                             android:text="@string/unit_number"
                             android:textColor="@color/black_text"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="bold|italic" />
+                            android:textStyle="bold" />
 
                         <EditText
+                            android:gravity="center"
                             android:id="@+id/edt_unit_number"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_30sdp"
@@ -417,7 +427,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black_text"
                             android:textColorHint="@color/black_text"
-                            android:textSize="@dimen/_12ssp" />
+                            android:textSize="@dimen/_14ssp" />
 
                     </LinearLayout>
 
@@ -443,9 +453,10 @@
                             android:text="@string/postal"
                             android:textColor="@color/black_text"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="bold|italic" />
+                            android:textStyle="bold" />
 
                         <EditText
+                            android:gravity="center"
                             android:id="@+id/edt_postal"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_30sdp"
@@ -458,7 +469,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black_text"
                             android:textColorHint="@color/black_text"
-                            android:textSize="@dimen/_12ssp" />
+                            android:textSize="@dimen/_14ssp" />
 
                     </LinearLayout>
 
@@ -488,9 +499,10 @@
                         android:text="@string/street_name"
                         android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
-                        android:textStyle="italic|bold" />
+                        android:textStyle="bold" />
 
                     <EditText
+                        android:gravity="center"
                         android:id="@+id/edt_street_name"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
@@ -503,7 +515,7 @@
                         android:paddingEnd="@dimen/_10sdp"
                         android:textColor="@color/black_text"
                         android:textColorHint="@color/black_text"
-                        android:textSize="@dimen/_12ssp" />
+                        android:textSize="@dimen/_14ssp" />
 
                 </LinearLayout>
 
@@ -531,9 +543,10 @@
                         android:text="@string/preferred_username"
                         android:textColor="@color/black_text"
                         android:textSize="@dimen/_12ssp"
-                        android:textStyle="italic|bold" />
+                        android:textStyle="bold" />
 
                     <EditText
+                        android:gravity="center"
                         android:id="@+id/edt_preferred_username"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
@@ -546,54 +559,54 @@
                         android:singleLine="true"
                         android:textColor="@color/black_text"
                         android:textColorHint="@color/black_text"
-                        android:textSize="@dimen/_12ssp" />
+                        android:textSize="@dimen/_14ssp" />
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/preferred_username_group"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:visibility="gone"
-                    android:weightSum="1">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@id/preferred_username_group"-->
+                    <!--android:layout_marginStart="@dimen/_10sdp"-->
+                    <!--android:layout_marginTop="@dimen/_10sdp"-->
+                    <!--android:layout_marginEnd="@dimen/_10sdp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:weightSum="1">-->
 
-                    <TextView
-                        android:id="@+id/tv_weight"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
-                        android:ellipsize="marquee"
-                        android:gravity="center"
-                        android:marqueeRepeatLimit="marquee_forever"
-                        android:singleLine="true"
-                        android:text="@string/weight"
-                        android:textAlignment="center"
-                        android:textColor="@color/black_text"
-                        android:textSize="@dimen/_12ssp"
-                        android:textStyle="italic|bold" />
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv_weight"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="0.7"-->
+                        <!--android:ellipsize="marquee"-->
+                        <!--android:gravity="center"-->
+                        <!--android:marqueeRepeatLimit="marquee_forever"-->
+                        <!--android:singleLine="true"-->
+                        <!--android:text="@string/weight"-->
+                        <!--android:textAlignment="center"-->
+                        <!--android:textColor="@color/black_text"-->
+                        <!--android:textSize="@dimen/_12ssp"-->
+                        <!--android:textStyle="bold" />-->
 
-                    <EditText
-                        android:id="@+id/edt_weight"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_weight="0.3"
-                        android:background="@drawable/background_rectango_stroke_blue"
-                        android:hint="@string/weight"
-                        android:inputType="numberDecimal"
-                        android:paddingStart="@dimen/_10sdp"
-                        android:paddingEnd="@dimen/_10sdp"
-                        android:singleLine="true"
-                        android:textColor="@color/lightblueA700"
-                        android:textColorHint="@color/lightblue700"
-                        android:textSize="@dimen/_12ssp" />
+                    <!--<EditText-->
+                        <!--android:id="@+id/edt_weight"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="@dimen/_30sdp"-->
+                        <!--android:layout_marginStart="@dimen/_5sdp"-->
+                        <!--android:layout_weight="0.3"-->
+                        <!--android:background="@drawable/background_rectango_stroke_blue"-->
+                        <!--android:hint="@string/weight"-->
+                        <!--android:inputType="numberDecimal"-->
+                        <!--android:paddingStart="@dimen/_10sdp"-->
+                        <!--android:paddingEnd="@dimen/_10sdp"-->
+                        <!--android:singleLine="true"-->
+                        <!--android:textColor="@color/lightblueA700"-->
+                        <!--android:textColorHint="@color/lightblue700"-->
+                        <!--android:textSize="@dimen/_14ssp" />-->
 
-                </LinearLayout>
+                <!--</LinearLayout>-->
 
             </RelativeLayout>
 
@@ -604,76 +617,75 @@
                 android:gravity="center"
                 android:padding="8dp">
 
-                <RelativeLayout
-                    android:id="@+id/checkbox_group"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginBottom="@dimen/_5sdp"
-                    android:gravity="center"
-                    android:visibility="gone">
+                <!--<RelativeLayout-->
+                    <!--android:id="@+id/checkbox_group"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/_5sdp"-->
+                    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:visibility="gone">-->
 
-                    <CheckBox
-                        android:id="@+id/cb_lift_landing"
-                        android:layout_width="@dimen/_100sdp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:backgroundTint="@color/lightblue700"
-                        android:text="@string/lift_landing"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp"
-                        android:textStyle="italic" />
+                    <!--<CheckBox-->
+                        <!--android:id="@+id/cb_lift_landing"-->
+                        <!--android:layout_width="@dimen/_100sdp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginStart="@dimen/_10sdp"-->
+                        <!--android:layout_marginEnd="@dimen/_10sdp"-->
+                        <!--android:backgroundTint="@color/lightblue700"-->
+                        <!--android:text="@string/lift_landing"-->
+                        <!--android:textColor="@color/white"-->
+                        <!--android:textSize="@dimen/_12sdp"-->
+                        <!--android:textStyle="bold" />-->
 
-                    <CheckBox
-                        android:id="@+id/cb_stairs"
-                        android:layout_width="@dimen/_100sdp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_toEndOf="@id/cb_lift_landing"
-                        android:backgroundTint="@color/black_text"
-                        android:text="@string/stair"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp"
-                        android:textStyle="italic" />
+                    <!--<CheckBox-->
+                        <!--android:id="@+id/cb_stairs"-->
+                        <!--android:layout_width="@dimen/_100sdp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginStart="@dimen/_10sdp"-->
+                        <!--android:layout_marginEnd="@dimen/_10sdp"-->
+                        <!--android:layout_toEndOf="@id/cb_lift_landing"-->
+                        <!--android:backgroundTint="@color/black_text"-->
+                        <!--android:text="@string/stair"-->
+                        <!--android:textColor="@color/white"-->
+                        <!--android:textSize="@dimen/_12sdp"-->
+                        <!--android:textStyle="bold" />-->
 
-                    <CheckBox
-                        android:id="@+id/cb_no_stairs"
-                        android:layout_width="@dimen/_100sdp"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/cb_lift_landing"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:backgroundTint="@color/black_text"
-                        android:text="@string/no_stair"
-                        android:textColor="@color/black_text"
-                        android:textSize="@dimen/_12sdp"
-                        android:textStyle="italic" />
+                    <!--<CheckBox-->
+                        <!--android:id="@+id/cb_no_stairs"-->
+                        <!--android:layout_width="@dimen/_100sdp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_below="@id/cb_lift_landing"-->
+                        <!--android:layout_marginStart="@dimen/_10sdp"-->
+                        <!--android:layout_marginTop="@dimen/_10sdp"-->
+                        <!--android:layout_marginEnd="@dimen/_10sdp"-->
+                        <!--android:backgroundTint="@color/black_text"-->
+                        <!--android:text="@string/no_stair"-->
+                        <!--android:textColor="@color/black_text"-->
+                        <!--android:textSize="@dimen/_12sdp"-->
+                        <!--android:textStyle="bold" />-->
 
-                    <CheckBox
-                        android:id="@+id/cb_low_stairs"
-                        android:layout_width="@dimen/_100sdp"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/cb_stairs"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_toEndOf="@id/cb_no_stairs"
-                        android:backgroundTint="@color/black_text"
-                        android:text="@string/low_stair"
-                        android:textColor="@color/black_text"
-                        android:textSize="@dimen/_12sdp"
-                        android:textStyle="italic" />
+                    <!--<CheckBox-->
+                        <!--android:id="@+id/cb_low_stairs"-->
+                        <!--android:layout_width="@dimen/_100sdp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_below="@id/cb_stairs"-->
+                        <!--android:layout_marginStart="@dimen/_10sdp"-->
+                        <!--android:layout_marginTop="@dimen/_10sdp"-->
+                        <!--android:layout_marginEnd="@dimen/_10sdp"-->
+                        <!--android:layout_toEndOf="@id/cb_no_stairs"-->
+                        <!--android:backgroundTint="@color/black_text"-->
+                        <!--android:text="@string/low_stair"-->
+                        <!--android:textColor="@color/black_text"-->
+                        <!--android:textSize="@dimen/_12sdp"-->
+                        <!--android:textStyle="italic" />-->
 
-                </RelativeLayout>
+                <!--</RelativeLayout>-->
 
                 <Spinner
                     android:id="@+id/spn_ambulance_operator"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/checkbox_group"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
@@ -683,7 +695,7 @@
                     android:id="@+id/patient_condition_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/spn_ambulance_operator"
+                    android:layout_below="@+id/spn_ambulance_operator"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginBottom="@dimen/_5sdp"
                     android:gravity="center">
@@ -709,7 +721,7 @@
                             android:textAlignment="center"
                             android:textColor="@color/black_text"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic|bold" />
+                            android:textStyle="bold" />
 
                         <Spinner
                             android:id="@+id/spn_patient_condition"
@@ -722,68 +734,68 @@
 
                     </LinearLayout>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/patient_condition_group_spinner"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:gravity="center"
-                        android:visibility="gone">
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_below="@id/patient_condition_group_spinner"-->
+                        <!--android:layout_marginTop="@dimen/_5sdp"-->
+                        <!--android:gravity="center"-->
+                        <!--android:visibility="gone">-->
 
-                        <CheckBox
-                            android:id="@+id/cb_stretcher"
-                            android:layout_width="@dimen/_100sdp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_10sdp"
-                            android:backgroundTint="@color/lightblue700"
-                            android:text="@string/stretcher"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_12sdp"
-                            android:textStyle="italic" />
+                        <!--<CheckBox-->
+                            <!--android:id="@+id/cb_stretcher"-->
+                            <!--android:layout_width="@dimen/_100sdp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginStart="@dimen/_10sdp"-->
+                            <!--android:layout_marginEnd="@dimen/_10sdp"-->
+                            <!--android:backgroundTint="@color/lightblue700"-->
+                            <!--android:text="@string/stretcher"-->
+                            <!--android:textColor="@color/white"-->
+                            <!--android:textSize="@dimen/_12sdp"-->
+                            <!--android:textStyle="italic" />-->
 
-                        <CheckBox
-                            android:id="@+id/cb_wheel_chair"
-                            android:layout_width="@dimen/_100sdp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_10sdp"
-                            android:layout_toEndOf="@id/cb_stretcher"
-                            android:backgroundTint="@color/lightblue700"
-                            android:text="@string/wheel_chair"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_12sdp"
-                            android:textStyle="italic" />
+                        <!--<CheckBox-->
+                            <!--android:id="@+id/cb_wheel_chair"-->
+                            <!--android:layout_width="@dimen/_100sdp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginStart="@dimen/_10sdp"-->
+                            <!--android:layout_marginEnd="@dimen/_10sdp"-->
+                            <!--android:layout_toEndOf="@id/cb_stretcher"-->
+                            <!--android:backgroundTint="@color/lightblue700"-->
+                            <!--android:text="@string/wheel_chair"-->
+                            <!--android:textColor="@color/white"-->
+                            <!--android:textSize="@dimen/_12sdp"-->
+                            <!--android:textStyle="italic" />-->
 
-                        <CheckBox
-                            android:id="@+id/cb_oxygen"
-                            android:layout_width="@dimen/_100sdp"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/cb_stretcher"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_10sdp"
-                            android:backgroundTint="@color/black_text"
-                            android:text="@string/oxygen"
-                            android:textColor="@color/black_text"
-                            android:textSize="@dimen/_12sdp"
-                            android:textStyle="italic" />
+                        <!--<CheckBox-->
+                            <!--android:id="@+id/cb_oxygen"-->
+                            <!--android:layout_width="@dimen/_100sdp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_below="@id/cb_stretcher"-->
+                            <!--android:layout_marginStart="@dimen/_10sdp"-->
+                            <!--android:layout_marginTop="@dimen/_10sdp"-->
+                            <!--android:layout_marginEnd="@dimen/_10sdp"-->
+                            <!--android:backgroundTint="@color/black_text"-->
+                            <!--android:text="@string/oxygen"-->
+                            <!--android:textColor="@color/black_text"-->
+                            <!--android:textSize="@dimen/_12sdp"-->
+                            <!--android:textStyle="italic" />-->
 
-                        <CheckBox
-                            android:id="@+id/cb_escorts"
-                            android:layout_width="@dimen/_100sdp"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/cb_wheel_chair"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_10sdp"
-                            android:layout_toEndOf="@id/cb_oxygen"
-                            android:backgroundTint="@color/black_text"
-                            android:text="@string/escorts"
-                            android:textColor="@color/black_text"
-                            android:textSize="@dimen/_12sdp"
-                            android:textStyle="italic" />
-                    </RelativeLayout>
+                        <!--<CheckBox-->
+                            <!--android:id="@+id/cb_escorts"-->
+                            <!--android:layout_width="@dimen/_100sdp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_below="@id/cb_wheel_chair"-->
+                            <!--android:layout_marginStart="@dimen/_10sdp"-->
+                            <!--android:layout_marginTop="@dimen/_10sdp"-->
+                            <!--android:layout_marginEnd="@dimen/_10sdp"-->
+                            <!--android:layout_toEndOf="@id/cb_oxygen"-->
+                            <!--android:backgroundTint="@color/black_text"-->
+                            <!--android:text="@string/escorts"-->
+                            <!--android:textColor="@color/black_text"-->
+                            <!--android:textSize="@dimen/_12sdp"-->
+                            <!--android:textStyle="italic" />-->
+                    <!--</RelativeLayout>-->
 
                 </RelativeLayout>
 
@@ -796,7 +808,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:background="@drawable/background_oval_stroke"
-                    android:gravity="start|top"
+                    android:gravity="center"
                     android:hint="@string/additional_patient_information"
                     android:maxLines="3"
                     android:paddingStart="@dimen/_10sdp"
@@ -804,6 +816,7 @@
                     android:paddingEnd="@dimen/_10sdp"
                     android:paddingBottom="@dimen/_5sdp"
                     android:singleLine="false"
+                    android:textStyle="bold"
                     android:textColor="@color/black_text"
                     android:textColorHint="@color/black_text"
                     android:textSize="@dimen/_12ssp" />
@@ -818,6 +831,7 @@
                     android:weightSum="1">
 
                     <TextView
+
                         android:id="@+id/tv_payment_mode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -829,7 +843,7 @@
                         android:textAlignment="center"
                         android:textColor="@color/black_text"
                         android:textSize="@dimen/_14ssp"
-                        android:textStyle="italic" />
+                        android:textStyle="bold" />
 
                     <Spinner
                         android:id="@+id/spn_payment_mode"

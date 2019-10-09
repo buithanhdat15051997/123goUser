@@ -34,12 +34,14 @@
                     app:srcCompat="@drawable/ic_back_white" />
 
                 <TextView
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:gravity="end"
                     android:layout_centerVertical="true"
                     android:paddingRight="10dp"
+
                     android:text="@string/later_title"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_18ssp"/>
@@ -82,6 +84,7 @@
         android:layout_height="wrap_content" />
 
     <TextView
+        android:textStyle="bold"
         android:id="@+id/later_empty"
         android:layout_width="wrap_content"
         android:layout_centerInParent="true"
@@ -91,11 +94,12 @@
         android:textColor="@color/black_text"
         android:layout_height="wrap_content" />
     <ImageView
+
         android:visibility="visible"
         android:layout_centerHorizontal="true"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_100sdp"
-        android:layout_below="@+id/later_empty"
+        android:layout_centerInParent="true"
         android:src="@drawable/logo_hide"
         />
 

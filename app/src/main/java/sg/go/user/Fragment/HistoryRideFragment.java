@@ -2,12 +2,14 @@ package sg.go.user.Fragment;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -39,6 +42,7 @@ import java.util.Date;
 import de.hdodenhof.circleimageview.CircleImageView;
 import sg.go.user.Adapter.HistoryAdapter;
 import sg.go.user.Interface.AsyncTaskCompleteListener;
+import sg.go.user.MainActivity;
 import sg.go.user.Models.History;
 import sg.go.user.R;
 import sg.go.user.Utils.Const;
@@ -81,7 +85,10 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
         histroy_progress_bar = (ProgressBar) mViewRoot.findViewById(R.id.histroy_progress_bar);
         histroy_empty = (TextView) mViewRoot.findViewById(R.id.histroy_empty);
         mSwipeRefreshLayout = (SwipeRefreshLayout) mViewRoot.findViewById(R.id.swipe_refresh_history_ride_list);
-        mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.lightblueA700));
+
+
+
+        mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.color_background_main));
         mSwipeRefreshLayout.setOnRefreshListener(this);
 
         if (getActivity() != null){

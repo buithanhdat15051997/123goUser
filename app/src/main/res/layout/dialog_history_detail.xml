@@ -9,17 +9,17 @@
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:padding="@dimen/_5sdp"
-        android:background="@color/color_background_main">
+        android:layout_height="@dimen/_45sdp"
+        android:background="@color/color_background_main"
+        android:padding="@dimen/_5sdp">
 
         <ImageView
             android:id="@+id/btn_close_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:padding="@dimen/_5sdp"
-            app:srcCompat="@drawable/ic_back_white"
-            android:layout_centerVertical="true"/>
+            app:srcCompat="@drawable/ic_back_blue" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,7 +28,8 @@
             android:gravity="center"
             android:text="@string/txt_ride_detail"
             android:textColor="@color/white"
-            android:textSize="@dimen/_16ssp" />
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <ScrollView
@@ -59,8 +60,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
@@ -73,20 +74,20 @@
                     android:text="00-00-2017"
                     android:textColor="@color/color_background_main"
                     android:textSize="@dimen/_14ssp"
-                    android:textStyle="bold|italic"/>
+                    android:textStyle="bold|italic" />
 
                 <TextView
                     android:id="@+id/trip_amount"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_weight="0.2"
                     android:gravity="center"
                     android:maxLines="2"
-                    android:background="@color/color_btn_main"
                     android:text="000"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16ssp" />
+                    android:textColor="@color/color_btn_main"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -96,15 +97,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_5sdp"
+                android:text="Diver type"
                 android:textColor="@color/gray600"
-                android:text="Diver type" />
+                android:textStyle="bold" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_5sdp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
 
                 <TextView
                     android:id="@+id/trip_source_address"
@@ -112,22 +114,22 @@
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_destination_all"
                     android:drawablePadding="@dimen/_10sdp"
-                    android:text="@string/txt_current_loc"
-                    android:padding="@dimen/_10sdp"
                     android:maxLines="2"
+                    android:padding="@dimen/_10sdp"
                     android:singleLine="false"
+                    android:text="@string/txt_current_loc"
                     android:textColor="@color/color_background_main"
                     android:textSize="@dimen/_14sdp" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_2sdp"
-                    android:background="@drawable/background_gradient_line"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_30sdp"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginBottom="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_marginStart="@dimen/_30sdp"/>
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="@drawable/background_gradient_line" />
 
                 <TextView
                     android:id="@+id/trip_destination_address"
@@ -135,10 +137,10 @@
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_destination_all"
                     android:drawablePadding="@dimen/_10sdp"
-                    android:text="@string/not_available"
-                    android:padding="@dimen/_10sdp"
                     android:maxLines="2"
+                    android:padding="@dimen/_10sdp"
                     android:singleLine="false"
+                    android:text="@string/not_available"
                     android:textColor="@color/color_background_main"
                     android:textSize="@dimen/_14sdp" />
             </LinearLayout>
@@ -147,8 +149,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
-                app:cardCornerRadius="@dimen/_5sdp"
                 app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_5sdp"
                 app:cardElevation="@dimen/_5sdp">
 
                 <LinearLayout
@@ -177,7 +179,8 @@
                             android:layout_marginStart="@dimen/_10sdp"
                             android:text="@string/txt_ride_with"
                             android:textColor="@color/color_background_main"
-                            android:textSize="@dimen/_14sdp"/>
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <ImageView
@@ -185,7 +188,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_5sdp"/>
+                        android:layout_marginBottom="@dimen/_5sdp" />
 
                     <!--<TextView
                         android:layout_width="match_parent"
@@ -201,16 +204,16 @@
                         android:textSize="@dimen/_14sdp" />-->
 
                     <TextView
-                        android:visibility="gone"
                         android:id="@+id/trip_car_type"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_5sdp"
                         android:layout_marginLeft="@dimen/_5sdp"
                         android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
                         android:text="Car"
                         android:textColor="@color/lightblueA700"
-                        android:textSize="@dimen/_13sdp" />
+                        android:textSize="@dimen/_13sdp"
+                        android:visibility="gone" />
 
                     <!--<LinearLayout
                         android:id="@+id/tv_billing_info_price_group"
@@ -472,176 +475,176 @@
 
                     <!--A and E group-->
                     <LinearLayout
-                        android:visibility="gone"
                         android:id="@+id/tv_history_detail_a_and_e_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
                         android:padding="@dimen/_5sdp"
+                        android:visibility="gone"
                         android:weightSum="1">
 
                         <TextView
                             android:id="@+id/tv_history_detail_a_and_e_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.35"
                             android:text="@string/a_and_e"
+                            android:textAlignment="center"
                             android:textColor="@color/lightblue700"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.35"/>
+                            android:textStyle="italic" />
 
                         <View
-                            android:visibility="invisible"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_2sdp"
-                            android:background="@drawable/background_gradient_line"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_weight="0.25"/>
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_weight="0.25"
+                            android:background="@drawable/background_gradient_line"
+                            android:visibility="invisible" />
 
                         <TextView
                             android:id="@+id/tv_history_detail_a_and_e_value"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.4"
                             android:text="$ 0"
+                            android:textAlignment="center"
                             android:textColor="@color/gray600"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.4"/>
+                            android:textStyle="italic" />
 
 
                     </LinearLayout>
 
                     <View
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_2sdp"
-                        android:background="@drawable/background_gradient_line"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="@dimen/_5sdp"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_weight="0.25"/>
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/background_gradient_line"
+                        android:visibility="gone" />
 
                     <!--IMH group-->
                     <LinearLayout
-                        android:visibility="gone"
                         android:id="@+id/tv_history_detail_imh_price_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
                         android:padding="@dimen/_5sdp"
+                        android:visibility="gone"
                         android:weightSum="1">
 
                         <TextView
                             android:id="@+id/tv_history_detail_imh_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.35"
                             android:text="@string/imh"
+                            android:textAlignment="center"
                             android:textColor="@color/lightblue700"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.35"/>
+                            android:textStyle="italic" />
 
                         <View
-                            android:visibility="invisible"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_2sdp"
-                            android:background="@drawable/background_gradient_line"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_weight="0.25"/>
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_weight="0.25"
+                            android:background="@drawable/background_gradient_line"
+                            android:visibility="invisible" />
 
                         <TextView
                             android:id="@+id/tv_history_detail_imh_value"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.4"
                             android:text="$ 0"
+                            android:textAlignment="center"
                             android:textColor="@color/gray600"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.4"/>
+                            android:textStyle="italic" />
 
                     </LinearLayout>
 
                     <View
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_2sdp"
-                        android:background="@drawable/background_gradient_line"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="@dimen/_5sdp"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_weight="0.25"/>
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/background_gradient_line"
+                        android:visibility="gone" />
 
                     <!--Ferry terminals group-->
                     <LinearLayout
-                        android:visibility="gone"
                         android:id="@+id/tv_history_detail_ferry_terminals_price_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
                         android:padding="@dimen/_5sdp"
+                        android:visibility="gone"
                         android:weightSum="1">
 
                         <TextView
                             android:id="@+id/tv_history_detail_ferry_terminals_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.35"
                             android:text="@string/ferry_terminals"
+                            android:textAlignment="center"
                             android:textColor="@color/lightblue700"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.35"/>
+                            android:textStyle="italic" />
 
                         <View
-                            android:visibility="invisible"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_2sdp"
-                            android:background="@drawable/background_gradient_line"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_weight="0.25"/>
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_weight="0.25"
+                            android:background="@drawable/background_gradient_line"
+                            android:visibility="invisible" />
 
                         <TextView
                             android:id="@+id/tv_history_detail_ferry_terminals_value"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.4"
                             android:text="$ 0"
+                            android:textAlignment="center"
                             android:textColor="@color/gray600"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.4"/>
+                            android:textStyle="italic" />
 
 
                     </LinearLayout>
 
                     <View
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_2sdp"
-                        android:background="@drawable/background_gradient_line"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="@dimen/_5sdp"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_weight="0.25"/>
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/background_gradient_line"
+                        android:visibility="gone" />
 
                     <!--Plate number group-->
                     <LinearLayout
@@ -651,59 +654,59 @@
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:visibility="gone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="horizontal"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:layout_marginBottom="@dimen/_5sdp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
                             android:padding="@dimen/_5sdp"
+                            android:visibility="gone"
                             android:weightSum="1">
 
                             <TextView
                                 android:id="@+id/tv_history_detail_plate_number_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="0.35"
                                 android:text="@string/plate_number"
+                                android:textAlignment="center"
                                 android:textColor="@color/lightblue700"
                                 android:textSize="@dimen/_12ssp"
-                                android:textStyle="italic"
-                                android:textAlignment="center"
-                                android:layout_weight="0.35"/>
+                                android:textStyle="italic" />
 
                             <View
-                                android:visibility="invisible"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_2sdp"
-                                android:background="@drawable/background_gradient_line"
                                 android:layout_gravity="center_vertical"
-                                android:layout_marginEnd="@dimen/_5sdp"
                                 android:layout_marginStart="@dimen/_5sdp"
-                                android:layout_weight="0.35"/>
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:layout_weight="0.35"
+                                android:background="@drawable/background_gradient_line"
+                                android:visibility="invisible" />
 
                             <TextView
                                 android:id="@+id/tv_history_detail_plate_number_value"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="0.3"
+                                android:maxLines="2"
                                 android:text="@string/plate_number"
+                                android:textAlignment="center"
                                 android:textColor="@color/gray600"
                                 android:textSize="@dimen/_12ssp"
-                                android:textStyle="italic"
-                                android:textAlignment="center"
-                                android:layout_weight="0.3"
-                                android:maxLines="2"/>
+                                android:textStyle="italic" />
 
                         </LinearLayout>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_2sdp"
-                            android:background="@drawable/background_gradient_line"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_weight="0.25"/>
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_weight="0.25"
+                            android:background="@drawable/background_gradient_line" />
                     </LinearLayout>
 
                     <!--House Unit group-->
@@ -714,105 +717,105 @@
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:visibility="gone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="horizontal"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:layout_marginBottom="@dimen/_5sdp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
                             android:padding="@dimen/_5sdp"
+                            android:visibility="gone"
                             android:weightSum="1">
 
                             <TextView
                                 android:id="@+id/tv_history_detail_house_unit_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="0.35"
                                 android:text="@string/house_unit"
+                                android:textAlignment="center"
                                 android:textColor="@color/lightblue700"
                                 android:textSize="@dimen/_12ssp"
-                                android:textStyle="italic"
-                                android:textAlignment="center"
-                                android:layout_weight="0.35"/>
+                                android:textStyle="italic" />
 
                             <View
-                                android:visibility="invisible"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_2sdp"
-                                android:background="@drawable/background_gradient_line"
                                 android:layout_gravity="center_vertical"
-                                android:layout_marginEnd="@dimen/_5sdp"
                                 android:layout_marginStart="@dimen/_5sdp"
-                                android:layout_weight="0.35"/>
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:layout_weight="0.35"
+                                android:background="@drawable/background_gradient_line"
+                                android:visibility="invisible" />
 
                             <TextView
                                 android:id="@+id/tv_history_detail_house_unit_value"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="0.3"
+                                android:maxLines="2"
                                 android:text="@string/house_unit"
+                                android:textAlignment="center"
                                 android:textColor="@color/gray600"
                                 android:textSize="@dimen/_12ssp"
-                                android:textStyle="italic"
-                                android:textAlignment="center"
-                                android:layout_weight="0.3"
-                                android:maxLines="2"/>
+                                android:textStyle="italic" />
 
                         </LinearLayout>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_2sdp"
-                            android:background="@drawable/background_gradient_line"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_weight="0.25"/>
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_weight="0.25"
+                            android:background="@drawable/background_gradient_line" />
                     </LinearLayout>
 
                     <!--Staircase group-->
                     <LinearLayout
-                         android:visibility="gone"
                         android:id="@+id/tv_history_detail_staircase_price_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
                         android:padding="@dimen/_5sdp"
+                        android:visibility="gone"
                         android:weightSum="1">
 
                         <TextView
                             android:id="@+id/tv_history_detail_staircase_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.35"
                             android:text="@string/staircase_less_80"
+                            android:textAlignment="center"
                             android:textColor="@color/lightblue700"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.35"/>
+                            android:textStyle="italic" />
 
                         <View
-                            android:visibility="invisible"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_2sdp"
-                            android:background="@drawable/background_gradient_line"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_weight="0.25"/>
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_weight="0.25"
+                            android:background="@drawable/background_gradient_line"
+                            android:visibility="invisible" />
 
                         <TextView
                             android:id="@+id/tv_history_detail_staircase_value"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.4"
                             android:text="$ 0"
+                            android:textAlignment="center"
                             android:textColor="@color/gray600"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.4"/>
+                            android:textStyle="italic" />
 
 
                     </LinearLayout>
@@ -820,115 +823,115 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_2sdp"
-                        android:background="@drawable/background_gradient_line"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="@dimen/_5sdp"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_weight="0.25"/>
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/background_gradient_line" />
 
 
                     <!--Tarmac group-->
                     <LinearLayout
-                        android:visibility="gone"
                         android:id="@+id/history_detail_tarmac_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
                         android:padding="@dimen/_5sdp"
+                        android:visibility="gone"
                         android:weightSum="1">
 
                         <TextView
                             android:id="@+id/tv_history_detail_tarmac_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.35"
                             android:text="@string/airport_tarmac"
+                            android:textAlignment="center"
                             android:textColor="@color/lightblue700"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.35"/>
+                            android:textStyle="italic" />
 
                         <View
-                            android:visibility="invisible"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_2sdp"
-                            android:background="@drawable/background_gradient_line"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_weight="0.25"/>
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_weight="0.25"
+                            android:background="@drawable/background_gradient_line"
+                            android:visibility="invisible" />
 
                         <TextView
                             android:id="@+id/tv_history_detail_tarmac_value"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.4"
                             android:text="$ 0"
+                            android:textAlignment="center"
                             android:textColor="@color/gray600"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.4"/>
+                            android:textStyle="italic" />
 
 
                     </LinearLayout>
 
                     <View
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_2sdp"
-                        android:background="@drawable/background_gradient_line"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="@dimen/_5sdp"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_weight="0.25"/>
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/background_gradient_line"
+                        android:visibility="gone" />
 
                     <!--Weight group-->
                     <LinearLayout
-                        android:visibility="gone"
                         android:id="@+id/history_detail_weight_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:gravity="center"
+                        android:orientation="horizontal"
                         android:padding="@dimen/_5sdp"
+                        android:visibility="gone"
                         android:weightSum="1">
 
                         <TextView
                             android:id="@+id/tv_history_detail_weight_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.35"
                             android:text="@string/weight"
+                            android:textAlignment="center"
                             android:textColor="@color/lightblue700"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.35"/>
+                            android:textStyle="italic" />
 
                         <View
-                            android:visibility="invisible"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_2sdp"
-                            android:background="@drawable/background_gradient_line"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_weight="0.25"/>
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_weight="0.25"
+                            android:background="@drawable/background_gradient_line"
+                            android:visibility="invisible" />
 
                         <TextView
                             android:id="@+id/tv_history_detail_weight_value"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.4"
                             android:text="$ 0"
+                            android:textAlignment="center"
                             android:textColor="@color/gray600"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.4"/>
+                            android:textStyle="italic" />
 
 
                     </LinearLayout>
@@ -936,56 +939,56 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_2sdp"
-                        android:background="@drawable/background_gradient_line"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="@dimen/_5sdp"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_weight="0.25"/>
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/background_gradient_line" />
 
                     <!--Oxygen group-->
                     <LinearLayout
-                        android:visibility="gone"
                         android:id="@+id/history_detail_oxygen_tank_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:gravity="center"
+                        android:orientation="horizontal"
                         android:padding="@dimen/_5sdp"
+                        android:visibility="gone"
                         android:weightSum="1">
 
                         <TextView
                             android:id="@+id/tv_history_detail_oxygen_tank_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.35"
                             android:text="@string/oxygen_liter"
+                            android:textAlignment="center"
                             android:textColor="@color/lightblue700"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.35"/>
+                            android:textStyle="italic" />
 
                         <View
-                            android:visibility="invisible"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_2sdp"
-                            android:background="@drawable/background_gradient_line"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_weight="0.25"/>
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_weight="0.25"
+                            android:background="@drawable/background_gradient_line"
+                            android:visibility="invisible" />
 
                         <TextView
                             android:id="@+id/tv_history_detail_oxygen_tank_value"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.4"
                             android:text="$ 0"
+                            android:textAlignment="center"
                             android:textColor="@color/gray600"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.4"/>
+                            android:textStyle="italic" />
 
 
                     </LinearLayout>
@@ -993,108 +996,109 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_2sdp"
-                        android:background="@drawable/background_gradient_line"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="@dimen/_5sdp"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_weight="0.25"/>
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/background_gradient_line" />
 
                     <!--Case type group-->
                     <LinearLayout
-                        android:visibility="gone"
                         android:id="@+id/history_detail_case_type_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
-                        android:padding="@dimen/_5sdp"
                         android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_5sdp"
+                        android:visibility="gone"
                         android:weightSum="1">
 
                         <TextView
                             android:id="@+id/tv_history_detail_pickup_type_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.35"
                             android:text="@string/case_type"
+                            android:textAlignment="center"
                             android:textColor="@color/lightblue700"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.35"/>
+                            android:textStyle="italic" />
 
                         <View
-                            android:visibility="invisible"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_2sdp"
-                            android:background="@drawable/background_gradient_line"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_weight="0.25"/>
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_weight="0.25"
+                            android:background="@drawable/background_gradient_line"
+                            android:visibility="invisible" />
 
                         <TextView
                             android:id="@+id/tv_history_detail_pickup_type_value"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.4"
                             android:text="$ 0"
+                            android:textAlignment="center"
                             android:textColor="@color/gray600"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic"
-                            android:textAlignment="center"
-                            android:layout_weight="0.4"/>
+                            android:textStyle="italic" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_2sdp"
-                        android:background="@drawable/background_gradient_line"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="@dimen/_5sdp"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_weight="0.25"/>
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/background_gradient_line" />
 
                     <LinearLayout
                         android:id="@+id/tv_history_detail_total_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="@dimen/_5sdp"
-                        android:gravity="center"
                         android:weightSum="1">
 
                         <TextView
                             android:id="@+id/tv_history_detail_total_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.35"
                             android:text="@string/total"
-                            android:textColor="@color/deeporange600"
-                            android:textSize="@dimen/_20ssp"
-                            android:textStyle="italic|bold"
                             android:textAlignment="center"
-                            android:layout_weight="0.35"/>
+                            android:textColor="@color/color_btn_main"
+                            android:textSize="@dimen/_20ssp"
+                            android:textStyle="italic|bold" />
 
                         <View
-                            android:visibility="invisible"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_2sdp"
-                            android:background="@drawable/background_gradient_line"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_weight="0.25"/>
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_weight="0.25"
+                            android:background="@drawable/background_gradient_line"
+                            android:visibility="invisible" />
 
                         <TextView
+
                             android:id="@+id/tv_history_detail_total"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.4"
                             android:text="$ 0"
-                            android:textColor="@color/deeporange600"
-                            android:textSize="@dimen/_14ssp"
-                            android:textStyle="italic|bold"
                             android:textAlignment="center"
-                            android:layout_weight="0.4"/>
+                            android:textColor="@color/color_btn_main"
+                            android:textSize="@dimen/_14ssp"
+                            android:textStyle="italic|bold" />
 
 
                     </LinearLayout>

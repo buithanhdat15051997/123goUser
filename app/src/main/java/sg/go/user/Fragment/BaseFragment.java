@@ -17,7 +17,7 @@ import sg.go.user.MainActivity;
 
 public abstract class BaseFragment extends Fragment implements View.OnClickListener, AsyncTaskCompleteListener {
 
-    MainActivity activity;
+     MainActivity activity;
     public static LatLng pic_latlan;
     public static LatLng drop_latlan;
     public static boolean searching =false;

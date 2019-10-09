@@ -15,6 +15,7 @@
         android:layout_alignParentTop="true"
         android:orientation="vertical">
 
+
         <fragment
             android:id="@+id/user_travel_map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -28,6 +29,12 @@
 
     </RelativeLayout>
 
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layout_driverdetails"
+        android:layout_below="@+id/layout_address"
+        android:background="#3B000000" />
     <!--
         <ImageView
             android:id="@+id/sosCall"
@@ -45,9 +52,6 @@
         android:id="@+id/layout_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginRight="@dimen/_10sdp"
         android:background="@drawable/background_with_shadow"
         android:orientation="vertical">
 
@@ -59,7 +63,8 @@
             android:padding="@dimen/_5sdp"
             android:text="Driver status"
             android:textColor="@color/color_btn_main"
-            android:textSize="@dimen/_14ssp" />
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/address_title"
@@ -68,7 +73,9 @@
             android:layout_gravity="center"
             android:text="@string/txt_pickup_address"
             android:textAllCaps="true"
-            android:textColor="@color/green" />
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/_8sdp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_current_location"
@@ -84,7 +91,8 @@
             android:singleLine="true"
             android:text="@string/txt_current_location"
             android:textColor="@color/color_background_main"
-            android:textSize="@dimen/_10ssp" />
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="bold" />
 
         <RelativeLayout
             android:id="@+id/stopLay"
@@ -125,12 +133,12 @@
     <RelativeLayout
         android:id="@+id/layout_driverdetails"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_130sdp"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="2dp"
         android:background="@drawable/background_with_shadow"
         android:orientation="vertical"
-        android:paddingVertical="@dimen/_5sdp"
-        android:paddingTop="@dimen/_30sdp">
+        android:paddingVertical="@dimen/_5sdp">
 
         <LinearLayout
             android:id="@+id/ino_lay"
@@ -157,7 +165,8 @@
                     android:text="Cristiano Ronaldo"
                     android:textAllCaps="true"
                     android:textColor="@color/color_btn_main"
-                    android:textSize="@dimen/_13ssp" />
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/driver_car_number"
@@ -166,16 +175,18 @@
                     android:layout_marginTop="@dimen/_2sdp"
                     android:text="PGL 777777"
                     android:textColor="@color/black_text"
-                    android:textSize="@dimen/_11ssp" />
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/driver_car_model"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Bugati Chirion"
+                    android:text="@string/address"
                     android:textColor="@color/color_background_main"
-                    android:textSize="@dimen/_11ssp" />
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/driver_mobile_number"
@@ -233,7 +244,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txt_contact"
-                    android:textColor="@color/lightblueA700"
+                    android:textColor="@color/color_background_main"
+                    android:textStyle="bold"
                     android:visibility="visible" />
             </LinearLayout>
 
@@ -255,7 +267,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txt_cancel_ride"
-                    android:textColor="@color/lightblueA700"
+                    android:textColor="@color/color_background_main"
+                    android:textStyle="bold"
                     android:visibility="visible" />
             </LinearLayout>
 
@@ -337,7 +350,7 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/linear_img_driver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -355,12 +368,14 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_driver"
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_80sdp"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_75sdp"
             android:layout_gravity="center|end"
+            app:civ_border_width="@dimen/_1sdp"
+            app:civ_border_color="@color/white"
             android:background="@drawable/background_oval_img"
             android:src="@drawable/defult_user" />
-    </LinearLayout>
+    </FrameLayout>
 
 
 </RelativeLayout>

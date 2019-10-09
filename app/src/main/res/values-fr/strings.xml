@@ -17,7 +17,7 @@
     <string name="login_email">ID e-mail</string>
     <string name="login_Password">Passe</string>
     <string name="login_btn">Connexion</string>
-    <string name="forgot_pass_btn">Mot de passe oublié?</string>
+    <string name="forgot_pass_btn">Mot de passe oublié</string>
     <string name="new_user_btn">Ne pas avoir un compte ?</string>
     <string name="req_pass_btn">Demande de mot de passe</string>
     <string name="register_btn">Registre</string>
@@ -152,7 +152,6 @@
 
     <string name="my_home">Maison</string>
     <string name="my_payment">Ajouter des options de paiement</string>
-    <string name="nikola_wallet">Portefeuille</string>
     <string name="my_free_ride">Promenades gratuites</string>
     <string name="ask_bot">Ask Bot</string>
     <string name="ride_history">Historique du trajet</string>
@@ -474,5 +473,14 @@
     <string name="txt_toast_event_back_rating">S\'il vous plaît noter les étoiles avant de quitter</string>
     <string name="txt_signup_now">Inscrivez-vous maintenant</string>
     <string name="dolo_singapor">S$</string>
+    <string name="txt_content_ratings">Vos commentaires vous aideront à améliorer notre expérience de conduite</string>
+    <string name="txt_title_dialog_cancel_trip">Vous êtes sûr de vouloir annuler cette réservation ?</string>
+    <string name="txt_load_web">Es-tu sûr? Vous voulez charger cette page?</string>
+    <string name="txt_mobile">mobile</string>
+    <string name="txt_no_cancel_reason">Aucune raison trouvée!</string>
+    <string name="txt_payment_type">Type de paiement:</string>
+    <string name="txt_trip_cancel_fee">Vos frais d\'annulation de voyage:</string>
+    <string name="txt_toll">Total des barrières de péage dans votre itinéraire</string>
+    <string name="nikola_wallet">Portefeuille</string>
 </resources>
 

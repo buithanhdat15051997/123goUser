@@ -49,6 +49,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:gravity="center"
+        android:textStyle="bold"
         android:text="@string/logout_text"
         android:textColor="@color/black"
         android:textSize="@dimen/_14sdp" />
@@ -72,11 +73,13 @@
             android:gravity="center"
             android:padding="@dimen/_5sdp"
             android:text="@string/txt_yes"
+            android:textStyle="bold"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/_14sdp" />
 
         <TextView
+            android:textStyle="bold"
             android:id="@+id/btn_logout_no"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"

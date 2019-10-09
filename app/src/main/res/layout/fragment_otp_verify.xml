@@ -21,7 +21,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:padding="@dimen/_5sdp"
-            android:tint="@color/black_text"
+            android:tint="@color/color_background_main"
             app:srcCompat="@drawable/close" />
 
         <ImageView
@@ -44,7 +44,7 @@
 
 
     <LinearLayout
-        android:background="#1dccc8"
+        android:background="@color/color_background_main"
         android:id="@+id/otp_type_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,13 +61,15 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_3sdp"
+
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
                 android:src="@drawable/background_gradient_line" />
 
             <TextView
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -80,7 +82,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_3sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
@@ -103,6 +105,7 @@
                 android:layout_weight="0.2"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:padding="@dimen/_5sdp"
+                android:textStyle="bold"
                 android:text="@string/txt_otp_note"
                 android:textColor="@color/black_text"
                 android:textSize="@dimen/_14ssp" />
@@ -122,6 +125,8 @@
             android:id="@+id/phone_number_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:orientation="horizontal"
             android:weightSum="1"
             android:gravity="center">
@@ -131,7 +136,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_weight="0.6"
-                android:layout_marginStart="@dimen/_5sdp"
                 android:background="@color/white"
                 android:gravity="center"
                 app:ccpDialog_textColor="@color/lightblueA700"
@@ -148,17 +152,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_weight="0.4"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:textStyle="bold"
                 android:paddingStart="@dimen/_20sdp"
-                android:paddingEnd="@dimen/_20sdp"
+                android:paddingEnd="@dimen/_10sdp"
                 android:enabled="false"
                 android:background="@color/white"
                 android:hint="@string/phn_no"
                 android:textColorHint="@color/black_text"
                 android:inputType="phone"
                 android:maxLines="1"
-                android:padding="@dimen/_5sdp"
                 android:singleLine="true"
                 android:textColor="@color/black_text"
                 android:textSize="@dimen/_12ssp" />
@@ -192,6 +195,7 @@
                 android:hint="@string/txt_ent_otp"
                 android:inputType="text"
                 android:maxLength="10"
+                android:textStyle="bold"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:padding="@dimen/_5sdp"
                 android:textColor="@color/black_text"
@@ -216,6 +220,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_no_otp"
                 android:textColor="@color/black_text"
+                android:textStyle="bold"
                 android:textSize="@dimen/_14ssp" />
 
 
@@ -233,20 +238,20 @@
 
         </LinearLayout>
         <TextView
-            android:background="@color/color_btn_main"
+            android:background="@color/color_btn_login_signin"
             android:id="@+id/btn_confirm_otp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_4sdp"
             android:layout_marginStart="@dimen/_4sdp"
-            android:layout_gravity="end"
+            android:layout_gravity="bottom"
             android:gravity="center"
             android:padding="@dimen/_5sdp"
             android:text="@string/txt_proceed"
+            android:textStyle="bold"
             android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="@dimen/_16ssp" />
+            android:textSize="@dimen/_20ssp" />
     </LinearLayout>
 
  <!--   <LinearLayout

@@ -407,7 +407,6 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
     private List<AccountSettings> getAccountSettingsList() {
 
         List<AccountSettings> accountSettingsList = new ArrayList<>();
-
 //        accountSettingsList.add(new AccountSettings(R.drawable.home_map_marker, getString(R.string.my_home)));
 //        accountSettingsList.add(new AccountSettings(R.drawable.flash, getString(R.string.ask_bot)));
 //        accountSettingsList.add(new AccountSettings(R.drawable.credit_card, getString(R.string.my_payment)));
@@ -415,13 +414,13 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
 //        accountSettingsList.add(new AccountSettings(R.drawable.ic_favorite_heart_button, getString(R.string.saved_places)));
 //        accountSettingsList.add(new AccountSettings(R.drawable.clock_alert, getString(R.string.ride_history)));
 
-        if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)) {
+   //     if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)) {
 
 //            accountSettingsList.add(new AccountSettings(R.drawable.ic_clock, getString(R.string.txt_hourly_booking)));
 //            accountSettingsList.add(new AccountSettings(R.drawable.sale, getString(R.string.referral_title)));
 //            accountSettingsList.add(new AccountSettings(R.drawable.ic_list_schedule, getString(R.string.later_title)));
 
-        }
+      //  }
 
         /*accountSettingsList.add(new AccountSettings(R.drawable.wallet, getString(R.string.history_payment)));*/
         accountSettingsList.add(0,new AccountSettings(R.drawable.ic_account_wallet,getString(R.string.nikola_wallet)));
@@ -783,5 +782,10 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
                 break;
         }
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

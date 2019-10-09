@@ -1,14 +1,18 @@
 package sg.go.user;
 
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -72,11 +76,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private Toolbar promainToolbar;
     private ImageButton img_profile_back;
     private TextView tv_edit_profile;
-    private CircleImageView profile_image;
+
+    private ImageView profile_image;
+
     private EditText et_profile_email, edt_profile_mobile, edt_weight, edt_floor_number, edt_ward;
     private EditText edt_fullname, edt_contact_name, edt_contact_number, edt_preferred_username, edt_address;
     private EditText edt_family_member_name, edt_home_number, edt_block_number, edt_unit_number, edt_postal, edt_street_name, edt_additional_pation_information;
-    private CheckBox cb_lift_landing, cb_stairs, cb_no_stairs, cb_low_stairs, cb_stretcher, cb_wheel_chair, cb_oxygen, cb_escorts;
+   // private CheckBox cb_lift_landing, cb_stairs, cb_no_stairs, cb_low_stairs, cb_stretcher, cb_wheel_chair, cb_oxygen, cb_escorts;
     private Spinner spn_ambulance_operator, spn_patient_condition, spn_payment_mode;
     private AmbulanceOperatorSpinnerAdapter mAmbulanceOperatorSpinnerAdapter;
     private RadioGroup profile_radioGroup;
@@ -97,6 +103,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private List<String> mPaymentModes;
     private String mPaymentMode;
     private Hospital mHopital;
+
+
+    private BroadcastReceiver broadcastReceiver_profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +132,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
             img_profile_back = (ImageButton) findViewById(R.id.profile_back);
             tv_edit_profile = (TextView) findViewById(R.id.tv_edit_profile);
-            profile_image = (CircleImageView) findViewById(R.id.img_profile_image);
+            profile_image = (ImageView) findViewById(R.id.img_profile_image);
             edt_fullname = (EditText) findViewById(R.id.edt_fullname);
             edt_family_member_name = (EditText) findViewById(R.id.edt_family_member_name);
             edt_profile_mobile = (EditText) findViewById(R.id.edt_patient_mobile);
@@ -134,16 +143,19 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             edt_postal = (EditText) findViewById(R.id.edt_postal);
             edt_street_name = (EditText) findViewById(R.id.edt_street_name);
           //  edt_weight = (EditText) findViewById(R.id.edt_weight);
-            cb_lift_landing = (CheckBox) findViewById(R.id.cb_lift_landing);
-            cb_stairs = (CheckBox) findViewById(R.id.cb_stairs);
-            cb_no_stairs = (CheckBox) findViewById(R.id.cb_no_stairs);
-            cb_low_stairs = (CheckBox) findViewById(R.id.cb_low_stairs);
+
             spn_ambulance_operator = (Spinner) findViewById(R.id.spn_ambulance_operator);
             spn_patient_condition = (Spinner) findViewById(R.id.spn_patient_condition);
-            cb_stretcher = (CheckBox) findViewById(R.id.cb_stretcher);
-            cb_wheel_chair = (CheckBox) findViewById(R.id.cb_wheel_chair);
-            cb_oxygen = (CheckBox) findViewById(R.id.cb_oxygen);
-            cb_escorts = (CheckBox) findViewById(R.id.cb_escorts);
+
+//            cb_lift_landing = (CheckBox) findViewById(R.id.cb_lift_landing);
+//            cb_stairs = (CheckBox) findViewById(R.id.cb_stairs);
+//            cb_no_stairs = (CheckBox) findViewById(R.id.cb_no_stairs);
+//            cb_low_stairs = (CheckBox) findViewById(R.id.cb_low_stairs);
+//            cb_stretcher = (CheckBox) findViewById(R.id.cb_stretcher);
+//            cb_wheel_chair = (CheckBox) findViewById(R.id.cb_wheel_chair);
+//            cb_oxygen = (CheckBox) findViewById(R.id.cb_oxygen);
+//            cb_escorts = (CheckBox) findViewById(R.id.cb_escorts);
+
             edt_additional_pation_information = (EditText) findViewById(R.id.edt_additional_pation_information);
             spn_payment_mode = (Spinner) findViewById(R.id.spn_payment_mode);
             edt_preferred_username = (EditText) findViewById(R.id.edt_preferred_username);
@@ -171,100 +183,126 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             setPatientValues();
 //            setUserValues();
 
-        }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-
-            setContentView(R.layout.activity_nurse_profile);
-
-            promainToolbar = (Toolbar) findViewById(R.id.toolbar_profile);
-
-            setSupportActionBar(promainToolbar);
-            getSupportActionBar().setTitle(null);
-
-            img_profile_back = (ImageButton) findViewById(R.id.profile_back);
-            tv_edit_profile = (TextView) findViewById(R.id.tv_edit_profile);
-            profile_image = (CircleImageView) findViewById(R.id.img_profile_image);
-            edt_fullname = (EditText) findViewById(R.id.et_fullname);
-            et_profile_email = (EditText) findViewById(R.id.et_profile_email);
-            edt_profile_mobile = (EditText) findViewById(R.id.et_profile_mobile);
-            edt_contact_name = (EditText) findViewById(R.id.edt_contact_name);
-            edt_contact_number = (EditText) findViewById(R.id.edt_contact_number);
-            edt_preferred_username = (EditText) findViewById(R.id.edt_preferred_username);
-            edt_address = (EditText) findViewById(R.id.edt_address);
-            /*edt_operator_id = (EditText) findViewById(R.id.edt_operator_id);*/
-            spn_ambulance_operator = (Spinner) findViewById(R.id.spn_ambulance_operator);
-
-            spn_ambulance_operator.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                    mAmbulanceOperator = mAmbulanceOperators.get(position);
-
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
-
-            profile_image.setOnClickListener(this);
-            img_profile_back.setOnClickListener(this);
-            tv_edit_profile.setOnClickListener(this);
-
-            disableNursingHomeViews();
-
-            setNurseValues();
-
-        }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
-
-            setContentView(R.layout.activity_hospital_profile);
-
-            promainToolbar = (Toolbar) findViewById(R.id.toolbar_profile);
-
-            setSupportActionBar(promainToolbar);
-            getSupportActionBar().setTitle(null);
-
-            img_profile_back = (ImageButton) findViewById(R.id.profile_back);
-            tv_edit_profile = (TextView) findViewById(R.id.tv_edit_profile);
-            profile_image = (CircleImageView) findViewById(R.id.img_profile_image);
-            edt_fullname = (EditText) findViewById(R.id.et_fullname);
-            et_profile_email = (EditText) findViewById(R.id.et_profile_email);
-            edt_profile_mobile = (EditText) findViewById(R.id.et_profile_mobile);
-            edt_contact_name = (EditText) findViewById(R.id.edt_contact_name);
-            edt_contact_number = (EditText) findViewById(R.id.edt_contact_number);
-            edt_preferred_username = (EditText) findViewById(R.id.edt_preferred_username);
-            edt_postal = (EditText) findViewById(R.id.edt_postal);
-            edt_floor_number = (EditText) findViewById(R.id.tv_floor_number_value);
-            edt_ward = (EditText) findViewById(R.id.tv_ward_value);
-            edt_address = (EditText) findViewById(R.id.edt_address);
-            /*edt_operator_id = (EditText) findViewById(R.id.edt_operator_id);*/
-            spn_ambulance_operator = (Spinner) findViewById(R.id.spn_ambulance_operator);
-
-            spn_ambulance_operator.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                    mAmbulanceOperator = mAmbulanceOperators.get(position);
-
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
-
-            profile_image.setOnClickListener(this);
-            img_profile_back.setOnClickListener(this);
-            tv_edit_profile.setOnClickListener(this);
-
-            disableHospitalViews();
-
-            setHosptialValues();
         }
+
+        broadcastReceiver_profile = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                if(intent != null && intent.getStringExtra(Const.NotificationType.TYPE_ACCOUNT_LOGOUT).equals(Const.NotificationType.TYPE_ACCOUNT_LOGOUT)){
+
+                    EbizworldUtils.showLongToast("",ProfileActivity.this);
+                    new PreferenceHelper(ProfileActivity.this).Logout();
+                    startActivity(new Intent(ProfileActivity.this,SignInActivity.class));
+                    ProfileActivity.this.finish();
+
+                }
+
+            }
+        };
+//        else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+//
+//            setContentView(R.layout.activity_nurse_profile);
+//
+//            promainToolbar = (Toolbar) findViewById(R.id.toolbar_profile);
+//
+//            setSupportActionBar(promainToolbar);
+//            getSupportActionBar().setTitle(null);
+//
+//            img_profile_back = (ImageButton) findViewById(R.id.profile_back);
+//            tv_edit_profile = (TextView) findViewById(R.id.tv_edit_profile);
+//            profile_image = (ImageView) findViewById(R.id.img_profile_image);
+//            edt_fullname = (EditText) findViewById(R.id.et_fullname);
+//            et_profile_email = (EditText) findViewById(R.id.et_profile_email);
+//            edt_profile_mobile = (EditText) findViewById(R.id.et_profile_mobile);
+//            edt_contact_name = (EditText) findViewById(R.id.edt_contact_name);
+//            edt_contact_number = (EditText) findViewById(R.id.edt_contact_number);
+//            edt_preferred_username = (EditText) findViewById(R.id.edt_preferred_username);
+//            edt_address = (EditText) findViewById(R.id.edt_address);
+//            /*edt_operator_id = (EditText) findViewById(R.id.edt_operator_id);*/
+//            spn_ambulance_operator = (Spinner) findViewById(R.id.spn_ambulance_operator);
+//
+//            spn_ambulance_operator.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                @Override
+//                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//
+//                    mAmbulanceOperator = mAmbulanceOperators.get(position);
+//
+//                }
+//
+//                @Override
+//                public void onNothingSelected(AdapterView<?> parent) {
+//
+//                }
+//            });
+//
+//            profile_image.setOnClickListener(this);
+//            img_profile_back.setOnClickListener(this);
+//            tv_edit_profile.setOnClickListener(this);
+//
+//            disableNursingHomeViews();
+//
+//            setNurseValues();
+//
+//        }
+        //else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+
+//            setContentView(R.layout.activity_hospital_profile);
+//
+//            promainToolbar = (Toolbar) findViewById(R.id.toolbar_profile);
+//
+//            setSupportActionBar(promainToolbar);
+//            getSupportActionBar().setTitle(null);
+//
+//            img_profile_back = (ImageButton) findViewById(R.id.profile_back);
+//            tv_edit_profile = (TextView) findViewById(R.id.tv_edit_profile);
+//            profile_image = (ImageView) findViewById(R.id.img_profile_image);
+//            edt_fullname = (EditText) findViewById(R.id.et_fullname);
+//            et_profile_email = (EditText) findViewById(R.id.et_profile_email);
+//            edt_profile_mobile = (EditText) findViewById(R.id.et_profile_mobile);
+//            edt_contact_name = (EditText) findViewById(R.id.edt_contact_name);
+//            edt_contact_number = (EditText) findViewById(R.id.edt_contact_number);
+//            edt_preferred_username = (EditText) findViewById(R.id.edt_preferred_username);
+//            edt_postal = (EditText) findViewById(R.id.edt_postal);
+//            edt_floor_number = (EditText) findViewById(R.id.tv_floor_number_value);
+//            edt_ward = (EditText) findViewById(R.id.tv_ward_value);
+//            edt_address = (EditText) findViewById(R.id.edt_address);
+//            /*edt_operator_id = (EditText) findViewById(R.id.edt_operator_id);*/
+//            spn_ambulance_operator = (Spinner) findViewById(R.id.spn_ambulance_operator);
+//
+//            spn_ambulance_operator.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                @Override
+//                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//
+//                    mAmbulanceOperator = mAmbulanceOperators.get(position);
+//
+//                }
+//
+//                @Override
+//                public void onNothingSelected(AdapterView<?> parent) {
+//
+//                }
+//            });
+//
+//            profile_image.setOnClickListener(this);
+//            img_profile_back.setOnClickListener(this);
+//            tv_edit_profile.setOnClickListener(this);
+//
+//            disableHospitalViews();
+//
+//            setHosptialValues();
+//        }
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LocalBroadcastManager.getInstance(getApplicationContext())
+                .registerReceiver(broadcastReceiver_profile,
+                        new IntentFilter(Const.NotificationType.TYPE_ACCOUNT_LOGOUT));
+
+    }
     /*private void setUserValues() {
         User userprofile = RealmController.with(this).getUser(Integer.valueOf(new PreferenceHelper(this).getUserId()));
         if (userprofile != null) {
@@ -349,29 +387,29 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
            // edt_weight.setText(String.valueOf(mPatient.getmWeight()));
 
-            if (mPatient.getmLiftLanding() == 1){
-
-                cb_lift_landing.setChecked(true);
-
-            }
-
-            if (mPatient.getmStairs() == 1){
-
-                cb_stairs.setChecked(true);
-
-            }
-
-            if (mPatient.getmNoStairs() == 1){
-
-                cb_no_stairs.setChecked(true);
-
-            }
-
-            if (mPatient.getmLowStairs() == 1){
-
-                cb_low_stairs.setChecked(true);
-
-            }
+//            if (mPatient.getmLiftLanding() == 1){
+//
+//                cb_lift_landing.setChecked(true);
+//
+//            }
+//
+//            if (mPatient.getmStairs() == 1){
+//
+//                cb_stairs.setChecked(true);
+//
+//            }
+//
+//            if (mPatient.getmNoStairs() == 1){
+//
+//                cb_no_stairs.setChecked(true);
+//
+//            }
+//
+//            if (mPatient.getmLowStairs() == 1){
+//
+//                cb_low_stairs.setChecked(true);
+//
+//            }
 
 
 //            Set up Patient spinner condition
@@ -429,29 +467,29 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 }
             });
 
-            if (mPatient.getmStretcher() == 1){
-
-                cb_stretcher.setChecked(true);
-
-            }
-
-            if (mPatient.getmWheelChair() == 1){
-
-                cb_wheel_chair.setChecked(true);
-
-            }
-
-            if (mPatient.getmOxygen() == 1){
-
-                cb_oxygen.setChecked(true);
-
-            }
-
-            if (mPatient.getmEscorts() == 1){
-
-                cb_escorts.setChecked(true);
-
-            }
+//            if (mPatient.getmStretcher() == 1){
+//
+//                cb_stretcher.setChecked(true);
+//
+//            }
+//
+//            if (mPatient.getmWheelChair() == 1){
+//
+//                cb_wheel_chair.setChecked(true);
+//
+//            }
+//
+//            if (mPatient.getmOxygen() == 1){
+//
+//                cb_oxygen.setChecked(true);
+//
+//            }
+//
+//            if (mPatient.getmEscorts() == 1){
+//
+//                cb_escorts.setChecked(true);
+//
+//            }
 
             edt_additional_pation_information.setText(mPatient.getmAddInformation());
             /*spn_payment_mode.setText(patientprofile.getmPaymentMode());*/
@@ -460,102 +498,102 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    private void setNurseValues(){
+//    private void setNurseValues(){
+//
+//        mNurse = RealmController.with(this).getNurse(Integer.valueOf(new PreferenceHelper(this).getUserId()));
+//
+//        if (mNurse != null) {
+//
+//            //Getting Ambulance Operator list for set up to Ambulance Operator Spinner
+//            getAmbulanceOperator();
+//
+//            Glide.with(this).load(mNurse.getmPictureUrl())
+//                    .transition(new DrawableTransitionOptions().crossFade())
+//                    .apply(new RequestOptions().placeholder(R.drawable.defult_user).error(R.drawable.defult_user).centerCrop())
+//                    .into(profile_image);
+//
+//            new AQuery(this).id(R.id.img_profile_image).image(mNurse.getmPictureUrl(), true, true,
+//                    200, 0, new BitmapAjaxCallback() {
+//
+//                        @Override
+//                        public void callback(String url, ImageView iv, Bitmap bm,
+//                                             AjaxStatus status) {
+//
+//                            EbizworldUtils.appLogDebug("HaoLS", url);
+//                            if (!url.isEmpty()) {
+//
+//                                EbizworldUtils.appLogDebug("HaoLS", url);
+//
+//                            //    filePath = aQuery.getCachedFile(url).getPath();
+//                            }
+//
+//                        }
+//
+//                    });
+//
+//            edt_fullname.setText(mNurse.getmFullName());
+//            et_profile_email.setText(mNurse.getmEmail());
+//            edt_profile_mobile.setText(mNurse.getmMobile());
+//            edt_contact_name.setText(mNurse.getmContact_Name());
+//            edt_contact_number.setText(mNurse.getmContact_Number());
+//            edt_preferred_username.setText(mNurse.getmPreferred_Username());
+//            edt_address.setText(mNurse.getmAddress());
+//
+//            if (mNurse.getmOperatorID() >= 0){
+//
+//                edt_operator_id.setText(String.valueOf(nurseProfile.getmOperatorID()));
+//            }
+//
+//
+//        }
+//    }
 
-        mNurse = RealmController.with(this).getNurse(Integer.valueOf(new PreferenceHelper(this).getUserId()));
-
-        if (mNurse != null) {
-
-            //Getting Ambulance Operator list for set up to Ambulance Operator Spinner
-            getAmbulanceOperator();
-
-            Glide.with(this).load(mNurse.getmPictureUrl())
-                    .transition(new DrawableTransitionOptions().crossFade())
-                    .apply(new RequestOptions().placeholder(R.drawable.defult_user).error(R.drawable.defult_user).centerCrop())
-                    .into(profile_image);
-
-            new AQuery(this).id(R.id.img_profile_image).image(mNurse.getmPictureUrl(), true, true,
-                    200, 0, new BitmapAjaxCallback() {
-
-                        @Override
-                        public void callback(String url, ImageView iv, Bitmap bm,
-                                             AjaxStatus status) {
-
-                            EbizworldUtils.appLogDebug("HaoLS", url);
-                            if (!url.isEmpty()) {
-
-                                EbizworldUtils.appLogDebug("HaoLS", url);
-
-                            //    filePath = aQuery.getCachedFile(url).getPath();
-                            }
-
-                        }
-
-                    });
-
-            edt_fullname.setText(mNurse.getmFullName());
-            et_profile_email.setText(mNurse.getmEmail());
-            edt_profile_mobile.setText(mNurse.getmMobile());
-            edt_contact_name.setText(mNurse.getmContact_Name());
-            edt_contact_number.setText(mNurse.getmContact_Number());
-            edt_preferred_username.setText(mNurse.getmPreferred_Username());
-            edt_address.setText(mNurse.getmAddress());
-
-            if (mNurse.getmOperatorID() >= 0){
-
-                /*edt_operator_id.setText(String.valueOf(nurseProfile.getmOperatorID()));*/
-            }
-
-
-        }
-    }
-
-    private void setHosptialValues(){
-
-        mHopital = RealmController.with(this).getHospital(Integer.valueOf(new PreferenceHelper(this).getUserId()));
-
-        if (mHopital != null) {
-
-            //Getting Ambulance Operator list for set up to Ambulance Operator Spinner
-            getAmbulanceOperator();
-
-            Glide.with(this).load(mHopital.getmCompanyPicture())
-                    .transition(new DrawableTransitionOptions().crossFade())
-                    .apply(new RequestOptions().placeholder(R.drawable.defult_user).error(R.drawable.defult_user).centerCrop())
-                    .into(profile_image);
-
-            new AQuery(this).id(R.id.img_profile_image).image(mHopital.getmCompanyPicture(), true, true,
-                    200, 0, new BitmapAjaxCallback() {
-
-                        @Override
-                        public void callback(String url, ImageView iv, Bitmap bm,
-                                             AjaxStatus status) {
-
-                            EbizworldUtils.appLogDebug("HaoLS", url);
-                            if (!url.isEmpty()) {
-
-                                EbizworldUtils.appLogDebug("HaoLS", url);
-
-                                //    filePath = aQuery.getCachedFile(url).getPath();
-                            }
-
-                        }
-
-                    });
-
-            edt_fullname.setText(mHopital.getmHospitalName());
-            et_profile_email.setText(mHopital.getmEmailAddress());
-            edt_profile_mobile.setText(mHopital.getmMobileNumber());
-            edt_contact_name.setText(mHopital.getmContactName());
-            edt_contact_number.setText(mHopital.getmContactNumber());
-            edt_preferred_username.setText(mHopital.getmPreferredUsername());
-            edt_postal.setText(mHopital.getmPostal());
-            edt_floor_number.setText(String.valueOf(mHopital.getmFloorNumber()));
-            edt_ward.setText(mHopital.getmWard());
-            edt_address.setText(mHopital.getmMainAddress());
-
-        }
-    }
+//    private void setHosptialValues(){
+//
+//        mHopital = RealmController.with(this).getHospital(Integer.valueOf(new PreferenceHelper(this).getUserId()));
+//
+//        if (mHopital != null) {
+//
+//            //Getting Ambulance Operator list for set up to Ambulance Operator Spinner
+//            getAmbulanceOperator();
+//
+//            Glide.with(this).load(mHopital.getmCompanyPicture())
+//                    .transition(new DrawableTransitionOptions().crossFade())
+//                    .apply(new RequestOptions().placeholder(R.drawable.defult_user).error(R.drawable.defult_user).centerCrop())
+//                    .into(profile_image);
+//
+//            new AQuery(this).id(R.id.img_profile_image).image(mHopital.getmCompanyPicture(), true, true,
+//                    200, 0, new BitmapAjaxCallback() {
+//
+//                        @Override
+//                        public void callback(String url, ImageView iv, Bitmap bm,
+//                                             AjaxStatus status) {
+//
+//                            EbizworldUtils.appLogDebug("HaoLS", url);
+//                            if (!url.isEmpty()) {
+//
+//                                EbizworldUtils.appLogDebug("HaoLS", url);
+//
+//                                //    filePath = aQuery.getCachedFile(url).getPath();
+//                            }
+//
+//                        }
+//
+//                    });
+//
+//            edt_fullname.setText(mHopital.getmHospitalName());
+//            et_profile_email.setText(mHopital.getmEmailAddress());
+//            edt_profile_mobile.setText(mHopital.getmMobileNumber());
+//            edt_contact_name.setText(mHopital.getmContactName());
+//            edt_contact_number.setText(mHopital.getmContactNumber());
+//            edt_preferred_username.setText(mHopital.getmPreferredUsername());
+//            edt_postal.setText(mHopital.getmPostal());
+//            edt_floor_number.setText(String.valueOf(mHopital.getmFloorNumber()));
+//            edt_ward.setText(mHopital.getmWard());
+//            edt_address.setText(mHopital.getmMainAddress());
+//
+//        }
+//    }
 
     private void disablePatientViews() {
         profile_image.setEnabled(false);
@@ -569,50 +607,53 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         edt_postal.setEnabled(false);
         edt_street_name.setEnabled(false);
       //  edt_weight.setEnabled(false);
-        cb_lift_landing.setEnabled(false);
-        cb_stairs.setEnabled(false);
-        cb_no_stairs.setEnabled(false);
-        cb_low_stairs.setEnabled(false);
+
         spn_ambulance_operator.setEnabled(false);
         spn_patient_condition.setEnabled(false);
-        cb_stretcher.setEnabled(false);
-        cb_wheel_chair.setEnabled(false);
-        cb_oxygen.setEnabled(false);
-        cb_escorts.setEnabled(false);
+
+//        cb_lift_landing.setEnabled(false);
+//        cb_stairs.setEnabled(false);
+//        cb_no_stairs.setEnabled(false);
+//        cb_low_stairs.setEnabled(false);
+//        cb_stretcher.setEnabled(false);
+//        cb_wheel_chair.setEnabled(false);
+//        cb_oxygen.setEnabled(false);
+//        cb_escorts.setEnabled(false);
+
         edt_additional_pation_information.setEnabled(false);
         spn_payment_mode.setEnabled(false);
         edt_preferred_username.setEnabled(false);
 
     }
 
-    private void disableNursingHomeViews() {
-        profile_image.setEnabled(false);
-        edt_fullname.setEnabled(false);
-        et_profile_email.setEnabled(false);
-        edt_profile_mobile.setEnabled(false);
-        edt_contact_name.setEnabled(false);
-        edt_contact_number.setEnabled(false);
-        edt_preferred_username.setEnabled(false);
-        edt_address.setEnabled(false);
-        /*edt_operator_id.setEnabled(false);*/
-        spn_ambulance_operator.setEnabled(false);
-    }
+//    private void disableNursingHomeViews() {
+//        profile_image.setEnabled(false);
+//        edt_fullname.setEnabled(false);
+//        et_profile_email.setEnabled(false);
+//        edt_profile_mobile.setEnabled(false);
+//        edt_contact_name.setEnabled(false);
+//        edt_contact_number.setEnabled(false);
+//        edt_preferred_username.setEnabled(false);
+//        edt_address.setEnabled(false);
+//        /*edt_operator_id.setEnabled(false);*/
+//        spn_ambulance_operator.setEnabled(false);
+//    }
 
-    private void disableHospitalViews() {
-        profile_image.setEnabled(false);
-        edt_fullname.setEnabled(false);
-        et_profile_email.setEnabled(false);
-        edt_profile_mobile.setEnabled(false);
-        edt_contact_name.setEnabled(false);
-        edt_contact_number.setEnabled(false);
-        edt_preferred_username.setEnabled(false);
-        edt_postal.setEnabled(false);
-        edt_floor_number.setEnabled(false);
-        edt_ward.setEnabled(false);
-        edt_address.setEnabled(false);
-        /*edt_operator_id.setEnabled(false);*/
-        spn_ambulance_operator.setEnabled(false);
-    }
+//    private void disableHospitalViews() {
+//        profile_image.setEnabled(false);
+//        edt_fullname.setEnabled(false);
+//        et_profile_email.setEnabled(false);
+//        edt_profile_mobile.setEnabled(false);
+//        edt_contact_name.setEnabled(false);
+//        edt_contact_number.setEnabled(false);
+//        edt_preferred_username.setEnabled(false);
+//        edt_postal.setEnabled(false);
+//        edt_floor_number.setEnabled(false);
+//        edt_ward.setEnabled(false);
+//        edt_address.setEnabled(false);
+//        /*edt_operator_id.setEnabled(false);*/
+//        spn_ambulance_operator.setEnabled(false);
+//    }
 
 
     private void enablePatientViews() {
@@ -628,53 +669,55 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         edt_postal.setEnabled(true);
         edt_street_name.setEnabled(true);
        // edt_weight.setEnabled(true);
-        cb_lift_landing.setEnabled(true);
-        cb_stairs.setEnabled(true);
-        cb_no_stairs.setEnabled(true);
-        cb_low_stairs.setEnabled(true);
+
         spn_ambulance_operator.setEnabled(true);
         spn_patient_condition.setEnabled(true);
-        cb_stretcher.setEnabled(true);
-        cb_wheel_chair.setEnabled(true);
-        cb_oxygen.setEnabled(true);
-        cb_escorts.setEnabled(true);
+
+//        cb_lift_landing.setEnabled(true);
+//        cb_stairs.setEnabled(true);
+//        cb_no_stairs.setEnabled(true);
+//        cb_low_stairs.setEnabled(true);
+//        cb_stretcher.setEnabled(true);
+//        cb_wheel_chair.setEnabled(true);
+//        cb_oxygen.setEnabled(true);
+//        cb_escorts.setEnabled(true);
         edt_additional_pation_information.setEnabled(true);
         spn_payment_mode.setEnabled(true);
         edt_preferred_username.setEnabled(true);
 
     }
 
-    private void enableNursingHomeViews() {
+//    private void enableNursingHomeViews() {
+//
+//        profile_image.setEnabled(true);
+//        edt_fullname.setEnabled(true);
+//        et_profile_email.setEnabled(false);
+//        edt_profile_mobile.setEnabled(true);
+//        edt_contact_name.setEnabled(true);
+//        edt_contact_number.setEnabled(true);
+//        edt_preferred_username.setEnabled(true);
+//        edt_address.setEnabled(true);
+//        /*edt_operator_id.setEnabled(true);*/
+//        spn_ambulance_operator.setEnabled(true);
+//
+//    }
 
-        profile_image.setEnabled(true);
-        edt_fullname.setEnabled(true);
-        et_profile_email.setEnabled(false);
-        edt_profile_mobile.setEnabled(true);
-        edt_contact_name.setEnabled(true);
-        edt_contact_number.setEnabled(true);
-        edt_preferred_username.setEnabled(true);
-        edt_address.setEnabled(true);
-        /*edt_operator_id.setEnabled(true);*/
-        spn_ambulance_operator.setEnabled(true);
-
-    }
-
-    private void enableHospitalViews() {
-
-        profile_image.setEnabled(true);
-        edt_fullname.setEnabled(true);
-        et_profile_email.setEnabled(false);
-        edt_profile_mobile.setEnabled(true);
-        edt_contact_name.setEnabled(true);
-        edt_contact_number.setEnabled(true);
-        edt_preferred_username.setEnabled(true);
-        edt_postal.setEnabled(true);
-        edt_floor_number.setEnabled(true);
-        edt_ward.setEnabled(true);
-        edt_address.setEnabled(true);
-        spn_ambulance_operator.setEnabled(true);
-
-    }
+//    private void enableHospitalViews() {
+//
+//        profile_image.setEnabled(true);
+//        edt_fullname.setEnabled(true);
+//        et_profile_email.setEnabled(false);
+//        edt_profile_mobile.setEnabled(true);
+//        edt_contact_name.setEnabled(true);
+//        edt_contact_number.setEnabled(true);
+//        edt_preferred_username.setEnabled(true);
+//        edt_postal.setEnabled(true);
+//        edt_floor_number.setEnabled(true);
+//        edt_ward.setEnabled(true);
+//        edt_address.setEnabled(true);
+//        spn_ambulance_operator.setEnabled(true);
+//
+//    }
 
     private void getAmbulanceOperator(){
 
@@ -695,19 +738,20 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             /*hashMap.put(Const.Params.DISTANCE, dis);
             hashMap.put(Const.Params.TIME, dur);*/
 
-        }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-
-            hashMap.put(Const.Params.URL, Const.NursingHomeService.OPERATORS_URL);
-            hashMap.put(Const.Params.ID, new PreferenceHelper(this).getUserId());
-            hashMap.put(Const.Params.TOKEN, new PreferenceHelper(this).getSessionToken());
-
-        }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
-
-            hashMap.put(Const.Params.URL, Const.HospitalService.OPERATORS_URL);
-            hashMap.put(Const.Params.ID, new PreferenceHelper(this).getUserId());
-            hashMap.put(Const.Params.TOKEN, new PreferenceHelper(this).getSessionToken());
-
         }
+//        else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+//
+//            hashMap.put(Const.Params.URL, Const.NursingHomeService.OPERATORS_URL);
+//            hashMap.put(Const.Params.ID, new PreferenceHelper(this).getUserId());
+//            hashMap.put(Const.Params.TOKEN, new PreferenceHelper(this).getSessionToken());
+//
+//        }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+//
+//            hashMap.put(Const.Params.URL, Const.HospitalService.OPERATORS_URL);
+//            hashMap.put(Const.Params.ID, new PreferenceHelper(this).getUserId());
+//            hashMap.put(Const.Params.TOKEN, new PreferenceHelper(this).getSessionToken());
+//
+//        }
 
         EbizworldUtils.appLogDebug("HaoLS", "ProfileActivity getting Ambulance Operator " + hashMap.toString());
 
@@ -764,109 +808,111 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             }
                         }
 
-                    }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-
-                        if (tv_edit_profile.getText().toString().equals(getString(R.string.btn_edit))) {
-
-                            enableNursingHomeViews();
-
-                            tv_edit_profile.setText(getString(R.string.btn_save));
-
-                        } else {
-
-                            if (TextUtils.isEmpty(edt_fullname.getText().toString())){
-
-                                edt_fullname.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }else if(TextUtils.isEmpty(edt_profile_mobile.getText().toString())){
-
-                                edt_profile_mobile.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }else if (TextUtils.isEmpty(edt_contact_name.getText().toString())){
-
-                                edt_contact_name.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }else if (TextUtils.isEmpty(edt_contact_number.getText().toString())){
-
-                                edt_contact_number.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }else if(TextUtils.isEmpty(edt_preferred_username.getText().toString())){
-
-                                edt_preferred_username.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }else if (TextUtils.isEmpty(edt_address.getText().toString())){
-
-                                edt_address.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }/*else if (TextUtils.isEmpty(edt_operator_id.getText().toString())){
-
-                                edt_operator_id.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }*/else {
-
-                                updateNurseProfile();
-//                                disableNursingHomeViews();
-
-                            }
-
-                        }
-
-                    }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
-
-                        if (tv_edit_profile.getText().toString().equals(getString(R.string.btn_edit))) {
-
-                            enableHospitalViews();
-
-                            tv_edit_profile.setText(getString(R.string.btn_save));
-
-                        } else {
-
-                            if (TextUtils.isEmpty(edt_fullname.getText().toString())){
-
-                                edt_fullname.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }else if(TextUtils.isEmpty(edt_profile_mobile.getText().toString())){
-
-                                edt_profile_mobile.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }else if (TextUtils.isEmpty(edt_contact_name.getText().toString())){
-
-                                edt_contact_name.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }else if (TextUtils.isEmpty(edt_contact_number.getText().toString())){
-
-                                edt_contact_number.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }else if(TextUtils.isEmpty(edt_preferred_username.getText().toString())){
-
-                                edt_preferred_username.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }else if (TextUtils.isEmpty(edt_postal.getText().toString())){
-
-                                edt_address.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }else if (TextUtils.isEmpty(edt_floor_number.getText().toString())){
-
-                                edt_address.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }else if (TextUtils.isEmpty(edt_ward.getText().toString())){
-
-                                edt_address.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }else if (TextUtils.isEmpty(edt_address.getText().toString())){
-
-                                edt_address.setError(getResources().getString(R.string.edittext_empty_notice));
-
-                            }else {
-
-                                updateHospitalProfile();
-//                                disableHospitalViews();
-
-                            }
-
-                        }
-
                     }
+//                    else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+//
+//                        if (tv_edit_profile.getText().toString().equals(getString(R.string.btn_edit))) {
+//
+//                            enableNursingHomeViews();
+//
+//                            tv_edit_profile.setText(getString(R.string.btn_save));
+//
+//                        } else {
+//
+//                            if (TextUtils.isEmpty(edt_fullname.getText().toString())){
+//
+//                                edt_fullname.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }else if(TextUtils.isEmpty(edt_profile_mobile.getText().toString())){
+//
+//                                edt_profile_mobile.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }else if (TextUtils.isEmpty(edt_contact_name.getText().toString())){
+//
+//                                edt_contact_name.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }else if (TextUtils.isEmpty(edt_contact_number.getText().toString())){
+//
+//                                edt_contact_number.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }else if(TextUtils.isEmpty(edt_preferred_username.getText().toString())){
+//
+//                                edt_preferred_username.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }else if (TextUtils.isEmpty(edt_address.getText().toString())){
+//
+//                                edt_address.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }/*else if (TextUtils.isEmpty(edt_operator_id.getText().toString())){
+//
+//                                edt_operator_id.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }*/else {
+//
+//                                updateNurseProfile();
+//                               disableNursingHomeViews();
+//
+//                            }
+//
+//                        }
+//
+//                    }
+//                    else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+//
+//                        if (tv_edit_profile.getText().toString().equals(getString(R.string.btn_edit))) {
+//
+//                            enableHospitalViews();
+//
+//                            tv_edit_profile.setText(getString(R.string.btn_save));
+//
+//                        } else {
+//
+//                            if (TextUtils.isEmpty(edt_fullname.getText().toString())){
+//
+//                                edt_fullname.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }else if(TextUtils.isEmpty(edt_profile_mobile.getText().toString())){
+//
+//                                edt_profile_mobile.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }else if (TextUtils.isEmpty(edt_contact_name.getText().toString())){
+//
+//                                edt_contact_name.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }else if (TextUtils.isEmpty(edt_contact_number.getText().toString())){
+//
+//                                edt_contact_number.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }else if(TextUtils.isEmpty(edt_preferred_username.getText().toString())){
+//
+//                                edt_preferred_username.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }else if (TextUtils.isEmpty(edt_postal.getText().toString())){
+//
+//                                edt_address.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }else if (TextUtils.isEmpty(edt_floor_number.getText().toString())){
+//
+//                                edt_address.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }else if (TextUtils.isEmpty(edt_ward.getText().toString())){
+//
+//                                edt_address.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }else if (TextUtils.isEmpty(edt_address.getText().toString())){
+//
+//                                edt_address.setError(getResources().getString(R.string.edittext_empty_notice));
+//
+//                            }else {
+//
+//                                updateHospitalProfile();
+//                               disableHospitalViews();
+//
+//                            }
+//
+//                        }
+//
+//                    }
 
                 break;
             case R.id.img_profile_image:
@@ -906,41 +952,41 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         map.put(Const.Params.PREFERRED_USERNAME, edt_preferred_username.getText().toString());
         map.put(Const.Params.WEIGHT, "");
 
-        if (cb_lift_landing.isChecked()){
-
-            map.put(Const.Params.LIFT_LANDING, "1");
-
-        }else {
-
-            map.put(Const.Params.LIFT_LANDING, "0");
-        }
-
-        if (cb_stairs.isChecked()){
-
-            map.put(Const.Params.STAIRS, "1");
-
-        }else {
-
-            map.put(Const.Params.STAIRS, "0");
-        }
-
-        if (cb_no_stairs.isChecked()){
-
-            map.put(Const.Params.NO_STAIRS, "1");
-
-        }else {
-
-            map.put(Const.Params.NO_STAIRS, "0");
-        }
-
-        if (cb_low_stairs.isChecked()){
-
-            map.put(Const.Params.LOW_STAIRS, "1");
-
-        }else {
-
-            map.put(Const.Params.LOW_STAIRS, "0");
-        }
+//        if (cb_lift_landing.isChecked()){
+//
+//            map.put(Const.Params.LIFT_LANDING, "1");
+//
+//        }else {
+//
+//            map.put(Const.Params.LIFT_LANDING, "0");
+//        }
+//
+//        if (cb_stairs.isChecked()){
+//
+//            map.put(Const.Params.STAIRS, "1");
+//
+//        }else {
+//
+//            map.put(Const.Params.STAIRS, "0");
+//        }
+//
+//        if (cb_no_stairs.isChecked()){
+//
+//            map.put(Const.Params.NO_STAIRS, "1");
+//
+//        }else {
+//
+//            map.put(Const.Params.NO_STAIRS, "0");
+//        }
+//
+//        if (cb_low_stairs.isChecked()){
+//
+//            map.put(Const.Params.LOW_STAIRS, "1");
+//
+//        }else {
+//
+//            map.put(Const.Params.LOW_STAIRS, "0");
+//        }
 
         if (mAmbulanceOperator != null){
 
@@ -960,41 +1006,41 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             map.put(Const.Params.PATIENT_CONDITION, spn_patient_condition.getItemAtPosition(0).toString()); //Need change
         }
 
-        if (cb_stretcher.isChecked()){
-
-            map.put(Const.Params.STRETCHER, "1");
-
-        }else {
-
-            map.put(Const.Params.STRETCHER, "0");
-        }
-
-        if (cb_wheel_chair.isChecked()){
-
-            map.put(Const.Params.WHEEL_CHAIR, "1");
-
-        }else {
-
-            map.put(Const.Params.WHEEL_CHAIR, "0");
-        }
-
-        if (cb_oxygen.isChecked()){
-
-            map.put(Const.Params.OXYGEN, "1");
-
-        }else {
-
-            map.put(Const.Params.OXYGEN, "0");
-        }
-
-        if (cb_escorts.isChecked()){
-
-            map.put(Const.Params.ESCORTS, "1");
-
-        }else {
-
-            map.put(Const.Params.ESCORTS, "0");
-        }
+//        if (cb_stretcher.isChecked()){
+//
+//            map.put(Const.Params.STRETCHER, "1");
+//
+//        }else {
+//
+//            map.put(Const.Params.STRETCHER, "0");
+//        }
+//
+//        if (cb_wheel_chair.isChecked()){
+//
+//            map.put(Const.Params.WHEEL_CHAIR, "1");
+//
+//        }else {
+//
+//            map.put(Const.Params.WHEEL_CHAIR, "0");
+//        }
+//
+//        if (cb_oxygen.isChecked()){
+//
+//            map.put(Const.Params.OXYGEN, "1");
+//
+//        }else {
+//
+//            map.put(Const.Params.OXYGEN, "0");
+//        }
+//
+//        if (cb_escorts.isChecked()){
+//
+//            map.put(Const.Params.ESCORTS, "1");
+//
+//        }else {
+//
+//            map.put(Const.Params.ESCORTS, "0");
+//        }
 
         map.put(Const.Params.ADD_INFORMATION, edt_additional_pation_information.getText().toString());
 
@@ -1036,55 +1082,55 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    private void updateNurseProfile(){
-
-        if(!EbizworldUtils.isNetworkAvailable(ProfileActivity.this)){
-
-            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), ProfileActivity.this);
-            return;
-
-        }
-
-        Commonutils.progressdialog_show(this, getResources().getString(R.string.updating_pro_load));
-
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put(Const.Params.URL, Const.NursingHomeService.UPDATE_PROFILE_URL);
-        map.put(Const.Params.ID, new PreferenceHelper(this).getUserId());
-        map.put(Const.Params.TOKEN, new PreferenceHelper(this).getSessionToken());
-        map.put(Const.Params.FULLNAME, edt_fullname.getText().toString());
-        map.put(Const.Params.CONTACT_NAME, edt_contact_name.getText().toString());
-        map.put(Const.Params.CONTACT_NO, edt_contact_number.getText().toString());
-        map.put(Const.Params.PREFERRED_USERNAME, edt_preferred_username.getText().toString());
-        map.put(Const.Params.PICTURE, filePath);
-        map.put(Const.Params.MOBILE, edt_profile_mobile.getText().toString());
-        map.put(Const.Params.ADDRESS, edt_address.getText().toString());
-        /*map.put(Const.Params.OPERATOR_ID, edt_operator_id.getText().toString());*/
-
-        if (mAmbulanceOperator != null){
-
-            map.put(Const.Params.OPERATOR_ID, mAmbulanceOperator.getId());
-
-            EbizworldUtils.appLogDebug("HaoLS", Const.Params.OPERATOR_ID + " " +mAmbulanceOperator.getId());
-
-        }else {
-
-            map.put(Const.Params.OPERATOR_ID, "1");
-
-        }
-
-        /*map.put(Const.Params.GENDER, rd_btn.getText().toString());*/
-
-        EbizworldUtils.appLogDebug("HaoLS", map.toString());
-
-        if (filePath.equals("") || null == filePath) {
-            new VolleyRequester(this, Const.POST, map, Const.ServiceCode.UPDATE_PROFILE,
-                    this);
-        } else {
-            new MultiPartRequester(this, map, Const.ServiceCode.UPDATE_PROFILE,
-                    this);
-        }
-
-    }
+//    private void updateNurseProfile(){
+//
+//        if(!EbizworldUtils.isNetworkAvailable(ProfileActivity.this)){
+//
+//            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), ProfileActivity.this);
+//            return;
+//
+//        }
+//
+//        Commonutils.progressdialog_show(this, getResources().getString(R.string.updating_pro_load));
+//
+//        HashMap<String, String> map = new HashMap<String, String>();
+//        map.put(Const.Params.URL, Const.NursingHomeService.UPDATE_PROFILE_URL);
+//        map.put(Const.Params.ID, new PreferenceHelper(this).getUserId());
+//        map.put(Const.Params.TOKEN, new PreferenceHelper(this).getSessionToken());
+//        map.put(Const.Params.FULLNAME, edt_fullname.getText().toString());
+//        map.put(Const.Params.CONTACT_NAME, edt_contact_name.getText().toString());
+//        map.put(Const.Params.CONTACT_NO, edt_contact_number.getText().toString());
+//        map.put(Const.Params.PREFERRED_USERNAME, edt_preferred_username.getText().toString());
+//        map.put(Const.Params.PICTURE, filePath);
+//        map.put(Const.Params.MOBILE, edt_profile_mobile.getText().toString());
+//        map.put(Const.Params.ADDRESS, edt_address.getText().toString());
+//        /*map.put(Const.Params.OPERATOR_ID, edt_operator_id.getText().toString());*/
+//
+//        if (mAmbulanceOperator != null){
+//
+//            map.put(Const.Params.OPERATOR_ID, mAmbulanceOperator.getId());
+//
+//            EbizworldUtils.appLogDebug("HaoLS", Const.Params.OPERATOR_ID + " " +mAmbulanceOperator.getId());
+//
+//        }else {
+//
+//            map.put(Const.Params.OPERATOR_ID, "1");
+//
+//        }
+//
+//        /*map.put(Const.Params.GENDER, rd_btn.getText().toString());*/
+//
+//        EbizworldUtils.appLogDebug("HaoLS", map.toString());
+//
+//        if (filePath.equals("") || null == filePath) {
+//            new VolleyRequester(this, Const.POST, map, Const.ServiceCode.UPDATE_PROFILE,
+//                    this);
+//        } else {
+//            new MultiPartRequester(this, map, Const.ServiceCode.UPDATE_PROFILE,
+//                    this);
+//        }
+//
+//    }
 
     private void updateHospitalProfile(){
 
@@ -1157,41 +1203,41 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         new VolleyRequester(this, Const.GET, hashMap, Const.ServiceCode.GET_ACCOUNT_INFORMATION, this);
     }
 
-    private void getNurseInformation(){
+//    private void getNurseInformation(){
+//
+//        if(!EbizworldUtils.isNetworkAvailable(ProfileActivity.this)){
+//
+//            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), ProfileActivity.this);
+//            return;
+//
+//        }
+//
+//        HashMap<String, String> hashMap = new HashMap<>();
+//        hashMap.put(Const.Params.URL, Const.NursingHomeService.GET_ACCOUNT_INFORMATION_URL + Const.Params.ID + "=" + new PreferenceHelper(this).getUserId() +
+//                "&" + Const.Params.TOKEN + "=" + new PreferenceHelper(this).getSessionToken());
+//
+//        EbizworldUtils.appLogDebug("HaoLS", "getNurseInformation " + hashMap.toString());
+//
+//        new VolleyRequester(this, Const.GET, hashMap, Const.ServiceCode.GET_ACCOUNT_INFORMATION, this);
+//    }
 
-        if(!EbizworldUtils.isNetworkAvailable(ProfileActivity.this)){
-
-            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), ProfileActivity.this);
-            return;
-
-        }
-
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put(Const.Params.URL, Const.NursingHomeService.GET_ACCOUNT_INFORMATION_URL + Const.Params.ID + "=" + new PreferenceHelper(this).getUserId() +
-                "&" + Const.Params.TOKEN + "=" + new PreferenceHelper(this).getSessionToken());
-
-        EbizworldUtils.appLogDebug("HaoLS", "getNurseInformation " + hashMap.toString());
-
-        new VolleyRequester(this, Const.GET, hashMap, Const.ServiceCode.GET_ACCOUNT_INFORMATION, this);
-    }
-
-    private void getHospitalInformation(){
-
-        if(!EbizworldUtils.isNetworkAvailable(ProfileActivity.this)){
-
-            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), ProfileActivity.this);
-            return;
-
-        }
-
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put(Const.Params.URL, Const.HospitalService.GET_ACCOUNT_INFORMATION_URL + Const.Params.ID + "=" + new PreferenceHelper(this).getUserId() +
-                "&" + Const.Params.TOKEN + "=" + new PreferenceHelper(this).getSessionToken());
-
-        EbizworldUtils.appLogDebug("HaoLS", "getHospitalInformation " + hashMap.toString());
-
-        new VolleyRequester(this, Const.GET, hashMap, Const.ServiceCode.GET_ACCOUNT_INFORMATION, this);
-    }
+//    private void getHospitalInformation(){
+//
+//        if(!EbizworldUtils.isNetworkAvailable(ProfileActivity.this)){
+//
+//            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), ProfileActivity.this);
+//            return;
+//
+//        }
+//
+//        HashMap<String, String> hashMap = new HashMap<>();
+//        hashMap.put(Const.Params.URL, Const.HospitalService.GET_ACCOUNT_INFORMATION_URL + Const.Params.ID + "=" + new PreferenceHelper(this).getUserId() +
+//                "&" + Const.Params.TOKEN + "=" + new PreferenceHelper(this).getSessionToken());
+//
+//        EbizworldUtils.appLogDebug("HaoLS", "getHospitalInformation " + hashMap.toString());
+//
+//        new VolleyRequester(this, Const.GET, hashMap, Const.ServiceCode.GET_ACCOUNT_INFORMATION, this);
+//    }
 
     private void showPictureDialog() {
 
@@ -1425,15 +1471,16 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                                 getPatientInformation();
 
 
-                            }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-
-                                getNurseInformation();
-
-                            }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
-
-                                getHospitalInformation();
-
                             }
+//                            else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+//
+//                                getNurseInformation();
+//
+//                            }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+//
+//                                getHospitalInformation();
+//
+//                            }
 
                         } else {
 
@@ -1462,19 +1509,19 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         e.printStackTrace();
                         EbizworldUtils.appLogDebug("HaoLS", "Update profile failed " + e.toString());
 
-                        /*if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)){
-
-                            enablePatientViews();
-
-                        }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-
-                            enableNursingHomeViews();
-
-                        }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
-
-                            enableHospitalViews();
-
-                        }*/
+//                        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)){
+//
+//                            enablePatientViews();
+//
+//                        }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+//
+//                            enableNursingHomeViews();
+//
+//                        }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+//
+//                            enableHospitalViews();
+//
+//                        }
 
                     }
                 }
@@ -1508,35 +1555,36 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                                 }
 
-                            }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-
-                                if (pcontent.isSuccessWithStoreId(response)){
-
-                                    pcontent.parseNurseAndStoreToDb(response);
-
-                                    Commonutils.showtoast(getString(R.string.update_success_text), this);
-                                    tv_edit_profile.setText(getString(R.string.btn_edit));
-                                    disableNursingHomeViews();
-
-                                    EbizworldUtils.appLogDebug("HaoLS", "Nurse isSuccessWithStore succeeded ");
-                                }
-
-
-                            }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
-
-                                if (pcontent.isSuccessWithStoreId(response)){
-
-                                    pcontent.parseHospitalAndStoreToDb(response);
-
-                                    EbizworldUtils.showShortToast(getString(R.string.update_success_text), this);
-                                    tv_edit_profile.setText(getString(R.string.btn_edit));
-                                    disableHospitalViews();
-
-                                    EbizworldUtils.appLogDebug("HaoLS", "Hospital isSuccessWithStore succeeded ");
-                                }
-
-
                             }
+//                            else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+//
+//                                if (pcontent.isSuccessWithStoreId(response)){
+//
+//                                    pcontent.parseNurseAndStoreToDb(response);
+//
+//                                    Commonutils.showtoast(getString(R.string.update_success_text), this);
+//                                    tv_edit_profile.setText(getString(R.string.btn_edit));
+//                                    disableNursingHomeViews();
+//
+//                                    EbizworldUtils.appLogDebug("HaoLS", "Nurse isSuccessWithStore succeeded ");
+//                                }
+//
+//
+//                            }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+//
+//                                if (pcontent.isSuccessWithStoreId(response)){
+//
+//                                    pcontent.parseHospitalAndStoreToDb(response);
+//
+//                                    EbizworldUtils.showShortToast(getString(R.string.update_success_text), this);
+//                                    tv_edit_profile.setText(getString(R.string.btn_edit));
+//                                    disableHospitalViews();
+//
+//                                    EbizworldUtils.appLogDebug("HaoLS", "Hospital isSuccessWithStore succeeded ");
+//                                }
+//
+//
+//                            }
 
                         }else {
 
@@ -1625,83 +1673,84 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                                 }
 
-                            }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME) ||
-                                    new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
-
-                                JSONArray jsonArray = jsonObject.getJSONArray("operator");
-
-
-                                if (jsonArray.length() > 0){
-
-                                    EbizworldUtils.appLogDebug("HaoLS", "Ambulance Operator list " + jsonArray.toString());
-
-                                    mAmbulanceOperators.clear();
-
-                                    for (int i = 0; i < jsonArray.length(); i++){
-
-                                        JSONObject object = jsonArray.getJSONObject(i);
-
-                                        AmbulanceOperator ambulanceOperator = new AmbulanceOperator();
-
-                                        ambulanceOperator.setId(String.valueOf(object.getInt("id")));
-                                        ambulanceOperator.setAmbulanceOperator(object.getString("name"));
-                                        ambulanceOperator.setAmbulanceImage(object.getString("picture"));
-                                        mAmbulanceOperators.add(ambulanceOperator);
-
-                                    }
-
-                                    if (mAmbulanceOperators.size() > 0){
-
-                                        EbizworldUtils.appLogDebug("HaoLS", "Setting up Spinner for Ambulance Operator");
-
-                                        mAmbulanceOperatorSpinnerAdapter = new AmbulanceOperatorSpinnerAdapter(this, mAmbulanceOperators);
-                                        spn_ambulance_operator.setAdapter(mAmbulanceOperatorSpinnerAdapter);
-
-                                        if (mNurse != null){
-
-                                            EbizworldUtils.appLogDebug("HaoLS", "mNurse != null");
-                                            EbizworldUtils.appLogDebug("HaoLS", "Operator id of Nurse " + String.valueOf(mNurse.getmOperatorID()));
-
-                                            for (int i = 0; i < mAmbulanceOperators.size(); i++){
-
-                                                EbizworldUtils.appLogDebug("HaoLS", "Start for loop " + i );
-                                                EbizworldUtils.appLogDebug("HaoLS", "Ambulance Operator id " + mAmbulanceOperators.get(i).getId() );
-
-                                                if (mNurse.getmOperatorID() == Integer.parseInt(mAmbulanceOperators.get(i).getId())){
-
-                                                    spn_ambulance_operator.setSelection(i);
-
-                                                    EbizworldUtils.appLogDebug("HaoLS", "Spinner set default text with Operator ID " + String.valueOf(mNurse.getmOperatorID()));
-                                                    break;
-                                                }
-                                            }
-
-                                        }else if (mHopital != null){
-
-                                            EbizworldUtils.appLogDebug("HaoLS", "mHopital != null");
-                                            EbizworldUtils.appLogDebug("HaoLS", "Operator id of Hopital " + String.valueOf(mHopital.getmAmbulanceOperator()));
-
-                                            for (int i = 0; i < mAmbulanceOperators.size(); i++){
-
-                                                EbizworldUtils.appLogDebug("HaoLS", "Start for loop " + i );
-                                                EbizworldUtils.appLogDebug("HaoLS", "Ambulance Operator id " + mAmbulanceOperators.get(i).getId() );
-
-                                                if (mHopital.getmAmbulanceOperator() == Integer.parseInt(mAmbulanceOperators.get(i).getId())){
-
-                                                    spn_ambulance_operator.setSelection(i);
-
-                                                    EbizworldUtils.appLogDebug("HaoLS", "Spinner set default text with Operator ID " + String.valueOf(mHopital.getmAmbulanceOperator()));
-                                                    break;
-                                                }
-                                            }
-
-                                        }
-
-                                    }
-
-                                }
-
                             }
+//                            else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME) ||
+//                                    new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+//
+//                                JSONArray jsonArray = jsonObject.getJSONArray("operator");
+//
+//
+//                                if (jsonArray.length() > 0){
+//
+//                                    EbizworldUtils.appLogDebug("HaoLS", "Ambulance Operator list " + jsonArray.toString());
+//
+//                                    mAmbulanceOperators.clear();
+//
+//                                    for (int i = 0; i < jsonArray.length(); i++){
+//
+//                                        JSONObject object = jsonArray.getJSONObject(i);
+//
+//                                        AmbulanceOperator ambulanceOperator = new AmbulanceOperator();
+//
+//                                        ambulanceOperator.setId(String.valueOf(object.getInt("id")));
+//                                        ambulanceOperator.setAmbulanceOperator(object.getString("name"));
+//                                        ambulanceOperator.setAmbulanceImage(object.getString("picture"));
+//                                        mAmbulanceOperators.add(ambulanceOperator);
+//
+//                                    }
+//
+//                                    if (mAmbulanceOperators.size() > 0){
+//
+//                                        EbizworldUtils.appLogDebug("HaoLS", "Setting up Spinner for Ambulance Operator");
+//
+//                                        mAmbulanceOperatorSpinnerAdapter = new AmbulanceOperatorSpinnerAdapter(this, mAmbulanceOperators);
+//                                        spn_ambulance_operator.setAdapter(mAmbulanceOperatorSpinnerAdapter);
+//
+//                                        if (mNurse != null){
+//
+//                                            EbizworldUtils.appLogDebug("HaoLS", "mNurse != null");
+//                                            EbizworldUtils.appLogDebug("HaoLS", "Operator id of Nurse " + String.valueOf(mNurse.getmOperatorID()));
+//
+//                                            for (int i = 0; i < mAmbulanceOperators.size(); i++){
+//
+//                                                EbizworldUtils.appLogDebug("HaoLS", "Start for loop " + i );
+//                                                EbizworldUtils.appLogDebug("HaoLS", "Ambulance Operator id " + mAmbulanceOperators.get(i).getId() );
+//
+//                                                if (mNurse.getmOperatorID() == Integer.parseInt(mAmbulanceOperators.get(i).getId())){
+//
+//                                                    spn_ambulance_operator.setSelection(i);
+//
+//                                                    EbizworldUtils.appLogDebug("HaoLS", "Spinner set default text with Operator ID " + String.valueOf(mNurse.getmOperatorID()));
+//                                                    break;
+//                                                }
+//                                            }
+//
+//                                        }else if (mHopital != null){
+//
+//                                            EbizworldUtils.appLogDebug("HaoLS", "mHopital != null");
+//                                            EbizworldUtils.appLogDebug("HaoLS", "Operator id of Hopital " + String.valueOf(mHopital.getmAmbulanceOperator()));
+//
+//                                            for (int i = 0; i < mAmbulanceOperators.size(); i++){
+//
+//                                                EbizworldUtils.appLogDebug("HaoLS", "Start for loop " + i );
+//                                                EbizworldUtils.appLogDebug("HaoLS", "Ambulance Operator id " + mAmbulanceOperators.get(i).getId() );
+//
+//                                                if (mHopital.getmAmbulanceOperator() == Integer.parseInt(mAmbulanceOperators.get(i).getId())){
+//
+//                                                    spn_ambulance_operator.setSelection(i);
+//
+//                                                    EbizworldUtils.appLogDebug("HaoLS", "Spinner set default text with Operator ID " + String.valueOf(mHopital.getmAmbulanceOperator()));
+//                                                    break;
+//                                                }
+//                                            }
+//
+//                                        }
+//
+//                                    }
+//
+//                                }
+//
+//                            }
 
 
 

@@ -42,7 +42,6 @@ import sg.go.user.Utils.PreferenceHelper;
 public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteListener {
 
     private Wallets wallets;
-    private MainActivity mMainActivity;
     private TextView txt_recharge_ewallet,txt_total_money_wallet;
     private ImageView img_pay_ewallet;
     private EditText edt_input_money_wallet;
@@ -51,6 +50,7 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
     private Toolbar toolbar_wallet;
     private String Get_Money_Recharge_Wallet;
     private ImageButton img_wallet_back;
+    private  MainActivity activity;
     View view;
 
     @Nullable
@@ -59,7 +59,7 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
 
         view = inflater.inflate(R.layout.fragment_wallet,container,false);
 
-        mMainActivity = (MainActivity) getActivity();
+
 
         mapping();
 
@@ -90,7 +90,7 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
             @Override
             public void onClick(View view) {
 
-                mMainActivity.addFragment(new AccountFragment(),true,Const.ACCOUNT_FRAGMENT,false);
+                activity.addFragment(new AccountFragment(),true,Const.ACCOUNT_FRAGMENT,false);
 
 
             }
@@ -170,6 +170,8 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
 
     }
 
+
+
     private void ApiGetWallet() {
 
         if (!EbizworldUtils.isNetworkAvailable(activity)) {
@@ -199,6 +201,43 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
         }
     }
 
+    private void postNonceToServer(String nonce) {
+
+        if (!EbizworldUtils.isNetworkAvailable(getActivity())) {
+
+            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
+            return;
+
+        }
+
+        Commonutils.progressdialog_show(activity, "Loading...");
+        HashMap<String, String> map = new HashMap<>();
+
+//        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
+
+        map.put(Const.Params.URL, Const.ServiceType.POST_PAYPAL_NONCE_URL);
+
+//        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+//
+//            map.put(Const.Params.URL, Const.NursingHomeService.POST_PAYPAL_NONCE_URL);
+//
+//        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+//
+//            map.put(Const.Params.URL, Const.HospitalService.POST_PAYPAL_NONCE_URL);
+//
+//        }
+
+        map.put(Const.Params.ID, new PreferenceHelper(getActivity()).getUserId());
+        map.put(Const.Params.TOKEN, new PreferenceHelper(getActivity()).getSessionToken());
+        map.put(Const.Params.REQUEST_ID, String.valueOf(new PreferenceHelper(getActivity()).getRequestId()));
+        map.put(Const.Params.PAYMENT_METHOD_NONCE, nonce);
+
+        EbizworldUtils.appLogDebug("HaoLS", "postNonceToServer: " + map.toString());
+
+        new VolleyRequester(getActivity(), Const.POST, map, Const.ServiceCode.POST_PAYPAL_NONCE, this);
+
+    }
+
     @Override
     public void onTaskCompleted(String response, int serviceCode) {
         switch (serviceCode){
@@ -211,11 +250,12 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(response);
+
                         if (jsonObject.getBoolean("success")) {
 
                             String total_Money_Wallet = jsonObject.getString("e_wallet");
 
-                            txt_total_money_wallet.setText(getResources().getString(R.string.txt_total_pay_wallet) +  " S$ "+ total_Money_Wallet );
+                            txt_total_money_wallet.setText(" S$ "+ total_Money_Wallet );
 
                             new PreferenceHelper(activity).putTotalRechargeWallet(total_Money_Wallet);
 
@@ -331,6 +371,7 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        activity = (MainActivity) getActivity();
     }
 
     @Override

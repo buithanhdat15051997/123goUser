@@ -6,13 +6,13 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="@dimen/_250sdp"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_230sdp"
+        android:layout_height="@dimen/_45sdp"
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/_5sdp"
         android:orientation="horizontal"
         android:padding="@dimen/_10sdp"
-        android:background="@drawable/background_oval_stroke">
+        android:background="@drawable/background_rectango_stroke_routes_three">
 
         <ImageView
             android:id="@+id/iv_user_settings_icon"
@@ -20,10 +20,11 @@
             android:layout_height="@dimen/_25sdp"
             android:layout_gravity="center"
             android:layout_centerVertical="true"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
            />
 
         <TextView
+            android:textStyle="bold"
             android:id="@+id/tv_user_settings_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,7 +32,7 @@
             android:layout_toEndOf="@id/iv_user_settings_icon"
             android:layout_marginStart="@dimen/_20sdp"
             android:text="@string/my_home"
-            android:textColor="@color/black_text"
+            android:textColor="@color/deep_grey"
             android:textSize="@dimen/_14sdp" />
 
 

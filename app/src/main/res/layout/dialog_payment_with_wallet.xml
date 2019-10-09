@@ -20,13 +20,8 @@
             android:layout_margin="@dimen/_10sdp"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:tint="@color/color_btn_main"
-                app:srcCompat="@drawable/ic_warning" />
-
             <TextView
+                android:textStyle="bold"
                 android:id="@+id/custom_simple_title_paymentwallet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,14 +32,24 @@
                 android:textColor="@color/color_background_main"
                 android:textSize="@dimen/_16sdp" />
         </LinearLayout>
+        <ImageView
+            android:layout_below="@+id/title_group"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="@color/color_btn_main"
+            app:srcCompat="@drawable/ic_warning" />
+
 
         <TextView
             android:id="@+id/custom_simple_content_paymentwallet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/title_group"
+            android:gravity="center"
+            android:textStyle="bold"
             android:layout_marginStart="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_15sdp"
             android:text="@string/txt_content_pay_ewallet"
             android:textColor="@color/black"

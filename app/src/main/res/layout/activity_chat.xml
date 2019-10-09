@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/background_main_app"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+        <android.support.v7.widget.Toolbar
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/toolbar_chat"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
@@ -28,7 +29,7 @@
                     android:layout_centerVertical="true"
                     android:background="@null"
                     android:padding="@dimen/_10sdp"
-                    android:tint="@color/white"
+                    android:tint="@color/black"
                     app:srcCompat="@drawable/ic_back_blue" />
 
                 <TextView
@@ -37,6 +38,7 @@
                     android:layout_centerInParent="true"
                     android:layout_centerVertical="true"
                     android:gravity="end"
+                    android:textStyle="bold"
                     android:paddingRight="@dimen/_10sdp"
                     android:text="@string/msgr"
                     android:textColor="@color/white"
@@ -45,7 +47,7 @@
             </RelativeLayout>
         </android.support.v7.widget.Toolbar>
     </RelativeLayout>
-
+    <!--android:background="@android:color/transparent"-->
     <ListView
         android:id="@+id/chat_lv"
         android:layout_width="match_parent"
@@ -55,7 +57,6 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="2dp"
         android:layout_marginTop="?android:attr/actionBarSize"
-        android:background="@android:color/transparent"
         android:divider="@null"
         android:dividerHeight="0dp"
         android:scrollbars="none"
@@ -66,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_margin="@dimen/_5sdp"
         android:background="@drawable/background_oval_stroke">
 
 

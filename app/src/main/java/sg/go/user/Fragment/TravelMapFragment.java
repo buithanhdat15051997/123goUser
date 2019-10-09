@@ -221,13 +221,14 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         cancel_trip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("cancelTrip", "aaaaa");
+
 
                 final Dialog dialogcancel = new Dialog(activity);
 
                 dialogcancel.setContentView(R.layout.dialog_cancel_booking);
 
                 img_confrim_cancel_booking = dialogcancel.findViewById(R.id.img_confrim_cancel_booking);
+
                 img_no_cancel_booking = dialogcancel.findViewById(R.id.img_no_cancel_booking);
 
                 dialogcancel.show();
@@ -236,7 +237,6 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                     @Override
                     public void onClick(View view) {
 
-                        Log.d("cancelTrip", "Vao Day");
                         getCancelRideReasonList();
                         stopCheckingforstatus();
                         dialogcancel.dismiss();
@@ -249,6 +249,8 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                         dialogcancel.dismiss();
                     }
                 });
+
+
 //                final iOSDialog cancelDialog = new iOSDialog(activity);
 //
 //                cancelDialog.setTitle(getResources().getString(R.string.cancel_ride));
@@ -282,47 +284,51 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
             @Override
             public void onClick(View view) {
 
-                final iOSDialog ContactDialog = new iOSDialog(activity);
-                ContactDialog.setTitle(getResources().getString(R.string.txt_contact_driver));
-                ContactDialog.setSubtitle(mobileNo);
+                DialogConTact_Trip();
 
-                ContactDialog.setNegativeLabel(getResources().getString(R.string.txt_call));
-                ContactDialog.setPositiveLabel(getResources().getString(R.string.txt_msg));
-                ContactDialog.setBoldPositiveLabel(false);
-                ContactDialog.setNegativeListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        mobileNo = requestDetail.getDriver_mobile();
-                        if (!mobileNo.equals("")) {
-
-                            int permissionCheck = ContextCompat.checkSelfPermission(activity, Manifest.permission.CALL_PHONE);
-
-                            if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-                                requestPermissions(
-                                        new String[]{Manifest.permission.CALL_PHONE}, 123);
-                            } else {
-                                call();
-                            }
-
-
-                        }
-                        ContactDialog.dismiss();
-                    }
-                });
-                ContactDialog.setPositiveListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        sendnotification();
-                        if (requestDetail != null) {
-
-                            Intent i = new Intent(activity, ChatActivity.class);
-                            i.putExtra("receiver_id", requestDetail.getDriver_id());
-                            startActivity(i);
-                        }
-                        ContactDialog.dismiss();
-                    }
-                });
-                ContactDialog.show();
+//                final iOSDialog ContactDialog = new iOSDialog(activity);
+//                ContactDialog.setTitle(getResources().getString(R.string.txt_contact_driver));
+//                ContactDialog.setSubtitle(mobileNo);
+//
+//                ContactDialog.setNegativeLabel(getResources().getString(R.string.txt_call));
+//                ContactDialog.setPositiveLabel(getResources().getString(R.string.txt_msg));
+//
+//                ContactDialog.setBoldPositiveLabel(false);
+//
+//                ContactDialog.setNegativeListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        mobileNo = requestDetail.getDriver_mobile();
+//                        if (!mobileNo.equals("")) {
+//
+//                            int permissionCheck = ContextCompat.checkSelfPermission(activity, Manifest.permission.CALL_PHONE);
+//
+//                            if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+//                                requestPermissions(
+//                                        new String[]{Manifest.permission.CALL_PHONE}, 123);
+//                            } else {
+//                                call();
+//                            }
+//
+//
+//                        }
+//                        ContactDialog.dismiss();
+//                    }
+//                });
+//                ContactDialog.setPositiveListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        sendnotification();
+//                        if (requestDetail != null) {
+//
+//                            Intent i = new Intent(activity, ChatActivity.class);
+//                            i.putExtra("receiver_id", requestDetail.getDriver_id());
+//                            startActivity(i);
+//                        }
+//                        ContactDialog.dismiss();
+//                    }
+//                });
+//                ContactDialog.show();
             }
         });
 
@@ -376,6 +382,64 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
 
         return mViewRoot;
+    }
+
+    private void DialogConTact_Trip() {
+
+        final Dialog dialog_contact_trip = new Dialog(activity);
+
+        dialog_contact_trip.setContentView(R.layout.dialog_contact_driver);
+
+        TextView txt_contact_numberPhone = dialog_contact_trip.findViewById(R.id.txt_contact_numberPhone);
+        ImageView img_confrim_contact_phone = dialog_contact_trip.findViewById(R.id.img_confrim_contact_phone);
+        ImageView img_confirm_contact_message = dialog_contact_trip.findViewById(R.id.img_confirm_contact_message);
+
+        txt_contact_numberPhone.setText(mobileNo);
+
+        img_confrim_contact_phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mobileNo = requestDetail.getDriver_mobile();
+
+                if (!mobileNo.equals("")) {
+
+                    int permissionCheck = ContextCompat.checkSelfPermission(activity, Manifest.permission.CALL_PHONE);
+
+                    if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                        requestPermissions(
+                                new String[]{Manifest.permission.CALL_PHONE}, 123);
+                    } else {
+
+                        call();
+                    }
+                }
+
+                dialog_contact_trip.dismiss();
+
+            }
+        });
+
+        img_confirm_contact_message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                sendnotification();
+                if (requestDetail != null) {
+
+                    Intent i = new Intent(activity, ChatActivity.class);
+                    i.putExtra("receiver_id", requestDetail.getDriver_id());
+                    startActivity(i);
+                }
+                dialog_contact_trip.dismiss();
+
+            }
+        });
+
+
+        dialog_contact_trip.show();
+
+
     }
 
     private void moreLayoutVisibility() {
@@ -877,13 +941,13 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
             if (jobStatus == 1 || jobStatus == 2) {
                 address_title.setText(activity.getString(R.string.txt_pickup_address));
-                address_title.setTextColor(ContextCompat.getColor(activity, R.color.green));
+                address_title.setTextColor(ContextCompat.getColor(activity, R.color.color_background_main));
                 tv_current_location.setText(requestDetail.getS_address());
             } else {
 
                 address_title.setText(activity.getString(R.string.txt_drop_address));
 
-                address_title.setTextColor(ContextCompat.getColor(activity, R.color.red));
+                address_title.setTextColor(ContextCompat.getColor(activity, R.color.color_btn_main));
 
                 if (!requestDetail.getD_address().equals("")) {
 
@@ -902,9 +966,13 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
             }
 
             driver_name.setText(requestDetail.getDriver_name());
+
             driver_mobile_number.setText(getResources().getString(R.string.txt_mobile) + " " + requestDetail.getDriver_mobile());
+
             driver_car_number.setText(getResources().getString(R.string.txt_car_no) + " " + requestDetail.getDriver_car_number());
+
             driver_car_model.setText(requestDetail.getDriver_car_color() + " " + requestDetail.getDriver_car_model());
+
             mobileNo = requestDetail.getDriver_mobile();
 
             if (requestDetail.getRequest_type().equals("2") || requestDetail.getRequest_type().equals("3")) {
@@ -922,6 +990,8 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         ImageView info_iv = (ImageView) customMarkerView.findViewById(R.id.info_iv);
         if (value.equals("1")) {
             info_iv.setImageResource(R.mipmap.pickup_location);
+            //info_iv.setImageResource(R.mipmap.pickup_location);
+
         } else {
             info_iv.setImageResource(R.mipmap.drop_location);
         }
@@ -2315,14 +2385,21 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
     private void CancelReasonDialog(final ArrayList<CancelReason> cancelReasonLst) {
 
         final Dialog CancelReasondialog = new Dialog(activity, R.style.DialogThemeforview);
+
         CancelReasondialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         CancelReasondialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.fade_drawable));
+
         CancelReasondialog.setCancelable(false);
+
         CancelReasondialog.setContentView(R.layout.cancel_request_layout);
+
         RecyclerView cancel_reason_lst = (RecyclerView) CancelReasondialog.findViewById(R.id.cancel_reason_lst);
 
         CancelReasonAdapter CancelAdapter = new CancelReasonAdapter(activity, cancelReasonLst);
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(activity);
+
         cancel_reason_lst.setLayoutManager(mLayoutManager);
         cancel_reason_lst.setItemAnimator(new DefaultItemAnimator());
         cancel_reason_lst.setAdapter(CancelAdapter);
@@ -2330,6 +2407,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         cancel_reason_lst.addOnItemTouchListener(new RecyclerLongPressClickListener(activity, cancel_reason_lst, new RecyclerLongPressClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+
                 cancelRide(cancelReasonLst.get(position).getReasonId(), cancelReasonLst.get(position).getReasontext());
                 CancelReasondialog.dismiss();
             }

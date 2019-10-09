@@ -1,6 +1,7 @@
 package sg.go.user.Fragment;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -111,6 +113,8 @@ public class ScheduleListFragment extends Fragment implements AsyncTaskCompleteL
 
         swipe_refresh_ride_list.setOnRefreshListener(this);
         swipe_refresh_ride_list.setColorSchemeColors(getResources().getColor(R.color.lightblueA700));
+
+
 
 
         if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)){ //Check Login type == Consumer
@@ -366,6 +370,21 @@ public class ScheduleListFragment extends Fragment implements AsyncTaskCompleteL
 
         return  mView;
     }
+    public void showAlertDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(mMainActivity);
+        builder.setMessage(getResources().getString(R.string.txt_no_later));
+        builder.setCancelable(true);
+        builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+    }
+
 
     private void checkreqstatus() {
 
@@ -1048,12 +1067,14 @@ public class ScheduleListFragment extends Fragment implements AsyncTaskCompleteL
                                 if (mSchedules.size() == 0) {
 
                                     later_empty.setVisibility(View.VISIBLE);
+                                    showAlertDialog();
 
                                 }
 
                             }else {
                                 mSchedules.clear();
                                 later_empty.setVisibility(View.VISIBLE);
+                                showAlertDialog();
                             }
 
                         }else{
@@ -1071,6 +1092,7 @@ public class ScheduleListFragment extends Fragment implements AsyncTaskCompleteL
                             swipe_refresh_ride_list.setRefreshing(false);
 
                             later_empty.setVisibility(View.VISIBLE);
+                            showAlertDialog();
 
                         }
 

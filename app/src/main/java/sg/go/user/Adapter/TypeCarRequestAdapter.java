@@ -36,8 +36,11 @@ public class TypeCarRequestAdapter extends RecyclerView.Adapter<TypeCarRequestAd
     @NonNull
     @Override
     public ViewholderTypeCar onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+
         LayoutInflater inflater =LayoutInflater.from(viewGroup.getContext());
+
         View v = inflater.inflate(R.layout.item_type_car,viewGroup,false);
+
         return new ViewholderTypeCar(v);
     }
 

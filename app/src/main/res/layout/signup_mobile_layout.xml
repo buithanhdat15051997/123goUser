@@ -5,56 +5,61 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_main_app"
     android:orientation="vertical">
+
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/close_sign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:padding="@dimen/_5sdp"
             android:tint="@color/black_text"
             app:srcCompat="@drawable/close" />
 
         <ImageView
             android:id="@+id/img_logo_application"
-            android:layout_centerHorizontal="true"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_80sdp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_20sdp"
             android:scaleType="fitCenter"
             android:src="@drawable/background_wellcome" />
+
         <ImageView
-            android:layout_marginEnd="@dimen/_20sdp"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_below="@+id/img_logo_application"
-            android:background="@drawable/background_login_header"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_below="@+id/img_logo_application"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:background="@drawable/background_login_header" />
 
     </RelativeLayout>
 
     <LinearLayout
-        android:background="@color/color_background_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:background="@color/color_background_main"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_30sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_3sdp"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
@@ -73,7 +78,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_3sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
@@ -86,10 +91,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:orientation="vertical"
             android:paddingStart="@dimen/_5sdp"
-            android:paddingEnd="@dimen/_5sdp"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:paddingEnd="@dimen/_5sdp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -97,9 +101,9 @@
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:padding="@dimen/_5sdp"
                 android:text="@string/country_code_warning"
-                android:textSize="@dimen/_14ssp"
                 android:textColor="@color/black_text"
-                android:textStyle="italic"/>
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,19 +114,18 @@
                 <com.hbb20.CountryCodePicker
                     android:id="@+id/ccp"
                     android:layout_width="@dimen/_80sdp"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
                     android:background="@color/white"
                     android:gravity="center"
-                   android:layout_marginStart="@dimen/_5sdp"
                     app:ccpDialog_textColor="@color/lightblueA700"
                     app:ccp_autoDetectCountry="true"
                     app:ccp_autoDetectLanguage="true"
                     app:ccp_autoFormatNumber="true"
                     app:ccp_contentColor="@color/black_text"
-                    app:ccp_textSize="@dimen/_12sdp"/>
+                    app:ccp_textSize="@dimen/_12sdp" />
 
                 <android.support.design.widget.TextInputLayout
-                    android:textColorHint="@color/black_text"
                     android:id="@+id/input_layout_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -130,51 +133,54 @@
                     android:orientation="horizontal"
                     android:paddingStart="@dimen/_20sdp"
                     android:paddingEnd="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_10sdp">
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:textColorHint="@color/black_text">
 
                     <EditText
                         android:id="@+id/user_mobile_nuber"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_40sdp"
+                        android:layout_height="@dimen/_45sdp"
                         android:background="@color/white"
                         android:hint="@string/phn_no"
                         android:inputType="phone"
-                        android:textStyle="bold"
                         android:maxLength="10"
-                        android:padding="@dimen/_4sdp"
+                        android:padding="@dimen/_3sdp"
                         android:textColor="@color/black_text"
                         android:textColorHint="@color/black_text"
-                        android:textSize="@dimen/_14sdp" />
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold" />
                 </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
 
         </LinearLayout>
-
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/color_background_main"
-        >
-
-        <TextView
-            android:layout_marginEnd="@dimen/_4sdp"
-            android:layout_marginStart="@dimen/_4sdp"
-            android:background="@color/color_btn_main"
-            android:id="@+id/btn_confirm_phone"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="@string/txt_confirm_phone"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_16sdp" />
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@color/color_background_main">
+
+            <TextView
+                android:id="@+id/btn_confirm_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@color/color_btn_login_signin"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/txt_confirm_phone"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18sdp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+
     </LinearLayout>
+
 
 </LinearLayout>

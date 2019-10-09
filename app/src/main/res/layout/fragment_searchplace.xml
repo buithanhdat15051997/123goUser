@@ -9,7 +9,8 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.v7.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/toolbar_search_place"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
@@ -71,10 +72,10 @@
             android:layout_above="@+id/btn_search"
             android:layout_below="@+id/linearTop2"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/_120sdp"
+            android:layout_marginTop="@dimen/_100sdp"
             android:layout_marginEnd="@dimen/_2sdp"
             android:padding="@dimen/_4sdp"
-            android:visibility="gone"
+            android:visibility="visible"
             app:srcCompat="@drawable/ic_gps_fixed_indicator"
             tools:ignore="NotSibling" />
 
@@ -192,7 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:background="@null"
-                android:textColor="@color/lightblue400"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_15sdp"
                 android:visibility="visible"></Button>
         </LinearLayout>
@@ -222,7 +223,7 @@
                 android:layout_height="@dimen/_40sdp"
                 android:layout_below="@+id/btnRedMarker"
                 android:background="@null"
-                android:textColor="@color/lightblue400"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_15sdp"
                 android:visibility="visible"></Button>
 
@@ -301,12 +302,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:background="@color/white"
                 android:orientation="horizontal">
 
                 <TextView
+
                     android:layout_width="40dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
@@ -335,10 +337,10 @@
                     android:imeOptions="actionSearch"
                     android:padding="@dimen/_10sdp"
                     android:singleLine="true"
-                    android:textColor="@color/black_text"
-
-                    android:textColorHint="@color/black_text"
-                    android:textSize="@dimen/_12ssp" />
+                    android:textColor="@color/color_btn_main"
+                    android:textColorHint="@color/color_btn_main"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -408,9 +410,10 @@
                     android:inputType="text"
                     android:padding="@dimen/_10sdp"
                     android:singleLine="true"
-                    android:textColor="@color/black_text"
-                    android:textColorHint="@color/black_text"
-                    android:textSize="@dimen/_12ssp" />
+                    android:textColor="@color/color_background_main"
+                    android:textColorHint="@color/color_background_main"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
             <!--      //  -->

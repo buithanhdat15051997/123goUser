@@ -23,7 +23,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:padding="@dimen/_5sdp"
-            android:tint="@color/black_text"
+            android:tint="@color/color_background_main"
             app:srcCompat="@drawable/close" />
 
         <ImageView
@@ -59,12 +59,13 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_above="@id/input_group"
+            android:layout_marginTop="@dimen/_30sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_3sdp"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
@@ -75,16 +76,15 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="@dimen/_10sdp"
                 android:text="@string/txt_sign_up"
                 android:textAllCaps="true"
                 android:textColor="@color/black_text"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_20ssp"
                 android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_3sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
@@ -111,13 +111,14 @@
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_layout_fullname"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_45sdp"
+                    android:background="@color/white"
                     android:textColorHint="@color/black_text">
 
                     <EditText
                         android:id="@+id/user_fullname"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_35sdp"
                         android:layout_gravity="center_vertical"
                         android:background="@color/white"
                         android:hint="@string/full_name"
@@ -159,10 +160,10 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_layout_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_45sdp"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_50sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@color/white"
                 android:paddingBottom="@dimen/_5sdp"
                 android:textColorHint="@color/black_text"
                 android:visibility="gone">
@@ -170,7 +171,7 @@
                 <EditText
                     android:id="@+id/user_email"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_35sdp"
                     android:background="@color/white"
                     android:hint="@string/login_email"
                     android:inputType="textEmailAddress"
@@ -192,8 +193,8 @@
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_layout_pass"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_40sdp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:background="@color/white"
                     android:textColorHint="@color/black_text"
                     android:visibility="gone"
                     app:passwordToggleDrawable="@mipmap/eye"
@@ -202,7 +203,7 @@
                     <EditText
                         android:id="@+id/user_password"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_40sdp"
+                        android:layout_height="@dimen/_35sdp"
                         android:background="@color/white"
                         android:hint="@string/login_Password"
                         android:inputType="textPassword"
@@ -231,7 +232,7 @@
                         <EditText
                             android:id="@+id/user_referral_code"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_height="@dimen/_45sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_weight="0.5"
                             android:background="@color/white"
@@ -248,7 +249,7 @@
                         <TextView
                             android:id="@+id/applyRefCode"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_height="@dimen/_45sdp"
                             android:layout_weight="1.5"
                             android:background="@color/white"
                             android:gravity="center"
@@ -259,8 +260,8 @@
                             android:visibility="gone" />
 
                     </LinearLayout>
-                </android.support.design.widget.TextInputLayout>
 
+                </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
 
@@ -271,9 +272,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginStart="@dimen/_4sdp"
-            android:layout_marginEnd="@dimen/_4sdp"
-            android:background="@color/color_btn_main">
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@color/color_btn_login_signin">
 
             <TextView
                 android:id="@+id/btn_next"
@@ -284,7 +286,8 @@
                 android:text="@string/txt_next_signup"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_16ssp" />
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>

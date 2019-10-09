@@ -14,7 +14,7 @@
     <color name="app_theam">#f7ec25</color>
     <color name="app_theam_end">#fcf00f</color>
     <color name="dark_grey">#A9A9A9</color>
-    <color name="deep_grey">#696969</color>
+
     <color name="light_grey">#e4e4e4</color>
     <color name="black">#000</color>
     <color name="ripple_blue">#379bad</color>
@@ -32,10 +32,11 @@
     <!--new color-->
     <color name="black_text">#121212</color>
     <color name="color_btn_main">#fc7242</color>
-
+    <color name="deep_grey">#696969</color>
     <color name="color_btn_two">#F5BCA7</color>
     <color name="color_background_main">#1dccc8</color>
     <color name="color_red_main">#E53935</color>
+    <color name="color_btn_login_signin">#03032B</color>
 
     <!---123Gâu-->
     <color name="background123go">#1dccc8</color>

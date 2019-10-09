@@ -18,6 +18,7 @@
         android:layout_marginRight="@dimen/_10sdp"
         android:background="@color/color_btn_main"
         android:gravity="center"
+        android:textStyle="bold"
         android:padding="@dimen/_5sdp"
         android:text="@string/txt_cancel"
         android:textAllCaps="false"
@@ -38,11 +39,11 @@
 
         <ImageView
             android:id="@+id/centerImage"
-            android:layout_width="@dimen/_150sdp"
-            android:layout_height="@dimen/_150sdp"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_centerInParent="true"
-            android:src="@drawable/ambulance_request" />
+            android:src="@drawable/background_wellcome" />
 
         <TextView
             android:id="@+id/req_status"
@@ -50,8 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/centerImage"
             android:gravity="center"
+            android:textStyle="bold"
             android:text="@string/txt_requesting"
-            android:textColor="@color/black_text"
+            android:textColor="@color/white"
             android:textSize="@dimen/_20ssp" />
     </com.skyfishjy.library.RippleBackground>
 

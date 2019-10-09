@@ -110,26 +110,31 @@ public class AmbulanceFCMService extends FirebaseMessagingService {
         }else {
 
             intent = new Intent(this, MainActivity.class);
+
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
         }
          if(type.equals(Const.NotificationType.TYPE_ACCOUNT_LOGOUT)){
+
              intent = new Intent(Const.NotificationType.TYPE_ACCOUNT_LOGOUT);
+
              intent.putExtra(Const.NotificationType.TYPE_ACCOUNT_LOGOUT, type);
+
              LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
 
          }
 
-        /*if (mMessage_Type == Const.NotificationType.SCHEDULE_CODE){
-
-            intent = new Intent(this, MainActivity.class);
-            intent.putExtra(Const.NotificationType.MESSAGE_TYPE, Const.NotificationType.SCHEDULE_CODE);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
-        }else {
-
-            intent = new Intent(this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        }*/
+//        if (mMessage_Type == Const.NotificationType.SCHEDULE_CODE){
+//
+//            intent = new Intent(this, MainActivity.class);
+//            intent.putExtra(Const.NotificationType.MESSAGE_TYPE, Const.NotificationType.SCHEDULE_CODE);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//
+//        }else {
+//
+//            intent = new Intent(this, MainActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//        }
 
         //Dùng cho phương thức setContenIntent(...)
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);

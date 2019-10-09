@@ -10,6 +10,7 @@
     android:layout_width="wrap_content"
     android:layout_height="@dimen/_30sdp"
     android:textSize="@dimen/_18sdp"
+    android:textStyle="bold"
     android:textColor="@color/black_text"
     android:layout_marginStart="@dimen/_10sdp"
     android:layout_marginTop="@dimen/_10sdp"
@@ -22,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_30sdp"
         android:layout_gravity="center"
-        android:layout_marginStart="@dimen/_100sdp"
+        android:layout_marginStart="@dimen/_90sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_5sdp"
         android:layout_marginBottom="@dimen/_10sdp"
@@ -31,7 +32,7 @@
         android:text="S$0"
         android:textAlignment="center"
         android:textColor="@color/color_btn_main"
-        android:textSize="@dimen/_18ssp"
+        android:textSize="@dimen/_16ssp"
         android:textStyle="bold" />
 
     <TextView
@@ -40,6 +41,7 @@
         android:textSize="@dimen/_12sdp"
         android:layout_below="@+id/tv_billing_info_total_price"
         android:id="@+id/txt_show_bill_detail"
+        android:textStyle="bold"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -249,10 +251,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ferry_terminals"
+            android:textStyle="bold"
             android:textAlignment="center"
             android:textColor="@color/black_text"
             android:textSize="@dimen/_12ssp"
-            android:textStyle="italic" />
+             />
 
         <!--     <View
                  android:layout_width="match_parent"
@@ -268,10 +271,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="0 km"
+            android:textStyle="bold|italic"
             android:textAlignment="center"
             android:textColor="@color/color_btn_main"
             android:textSize="@dimen/_12ssp"
-            android:textStyle="italic" />
+            />
 
 
     </LinearLayout>
@@ -282,7 +286,7 @@
         android:layout_width="@dimen/_100sdp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_billing_info_total_price"
-        android:layout_marginStart="@dimen/_100sdp"
+        android:layout_marginStart="@dimen/_95sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_10sdp"
         android:layout_toRightOf="@+id/tv_billing_info_kilo_distance1"
@@ -294,10 +298,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/staircase_less_80"
+            android:textStyle="bold"
             android:textAlignment="center"
             android:textColor="@color/black_text"
             android:textSize="@dimen/_12ssp"
-            android:textStyle="italic" />
+            />
 
         <!--     <View
                  android:layout_width="match_parent"
@@ -317,7 +322,7 @@
             android:textAlignment="center"
             android:textColor="@color/color_btn_main"
             android:textSize="@dimen/_12ssp"
-            android:textStyle="italic" />
+            android:textStyle="bold|italic"/>
 
 
     </LinearLayout>
@@ -345,7 +350,7 @@
             android:textAlignment="center"
             android:textColor="@color/black_text"
             android:textSize="@dimen/_12ssp"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
         <!--
 
                 <View
@@ -367,7 +372,7 @@
             android:textAlignment="center"
             android:textColor="@color/color_btn_main"
             android:textSize="@dimen/_12ssp"
-            android:textStyle="italic" />
+            android:textStyle="bold|italic" />
 
 
     </LinearLayout>
@@ -423,7 +428,7 @@
         android:layout_width="@dimen/_100sdp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_billing_info_kilo_dola"
-        android:layout_marginStart="@dimen/_100sdp"
+        android:layout_marginStart="@dimen/_95sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_toRightOf="@+id/billing_info_tarmac_group"
         android:orientation="vertical"
@@ -435,12 +440,11 @@
             android:id="@+id/tv_billing_info_img_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:text="@string/oxygen_liter"
             android:textAlignment="center"
             android:textColor="@color/black_text"
             android:textSize="@dimen/_12ssp"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <!--     <View
                  android:layout_width="match_parent"
@@ -453,9 +457,9 @@
 
         <ImageView
             android:id="@+id/img_billing_info_img_typeCar"
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_gravity="center"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/_35sdp"
             android:text="$ 0"
             android:textAlignment="center"
             android:textSize="@dimen/_12ssp"

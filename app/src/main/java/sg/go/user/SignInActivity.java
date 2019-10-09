@@ -79,7 +79,7 @@ import sg.go.user.Utils.PreferenceHelper;
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener, AsyncTaskCompleteListener,
         GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
     private ImageButton btn_cancel;
-    private TextView btn_forgot_pass, btn_new_user;
+    private TextView btn_forgot_password_login, btn_new_user;
     public static String currentfragment = "";
     private RelativeLayout log_layout;
     /*private Button btn_login_fb;*/
@@ -93,7 +93,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private GoogleApiClient mGoogleApiClient;
     private String filePath = "";
     private SocialMediaProfile mediaProfile;
-    private TextView login_btn;
+    private TextView btn_login_main;
     private EditText et_login_password, et_login_userid;
     private int mFragmentId = 0;
     private String mFragmentTag = null;
@@ -140,26 +140,38 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         input_layout_pass = (TextInputLayout) findViewById(R.id.input_layout_pass);
         et_login_password = (EditText) findViewById(R.id.et_login_password);
         et_login_userid = (EditText) findViewById(R.id.et_login_userid);
-        btn_forgot_pass = (TextView) findViewById(R.id.btn_forgot_pass);
+        btn_forgot_password_login = (TextView) findViewById(R.id.btn_forgot_password_login);
         btn_new_user = (TextView) findViewById(R.id.btn_new_user);
         //underline
         btn_new_user.setPaintFlags(btn_new_user.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
 
         log_layout = (RelativeLayout) findViewById(R.id.log_layout);
         /*btn_login_fb = (Button) findViewById(R.id.btn_login_fb);*/
-        login_btn = (TextView) findViewById(R.id.login_btn);
+        btn_login_main = (TextView) findViewById(R.id.btn_login_main);
         loc_pass = (ImageButton) findViewById(R.id.loc_pass);
         btn_register_social = (RelativeLayout) findViewById(R.id.btn_register_social);
 
         btn_cancel.setOnClickListener(this);
         /*btn_login_fb.setOnClickListener(this);*/
-        login_btn.setOnClickListener(this);
+        btn_login_main.setOnClickListener(this);
 
         if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)) {
             btn_register_social.setVisibility(View.VISIBLE);
             btn_register_social.setOnClickListener(this);
             btn_new_user.setOnClickListener(this);
-            btn_forgot_pass.setOnClickListener(this);
+            btn_forgot_password_login.setOnClickListener(this);
+
+            btn_forgot_password_login.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    addFragment(new ForgotPasswordFragment(), false, Const.FORGOT_PASSWORD_FRAGMENT, true);
+
+                    log_layout.setVisibility(View.GONE);
+
+                }
+            });
+
 
 
             /*et_login_userid.setText("cr7juve@gmail.com");
@@ -169,7 +181,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
             btn_register_social.setVisibility(View.GONE);
             btn_new_user.setVisibility(View.GONE);
-            btn_forgot_pass.setVisibility(View.GONE);
+            btn_forgot_password_login.setVisibility(View.GONE);
 
             /*et_login_userid.setText("haols@ebizworld.com.vn");
             et_login_password.setText("123456");*/
@@ -177,7 +189,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
 
             btn_new_user.setVisibility(View.GONE);
-            btn_forgot_pass.setVisibility(View.GONE);
+            btn_forgot_password_login.setVisibility(View.GONE);
             btn_register_social.setVisibility(View.VISIBLE);
 
             /*et_login_userid.setText("haols@ebizworld.com.vn");
@@ -260,7 +272,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btn_cancel:
                 Intent i = new Intent(this, WelcomeActivity.class);
                 startActivity(i);
-
                 new PreferenceHelper(this).putLoginType(null);
                 break;
 
@@ -278,7 +289,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 showSocialPopUP();
 
                 break;
-            case R.id.login_btn:
+            case R.id.btn_login_main:
 
                 if (validate()) {
 
@@ -286,18 +297,19 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
                         userLogin(Const.MANUAL);
 
-                    }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-
-                        nurseLogin(Const.MANUAL);
-
-                    }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
-
-                        hospitalLogin(Const.MANUAL);
-
                     }
+//                    else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+//
+//                        nurseLogin(Const.MANUAL);
+//
+//                    }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+//
+//                        hospitalLogin(Const.MANUAL);
+//
+//                    }
                 }
                 break;
-            case R.id.btn_forgot_pass:
+            case R.id.btn_forgot_password_login:
 
                 addFragment(new ForgotPasswordFragment(), false, Const.FORGOT_PASSWORD_FRAGMENT, true);
                 log_layout.setVisibility(View.GONE);

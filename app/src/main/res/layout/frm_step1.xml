@@ -14,6 +14,7 @@
         android:layout_below="@+id/img_step1"
         android:textColor="@color/black_text"
         android:gravity="center"
+        android:textStyle="bold"
         android:textSize="@dimen/_16sdp"
         android:text="@string/name_step_frag_one"
         android:layout_width="match_parent"
@@ -21,6 +22,7 @@
     <TextView
         android:layout_gravity="center"
         android:maxLines="2"
+        android:textStyle="bold"
         android:gravity="center"
         android:text="@string/body_text_step_wellcome"
         android:layout_width="match_parent"

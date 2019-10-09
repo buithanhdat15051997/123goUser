@@ -33,6 +33,7 @@
                 android:layout_centerInParent="true"
                 android:layout_centerVertical="true"
                 android:gravity="end"
+                android:textStyle="bold"
                 android:paddingRight="@dimen/_10sdp"
                 android:text="@string/title_fragment_account"
                 android:textColor="@color/white"
@@ -47,20 +48,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar_user_profile"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_30sdp"
         android:gravity="center"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_3sdp"
-            android:gravity="center"
-            android:text="@string/txt_profile"
-            android:textAllCaps="true"
-            android:textColor="@color/black_text"
-            android:textSize="@dimen/_20ssp" />
+        <!--<TextView-->
+            <!--android:id="@+id/tv_profile"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="@dimen/_3sdp"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/txt_profile"-->
+            <!--android:textAllCaps="true"-->
+            <!--android:textColor="@color/black_text"-->
+            <!--android:textSize="@dimen/_20ssp" />-->
 
         <de.hdodenhof.circleimageview.CircleImageView
 
@@ -83,6 +84,7 @@
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_5sdp"
             android:gravity="center"
+            android:textStyle="bold"
             android:textColor="@color/color_btn_main"
             android:textSize="@dimen/_18sdp" />
         <!--<Button-->
@@ -106,15 +108,15 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/tv_build_version"
         android:layout_below="@id/profile_group"
-        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_40sdp"
         android:divider="@null"
         android:scrollbars="none" />
 
-    <ImageView
+<!--    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lv_drawer_user_settings"
-        android:src="@drawable/logo_hide" />
+        android:src="@drawable/logo_hide" />-->
 
     <TextView
         android:id="@+id/tv_build_version"

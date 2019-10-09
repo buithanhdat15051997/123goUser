@@ -30,6 +30,7 @@
                     app:srcCompat="@drawable/ic_back_blue" />-->
 
                 <TextView
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
@@ -69,7 +70,7 @@
         android:id="@+id/histroy_empty"
         android:layout_width="wrap_content"
         android:layout_centerInParent="true"
-        android:text="@string/no_history"
+        android:textStyle="bold"
         android:textSize="20sp"
         android:visibility="gone"
         android:textColor="@color/black"

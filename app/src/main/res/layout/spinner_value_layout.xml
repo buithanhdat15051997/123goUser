@@ -3,14 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginEnd="@dimen/_40sdp"
     android:orientation="horizontal"
     android:layout_gravity="center"
+    android:background="@drawable/background_rectango_stroke_orange"
 
     >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
+        android:layout_height="@dimen/_35sdp"
         android:gravity="center"
         android:weightSum="1">
 
@@ -30,8 +32,8 @@
             android:layout_weight="0.9"
             android:text="United State of America"
             android:layout_gravity="center"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_13ssp" />
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_10ssp" />
 
     </LinearLayout>
 

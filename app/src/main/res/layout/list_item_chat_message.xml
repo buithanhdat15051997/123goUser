@@ -13,7 +13,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_below="@+id/txt_out_Message"
-        android:background="@drawable/out_message_bg"
+        android:background="@drawable/out_message_bg2"
         android:textColor="@android:color/white" />
 
     <TextView
@@ -24,7 +24,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:text="@string/homelogin_notice"
-        android:background="@drawable/in_message_bg"
+        android:background="@drawable/in_message_bg2"
         android:textColor="@android:color/white" />
 
 

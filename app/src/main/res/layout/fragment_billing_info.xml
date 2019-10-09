@@ -44,8 +44,8 @@
             android:text="@string/please_select_your_payment_option"
             android:textAlignment="center"
             android:textColor="@color/black_text"
-            android:textSize="@dimen/_10ssp"
-            android:textStyle="italic" />
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
 
         <include
             layout="@layout/layout_billing"
@@ -164,7 +164,7 @@
                 android:background="@drawable/background_btn_confirm"
                 android:gravity="center"
                 android:padding="@dimen/_10sdp"
-                android:text="@string/bt_confirm"
+                android:text="@string/btn_confirm"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_16ssp"
                 android:textStyle="bold" />

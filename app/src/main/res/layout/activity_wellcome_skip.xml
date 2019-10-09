@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_main_app"
+    android:id="@+id/scrollView_wellcome"
+    android:scrollbars="none">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".WellcomeSkipActivity">
     <ImageView
         android:layout_marginTop="@dimen/_5sdp"
@@ -18,14 +23,14 @@
         android:id="@+id/viewpager_getstarted"
         android:layout_centerHorizontal="true"
         android:layout_width="@dimen/_250sdp"
-        android:layout_height="@dimen/_300sdp"
+        android:layout_height="@dimen/_260sdp"
         android:layout_below="@id/social_img">
     </android.support.v4.view.ViewPager>
     <Button
         android:id="@+id/welcome_btn_skip"
         android:layout_width="@dimen/_150sdp"
         android:layout_marginTop="@dimen/_40sdp"
-        android:layout_height="@dimen/_30sdp"
+        android:layout_height="@dimen/_40sdp"
         android:layout_below="@+id/viewpager_getstarted"
         android:layout_centerHorizontal="true"
         android:background="@color/color_background_main"
@@ -51,3 +56,4 @@
 
 
 </RelativeLayout>
+</ScrollView>

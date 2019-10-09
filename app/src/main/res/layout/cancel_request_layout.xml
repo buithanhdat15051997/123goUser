@@ -4,19 +4,19 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@drawable/background_with_shadow"
-    android:layout_margin="@dimen/_10sdp"
     android:gravity="center">
 
     <TextView
+        android:textStyle="bold"
         android:id="@+id/reason_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/issue_title"
-        android:layout_marginBottom="20dp"
+        android:layout_margin="@dimen/_10sdp"
         android:textAllCaps="true"
         android:gravity="center"
         android:textSize="@dimen/_16ssp"
-        android:textColor="@color/lightblueA700"/>
+        android:textColor="@color/color_btn_main"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/cancel_reason_lst"
@@ -24,7 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/reason_title"
         android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:layout_centerInParent="true">
 
     </android.support.v7.widget.RecyclerView>

@@ -1,5 +1,6 @@
 package sg.go.user;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -18,6 +19,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.design.bottomnavigation.LabelVisibilityMode;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -85,7 +89,8 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
     private Dialog gpsAlertDialog;
     private BottomNavigationView mBottomNavigationView;
 
-   private BroadcastReceiver accountLogoutReceiver;
+    private BroadcastReceiver accountLogoutReceiver;
+
     private FCMScheduleReceiver mFcmScheduleReceiver;
     private Handler accountStatusHandler = new Handler();
     private Runnable accountStatusRunnable = new Runnable() {
@@ -141,6 +146,12 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
         pcontent = new ParseContent(this);
 
         mBottomNavigationView = (BottomNavigationView) findViewById(R.id.main_bottom_navigation);
+
+        // set title show always
+//        removeShiftMode(mBottomNavigationView);
+//        mBottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+
+
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         mainToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -241,6 +252,8 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
             if (mBottomNavigationView != null){
 
                 mBottomNavigationView.inflateMenu(R.menu.hospital_bottom_navigation_menu);
+
+
                 mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
                 //Check Intent received from FCMScheduleReceiver
                 if (getIntent().getExtras() != null &&
@@ -262,7 +275,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 //        Get account status
         accountStatusHandler.postDelayed(accountStatusRunnable, 10000);
 
-            // --------------------Main-------------------
+            // --------------------Logout account-------------------
              accountLogoutReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -271,7 +284,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
                     EbizworldUtils.showShortToast("You have logged in other device!", MainActivity.this);
                     new PreferenceHelper(MainActivity.this).Logout();
-                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                    startActivity(new Intent(MainActivity.this, SignInActivity.class));
                     MainActivity.this.finish();
                 }
 
@@ -279,7 +292,21 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
         };
 
     }
+   @SuppressLint("RestrictedApi")
+   private static void removeShiftMode(BottomNavigationView view) {
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
+        for (int i = 0; i < menuView.getChildCount(); i++) {
 
+            BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
+            //noinspection RestrictedApi
+            item.setShifting(false);
+            item.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+
+            // set once again checked value, so view will be updated
+            //noinspection RestrictedApi
+            item.setChecked(item.getItemData().isChecked());
+        }
+    }
 
     @Override
     public void onResume() {

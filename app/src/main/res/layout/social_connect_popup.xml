@@ -3,29 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background123go"
+    android:background="@drawable/background_main_app"
     android:orientation="vertical">
-
+    <ImageView
+        android:id="@+id/back_social"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_20sdp"
+        app:srcCompat="@drawable/ic_back_blue" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_weight="1">
-
         <ImageView
-            android:id="@+id/back_social"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/_20sdp"
-            app:srcCompat="@drawable/ic_back_blue" />
-
+            android:layout_gravity="center"
+            android:id="@+id/social_img"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/background_wellcome" />
         <ImageView
-            android:id="@+id/img_logo_application"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_170sdp"
-            android:layout_gravity="center_vertical"
-            android:scaleType="fitCenter"
-            android:src="@drawable/background_user_login" />
+            android:layout_height="match_parent"
+            android:layout_below="@+id/linear_login_ic_header"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+
+            android:background="@drawable/background_login_header"
+            android:scaleType="fitXY" />
 
     </LinearLayout>
 
@@ -37,14 +44,15 @@
         android:paddingTop="@dimen/_50sdp"
         android:paddingStart="@dimen/_10sdp"
         android:paddingEnd="@dimen/_10sdp"
-        android:background="@drawable/background_screen_footer">
+        android:background="@color/color_background_main">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/txt_choose_account"
-            android:textColor="@color/white"
+            android:textColor="@color/black_text"
             android:textSize="@dimen/_20ssp"
             android:textStyle="bold"/>
 
@@ -66,8 +74,8 @@
             android:padding="@dimen/_5sdp">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 app:srcCompat="@drawable/ic_facebook" />
@@ -101,8 +109,8 @@
             android:padding="@dimen/_5sdp">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 app:srcCompat="@drawable/ic_google" />

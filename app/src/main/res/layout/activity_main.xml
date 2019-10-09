@@ -64,19 +64,16 @@
         android:id="@+id/main_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
+        android:animateLayoutChanges="true"
         android:background="@color/feedback_fare"
-
+        android:textAlignment="center"
         app:itemBackground="@color/feedback_fare"
-
-        app:itemTextColor="@color/bnv_tab_item_foreground"
+        app:itemHorizontalTranslationEnabled="true"
         app:itemIconSize="@dimen/_20sdp"
         app:itemIconTint="@color/bnv_tab_item_foreground"
-
         app:itemTextAppearanceActive="@style/BottomNavigation.ActiveItemTextAppearance"
-        app:itemHorizontalTranslationEnabled="true"
-        android:textAlignment="center"
-        android:animateLayoutChanges="true"
-        app:labelVisibilityMode="selected"/>
+        app:itemTextAppearanceInactive="@style/BottomNavigation.ActiveItemTextAppearance"
+        app:itemTextColor="@color/bnv_tab_item_foreground"
+        app:labelVisibilityMode="labeled" />
 
 </LinearLayout>
-    <!--app:itemTextAppearanceInactive="@style/BottomNavigation.ActiveItemTextAppearance"-->
