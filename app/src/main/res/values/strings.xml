@@ -42,6 +42,8 @@
     <string name="txt_name_profilepicture">PROFILE PICTURE</string>
     <string name="dolo_singapor">S$</string>
 
+    <string name="txt_toast_not_found_current_location">Unable to get current location</string>
+
     <string name="txt_booking_success">Booking Successfull!</string>
     <string name="txt_content_booking_success">Your booking taxi has been confirmed, our diver will pickedup in 5 minutes, have a happy journey!</string>
     <string name="btn_booking_success">BACK TO HOME</string>
@@ -220,6 +222,7 @@
     <string-array name="language">
         <item>Select Language</item>
         <item>English(en)</item>
+        <item>Vietnamese(vi)</item>
         <item>French(fr)</item>
     </string-array>
 

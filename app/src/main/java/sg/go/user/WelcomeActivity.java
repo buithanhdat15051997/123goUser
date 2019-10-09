@@ -76,6 +76,11 @@ public class WelcomeActivity extends AppCompatActivity implements MediaPlayer.On
                     myLocale = new Locale("en");
 
                     break;
+
+                case "vi":
+                    myLocale = new Locale("vi");
+
+                    break;
                 case "fr":
                     myLocale = new Locale("fr");
                     break;
@@ -126,7 +131,7 @@ public class WelcomeActivity extends AppCompatActivity implements MediaPlayer.On
 //        }
 
         String[] lst_currency = getResources().getStringArray(R.array.language);
-        Integer[] currency_imageArray = {null, R.drawable.ic_united_states, R.drawable.ic_france};
+        Integer[] currency_imageArray = {null, R.drawable.ic_united_states,R.drawable.vietnamese,R.drawable.ic_france};
 
         adapter_language = new SpinnerLanguageAdapter(this, R.layout.spinner_value_layout, lst_currency, currency_imageArray);
         sp_country_reg.setAdapter(adapter_language);
@@ -135,13 +140,20 @@ public class WelcomeActivity extends AppCompatActivity implements MediaPlayer.On
             switch (new PreferenceHelper(this).getLanguage()) {
                 case "":
                     sp_country_reg.setSelection(0, false);
+
                     break;
                 case "en":
                     sp_country_reg.setSelection(1, false);
+                    relative_wellcome.setBackgroundResource(R.drawable.background_img_well_singapor);
+                    break;
 
+                case "vi":
+                    sp_country_reg.setSelection(2,false);
+                //    relative_wellcome.setBackgroundResource(R.drawable.background_img_well_vietnam);
                     break;
                 case "fr":
-                    sp_country_reg.setSelection(2, false);
+                    sp_country_reg.setSelection(3, false);
+                    relative_wellcome.setBackgroundResource(R.drawable.background_img_well_singapor);
                     break;
 
             }
@@ -153,15 +165,32 @@ public class WelcomeActivity extends AppCompatActivity implements MediaPlayer.On
                 // EbizworldUtils.showShortToast(""+i,WelcomeActivity.this);
                 switch (i) {
                     case 0:
+
                         new PreferenceHelper(WelcomeActivity.this).putLanguage("");
                         break;
+
                     case 1:
+
                         new PreferenceHelper(WelcomeActivity.this).putLanguage("en");
                         setLocale("en");
+                        relative_wellcome.setBackgroundResource(R.drawable.background_img_well_singapor);
+
                         break;
+
                     case 2:
+
+                         new PreferenceHelper(WelcomeActivity.this).putLanguage("vi");
+                         setLocale("vi");
+                    //     relative_wellcome.setBackgroundResource(R.drawable.background_img_well_vietnam);
+
+                        break;
+
+                    case 3:
+
                         new PreferenceHelper(WelcomeActivity.this).putLanguage("fr");
                         setLocale("fr");
+                        relative_wellcome.setBackgroundResource(R.drawable.background_img_well_singapor);
+
                         break;
                 }
 

@@ -175,12 +175,13 @@
     <string name="update_success_text">Profil mis à jour avec succès</string>
 
     <string name="txt_no_provider_found">Aucun fournisseur trouvé s\'il vous plaît essayer après un certain temps!</string>
+
     <string-array name="language">
         <item>Select Language</item>
         <item>English(en)</item>
+        <item>Vietnamese(vi)</item>
         <item>French(fr)</item>
     </string-array>
-
 
     <string-array name="currency">
         <item>Select Currency</item>
@@ -482,5 +483,6 @@
     <string name="txt_trip_cancel_fee">Vos frais d\'annulation de voyage:</string>
     <string name="txt_toll">Total des barrières de péage dans votre itinéraire</string>
     <string name="nikola_wallet">Portefeuille</string>
+    <string name="txt_toast_not_found_current_location">Impossible d\'obtenir l\'emplacement actuel</string>
 </resources>
 

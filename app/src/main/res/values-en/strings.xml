@@ -99,8 +99,11 @@
     <string-array name="language">
         <item>Select Language</item>
         <item>English(en)</item>
+        <item>Vietnamese</item>
         <item>French(fr)</item>
     </string-array>
+
+
 
 
     <string-array name="currency">
@@ -467,5 +470,6 @@
     <string name="dolo_singapor">S$</string>
     <string name="txt_content_ratings">You feedback will help to improve our driving experience</string>
     <string name="txt_title_dialog_cancel_trip">You are sure you want to cancel this booking ?</string>
+    <string name="txt_toast_not_found_current_location">Unable to get current location</string>
 </resources>
 

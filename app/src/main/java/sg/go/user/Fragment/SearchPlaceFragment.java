@@ -692,11 +692,16 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         ((ImageView) view.findViewById(R.id.btn_pickLoc)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (null != googleMap && currentLatLan != null)
-                    btn_pickLoc.setVisibility(View.VISIBLE);
-                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLan, 15));
-                PickUpMarker.setPosition(currentLatLan);
-                getCompleteAddressString(currentLatLan);
+                if (null != googleMap && currentLatLan != null){
+                 //   btn_pickLoc.setVisibility(View.VISIBLE);
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLan, 15));
+                    PickUpMarker.setPosition(currentLatLan);
+                    getCompleteAddressString(currentLatLan);
+                }else {
+                    Toast.makeText(activity, ""+getResources().getString(R.string.txt_toast_not_found_current_location), Toast.LENGTH_SHORT).show();
+
+                }
+
             }
         });
         search_place_map = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.search_place_map);

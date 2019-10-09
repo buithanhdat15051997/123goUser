@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">123GO</string>
-    <string name="welcom_btn">Skip</string>
+    <string name="welcom_btn">Bỏ Qua</string>
     <string name="login_label">Đăng nhập</string>
     <string name="email_mobile">Địa chỉ email hoặc số điện thoại</string>
     <string name="login_Password">Mật khẩu</string>
@@ -154,4 +154,24 @@
     <string name="typ_msg">Nhập tin nhắn của bạn</string>
     <string name="msgr">Tin nhắn</string>
     <string name="empty_error_msg">Vui lòng nhập tin nhắn trước khi gửi</string>
+    <string name="txt_toast_not_found_current_location">Không thể lấy được vị trí hiện tại</string>
+
+    <!--<string-array name="language">-->
+        <!--<item>Select Language</item>-->
+        <!--<item>English(en)</item>-->
+        <!--<item>Vietnamese(vi)</item>-->
+        <!--<item>French(fr)</item>-->
+    <!--</string-array>-->
+
+    <!--<string-array name="currency">-->
+        <!--<item>VND</item>-->
+    <!--</string-array>-->
+
+    <string name="update_success_text">Cập nhật trang cá nhân thành công!</string>
+    <string name="txt_gellery">"Bộ sưu tập "</string>
+    <string name="txt_slct_option">Chọn hình</string>
+    <string name="txt_gps_off">GPS đã tắt</string>
+    <string name="txt_gps_msg">Vui lòng bật GPS</string>
+
+
 </resources>

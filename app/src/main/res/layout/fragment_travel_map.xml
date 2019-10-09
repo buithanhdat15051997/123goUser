@@ -135,7 +135,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_130sdp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="@dimen/_1sdp"
         android:background="@drawable/background_with_shadow"
         android:orientation="vertical"
         android:paddingVertical="@dimen/_5sdp">
@@ -221,7 +221,6 @@
             android:layout_below="@+id/v_line"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_2sdp"
             android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="1.5">
