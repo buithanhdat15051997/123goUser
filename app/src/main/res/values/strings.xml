@@ -41,6 +41,7 @@
     <string name="txt_name_profile">Name</string>
     <string name="txt_name_profilepicture">PROFILE PICTURE</string>
     <string name="dolo_singapor">S$</string>
+    <string name="toast_logout_notifi">You have logged in other device!</string>
 
     <string name="txt_toast_not_found_current_location">Unable to get current location</string>
 

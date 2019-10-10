@@ -93,6 +93,7 @@
 
 
     <LinearLayout
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:layout_below="@+id/linear_total_wallet"

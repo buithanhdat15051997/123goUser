@@ -18,7 +18,7 @@
         android:id="@+id/adImage"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_100sdp"
-        android:src="@drawable/ambulance_request"/>
+        android:src="@drawable/background_login_header"/>
 
     <TextView
         android:layout_width="match_parent"

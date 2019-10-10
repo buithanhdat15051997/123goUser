@@ -290,7 +290,7 @@
                     android:layout_marginTop="@dimen/_30sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:layout_centerHorizontal="true"
-                    android:background="@drawable/icon_consumer"/>
+                   />
 
                 <TextView
                     android:id="@+id/activity_home_login_tv_patient"

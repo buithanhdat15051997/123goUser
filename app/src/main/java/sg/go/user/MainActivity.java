@@ -282,7 +282,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
                 if (intent != null && intent.getStringExtra(Const.NotificationType.TYPE_ACCOUNT_LOGOUT).equals(Const.NotificationType.TYPE_ACCOUNT_LOGOUT)){
 
-                    EbizworldUtils.showShortToast("You have logged in other device!", MainActivity.this);
+                    EbizworldUtils.showShortToast(""+getResources().getString(R.string.toast_logout_notifi), MainActivity.this);
                     new PreferenceHelper(MainActivity.this).Logout();
                     startActivity(new Intent(MainActivity.this, SignInActivity.class));
                     MainActivity.this.finish();
@@ -309,12 +309,17 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
 
-        LocalBroadcastManager.getInstance(getApplicationContext())
-                .registerReceiver(accountLogoutReceiver,
-                new IntentFilter(Const.NotificationType.TYPE_ACCOUNT_LOGOUT));
+        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(accountLogoutReceiver
+                , new IntentFilter(Const.NotificationType.TYPE_ACCOUNT_LOGOUT));
 
 
 //        if(currentFragment.equals(Const.HOME_MAP_FRAGMENT)){

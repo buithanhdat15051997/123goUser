@@ -484,5 +484,6 @@
     <string name="txt_toll">Total des barrières de péage dans votre itinéraire</string>
     <string name="nikola_wallet">Portefeuille</string>
     <string name="txt_toast_not_found_current_location">Impossible d\'obtenir l\'emplacement actuel</string>
+    <string name="toast_logout_notifi">Vous vous êtes connecté à un autre appareil !</string>
 </resources>
 

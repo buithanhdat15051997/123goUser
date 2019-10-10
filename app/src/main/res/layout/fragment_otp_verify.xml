@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -7,7 +8,6 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_weight="1"
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,21 +26,23 @@
 
         <ImageView
             android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
             android:id="@+id/img_logo_application"
             android:layout_centerHorizontal="true"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:scaleType="fitCenter"
             android:src="@drawable/background_wellcome" />
-        <ImageView
-            android:layout_below="@+id/img_logo_application"
-            android:background="@drawable/background_login_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
 
     </RelativeLayout>
+    <ImageView
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_below="@+id/img_logo_application"
+        android:background="@drawable/background_login_header"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content" />
+
 
 
     <LinearLayout
@@ -55,7 +57,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -108,7 +110,7 @@
                 android:textStyle="bold"
                 android:text="@string/txt_otp_note"
                 android:textColor="@color/black_text"
-                android:textSize="@dimen/_14ssp" />
+                android:textSize="@dimen/_13ssp" />
 
             <ImageView
                 android:id="@+id/btn_edit_number"
@@ -138,7 +140,7 @@
                 android:layout_weight="0.6"
                 android:background="@color/white"
                 android:gravity="center"
-                app:ccpDialog_textColor="@color/lightblueA700"
+                app:ccpDialog_textColor="@color/color_background_main"
                 app:ccp_autoDetectCountry="true"
                 app:ccp_autoDetectLanguage="true"
                 app:ccp_autoFormatNumber="true"
@@ -182,11 +184,8 @@
             android:id="@+id/input_layout_otp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_rectango_stroke_blue"
-            android:layout_margin="@dimen/_10sdp"
-            android:paddingStart="@dimen/_20sdp"
-            android:paddingEnd="@dimen/_20sdp"
-            android:paddingBottom="@dimen/_10sdp">
+            android:background="@color/white"
+            android:layout_margin="@dimen/_10sdp">
 
             <EditText
                 android:id="@+id/user_otp"
@@ -195,8 +194,9 @@
                 android:hint="@string/txt_ent_otp"
                 android:inputType="text"
                 android:maxLength="10"
+                android:gravity="center"
+                android:layout_gravity="center"
                 android:textStyle="bold"
-                android:layout_marginTop="@dimen/_5sdp"
                 android:padding="@dimen/_5sdp"
                 android:textColor="@color/black_text"
                 android:textSize="@dimen/_14ssp"
@@ -234,24 +234,24 @@
                 android:padding="@dimen/_5sdp"
                 android:textColor="@color/black_text"
                 android:textSize="@dimen/_14ssp"
-                android:textStyle="bold|italic"/>
+                android:textStyle="bold"/>
 
         </LinearLayout>
         <TextView
             android:background="@color/color_btn_login_signin"
             android:id="@+id/btn_confirm_otp"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginEnd="@dimen/_4sdp"
-            android:layout_marginStart="@dimen/_4sdp"
-            android:layout_gravity="bottom"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:gravity="center"
             android:padding="@dimen/_5sdp"
             android:text="@string/txt_proceed"
             android:textStyle="bold"
             android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp" />
+            android:textSize="@dimen/_18ssp" />
     </LinearLayout>
 
  <!--   <LinearLayout

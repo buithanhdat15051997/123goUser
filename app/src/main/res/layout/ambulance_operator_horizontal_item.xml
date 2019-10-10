@@ -22,7 +22,7 @@
             android:layout_margin="@dimen/_3sdp"
             android:gravity="center"
             android:scaleType="centerInside"
-            android:src="@drawable/ambulance_car" />
+            android:src="@drawable/background_login_header" />
 
         <View
             android:id="@+id/view_select"

@@ -104,9 +104,13 @@ public class AmbulanceFCMService extends FirebaseMessagingService {
         Intent intent = null;
 
         if (type.equals(Const.NotificationType.CHAT_MESSAGE)){
+
             intent = new Intent(this, ChatActivity.class);
+
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
             intent.putExtra("newques", "new_quest");
+
         }else {
 
             intent = new Intent(this, MainActivity.class);

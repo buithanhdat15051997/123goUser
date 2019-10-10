@@ -471,5 +471,6 @@
     <string name="txt_content_ratings">You feedback will help to improve our driving experience</string>
     <string name="txt_title_dialog_cancel_trip">You are sure you want to cancel this booking ?</string>
     <string name="txt_toast_not_found_current_location">Unable to get current location</string>
+    <string name="toast_logout_notifi">You have logged in other device!</string>
 </resources>
 

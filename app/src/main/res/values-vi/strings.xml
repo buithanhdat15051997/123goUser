@@ -172,6 +172,7 @@
     <string name="txt_slct_option">Chọn hình</string>
     <string name="txt_gps_off">GPS đã tắt</string>
     <string name="txt_gps_msg">Vui lòng bật GPS</string>
+    <string name="toast_logout_notifi">Bạn đã đăng nhập vào thiết bị khác!</string>
 
 
 </resources>

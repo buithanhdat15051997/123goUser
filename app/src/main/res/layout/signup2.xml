@@ -274,19 +274,20 @@
             android:layout_gravity="bottom"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
             android:background="@color/color_btn_login_signin">
 
             <TextView
                 android:id="@+id/btn_next"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_height="@dimen/_45sdp"
                 android:background="@null"
                 android:gravity="center"
+                android:padding="@dimen/_5sdp"
                 android:text="@string/txt_next_signup"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_20ssp"
+                android:textSize="@dimen/_18ssp"
                 android:textStyle="bold" />
         </LinearLayout>
 
