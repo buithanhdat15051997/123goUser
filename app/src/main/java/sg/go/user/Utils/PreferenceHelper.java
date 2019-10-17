@@ -46,6 +46,8 @@ public class PreferenceHelper {
     private final  String DISTANCE_BILLING = "distance_billing";
     private final  String TIME_BILLING ="time_billing";
 
+    private final  String AMOUNT_WALLET = "total_amount_wallet";
+
 
 
     private Context context;
@@ -58,14 +60,7 @@ public class PreferenceHelper {
 
     /*------- Save Total Money Recharge Wallet -------*/
 
-    public  void putTotalRechargeWallet(String total_recharge_wallet){
-        Editor editor = app_prefs.edit();
-        editor.putString(TOTAL_RECHARGE_WALLET,total_recharge_wallet);
-        editor.apply();
-    }
-    public  String  getRechargeWallet(){
-        return app_prefs.getString(TOTAL_RECHARGE_WALLET,"");
-    }
+
 
     public String getTotalPaymentWallet(){
 
@@ -78,6 +73,23 @@ public class PreferenceHelper {
         editor.apply();
 
     }
+
+    /*--- Save Amount---*/
+
+
+    public String getTotalAmountWallet(){
+
+        return app_prefs.getString(AMOUNT_WALLET,"");
+    }
+
+    public void putTotalAmountWallet(String amount_wallet){
+        Editor editor = app_prefs.edit();
+        editor.putString(AMOUNT_WALLET,amount_wallet);
+        editor.apply();
+
+    }
+
+
 
 
 

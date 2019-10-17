@@ -8,8 +8,8 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="100dp"
-        android:layout_height="110dp"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:orientation="vertical">
@@ -22,7 +22,7 @@
             android:layout_gravity="center"
             android:visibility="visible"
             app:indicatorColor="@color/color_background_main"
-            app:indicatorName="BallClipRotatePulseIndicator" />
+            app:indicatorName="BallSpinFadeLoaderIndicator" />
 
         <TextView
             android:id="@+id/tv_title"

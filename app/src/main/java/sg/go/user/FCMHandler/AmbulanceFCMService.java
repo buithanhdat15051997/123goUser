@@ -30,6 +30,7 @@ public class AmbulanceFCMService extends FirebaseMessagingService {
     /*private String TAG = AmbulanceFCMService.class.getSimpleName();*/
     private String TAG = "AmbulanceFCMService";
     private int mMessage_Type = 0;
+    public static String providercancel_id = "";
 
     PreferenceHelper mPreferenceHelper;
     private String mToken = null;
@@ -44,6 +45,30 @@ public class AmbulanceFCMService extends FirebaseMessagingService {
             Log.d(TAG, "Data: " + remoteMessage.getData());
             Log.d(TAG, "Action: " + remoteMessage.getData().get(Const.NotificationType.ACTION));
             Log.d(TAG, "Type: " + remoteMessage.getData().get(Const.NotificationType.TYPE));
+            Log.d(TAG,"providercancel_id"+remoteMessage.getData().get("providercancel_id"));
+
+            if(remoteMessage.getData().get("providercancel_id")!= null){
+
+                providercancel_id = remoteMessage.getData().get("providercancel_id");
+                Log.d("providercancel_id","   "+providercancel_id);
+
+//                GetRequestSecond(mRequestOptional, providercancel_id);
+
+//                if (AmbulanceFCMService.providercancel_id != null
+//                        && AmbulanceFCMService.providercancel_id.length() > 0) {
+//
+//                    Log.d("GetRequest_Diver", AmbulanceFCMService.providercancel_id);
+//
+//
+//
+//                }else {
+//
+//
+//
+//
+//                }
+
+            }
 
             if (remoteMessage.getData().get(Const.NotificationType.ACTION) != null &&
                     remoteMessage.getData().get(Const.NotificationType.TYPE) != null){
@@ -198,7 +223,7 @@ public class AmbulanceFCMService extends FirebaseMessagingService {
                     .setContentTitle(getResources().getString(R.string.app_name))
                     .setContentText(body)
                     .setAutoCancel(true)
-                    .setColor(getResources().getColor(R.color.deeporange600))
+                    .setColor(getResources().getColor(R.color.color_btn_main))
                     .setSound(defaultSoundUri)
                     .setVibrate(new long[]{100,500})
                     .setPriority(NotificationCompat.PRIORITY_MAX)

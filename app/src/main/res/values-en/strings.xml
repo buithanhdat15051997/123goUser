@@ -45,7 +45,7 @@
     <string name="trip_summary">TRIP SUMMARY</string>
     <string name="rate_ride">Rate your riding experience?</string>
 
-    <string name="recharge_wallet">PROCEED TO PAY</string>
+    <string name="recharge_wallet">TOP UP YOUR E-WALLET</string>
 
 
 
@@ -445,9 +445,9 @@
     <string name="txt_total_pay_wallet">"Total Money In Your Wallet: "</string>
     <string name="title_wallet">Your Wallet</string>
     <string name="edt_hint_input_money_wallet">"Input Money: "</string>
-    <string name="name_step_frag_one">Professional Drivers</string>
-    <string name="name_step_frag_two">Lowest Fare</string>
-    <string name="name_step_frag_three">24/7 Services</string>
+    <string name="name_step_frag_one">Enjoy a balance lifestyle</string>
+    <string name="name_step_frag_two">The trip fare is fair</string>
+    <string name="name_step_frag_three">Earn decent income</string>
     <string name="body_text_step_wellcome">The first mate and his Skipper too will do their very comfortable in their tropic island nesb</string>
     <string name="title_fragment_account">Account</string>
     <string name="txt_bill_detail">Bill Detail</string>
@@ -460,7 +460,7 @@
     <string name="txt_content_dialog_gps">Choose your location to start find the taxi near you</string>
     <string name="txt_btn_gps">USE CURRENT LOCATION</string>
     <string name="txt_exit_gps">SELECT MANUALLY</string>
-    <string name="txt_booking_success">Booking Successfull!</string>
+    <string name="txt_booking_success">Thank you using for 123GO!</string>
     <string name="txt_content_booking_success">Your booking taxi has been confirmed, our diver will pickedup in 5 minutes, have a happy journey!</string>
     <string name="btn_booking_success">BACK TO HOME</string>
     <string name="txt_dialog_pay_ewallet">Payment With Wallet</string>
@@ -472,5 +472,8 @@
     <string name="txt_title_dialog_cancel_trip">You are sure you want to cancel this booking ?</string>
     <string name="txt_toast_not_found_current_location">Unable to get current location</string>
     <string name="toast_logout_notifi">You have logged in other device!</string>
+    <string name="min">mins</string>
+    <string name="txt_request_is_canceled_paypal">Request is canceled</string>
+    <string name="top_up_successfully">Top up to wallet successfully!</string>
 </resources>
 

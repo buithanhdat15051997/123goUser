@@ -108,6 +108,7 @@ public class VolleyRequester {
 
                         //seekbar.cancel();
                         if(response!=null){
+
                             asyncTaskCompleteListener.onTaskCompleted(response, servicecode);
                         }
 

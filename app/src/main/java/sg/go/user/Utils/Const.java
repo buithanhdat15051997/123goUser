@@ -282,6 +282,8 @@ public class Const {
         public static final String POST_PAYPAL_NONCE_URL = BASE_URL + "paymentcheckout";
         public static final String PAYMENT_CASH = BASE_URL + "paymentcash";
 
+        public static final String TOP_UP_WALLET = BASE_URL+"paymenttopupmoney";
+
         public static final String PAYMENT_WALLLET = BASE_URL +"paymentwallet";
 
         public static final String HISTORY_PAYMENT = BASE_URL + "historypayment";

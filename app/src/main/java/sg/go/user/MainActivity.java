@@ -68,7 +68,7 @@ import sg.go.user.Utils.PreferenceHelper;
 
 public class MainActivity extends AppCompatActivity implements AsyncTaskCompleteListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
-//    private DrawerLayout drawerLayout;
+    //    private DrawerLayout drawerLayout;
 //    private ActionBarDrawerToggle drawerToggle;
     public String currentFragment = "";
     private Toolbar mainToolbar;
@@ -80,11 +80,11 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
     private boolean gpswindowshowing = false;
     AlertDialog.Builder gpsBuilder;
     private LocationManager manager;
-//  private ImageButton bnt_menu;
+    //  private ImageButton bnt_menu;
     private Dialog load_dialog;
 
     private Button btn_select_gps;
-    private  TextView txt_exit_gps;
+    private TextView txt_exit_gps;
 
     private Dialog gpsAlertDialog;
     private BottomNavigationView mBottomNavigationView;
@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
         public void run() {
 
             getTypes();
+
             accountStatusHandler.postDelayed(this, 30000);
         }
     };
@@ -160,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
         manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)) {
             mbundle = savedInstanceState;
 
             /*if (TextUtils.isEmpty(new PreferenceHelper(this).getDeviceToken())) {
@@ -194,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                 checkreqstatus();
             }
 
-            Log.e("asher", "phone main act " + new PreferenceHelper(this).getPhone()+" "+new PreferenceHelper(this).getLoginBy());
+            Log.e("asher", "phone main act " + new PreferenceHelper(this).getPhone() + " " + new PreferenceHelper(this).getLoginBy());
             if (!new PreferenceHelper(this).getLoginBy().equalsIgnoreCase(Const.MANUAL)) {
                 Log.e("asher", "phone main act1 " + new PreferenceHelper(this).getPhone());
                 if (new PreferenceHelper(this).getPhone().isEmpty() || new PreferenceHelper(this).getPhone() == null) {
@@ -215,41 +216,39 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
             }
 
-            if (mBottomNavigationView != null){
+            if (mBottomNavigationView != null) {
 
                 mBottomNavigationView.inflateMenu(R.menu.consumer_bottom_navigation_menu);
                 mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
-                addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+                addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
 
             }
 
-        }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
-            if (mBottomNavigationView != null){
+            if (mBottomNavigationView != null) {
 
                 mBottomNavigationView.inflateMenu(R.menu.nursing_home_bottom_navigation_menu);
                 mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
                 //Check Intent received from FCMScheduleReceiver
                 if (getIntent().getExtras() != null &&
                         getIntent().getExtras().getString(Const.NotificationType.ACTION) != null &&
-                        getIntent().getExtras().getString(Const.NotificationType.ACTION).equals(Const.NotificationType.SCHEDULE)){
+                        getIntent().getExtras().getString(Const.NotificationType.ACTION).equals(Const.NotificationType.SCHEDULE)) {
 
                     EbizworldUtils.appLogDebug("AmbulanceFCMService", "MainActivity " + getIntent().getExtras().getString(Const.NotificationType.ACTION));
 
                     addFragment(new ScheduleListFragment(), false, Const.SCHEDULE_LIST_FRAGMENT, true);
 
-                }else {
+                } else {
 
                     addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
                 }
 
 
-
-
             }
-        }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+        } else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
-            if (mBottomNavigationView != null){
+            if (mBottomNavigationView != null) {
 
                 mBottomNavigationView.inflateMenu(R.menu.hospital_bottom_navigation_menu);
 
@@ -258,13 +257,13 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                 //Check Intent received from FCMScheduleReceiver
                 if (getIntent().getExtras() != null &&
                         getIntent().getExtras().getString(Const.NotificationType.ACTION) != null &&
-                        getIntent().getExtras().getString(Const.NotificationType.ACTION).equals(Const.NotificationType.SCHEDULE)){
+                        getIntent().getExtras().getString(Const.NotificationType.ACTION).equals(Const.NotificationType.SCHEDULE)) {
 
                     EbizworldUtils.appLogDebug("AmbulanceFCMService", "MainActivity: " + getIntent().getExtras().getString(Const.NotificationType.ACTION));
 
                     addFragment(new ScheduleListFragment(), false, Const.SCHEDULE_LIST_FRAGMENT, true);
 
-                }else {
+                } else {
 
                     addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
                 }
@@ -275,14 +274,14 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 //        Get account status
         accountStatusHandler.postDelayed(accountStatusRunnable, 10000);
 
-            // --------------------Logout account-------------------
-             accountLogoutReceiver = new BroadcastReceiver() {
+        // --------------------Logout account-------------------
+        accountLogoutReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
 
-                if (intent != null && intent.getStringExtra(Const.NotificationType.TYPE_ACCOUNT_LOGOUT).equals(Const.NotificationType.TYPE_ACCOUNT_LOGOUT)){
+                if (intent != null && intent.getStringExtra(Const.NotificationType.TYPE_ACCOUNT_LOGOUT).equals(Const.NotificationType.TYPE_ACCOUNT_LOGOUT)) {
 
-                    EbizworldUtils.showShortToast(""+getResources().getString(R.string.toast_logout_notifi), MainActivity.this);
+                    EbizworldUtils.showShortToast("" + getResources().getString(R.string.toast_logout_notifi), MainActivity.this);
                     new PreferenceHelper(MainActivity.this).Logout();
                     startActivity(new Intent(MainActivity.this, SignInActivity.class));
                     MainActivity.this.finish();
@@ -292,8 +291,9 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
         };
 
     }
-   @SuppressLint("RestrictedApi")
-   private static void removeShiftMode(BottomNavigationView view) {
+
+    @SuppressLint("RestrictedApi")
+    private static void removeShiftMode(BottomNavigationView view) {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
         for (int i = 0; i < menuView.getChildCount(); i++) {
 
@@ -402,31 +402,37 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
         if (!currentFragment.equals(Const.HOME_MAP_FRAGMENT)) {
 
-            if (currentFragment.equals(Const.REQUEST_FRAGMENT)){
+//            if (currentFragment.equals(Const.REQUEST_FRAGMENT)){
+//
+//                addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true);
+//
+//            }else
 
-                addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true);
-
-            }else if (currentFragment.equals(Const.WALLET_FRAGMENT)){
+            if (currentFragment.equals(Const.WALLET_FRAGMENT)) {
 
                 addFragment(new AccountFragment(), false, Const.ACCOUNT_FRAGMENT, true);
 
                 mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
 
-            }else if(currentFragment.equals(Const.RATING_FRAGMENT)){
+            } else if (currentFragment.equals(Const.RATING_FRAGMENT)) {
 
                 Toast.makeText(this, getResources().getString(R.string.txt_toast_event_back_rating).toString(), Toast.LENGTH_SHORT).show();
 
-            }
-//            else if(currentFragment.equals(Const.BILLING_INFO_FRAGMENT)){
-//
-//                    Toast.makeText(this, "Cannot", Toast.LENGTH_SHORT).show();
-//
-//               }
-            else {
+            } else if (currentFragment.equals(Const.BILLING_INFO_FRAGMENT)) {
 
-                addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+                Toast.makeText(this, "Cannot", Toast.LENGTH_SHORT).show();
 
+            } else if (currentFragment.equals(Const.TRAVEL_MAP_FRAGMENT)) {
+
+                addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
                 mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
+
+            } else {
+
+                openExitDialog();
+
+//                addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
+//                mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
             }
 
         } else {
@@ -443,28 +449,38 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
     private void openExitDialog() {
 
-        final Dialog exit_dialog = new Dialog(this, R.style.DialogSlideAnim_leftright);
+        final Dialog exit_dialog = new Dialog(this, R.style.Custom_Dialog);
         exit_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        exit_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        exit_dialog.setCancelable(false);
 
-        /*exit_dialog.setContentView(R.layout.dialog_exit);
-        TextView tvExitOk = (TextView) exit_dialog.findViewById(R.id.tvExitOk);
-        TextView tvExitCancel = (TextView) exit_dialog.findViewById(R.id.tvExitCancel);
-        tvExitOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                exit_dialog.dismiss();
-                finishAffinity();
-            }
-        });
-        tvExitCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                exit_dialog.dismiss();
-            }
-        });*/
+        //exit_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        // exit_dialog.setCancelable(false);
+//        exit_dialog.setContentView(R.layout.dialog_exit);
+//        TextView tvExitOk = (TextView) exit_dialog.findViewById(R.id.tvExitOk);
+//        TextView tvExitCancel = (TextView) exit_dialog.findViewById(R.id.tvExitCancel);
+//        tvExitOk.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                exit_dialog.dismiss();
+//                finishAffinity();
+//            }
+//        });
+//        tvExitCancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                exit_dialog.dismiss();
+//            }
+//        });
+
         exit_dialog.setContentView(R.layout.dialog_logout);
+
+        exit_dialog.setCancelable(true);
+        exit_dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
+        Window window = exit_dialog.getWindow();
+        if (window != null) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND); // This flag is required to set otherwise the setDimAmount method will not show any effect
+            window.setDimAmount(0.5f); //0 for no dim to 1 for full dim
+        }
 
         TextView title = (TextView) exit_dialog.findViewById(R.id.logout_title);
         title.setText(getResources().getString(R.string.dialog_exit_caps));
@@ -495,7 +511,8 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
         exit_dialog.show();
     }
-/*---- Dialog GPS ----*/
+
+    /*---- Dialog GPS ----*/
     private void ShowGpsDialog() {
 
         isGpsDialogShowing = true;
@@ -533,7 +550,6 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
             }
         });
-
 
 
 //        gpsBuilder = new AlertDialog.Builder(
@@ -600,15 +616,15 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
         currentFragment = tag;
         ft.commitAllowingStateLoss();
 
-        if(tag.equals(Const.HOME_MAP_FRAGMENT) ||
+        if (tag.equals(Const.HOME_MAP_FRAGMENT) ||
                 tag.equals(Const.SCHEDULE_LIST_FRAGMENT) ||
                 tag.equals(Const.HISTORY_FRAGMENT) ||
-                tag.equals(Const.ACCOUNT_FRAGMENT)){
+                tag.equals(Const.ACCOUNT_FRAGMENT)) {
 
             if (mBottomNavigationView != null)
                 mBottomNavigationView.setVisibility(View.VISIBLE);
 
-        }else {
+        } else {
 
             if (mBottomNavigationView != null)
                 mBottomNavigationView.setVisibility(View.GONE);
@@ -634,7 +650,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
         }
 
         if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME) ||
-                new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+                new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
             registerReceiver(mFcmScheduleReceiver, new IntentFilter(Const.NotificationType.SCHEDULE)); //Register Broadcast to receive FCM schedule start
             EbizworldUtils.appLogDebug("AmbulanceFCMService", "MainActivity: Register FCMScheduleReceiver");
@@ -650,8 +666,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
     }
 
 
-
-     public BroadcastReceiver internetConnectionReciever = new BroadcastReceiver() {
+    public BroadcastReceiver internetConnectionReciever = new BroadcastReceiver() {
 
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -673,7 +688,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
         }
     };
 
-    private void removeInternetDialog(){
+    private void removeInternetDialog() {
         if (internetDialog != null && internetDialog.isShowing()) {
             internetDialog.dismiss();
             isNetDialogShowing = false;
@@ -725,7 +740,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
         internetDialog.show();
     }
 
-/*---- EVENT WHEN GPS WILL TURN OFF AND ON ----*/
+    /*---- EVENT WHEN GPS WILL TURN OFF AND ON ----*/
 
     public BroadcastReceiver GpsChangeReceiver = new BroadcastReceiver() {
         @Override
@@ -763,7 +778,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
             unregisterReceiver(internetConnectionReciever);
 
             if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME) ||
-                    new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+                    new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
                 unregisterReceiver(mFcmScheduleReceiver); //Unregister Broadcast to receive FCM schedule start
                 EbizworldUtils.appLogDebug("AmbulanceFCMService", "MainActivity: Unregister FCMScheduleReceiver");
@@ -805,15 +820,15 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
         map.put(Const.Params.TOKEN, new PreferenceHelper(getActivity()).getSessionToken());
         map.put(Const.Params.DISTANCE, dis);
         map.put(Const.Params.TIME, dur);*/
-        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             map.put(Const.Params.URL, Const.ServiceType.OPERATORS_URL);
 
-        }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
             map.put(Const.Params.URL, Const.NursingHomeService.OPERATORS_URL);
 
-        }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+        } else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
             map.put(Const.Params.URL, Const.HospitalService.OPERATORS_URL);
         }
@@ -838,12 +853,12 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                     Bundle bundle = new Bundle();
                     RequestDetail requestDetail = null;
 
-                    if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)){
+                    if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)) {
 
                         requestDetail = new ParseContent(this).parseRequestStatusNormal(response);
 
-                    }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME) ||
-                            new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+                    } else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME) ||
+                            new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
                         requestDetail = new ParseContent(this).parseRequestStatusSchedule(response);
                     }
@@ -863,7 +878,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
                             break;
 
-                        case Const.IS_ACCEPTED:{
+                        case Const.IS_ACCEPTED: {
                             bundle.putSerializable(Const.REQUEST_DETAIL,
                                     requestDetail);
                             bundle.putInt(Const.DRIVER_STATUS,
@@ -883,28 +898,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                         }
                         break;
 
-                        case Const.IS_DRIVER_DEPARTED:{
-                            bundle.putSerializable(Const.REQUEST_DETAIL,
-                                    requestDetail);
-                            bundle.putInt(Const.DRIVER_STATUS,
-                                    Const.IS_ACCEPTED);
-                            if (!this.currentFragment.equals(Const.TRAVEL_MAP_FRAGMENT)) {
-
-                                travelfragment.setArguments(bundle);
-                                this.addFragment(travelfragment, false, Const.TRAVEL_MAP_FRAGMENT,
-                                        true);
-
-                            }
-
-
-                            BaseFragment.drop_latlan = null;
-                            BaseFragment.pic_latlan = null;
-                            BaseFragment.s_address = "";
-                            BaseFragment.d_address = "";
-                        }
-                        break;
-
-                        case Const.IS_DRIVER_ARRIVED:{
+                        case Const.IS_DRIVER_DEPARTED: {
                             bundle.putSerializable(Const.REQUEST_DETAIL,
                                     requestDetail);
                             bundle.putInt(Const.DRIVER_STATUS,
@@ -925,7 +919,28 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                         }
                         break;
 
-                        case Const.IS_DRIVER_TRIP_STARTED:{
+                        case Const.IS_DRIVER_ARRIVED: {
+                            bundle.putSerializable(Const.REQUEST_DETAIL,
+                                    requestDetail);
+                            bundle.putInt(Const.DRIVER_STATUS,
+                                    Const.IS_ACCEPTED);
+                            if (!this.currentFragment.equals(Const.TRAVEL_MAP_FRAGMENT)) {
+
+                                travelfragment.setArguments(bundle);
+                                this.addFragment(travelfragment, false, Const.TRAVEL_MAP_FRAGMENT,
+                                        true);
+
+                            }
+
+
+                            BaseFragment.drop_latlan = null;
+                            BaseFragment.pic_latlan = null;
+                            BaseFragment.s_address = "";
+                            BaseFragment.d_address = "";
+                        }
+                        break;
+
+                        case Const.IS_DRIVER_TRIP_STARTED: {
 
                             bundle.putSerializable(Const.REQUEST_DETAIL,
                                     requestDetail);
@@ -948,7 +963,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                         }
                         break;
 
-                        case Const.IS_DRIVER_TRIP_ENDED:{
+                        case Const.IS_DRIVER_TRIP_ENDED: {
 
                             /*bundle.putSerializable(Const.REQUEST_DETAIL,
                                     requestDetail);
@@ -969,7 +984,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                             BaseFragment.s_address = "";
                             BaseFragment.d_address = "";*/
 
-                            if (!this.currentFragment.equals(Const.BILLING_INFO_FRAGMENT) && !this.isFinishing()){
+                            if (!this.currentFragment.equals(Const.BILLING_INFO_FRAGMENT) && !this.isFinishing()) {
 
                                 BillingInfoFragment billingInfoFragment = new BillingInfoFragment();
                                 billingInfoFragment.setArguments(bundle);
@@ -980,7 +995,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                         }
                         break;
 
-                        case Const.IS_DRIVER_RATED:{
+                        case Const.IS_DRIVER_RATED: {
 
                             bundle.putSerializable(Const.REQUEST_DETAIL,
                                     requestDetail);
@@ -1010,27 +1025,27 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                 }
                 break;
 
-            case Const.ServiceCode.AMBULANCE_OPERATOR:{
+            case Const.ServiceCode.AMBULANCE_OPERATOR: {
 
                 EbizworldUtils.appLogInfo("HaoLS", response);
 
-                if (response != null){
+                if (response != null) {
 
                     try {
                         JSONObject jsonObject = new JSONObject(response);
 
-                        if (jsonObject.has("error_code")){
+                        if (jsonObject.has("error_code")) {
 
-                            if (jsonObject.getInt("error_code") == 104){
+                            if (jsonObject.getInt("error_code") == 104) {
 
-                                if (accountStatusHandler != null){
+                                if (accountStatusHandler != null) {
 
                                     accountStatusHandler.removeCallbacks(accountStatusRunnable);
 
                                 }
                                 EbizworldUtils.showShortToast("You have logged in other device!", this);
 
-                                if (jsonObject.has("error")){
+                                if (jsonObject.has("error")) {
                                     EbizworldUtils.appLogDebug("HaoLS", jsonObject.getString("error"));
                                 }
 
@@ -1088,22 +1103,22 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
         if (currentFragment.equals(Const.TRAVEL_MAP_FRAGMENT) ||
                 currentFragment.equals(Const.REQUEST_FRAGMENT) ||
                 currentFragment.equals(Const.NURSE_REGISTER_SCHEDULE_FRAGMENT) ||
-                currentFragment.equals(Const.BILLING_INFO_FRAGMENT)){
+                currentFragment.equals(Const.BILLING_INFO_FRAGMENT)) {
 
             Toast.makeText(this, getResources().getString(R.string.navigationbottom_warning), Toast.LENGTH_SHORT).show();
 
-        }else {
+        } else {
 
-            switch (menuItem.getItemId()){
+            switch (menuItem.getItemId()) {
 
-                case R.id.action_home:{
+                case R.id.action_home: {
 
-                    addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+                    addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
 
                 }
                 return true;
 
-                case R.id.action_history:{
+                case R.id.action_history: {
 
                     addFragment(new HistoryRideFragment(), false, Const.HISTORY_FRAGMENT, true);
 
@@ -1117,14 +1132,14 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                 }
                 return true;*/
 
-                case R.id.action_account:{
+                case R.id.action_account: {
 
                     addFragment(new AccountFragment(), false, Const.ACCOUNT_FRAGMENT, true);
 
                 }
                 return true;
 
-                case R.id.action_nurse_list_schedule:{
+                case R.id.action_nurse_list_schedule: {
 
                     addFragment(new ScheduleListFragment(), false, Const.SCHEDULE_LIST_FRAGMENT, true);
 

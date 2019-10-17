@@ -48,7 +48,7 @@
     <string name="txt_ok">Ok</string>
     <string name="txt_toast_event_back_rating">Vui lòng đánh giá sao trước khi thoát</string>
     <string name="dialog_exit_caps">Thoát</string>
-    <string name="dialog_exit_text">"Bạn có chắc chắn "</string>
+    <string name="dialog_exit_text">Bạn có chắc chắn muốn thoát 123GO</string>
     <string name="dialog_no_internet">Không có imternet</string>
     <string name="dialog_no_inter_message">Bạn chưa kết nối internet.</string>
     <string name="dialog_enable_3g">Kêt nối 3G</string>
@@ -128,7 +128,7 @@
     <string name="txt_contact">Liên hệ lái xe</string>
     <string name="txt_contact_driver">Liên hệ với tài xế</string>
     <string name="txt_more">Thêm</string>
-    <string name="min">Số phút</string>
+    <string name="min">Phút</string>
     <string name="txt_payment_type">Hình thức thanh toán</string>
     <string name="txt_trip_cancel_fee">Phí hủy chuyến đi của bạn:</string>
     <string name="txt_toll">Tổng số thu phí trong tuyến đường của bạn</string>
@@ -141,7 +141,7 @@
     <string name="rate_ride">Đánh giá kinh nghiệm chuyến đi của bạn?</string>
     <string name="txt_content_ratings">"Bạn phản hồi sẽ chúng tôi cải thiện các chuyến đi "</string>
     <string name="txt_sub_rating">GỬI ĐI</string>
-    <string name="txt_booking_success">Chuyến đi đã thành công</string>
+    <string name="txt_booking_success">Cảm ơn bạn đã sử dụng cho 123GO!</string>
     <string name="txt_content_booking_success">Chuyến đi của bạn đã được xác nhận, tài xế của chúng tôi sẽ đón trong vòng 5 phút, chúng ta đã có một chuyến đi tốt đẹp!</string>
     <string name="btn_booking_success">QUAY VỀ TRANG CHỦ</string>
     <string name="txt_title_dialog_cancel_trip">Bạn có chắn muốn hủy chuyến đi này?</string>
@@ -149,7 +149,7 @@
     <string name="later_title">Lịch chuyến đi của bạn</string>
     <string name="txt_no_later">"Không có lịch trình "</string>
     <string name="nikola_wallet">Ví tiền</string>
-    <string name="recharge_wallet">Nạp tiền</string>
+    <string name="recharge_wallet">Nạp tiền vào ví của bạn</string>
     <string name="homelogin_notice">" Tính năng này sẽ sớm ra mắt"</string>
     <string name="typ_msg">Nhập tin nhắn của bạn</string>
     <string name="msgr">Tin nhắn</string>
@@ -173,6 +173,15 @@
     <string name="txt_gps_off">GPS đã tắt</string>
     <string name="txt_gps_msg">Vui lòng bật GPS</string>
     <string name="toast_logout_notifi">Bạn đã đăng nhập vào thiết bị khác!</string>
+    <string name="name_step_frag_one">Tận hưởng một lối sống cân bằng</string>
+    <string name="name_step_frag_two">Giá vé chuyến đi là công bằng</string>
+    <string name="name_step_frag_three">Kiếm thu nhập khá</string>
+    <string name="btn_no_driver">"Không có lái xe "</string>
+    <string name="txt_request_is_canceled_paypal">Yêu cầu bị hủy bỏ</string>
+    <string name="top_up_successfully">Nạp tiền vào ví thành công!</string>
+    <string name="txt_btn_done">Xong</string>
+    <string name="txt_cameray">Camera</string>
+    <string name="txt_load">Đang tải...</string>
 
 
 </resources>

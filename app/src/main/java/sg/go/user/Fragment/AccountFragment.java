@@ -701,7 +701,7 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
 
                             txt_total_money_wallet.setText(getResources().getString(R.string.txt_total_pay_wallet) + " " + total_Money_Wallet + " S$");
 
-                            new PreferenceHelper(mMainActivity).putTotalRechargeWallet(total_Money_Wallet);
+                            new PreferenceHelper(mMainActivity).putTotalAmountWallet(total_Money_Wallet);
 
                             EbizworldUtils.removeProgressDialog();
 

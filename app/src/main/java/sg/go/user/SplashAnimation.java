@@ -44,6 +44,7 @@ public class SplashAnimation extends AppCompatActivity implements AsyncTaskCompl
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.layout_animation);
         splashAnimationLayout = (RelativeLayout)findViewById(R.id.splashAnimationLayout);
         progressBarSplash = findViewById(R.id.spin_kitSplash);

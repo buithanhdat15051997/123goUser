@@ -6,6 +6,7 @@ import android.animation.ValueAnimator;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -110,6 +111,10 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
     private int marker_position;
     private GoogleMap gMap;
     private GoogleMap mGoogleMap;
+
+    private SharedPreferences saveState;
+
+    private  Bundle outSate;
 
     private ArrayList<Marker> mMarkersMap = new ArrayList<>();
     private LocationHelper locHelper;
@@ -982,6 +987,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
             } else {
                 Log.d("manh111", "ddang vao day ");
                 source_address = mBundle.getString("pickup_address");
+
                 // et_source_address.setText(gMap.getMapType());
                 /*String[] address_lst = source_address.split(",");
                 if (address_lst.length > 2) {
@@ -2135,5 +2141,60 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
             drawable.draw(canvas);
         customMarkerView.draw(canvas);
         return returnedBitmap;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d("onPause", SearchPlaceFragment.class.getName());
+        if (fromLocation != null && toLocation != null) {
+
+            Log.d("TEST", fromLocation.toString()+toLocation.toString());
+
+            saveState = getActivity().getSharedPreferences("save_location", Context.MODE_PRIVATE);
+
+            SharedPreferences.Editor editor = saveState.edit();
+
+            editor.putString("key1_1", String.valueOf(fromLocation.latitude));
+            editor.putString("key1_2", String.valueOf(fromLocation.longitude));
+
+            editor.putString("key2_1", String.valueOf(toLocation.latitude));
+            editor.putString("key2_2", String.valueOf(toLocation.longitude));
+
+            Log.d("TEST", editor.toString());
+
+            editor.apply();
+
+            editor.commit();
+
+
+
+        }
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        Log.d("onStart", SearchPlaceFragment.class.getName());
+
+        saveState = getActivity().getSharedPreferences("save_location", Context.MODE_PRIVATE);
+
+//        if (saveState == null) {
+//            Log.d("onStart_data", SearchPlaceFragment.class.getName());
+//
+//            Double from1 = Double.parseDouble(saveState.getString("key1_1",""));
+//
+//            Double from2 = Double.parseDouble(saveState.getString("key1_2",""));
+//
+//            Double to1 = Double.parseDouble(saveState.getString("key2_1",""));
+//
+//            Double to2 = Double.parseDouble(saveState.getString("key2_2",""));
+//
+//            getDirections(from1,from2,to1,to2);
+//
+//        }
+
     }
 }

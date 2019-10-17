@@ -367,8 +367,8 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
             case R.id.tv_billing_info_deny: {
                 // back fragment
-                getActivity().onBackPressed();
-//                activity.addFragment(new SearchPlaceFragment(), true, Const.SEARCH_FRAGMENT, true);
+             //   getActivity().onBackPressed();
+                activity.addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
                 new RequestOptional().setOverView_Polyline("");
             }
             break;
@@ -433,7 +433,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
         map.put(Const.Params.ID, new PreferenceHelper(getActivity()).getUserId());
         map.put(Const.Params.TOKEN, new PreferenceHelper(getActivity()).getSessionToken());
 
-        EbizworldUtils.appLogDebug("HaoLS", "BrainTreeClientTokenMap: " + map.toString());
+        EbizworldUtils.appLogDebug("DAT_PAYPAL", "BrainTreeClientTokenMap: " + map.toString());
 
         new VolleyRequester(getActivity(), Const.POST, map, Const.ServiceCode.GET_BRAIN_TREE_TOKEN_URL, this);
 
@@ -503,7 +503,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
         map.put(Const.Params.REQUEST_ID, String.valueOf(new PreferenceHelper(getActivity()).getRequestId()));
         map.put(Const.Params.PAYMENT_METHOD_NONCE, nonce);
 
-        EbizworldUtils.appLogDebug("HaoLS", "postNonceToServer: " + map.toString());
+        EbizworldUtils.appLogDebug("DAT_PAYPAL", "postNonceToServer: " + map.toString());
 
         new VolleyRequester(getActivity(), Const.POST, map, Const.ServiceCode.POST_PAYPAL_NONCE, this);
 
@@ -912,7 +912,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                 break;
 
             case Const.ServiceCode.GET_BRAIN_TREE_TOKEN_URL: {
-                EbizworldUtils.appLogInfo("HaoLS", "GET_BRAIN_TREE_TOKEN_URL: " + response);
+                EbizworldUtils.appLogInfo("DAT_PAYPAL", "GET_BRAIN_TREE_TOKEN_URL: " + response);
 
                 if (response != null && activity != null) {
 
@@ -993,11 +993,15 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
                                 switch (mRequestDetail.getTripStatus()) {
 
                                     case Const.NO_REQUEST:
+
+                                        requestDialog.dismiss();
+
                                         new PreferenceHelper(activity).clearRequestData();
                                         // startgetProvider();
                                         if (requestDialog != null && requestDialog.isShowing()) {
 
                                             requestDialog.dismiss();
+
                                             Commonutils.showtoast(getResources().getString(R.string.txt_no_provider_error), activity);
                                             stopCheckingforstatus();
 
@@ -1097,7 +1101,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
             case Const.ServiceCode.POST_PAYPAL_NONCE: {
 
-                EbizworldUtils.appLogInfo("HaoLS", "Post paypal nonce: " + response);
+                EbizworldUtils.appLogInfo("DAT_PAYPAL", "Post paypal nonce: " + response);
 
                 Commonutils.progressdialog_hide();
 
@@ -1129,7 +1133,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        EbizworldUtils.appLogError("HaoLS", "POST_PAYPAL_NONCE: " + e.toString());
+                        EbizworldUtils.appLogError("DAT_PAYPAL", "POST_PAYPAL_NONCE: " + e.toString());
                         EbizworldUtils.showShortToast("POST_PAYPAL_NONCE: " + e.toString(), activity);
                     }
                 }
@@ -1192,11 +1196,15 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
                 DropInResult dropInResult = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
 
+                dropInResult.getPaymentMethodType();
+
+                Log.d("DAT_PAYPAL",dropInResult.getPaymentMethodType().toString().trim());
+
                 if (dropInResult.getPaymentMethodNonce() != null) {
 
                     postNonceToServer(dropInResult.getPaymentMethodNonce().getNonce());
 
-                    EbizworldUtils.appLogDebug("HaoLS", "Billing Info Nonce: " + dropInResult.getPaymentMethodNonce().getNonce());
+                    EbizworldUtils.appLogDebug("DAT_PAYPAL", "Billing Info Nonce: " + dropInResult.getPaymentMethodNonce().getNonce());
                 }
 
             } else if (resultCode == Activity.RESULT_CANCELED) {
@@ -1207,8 +1215,10 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
 
                 Exception exception = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
                 EbizworldUtils.showShortToast(exception.toString(), activity);
-                EbizworldUtils.appLogError("HaoLS", "PayPal result" + exception.toString());
+                EbizworldUtils.appLogError("DAT_PAYPAL", "PayPal result" + exception.toString());
             }
         }
     }
+
+
 }

@@ -135,7 +135,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_130sdp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_1sdp"
         android:background="@drawable/background_with_shadow"
         android:orientation="vertical"
         android:paddingVertical="@dimen/_5sdp">
@@ -146,7 +145,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_28sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -370,10 +369,10 @@
             android:layout_width="@dimen/_75sdp"
             android:layout_height="@dimen/_75sdp"
             android:layout_gravity="center|end"
-            app:civ_border_width="@dimen/_1sdp"
-            app:civ_border_color="@color/white"
             android:background="@drawable/background_oval_img"
-            android:src="@drawable/defult_user" />
+            android:src="@drawable/defult_user"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="@dimen/_1sdp" />
     </FrameLayout>
 
 

@@ -515,6 +515,7 @@ public class ParseContent {
 
                 requestDetail.setCancellationFee(jsonObject.optString("cancellation_fine"));
 
+
                 JSONArray jarray = jsonObject.getJSONArray("data");
                 if (jarray.length() > 0) {
 
@@ -526,6 +527,14 @@ public class ParseContent {
                     requestDetail.setRequestId(Integer.valueOf(dataObject.getString("request_id")));
 
                     if (dataObject != null) {
+
+                        if(dataObject.has("overview_polyline")){
+
+                            requestDetail.setPolyline_string(dataObject.getString("overview_polyline"));
+
+                            new PreferenceHelper(activity).putOverViewPolyline(dataObject.getString("overview_polyline"));
+
+                        }
 
                         if (dataObject.has("provider_status")) {
 

@@ -1116,6 +1116,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
     public void drawPath(String result) {
 
         Log.d("Dat_Preference", new PreferenceHelper(activity).getOverViewPolyline().toString());
+
 //        RequestOptional mOptinal = new RequestOptional();
         //Tranform the string into a json object
 
@@ -1127,7 +1128,6 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 //            JSONObject overviewPolylines = routes.getJSONObject("overview_polyline");
 //            String encodedString = overviewPolylines.getString("points");
 //            String encodedString = mOptinal.getOverView_Polyline().toString();
-
 
         String encodedString = new PreferenceHelper(activity).getOverViewPolyline().toString();
 
@@ -1148,23 +1148,19 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
             poly_line = googleMap.addPolyline(options);
         }
 
-
 //        } catch (JSONException e) {
 //            e.printStackTrace();
 //        }
 
 
-           /*
-           for(int z = 0; z<list.size()-1;z++){
-                LatLng src= list.get(z);
-                LatLng dest= list.get(z+1);
-                Polyline line = mMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(src.latitude, src.longitude), new LatLng(dest.latitude,   dest.longitude))
-                .width(2)
-                .color(Color.BLUE).geodesic(true));
-            }
-           */
-
+//           for(int z = 0; z<list.size()-1;z++){
+//                LatLng src= list.get(z);
+//                LatLng dest= list.get(z+1);
+//                Polyline line = mMap.addPolyline(new PolylineOptions()
+//                .add(new LatLng(src.latitude, src.longitude), new LatLng(dest.latitude,   dest.longitude))
+//                .width(2)
+//                .color(Color.BLUE).geodesic(true));
+//            }
     }
 
     private List<LatLng> decodePoly(String encoded) {
@@ -1484,6 +1480,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                         destination_marker = googleMap.addMarker(opt);
 
                     }
+
                     drawPath(response);
 
                 }

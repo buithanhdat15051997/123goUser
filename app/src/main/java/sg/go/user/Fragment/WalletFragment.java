@@ -1,9 +1,11 @@
 package sg.go.user.Fragment;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,11 +18,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.braintreepayments.api.dropin.DropInActivity;
 import com.braintreepayments.api.dropin.DropInRequest;
 import com.braintreepayments.api.dropin.DropInResult;
 
+import org.androidannotations.annotations.rest.Get;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,10 +43,10 @@ import sg.go.user.Utils.Const;
 import sg.go.user.Utils.EbizworldUtils;
 import sg.go.user.Utils.PreferenceHelper;
 
-public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteListener {
+public class WalletFragment extends BaseFragment implements AsyncTaskCompleteListener {
 
     private Wallets wallets;
-    private TextView txt_recharge_ewallet,txt_total_money_wallet;
+    private TextView txt_recharge_ewallet, txt_total_money_wallet;
     private ImageView img_pay_ewallet;
     private EditText edt_input_money_wallet;
     private Button btn_recharge_ewallet;
@@ -50,16 +54,14 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
     private Toolbar toolbar_wallet;
     private String Get_Money_Recharge_Wallet;
     private ImageButton img_wallet_back;
-    private  MainActivity activity;
+    private MainActivity activity;
     View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.fragment_wallet,container,false);
-
-
+        view = inflater.inflate(R.layout.fragment_wallet, container, false);
 
         mapping();
 
@@ -90,7 +92,7 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
             @Override
             public void onClick(View view) {
 
-                activity.addFragment(new AccountFragment(),true,Const.ACCOUNT_FRAGMENT,false);
+                activity.addFragment(new AccountFragment(), true, Const.ACCOUNT_FRAGMENT, false);
 
 
             }
@@ -109,13 +111,14 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
 
                     Get_Money_Recharge_Wallet.replaceAll(",", "");
 
-                    EbizworldUtils.showLongToast("OK: " + Get_Money_Recharge_Wallet, activity);
+                    getBrainTreeClientToken();
+
+                    //  EbizworldUtils.showLongToast("OK: " + Get_Money_Recharge_Wallet, activity);
 
                 }
 
             }
         });
-
 
 
     }
@@ -171,7 +174,6 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
     }
 
 
-
     private void ApiGetWallet() {
 
         if (!EbizworldUtils.isNetworkAvailable(activity)) {
@@ -188,7 +190,7 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
 
         map.put(Const.Params.TOKEN, new PreferenceHelper(activity).getSessionToken());
 
-        Log.d("HaoLS", "Getting show wallet " + map.toString());
+        Log.d("DAT_WALLET", "Getting show wallet " + map.toString());
         new VolleyRequester(activity, Const.POST, map, Const.ServiceCode.SHOW_RECHARGE_WALLET,
                 this);
     }
@@ -196,53 +198,15 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()){
-
-        }
     }
 
-    private void postNonceToServer(String nonce) {
-
-        if (!EbizworldUtils.isNetworkAvailable(getActivity())) {
-
-            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
-            return;
-
-        }
-
-        Commonutils.progressdialog_show(activity, "Loading...");
-        HashMap<String, String> map = new HashMap<>();
-
-//        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
-
-        map.put(Const.Params.URL, Const.ServiceType.POST_PAYPAL_NONCE_URL);
-
-//        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-//
-//            map.put(Const.Params.URL, Const.NursingHomeService.POST_PAYPAL_NONCE_URL);
-//
-//        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)){
-//
-//            map.put(Const.Params.URL, Const.HospitalService.POST_PAYPAL_NONCE_URL);
-//
-//        }
-
-        map.put(Const.Params.ID, new PreferenceHelper(getActivity()).getUserId());
-        map.put(Const.Params.TOKEN, new PreferenceHelper(getActivity()).getSessionToken());
-        map.put(Const.Params.REQUEST_ID, String.valueOf(new PreferenceHelper(getActivity()).getRequestId()));
-        map.put(Const.Params.PAYMENT_METHOD_NONCE, nonce);
-
-        EbizworldUtils.appLogDebug("HaoLS", "postNonceToServer: " + map.toString());
-
-        new VolleyRequester(getActivity(), Const.POST, map, Const.ServiceCode.POST_PAYPAL_NONCE, this);
-
-    }
 
     @Override
     public void onTaskCompleted(String response, int serviceCode) {
-        switch (serviceCode){
+        switch (serviceCode) {
 
             case Const.ServiceCode.SHOW_RECHARGE_WALLET: {
+
                 Log.d("DatGetWallet", "" + response);
 
                 if (response != null) {
@@ -255,14 +219,15 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
 
                             String total_Money_Wallet = jsonObject.getString("e_wallet");
 
-                            txt_total_money_wallet.setText(" S$ "+ total_Money_Wallet );
+                            txt_total_money_wallet.setText(" S$ " + total_Money_Wallet);
 
-                            new PreferenceHelper(activity).putTotalRechargeWallet(total_Money_Wallet);
 
+                            new PreferenceHelper(activity).putTotalAmountWallet(total_Money_Wallet);
 
 
                         } else {
-                            EbizworldUtils.showLongToast("error", activity);
+
+                            EbizworldUtils.showLongToast(jsonObject.getBoolean("success")+"", activity);
 
                         }
 
@@ -280,32 +245,96 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
 
             }
             break;
+            case Const.ServiceCode.POST_PAYPAL_NONCE: {
 
+                EbizworldUtils.appLogInfo("DAT_TOPUP_WALLET", "Post paypal nonce: " + response);
 
-            case  Const.ServiceCode.GET_BRAIN_TREE_TOKEN_URL_WALLET:
-            {
-                EbizworldUtils.appLogInfo("HaoLS", "GET_BRAIN_TREE_TOKEN_URL: " + response);
+                Commonutils.progressdialog_hide();
 
-                if (response != null && activity != null){
+                if (response != null) {
 
                     try {
                         JSONObject jsonObject = new JSONObject(response);
 
-                        if (jsonObject.getString("success").equals("true")){
+                        if (jsonObject.getString("success").equals("true")) {
 
-                            EbizworldUtils.showShortToast("Success " + jsonObject.getString("success"), activity);
+                            ApiGetWallet();
 
-                            if (jsonObject.has("client_token")){
+                            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                            builder.setTitle(getResources().getString(R.string.top_up_successfully));
+                           // builder.setMessage("Bạn có muốn đăng xuất không?");
+                            builder.setCancelable(true);
+                            builder.setNegativeButton(getResources().getString(R.string.txt_btn_done), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    dialogInterface.dismiss();
+                                }
+                            });
+                            AlertDialog alertDialog = builder.create();
+                            alertDialog.show();
+
+
+                            edt_input_money_wallet.setText("");
+
+//                            if (!activity.currentFragment.equals(Const.RATING_FRAGMENT) && !activity.isFinishing()) {
+//
+//                                Bundle bundle = new Bundle();
+//                                RatingFragment ratingFragment = new RatingFragment();
+//                                bundle.putSerializable(Const.REQUEST_DETAIL, mRequestDetail);
+//                                ratingFragment.setArguments(bundle);
+//                                activity.addFragment(ratingFragment, false, Const.RATING_FRAGMENT, true);
+//
+//                            }
+
+                        } else if (jsonObject.getString("success").equals("false")) {
+
+                            if (jsonObject.has("error")) {
+
+                                EbizworldUtils.showShortToast(jsonObject.getString("error"), activity);
+
+                                EbizworldUtils.appLogError("DAT_TOPUP_WALLET", "POST_PAYPAL_NONCE: " + jsonObject.getString("error"));
+
+                            }
+
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        EbizworldUtils.appLogError("DAT_TOPUP_WALLET", "POST_PAYPAL_NONCE: " + e.toString());
+
+                        EbizworldUtils.showShortToast("POST_PAYPAL_NONCE: " + e.toString(), activity);
+                    }
+                }
+
+            }
+            break;
+
+            case Const.ServiceCode.GET_BRAIN_TREE_TOKEN_URL_WALLET: {
+                EbizworldUtils.appLogInfo("DAT_TOPUP_WALLET", "GET_BRAIN_TREE_TOKEN_URL: " + response);
+
+                if (response != null && activity != null) {
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+
+                        if (jsonObject.getString("success").equals("true")) {
+
+                          //  EbizworldUtils.showShortToast("Success " + jsonObject.getString("success"), activity);
+
+                            if (jsonObject.has("client_token")) {
 
                                 DropInRequest dropInRequest = new DropInRequest()
                                         .clientToken(jsonObject.getString("client_token"));
 
+                                Log.d("DAT_TOPUP_WALLET", dropInRequest.toString().trim());
+
                                 startActivityForResult(dropInRequest.getIntent(activity), Const.ServiceCode.REQUEST_PAYPAL_WALLET);
                             }
 
-                        }else if (jsonObject.getString("success").equals("false")){
+                        } else if (jsonObject.getString("success").equals("false")) {
 
-                            if (jsonObject.has("error")){
+                            if (jsonObject.has("error")) {
 
                                 EbizworldUtils.showShortToast(jsonObject.getString("error"), activity);
 
@@ -316,7 +345,7 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
                     } catch (JSONException e) {
 
                         e.printStackTrace();
-                        EbizworldUtils.appLogError("HaoLS", "GET_BRAIN_TREE_TOKEN_URL: " + e.toString());
+                        EbizworldUtils.appLogError("DAT_TOPUP_WALLET", "GET_BRAIN_TREE_TOKEN_URL: " + e.toString());
 
                     }
 
@@ -325,8 +354,7 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
 
 
             }
-                break;
-
+            break;
 
 
         }
@@ -346,10 +374,42 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
         map.put(Const.Params.ID, new PreferenceHelper(getActivity()).getUserId());
         map.put(Const.Params.TOKEN, new PreferenceHelper(getActivity()).getSessionToken());
 
-        EbizworldUtils.appLogDebug("HaoLS", "BrainTreeClientTokenMap: " + map.toString());
+        EbizworldUtils.appLogDebug("DAT_TOPUP_WALLET", "BrainTreeClientTokenMap: " + map.toString());
 
         new VolleyRequester(getActivity(), Const.POST, map, Const.ServiceCode.GET_BRAIN_TREE_TOKEN_URL_WALLET, this);
 
+    }
+
+    private void postNonceToServerWallet(String nonce, String Amount) {
+
+        Amount.replaceAll(",", "");
+
+        if (!EbizworldUtils.isNetworkAvailable(getActivity())) {
+
+            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
+
+            return;
+
+        }
+
+        Commonutils.progressdialog_show(activity, "Loading...");
+
+        HashMap<String, String> map = new HashMap<>();
+
+        map.put(Const.Params.URL, Const.ServiceType.TOP_UP_WALLET);
+        map.put(Const.Params.ID, new PreferenceHelper(getActivity()).getUserId());
+        map.put(Const.Params.TOKEN, new PreferenceHelper(getActivity()).getSessionToken());
+        // map.put(Const.Params.REQUEST_ID, String.valueOf(new PreferenceHelper(getActivity()).getUserId()));
+
+        map.put("usertype", Const.PatientService.PATIENT);
+
+        map.put(Const.Params.AMOUNT, Amount);
+
+        map.put(Const.Params.PAYMENT_METHOD_NONCE, nonce);
+
+        EbizworldUtils.appLogDebug("DAT_TOPUP_WALLET", "postNonceToServer: " + map.toString());
+
+        new VolleyRequester(getActivity(), Const.POST, map, Const.ServiceCode.POST_PAYPAL_NONCE, this);
     }
 
     @Override
@@ -377,51 +437,34 @@ public class WalletFragment extends BaseFragment  implements AsyncTaskCompleteLi
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (requestCode == Const.ServiceCode.REQUEST_PAYPAL){
+        if (requestCode == Const.ServiceCode.REQUEST_PAYPAL_WALLET) {
 
-            if (resultCode == Activity.RESULT_OK){
+            if (resultCode == Activity.RESULT_OK) {
 
                 DropInResult dropInResult = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
 
-                if (dropInResult.getPaymentMethodNonce() != null){
+                Log.d("DAT_TOPUP_WALLET", dropInResult.getPaymentMethodType().toString().trim());
 
-                    postNonceToServerWallet(dropInResult.getPaymentMethodNonce().getNonce());
-                    EbizworldUtils.appLogDebug("HaoLS", "Billing Info Nonce: " + dropInResult.getPaymentMethodNonce().getNonce());
+                if (dropInResult.getPaymentMethodNonce() != null && !Get_Money_Recharge_Wallet.isEmpty()) {
+
+                    postNonceToServerWallet(dropInResult.getPaymentMethodNonce().getNonce(), Get_Money_Recharge_Wallet);
+
+                    EbizworldUtils.appLogDebug("DAT_TOPUP_WALLET", "Billing Info Nonce: " + dropInResult.getPaymentMethodNonce().getNonce() + "   Amuont: " + Get_Money_Recharge_Wallet.toString());
 
                 }
 
-            }else if (resultCode == Activity.RESULT_CANCELED){
+            } else if (resultCode == Activity.RESULT_CANCELED) {
 
-                EbizworldUtils.showShortToast("Request is canceled", activity);
+                EbizworldUtils.showShortToast(getResources().getString(R.string.txt_request_is_canceled_paypal), activity);
 
-            }else {
+            } else {
 
                 Exception exception = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
                 EbizworldUtils.showShortToast(exception.toString(), activity);
-                EbizworldUtils.appLogError("HaoLS", "PayPal result" + exception.toString());
+                EbizworldUtils.appLogError("DAT_TOPUP_WALLET", "PayPal result" + exception.toString());
             }
         }
     }
 
-    private void postNonceToServerWallet(String nonce) {
-        if (!EbizworldUtils.isNetworkAvailable(getActivity())) {
 
-            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
-            return;
-
-        }
-
-        Commonutils.progressdialog_show(activity, "Loading...");
-        HashMap<String, String> map = new HashMap<>();
-
-        map.put(Const.Params.URL, Const.ServiceType.POST_PAYPAL_NONCE_URL);
-        map.put(Const.Params.ID, new PreferenceHelper(getActivity()).getUserId());
-        map.put(Const.Params.TOKEN, new PreferenceHelper(getActivity()).getSessionToken());
-        map.put(Const.Params.REQUEST_ID, String.valueOf(new PreferenceHelper(getActivity()).getRequestId()));
-        map.put(Const.Params.PAYMENT_METHOD_NONCE, nonce);
-
-        EbizworldUtils.appLogDebug("HaoLS", "postNonceToServer: " + map.toString());
-
-        new VolleyRequester(getActivity(), Const.POST, map, Const.ServiceCode.POST_PAYPAL_NONCE, this);
-    }
 }

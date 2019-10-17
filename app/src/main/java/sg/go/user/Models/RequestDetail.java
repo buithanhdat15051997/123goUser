@@ -20,8 +20,16 @@ public class RequestDetail implements Serializable {
     private String adStopLatitude;
     private String adStopLongitude,isAdStop,adStopAddress,isAddressChanged;
     private String later;
-    private String distance_price;
+    private String distance_price,polyline_string;
     private String a_and_e, imh, ferry_terminals, staircase, tarmac, pickup_type;
+
+    public String getPolyline_string() {
+        return polyline_string;
+    }
+
+    public void setPolyline_string(String polyline_string) {
+        this.polyline_string = polyline_string;
+    }
 
     public RequestDetail() {
 

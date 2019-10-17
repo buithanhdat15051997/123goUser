@@ -91,15 +91,22 @@
             android:textStyle="bold|italic" />
     </LinearLayout>
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_below="@+id/linear_total_wallet"
+    android:layout_marginStart="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_30sdp"
+    android:layout_marginEnd="@dimen/_10sdp"
+    android:layout_height="@dimen/_40sdp">
+    <ImageView
+        android:src="@drawable/ic_by_paypal"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp" />
     <LinearLayout
         android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
-        android:layout_below="@+id/linear_total_wallet"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_30sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
         android:background="@drawable/background_edittext"
         android:orientation="horizontal"
         android:weightSum="10">
@@ -124,6 +131,8 @@
             android:src="@drawable/ic_dollar_wallet" />
 
     </LinearLayout>
+</LinearLayout>
+
 
 
     <Button

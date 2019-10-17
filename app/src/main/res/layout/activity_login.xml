@@ -190,6 +190,7 @@
                                 android:outlineSpotShadowColor="@color/white"
                                 android:textColorHint="@color/black_text"
                                 app:boxBackgroundColor="@color/white"
+                                app:errorTextAppearance="@style/error_appearance"
                                 app:boxStrokeColor="@color/white">
 
                                 <EditText
@@ -241,6 +242,7 @@
                                 android:weightSum="1"
                                 app:boxBackgroundColor="@color/white"
                                 app:boxStrokeColor="@color/white"
+                                app:errorTextAppearance="@style/error_appearance"
                                 app:passwordToggleDrawable="@mipmap/eye"
                                 app:passwordToggleEnabled="true">
 
