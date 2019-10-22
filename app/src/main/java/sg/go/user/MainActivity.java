@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
     private TextView txt_exit_gps;
 
     private Dialog gpsAlertDialog;
-    private BottomNavigationView mBottomNavigationView;
+    public BottomNavigationView mBottomNavigationView;
 
     private BroadcastReceiver accountLogoutReceiver;
 
@@ -610,6 +610,8 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
         if (addToBackStack) {
             ft.addToBackStack(tag);
+        }else {
+            ft.addToBackStack(null);
         }
 
         ft.replace(R.id.content_frame, fragment, tag);
@@ -626,6 +628,41 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
         } else {
 
+            if (mBottomNavigationView != null)
+                mBottomNavigationView.setVisibility(View.GONE);
+
+        }
+    }
+    public void addFragmentNoRefresh(Fragment fragment, boolean addToBackStack,
+                            String tag, boolean isAnimate) {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction ft = manager.beginTransaction();
+        if (isAnimate) {
+            ft.setCustomAnimations(R.anim.slide_in_right,
+                    R.anim.slide_out_left, R.anim.slide_in_left,
+                    R.anim.slide_out_right);
+
+        }
+
+        if (addToBackStack) {
+            ft.addToBackStack(tag);
+        }else {
+            ft.addToBackStack(null);
+        }
+
+        ft.add(R.id.content_frame, fragment, tag);
+        currentFragment = tag;
+        ft.commitAllowingStateLoss();
+        mBottomNavigationView.setVisibility(View.VISIBLE);
+        if (tag.equals(Const.HOME_MAP_FRAGMENT) ||
+                tag.equals(Const.SCHEDULE_LIST_FRAGMENT) ||
+                tag.equals(Const.HISTORY_FRAGMENT) ||
+                tag.equals(Const.ACCOUNT_FRAGMENT)){
+
+            if (mBottomNavigationView != null)
+                mBottomNavigationView.setVisibility(View.VISIBLE);
+
+        } else {
             if (mBottomNavigationView != null)
                 mBottomNavigationView.setVisibility(View.GONE);
 
@@ -1099,11 +1136,11 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        Log.d("manh111111", "onNavigationItemSelected: "+currentFragment);
 
         if (currentFragment.equals(Const.TRAVEL_MAP_FRAGMENT) ||
                 currentFragment.equals(Const.REQUEST_FRAGMENT) ||
-                currentFragment.equals(Const.NURSE_REGISTER_SCHEDULE_FRAGMENT) ||
-                currentFragment.equals(Const.BILLING_INFO_FRAGMENT)) {
+                currentFragment.equals(Const.NURSE_REGISTER_SCHEDULE_FRAGMENT)) {
 
             Toast.makeText(this, getResources().getString(R.string.navigationbottom_warning), Toast.LENGTH_SHORT).show();
 

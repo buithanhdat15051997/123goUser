@@ -3,6 +3,7 @@ package sg.go.user.Fragment;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,7 +50,7 @@ import sg.go.user.Utils.EbizworldUtils;
 import sg.go.user.Utils.ParseContent;
 import sg.go.user.Utils.PreferenceHelper;
 
-public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteListener, View.OnClickListener {
+public class BillingInfoFragment extends DialogFragment implements AsyncTaskCompleteListener, View.OnClickListener {
 
     @BindView(R.id.tv_billing_info_notice)
     TextView mTv_billing_info_notice;
@@ -168,11 +170,8 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         mView = inflater.inflate(R.layout.fragment_billing_info, container, false);
         ButterKnife.bind(this, mView);
-
-
         btn_pay_wallet_demo1 = mView.findViewById(R.id.btn_pay_wallet_demo1);
         img_logo_hide_billinginfo = mView.findViewById(R.id.img_logo_hide_billinginfo);
 
@@ -184,8 +183,7 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
             billing_info_payment_group.setVisibility(View.GONE);
             billing_info_table_price_notice_group.setVisibility(View.VISIBLE);
             billing_info_request_group.setVisibility(View.VISIBLE);
-
-
+            billing_info_request_group.setVisibility(View.VISIBLE);
             /*---- SET NAME - IMAGE - DISTANCE - TIME ----*/
             tv_billing_info_kilo_distance3.setText(mRequestOptional.getKm_send_billinginfo() + " km");
             tv_billing_info_kilo_dola2.setText(mRequestOptional.getTime_send_billinginfo());
@@ -368,7 +366,10 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
             case R.id.tv_billing_info_deny: {
                 // back fragment
              //   getActivity().onBackPressed();
-                activity.addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
+
+                getActivity().getSupportFragmentManager().popBackStack();
+//                activity.onBackPressed();
+//                activity.addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
                 new RequestOptional().setOverView_Polyline("");
             }
             break;
@@ -1220,5 +1221,30 @@ public class BillingInfoFragment extends Fragment implements AsyncTaskCompleteLi
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        activity.mBottomNavigationView.setVisibility(View.VISIBLE);
+        Log.d("manh1111", "onPause: ");
+    }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        activity.mBottomNavigationView.setVisibility(View.VISIBLE);
+        Log.d("manh1111", "onStop: ");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+
+    }
 }
