@@ -106,7 +106,7 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
 
         relative_account = view.findViewById(R.id.relative_account);
 
-      //  btn_pay_wallet_demo = view.findViewById(R.id.btn_pay_wallet_demo);
+        //  btn_pay_wallet_demo = view.findViewById(R.id.btn_pay_wallet_demo);
 
         tv_build_version = (TextView) view.findViewById(R.id.tv_build_version);
 
@@ -140,6 +140,7 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
     private void ApiGetWallet() {
 
     }
+
     private void DialogPayWallet() {
 
 //        EbizworldUtils.getSimpleProgressDialog(mMainActivity,"Pls waiting",true);
@@ -407,6 +408,7 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
     private List<AccountSettings> getAccountSettingsList() {
 
         List<AccountSettings> accountSettingsList = new ArrayList<>();
+
 //        accountSettingsList.add(new AccountSettings(R.drawable.home_map_marker, getString(R.string.my_home)));
 //        accountSettingsList.add(new AccountSettings(R.drawable.flash, getString(R.string.ask_bot)));
 //        accountSettingsList.add(new AccountSettings(R.drawable.credit_card, getString(R.string.my_payment)));
@@ -414,18 +416,19 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
 //        accountSettingsList.add(new AccountSettings(R.drawable.ic_favorite_heart_button, getString(R.string.saved_places)));
 //        accountSettingsList.add(new AccountSettings(R.drawable.clock_alert, getString(R.string.ride_history)));
 
-   //     if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)) {
+        //     if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)) {
 
 //            accountSettingsList.add(new AccountSettings(R.drawable.ic_clock, getString(R.string.txt_hourly_booking)));
 //            accountSettingsList.add(new AccountSettings(R.drawable.sale, getString(R.string.referral_title)));
 //            accountSettingsList.add(new AccountSettings(R.drawable.ic_list_schedule, getString(R.string.later_title)));
 
-      //  }
+        //  }
 
-        /*accountSettingsList.add(new AccountSettings(R.drawable.wallet, getString(R.string.history_payment)));*/
-        accountSettingsList.add(0,new AccountSettings(R.drawable.ic_account_wallet,getString(R.string.nikola_wallet)));
-        accountSettingsList.add(1,new AccountSettings(R.drawable.help_circle, getString(R.string.my_help)));
-        accountSettingsList.add(2,new AccountSettings(R.drawable.ic_power_off, getString(R.string.txt_logout)));
+        accountSettingsList.add(0, new AccountSettings(R.drawable.ic_account_wallet, getString(R.string.nikola_wallet)));
+        accountSettingsList.add(1, new AccountSettings(R.drawable.help_circle, getString(R.string.my_help)));
+        accountSettingsList.add(2, new AccountSettings(R.drawable.ic_account_wallet, activity.getResources().getString(R.string.txt_choose_a_payment)));
+        accountSettingsList.add(3, new AccountSettings(R.drawable.ic_power_off, getString(R.string.txt_logout)));
+
 
         return accountSettingsList;
 
@@ -481,37 +484,40 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
 //                    mMainActivity.addFragment(new HistoryPaymentFragment(), false, Const.HISTORY_PAYMENT_FRAGMENT, true);
 //                }
 //                break;
-
                 case 1:
                     startActivity(new Intent(mMainActivity, HelpwebActivity.class));
                     break;
 
                 case 2:
-                    showLogoutDialog();
+                    mMainActivity.addFragment(new ChoosePaymentFragment(), true, Const.CHOOSE_PAYMENT_FRAGMENT, true);
                     break;
 
-            }
-
-        } else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.NursingHomeService.NURSING_HOME) ||
-                new PreferenceHelper(getActivity()).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
-
-            switch (position) {
-
-                /*case 0:{
-                    mMainActivity.addFragment(new HistoryPaymentFragment(), false, Const.HISTORY_PAYMENT_FRAGMENT, true);
-                }
-                break;*/
-
-                case 0:
-                    startActivity(new Intent(mMainActivity, HelpwebActivity.class));
-                    break;
-
-                case 1:
+                case 3:
                     showLogoutDialog();
                     break;
             }
 
         }
+//        else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.NursingHomeService.NURSING_HOME) ||
+//                new PreferenceHelper(getActivity()).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
+//
+//            switch (position) {
+//
+//                /*case 0:{
+//                    mMainActivity.addFragment(new HistoryPaymentFragment(), false, Const.HISTORY_PAYMENT_FRAGMENT, true);
+//                }
+//                break;*/
+//
+//                case 0:
+//                    startActivity(new Intent(mMainActivity, HelpwebActivity.class));
+//                    break;
+//
+//                case 1:
+//                    showLogoutDialog();
+//                    break;
+//            }
+//
+//        }
 
 
     }
@@ -602,14 +608,14 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
 
     private void showLogoutDialog() {
 
-        dialog = new Dialog(mMainActivity,R.style.Custom_Dialog);
+        dialog = new Dialog(mMainActivity, R.style.Custom_Dialog);
         //, R.style.DialogThemeforview
 
         dialog.setCancelable(true);
         dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
 
         Window window = dialog.getWindow();
-        if(window != null){
+        if (window != null) {
             window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND); // This flag is required to set otherwise the setDimAmount method will not show any effect
             window.setDimAmount(0.5f); //0 for no dim to 1 for full dim
         }
@@ -648,8 +654,6 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
                 dialog.dismiss();
             }
         });
-
-
 
 
     }

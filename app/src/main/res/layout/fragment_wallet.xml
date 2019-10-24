@@ -45,9 +45,9 @@
 
         android:id="@+id/img_pay_ewallet"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/_150sdp"
+        android:layout_height="@dimen/_140sdp"
         android:layout_below="@+id/toolbar_wallet"
-        android:layout_margin="@dimen/_15sdp"
+        android:layout_margin="@dimen/_10sdp"
         android:src="@drawable/img_card_wallet"
 
         />
@@ -83,56 +83,58 @@
             android:id="@+id/txt_total_money_wallet"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
-            android:paddingStart="@dimen/_20sdp"
             android:layout_gravity="center_vertical"
-            android:hint="@string/txt_total_pay_wallet"
+            android:hint="S$ 0"
+            android:paddingStart="@dimen/_20sdp"
             android:textColor="@color/color_btn_main"
             android:textSize="@dimen/_16sdp"
             android:textStyle="bold|italic" />
     </LinearLayout>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:orientation="horizontal"
-    android:layout_below="@+id/linear_total_wallet"
-    android:layout_marginStart="@dimen/_10sdp"
-    android:layout_marginTop="@dimen/_30sdp"
-    android:layout_marginEnd="@dimen/_10sdp"
-    android:layout_height="@dimen/_40sdp">
-    <ImageView
-        android:src="@drawable/ic_by_paypal"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp" />
     <LinearLayout
-        android:visibility="visible"
+        android:id="@+id/linear_enter_money"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
-        android:background="@drawable/background_edittext"
-        android:orientation="horizontal"
-        android:weightSum="10">
-
-        <EditText
-            android:id="@+id/edt_input_money_wallet"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="@dimen/_4sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:layout_weight="8"
-            android:background="@null"
-            android:hint="@string/edt_hint_input_money_wallet"
-            android:inputType="numberDecimal|textMultiLine|textNoSuggestions|text|textCapSentences"
-            android:textColor="@color/black_text" />
+        android:layout_below="@+id/linear_total_wallet"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_2sdp"
-            android:layout_weight="2"
-            android:src="@drawable/ic_dollar_wallet" />
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:src="@drawable/ic_by_paypal" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@drawable/background_edittext"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:weightSum="10">
+
+            <EditText
+                android:id="@+id/edt_input_money_wallet"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_weight="8"
+                android:background="@null"
+                android:hint="@string/edt_hint_input_money_wallet"
+                android:inputType="numberDecimal|textMultiLine|textNoSuggestions|text|textCapSentences"
+                android:textColor="@color/black_text" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_2sdp"
+                android:layout_weight="2"
+                android:src="@drawable/ic_dollar_wallet" />
+
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
-
 
 
     <Button
@@ -146,9 +148,32 @@
         android:layout_marginBottom="@dimen/_5sdp"
         android:background="@color/color_btn_main"
         android:gravity="center"
-        android:textSize="@dimen/_14ssp"
         android:text="@string/recharge_wallet"
         android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
         android:textStyle="bold" />
+
+
+    <!--<ImageView-->
+    <!--android:id="@+id/btn_show_history_TopUp_wallet"-->
+    <!--android:layout_width="@dimen/_40sdp"-->
+    <!--android:layout_height="@dimen/_40sdp"-->
+    <!--android:src="@drawable/ic_by_paypal" />-->
+
+    <Button
+        android:id="@+id/btn_show_history_TopUp_wallet"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_above="@+id/btn_recharge_ewallet"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@color/color_btn_main"
+        android:gravity="center"
+        android:text="@string/txt_top_up_history"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold" />
+
 
 </RelativeLayout>

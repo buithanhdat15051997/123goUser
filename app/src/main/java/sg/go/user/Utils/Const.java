@@ -53,10 +53,13 @@ public class Const {
     public static final String NURSE_REGISTER_SCHEDULE_FRAGMENT = "nurse_register_schedule_fragment";
     public static final String SCHEDULE_LIST_FRAGMENT = "list_schedule_fragment";
 
+    public static final String CHOOSE_PAYMENT_FRAGMENT = "choose_payment_fragment";
+
+    public static final String HISTORY_TOPUP_WALLET_FRAMENT = "history_topup_fragment";
+
     public static final String BILLING_INFO_FRAGMENT = "billing_info_fragment";
 
     public static final String HISTORY_PAYMENT_FRAGMENT = "history_payment_fragment";
-
 
 
     public static final String CANCELLATION_POLICY_DIALOGFRAGMENT = "cancellation_policy_dialogfragment";
@@ -89,7 +92,7 @@ public class Const {
 
     public static final String GOOGLE_MATRIX_URL = "https://maps.googleapis.com/maps/api/distancematrix/json?";
 
-    public class GoogleAPIParams{
+    public class GoogleAPIParams {
 
         public static final String DESTINATION_ADDRESSES = "destination_addresses";
         public static final String ORIGIN_ADDRESSES = "origin_addresses";
@@ -107,7 +110,7 @@ public class Const {
         public static final String TOKEN = "token";
         public static final String SOCIAL_ID = "social_unique_id";
 
-        public static final String AMOUNT ="amount";
+        public static final String AMOUNT = "amount";
         public static final String URL = "url";
         public static final String PICTURE = "picture";
         public static final String EMAIL = "email";
@@ -162,76 +165,78 @@ public class Const {
         public static final String REMARK = "comment";
         public static final String REFERRAL_CODE = "referral_code";
         public static final String REFERRAL_BONUS = "referee_bonus";
-        public static final String FAV_ID ="fav_id" ;
-        public static final String ADDRESS ="address" ;
-        public static final String FAVOURITE_NAME ="favourite_name" ;
-        public static final String IS_ADSTOP ="is_adstop" ;
-        public static final String ADSTOP_LONGITUDE ="adstop_longitude" ;
+        public static final String FAV_ID = "fav_id";
+        public static final String ADDRESS = "address";
+        public static final String FAVOURITE_NAME = "favourite_name";
+        public static final String IS_ADSTOP = "is_adstop";
+        public static final String ADSTOP_LONGITUDE = "adstop_longitude";
         public static final String ADSTOP_LATITUDE = "adstop_latitude";
-        public static final String ADSTOP_ADDRESS ="adstop_address" ;
-        public static final String CHANGE_TYPE ="change_type" ;
-        public static final String OPERATOR_ID ="operator_id";
-        public static final String SCHEDULE_REQUEST_TIME ="requested_time";
-        public static final String SCHEDULE_PATIENT_NAME ="patient_name";
-        public static final String SCHEDULE_PURPOSE ="purpose";
-        public static final String SCHEDULE_TRIPS ="trips";
-        public static final String SCHEDULE_SPECIAL_REQUEST ="special_request";
-        public static final String SCHEDULE_ROOM_NUMBER ="room_no";
-        public static final String SCHEDULE_FLOOR_NUMBER ="floor_no";
-        public static final String SCHEDULE_BED_NUMBER ="bed_no";
-        public static final String SCHEDULE_WARD_NUMBER ="ward_no";
-        public static final String SCHEDULE_HOSPITAL ="hospital";
-        public static final String SCHEDULE_ASSISTIVE_DEVICE ="assistive_device";
-        public static final String SCHEDULE_OXYGEN_TANK ="oxygen_tank";
-        public static final String CASE_TYPE ="case_type";
-        public static final String ARR_REQUEST ="arr_request";
-        public static final String TYPE ="type";
-        public static final String CONTACT_NAME ="contact_name";
-        public static final String CONTACT_NO ="contact_no";
-        public static final String PREFERRED_USERNAME ="preferred_username";
-        public static final String FAMILY_MEMBER_NAME ="family_member_name";
-        public static final String HOME_NUMBER ="home_number";
-        public static final String BLOCK_NUMBER ="block_no";
-        public static final String UNIT_NUMBER ="unit_no";
-        public static final String STREET_NAME ="street_name";
-        public static final String POSTAL ="postal";
-        public static final String WEIGHT ="weight";
-        public static final String LIFT_LANDING ="lift_landing";
-        public static final String STAIRS ="stairs";
-        public static final String NO_STAIRS ="no_stairs";
-        public static final String LOW_STAIRS ="low_stairs";
-        public static final String PATIENT_CONDITION ="patient_condition";
-        public static final String STRETCHER ="stretcher";
-        public static final String WHEEL_CHAIR ="wheel_chair";
-        public static final String OXYGEN ="oxygen_tank";
-        public static final String ESCORTS ="escorts";
-        public static final String ADD_INFORMATION ="add_information";
-        public static final String DATA ="data";
+        public static final String ADSTOP_ADDRESS = "adstop_address";
+        public static final String CHANGE_TYPE = "change_type";
+        public static final String OPERATOR_ID = "operator_id";
+        public static final String SCHEDULE_REQUEST_TIME = "requested_time";
+        public static final String SCHEDULE_PATIENT_NAME = "patient_name";
+        public static final String SCHEDULE_PURPOSE = "purpose";
+        public static final String SCHEDULE_TRIPS = "trips";
+        public static final String SCHEDULE_SPECIAL_REQUEST = "special_request";
+        public static final String SCHEDULE_ROOM_NUMBER = "room_no";
+        public static final String SCHEDULE_FLOOR_NUMBER = "floor_no";
+        public static final String SCHEDULE_BED_NUMBER = "bed_no";
+        public static final String SCHEDULE_WARD_NUMBER = "ward_no";
+        public static final String SCHEDULE_HOSPITAL = "hospital";
+        public static final String SCHEDULE_ASSISTIVE_DEVICE = "assistive_device";
+        public static final String SCHEDULE_OXYGEN_TANK = "oxygen_tank";
+        public static final String CASE_TYPE = "case_type";
+        public static final String ARR_REQUEST = "arr_request";
+        public static final String TYPE = "type";
+        public static final String CONTACT_NAME = "contact_name";
+        public static final String CONTACT_NO = "contact_no";
+        public static final String PREFERRED_USERNAME = "preferred_username";
+        public static final String FAMILY_MEMBER_NAME = "family_member_name";
+        public static final String HOME_NUMBER = "home_number";
+        public static final String BLOCK_NUMBER = "block_no";
+        public static final String UNIT_NUMBER = "unit_no";
+        public static final String STREET_NAME = "street_name";
+        public static final String POSTAL = "postal";
+        public static final String WEIGHT = "weight";
+        public static final String LIFT_LANDING = "lift_landing";
+        public static final String STAIRS = "stairs";
+        public static final String NO_STAIRS = "no_stairs";
+        public static final String LOW_STAIRS = "low_stairs";
+        public static final String PATIENT_CONDITION = "patient_condition";
+        public static final String STRETCHER = "stretcher";
+        public static final String WHEEL_CHAIR = "wheel_chair";
+        public static final String OXYGEN = "oxygen_tank";
+        public static final String ESCORTS = "escorts";
+        public static final String ADD_INFORMATION = "add_information";
+        public static final String DATA = "data";
         public static final String FLOOR_NUMBER = "floor";
         public static final String WARD = "ward";
         public static final String PICKUP_TYPE = "type_pickup";
-        public static final String FERRY_TERMINALS ="ferry_terminals";
-        public static final String IMH ="imh";
-        public static final String STAIRCASE ="staircase";
-        public static final String A_AND_E ="a_e";
-        public static final String TARMAC ="tarmac";
-        public static final String FAMILY_MEMBER ="family_member";
-        public static final String HOUSE_UNIT ="house_unit";
-        public static final String INVOICE ="invoice";
-        public static final String BILLING_INFO ="billinfo";
-        public static final String TOTAL ="total";
-        public static final String REQUEST_OPTIONAL ="request_optional";
-        public static final String LATER ="later";
+        public static final String FERRY_TERMINALS = "ferry_terminals";
+        public static final String IMH = "imh";
+        public static final String STAIRCASE = "staircase";
+        public static final String A_AND_E = "a_e";
+        public static final String TARMAC = "tarmac";
+        public static final String FAMILY_MEMBER = "family_member";
+        public static final String HOUSE_UNIT = "house_unit";
+        public static final String INVOICE = "invoice";
+        public static final String BILLING_INFO = "billinfo";
+        public static final String TOTAL = "total";
+        public static final String REQUEST_OPTIONAL = "request_optional";
+        public static final String LATER = "later";
         public static final String PLATE_NO = "plate_no";
         public static final String TIME_OF_DISCHARGE = "time_discharge";
 
-        public  static  final  String SERVICE_TYPE_CAR="service_type";
-        public  static  final  String SERVICE_KILOMET="km";
+        public static final String SERVICE_TYPE_CAR = "service_type";
+        public static final String SERVICE_KILOMET = "km";
+
+        public static final String CHOOSE_PAYMENT_SELECT_TYPE ="pre_select_type";
     }
 
     public class ServiceType {
         public static final String SOCKET_URL = "http://go123.cf:4000?";// dev socket server
-      //  public static final String SOCKET_URL = "http://ambulance2u.qooservices.cf:3000?";// dev socket server
+        //  public static final String SOCKET_URL = "http://ambulance2u.qooservices.cf:3000?";// dev socket server
 //        public static final String HOST_URL = "http://ambulance2u.qooservices.cf/";// PL developing server
 
 //        public static final String SOCKET_URL = "https://halp.sg:3000?";// dev socket server
@@ -282,12 +287,20 @@ public class Const {
         public static final String POST_PAYPAL_NONCE_URL = BASE_URL + "paymentcheckout";
         public static final String PAYMENT_CASH = BASE_URL + "paymentcash";
 
-        public static final String TOP_UP_WALLET = BASE_URL+"paymenttopupmoney";
+        public static final String TOP_UP_WALLET = BASE_URL + "paymenttopupmoney";
 
-        public static final String PAYMENT_WALLLET = BASE_URL +"paymentwallet";
+        public static final String PAYMENT_WALLLET = BASE_URL + "paymentwallet";
 
         public static final String HISTORY_PAYMENT = BASE_URL + "historypayment";
         public static final String BILLING_INFO = BASE_URL + "billinfo";
+
+        public static final String HISTORY_TOPUP_WALLET = BASE_URL + "historytopup";
+
+
+        public static final String CHOOSE_PAYMENT_TYPE = BASE_URL + "selectpaymenttype";
+
+        public static final String GET_TYPE_CHOOSE_PAYMENT = BASE_URL + "checkselectedType";
+
 
         // wallet config
         public static final String WALLET_HOST_URL = "http://walletbay.net/apps";
@@ -295,14 +308,14 @@ public class Const {
         public static final String WALLET_TYPES = WALLET_BASE_URL + "payment-gateways";
         public static final String WALLET_BALANCE = WALLET_HOST_URL + "/api/businesses/users/";
 
-        public static final String GET_SAVED_PLACES =BASE_URL+"userFavourites" ;
-        public static final String CANCEL_FAV =BASE_URL+"deleteuserFavourite" ;
-        public static final String ADD_FAV =BASE_URL+"adduserFavourite" ;
+        public static final String GET_SAVED_PLACES = BASE_URL + "userFavourites";
+        public static final String CANCEL_FAV = BASE_URL + "deleteuserFavourite";
+        public static final String ADD_FAV = BASE_URL + "adduserFavourite";
         public static final String LOGOUT_URL = BASE_URL + "logout";
         public static final String GET_VERSION = HOST_URL + "get_version";
-        public static final String MESSAGE_GET =BASE_URL+"message/get" ;
-        public static final String UPDATE_ADDRESS =BASE_URL+"updateAddress" ;
-        public static final String APPLY_REFERRAL = BASE_URL+"applyReferral";
+        public static final String MESSAGE_GET = BASE_URL + "message/get";
+        public static final String UPDATE_ADDRESS = BASE_URL + "updateAddress";
+        public static final String APPLY_REFERRAL = BASE_URL + "applyReferral";
     }
 
     public class NursingHomeService {
@@ -336,7 +349,7 @@ public class Const {
 
     }
 
-    public class HospitalService{
+    public class HospitalService {
 
         public static final String HOSPITAL = "hospital";
         public static final String HOSPITAL_BASE_URL = ServiceType.HOST_URL + "HospitalApi/";
@@ -374,7 +387,7 @@ public class Const {
 
     }
 
-    public class ScheduleStatus{
+    public class ScheduleStatus {
 
         public static final String PENDING = "pending";
         public static final String SENT = "sent";
@@ -385,7 +398,7 @@ public class Const {
 
     }
 
-    public class NotificationType{
+    public class NotificationType {
 
         public static final String SCHEDULE = "schedule";
         public static final String TYPE_SCHEDULE_STARTED = "start_schedule";
@@ -454,15 +467,15 @@ public class Const {
         public static final int WALLET_CREDIT = 42;
         public static final int WALLET_PAYGATE = 43;
         public static final int CANCEL_REASON = 44;
-        public static final int VALIDATE_PROMO =45;
+        public static final int VALIDATE_PROMO = 45;
         public static final int GET_SAVED_PLACES = 46;
         public static final int CANCEL_FAV = 47;
-        public static final int ADD_FAV =48 ;
+        public static final int ADD_FAV = 48;
         public static final int ADVERTISEMENTS = 49;
         public static final int LOGOUT = 50;
         public static final int GET_VERSION = 51;
         public static final int MESSAGE_GET = 52;
-        public static final int GEO_DEST =53 ;
+        public static final int GEO_DEST = 53;
         public static final int UPDATE_ADDRESS = 54;
         public static final int APPLY_REFERRAL = 55;
         public static final int NURSE_LOGIN = 56;
@@ -481,9 +494,13 @@ public class Const {
         public static final int REQUEST_PAYPAL_WALLET = 7991;
         public static final int SHOW_RECHARGE_WALLET = 1998;
 
+        public static final int GET_TYPE_CHOOSE_PAYMENT = 61;
+
+        public static final int CHOOSE_A_PAYMENT = 62;
+
     }
 
-    public class PermissionRequestCode{
+    public class PermissionRequestCode {
 
         public static final int ACCESS_LOCATION = 1;
         public static final int INTERNET = 2;
@@ -502,7 +519,7 @@ public class Const {
 
     }
 
-    public class GoogleMapAPI{
+    public class GoogleMapAPI {
 
         public static final String NEARBY_PLACE_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?";
         public static final String LOCATION = "location=";
@@ -537,6 +554,6 @@ public class Const {
     public static final String DIRECTION_API_BASE = "https://maps.googleapis.com/maps/api/directions/json?";
     public static final String ORIGIN = "origin";
     public static final String DESTINATION = "destination";
-    public static final String WAYPOINTS ="waypoints" ;
+    public static final String WAYPOINTS = "waypoints";
     public static final String EXTANCTION = "sensor=false&units=metric&mode=driving&alternatives=true&key=" + Const.GOOGLE_API_KEY;
 }

@@ -114,7 +114,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
     private SharedPreferences saveState;
 
-    private  Bundle outSate;
+    private Bundle outSate;
 
     private ArrayList<Marker> mMarkersMap = new ArrayList<>();
     private LocationHelper locHelper;
@@ -167,6 +167,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
     private RecyclerView Recyc_Type_Car;
     private RequestOptional mRequestOptional_Home;
     private ImageView img_cancel_choss_type_car;
+    private TextView txt_select_prefered;
 
     ProgressBar progressBarHome;
 
@@ -254,7 +255,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 //                    .getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
 //            OverView_Polyline_Home = routeArray.getJSONObject(0).getJSONObject("overview_polyline").getString("points");
 
-            String color[] = {"#E53935", "#42A5F5", "#FBC02D"};
+            String color[] = {"#E13B24", "#2683AA", "#35B1A8"};
 
             int i;
             for (i = 0; i < routeArray.length(); i++) {
@@ -301,10 +302,11 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                     googleMap.setOnPolylineClickListener(new GoogleMap.OnPolylineClickListener() {
                         @Override
                         public void onPolylineClick(Polyline polyline) {
+
                             //  linearLayoutShowDirec.setVisibility(View.VISIBLE);
 
                             String txt_Name[] = {" A", " B", " C"};
-                            String color[] = {"#E53935", "#42A5F5", "#FBC02D"};
+                            //  String color[] = {"#E53935", "#42A5F5", "#FBC02D"};
                             for (int j = 0; j < polylineData.size(); j++) {
 
                                 if (polylineData.get(j).getColor() == polyline.getColor()) {
@@ -339,7 +341,12 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                                 }
 
                             }
+
                             poly_line_click_home = polyline;
+
+                            /*---- Open Bottom Sheet ----*/
+                            OpenBottomSheet();
+
                         }
                     });
                 }
@@ -353,7 +360,6 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         setVisiableCardShowMain();
 
         ClickButtonRoutes();
-
 
     }
 
@@ -374,7 +380,32 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
             arrayListButtonShow.get(j).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    Log.d("TEST", finalJ + "");
+
+                    if (finalJ == 0) {
+
+                        arrayListButtonShow.get(0).setTextColor(getResources().getColor(R.color.color_btn_main));
+                        arrayListButtonShow.get(1).setTextColor(getResources().getColor(R.color.black_text));
+                        arrayListButtonShow.get(2).setTextColor(getResources().getColor(R.color.black_text));
+
+                    } else if (finalJ == 1) {
+
+                        arrayListButtonShow.get(1).setTextColor(getResources().getColor(R.color.color_btn_main));
+                        arrayListButtonShow.get(0).setTextColor(getResources().getColor(R.color.black_text));
+                        arrayListButtonShow.get(2).setTextColor(getResources().getColor(R.color.black_text));
+
+                    } else {
+
+                        arrayListButtonShow.get(2).setTextColor(getResources().getColor(R.color.color_btn_main));
+                        arrayListButtonShow.get(0).setTextColor(getResources().getColor(R.color.black_text));
+                        arrayListButtonShow.get(1).setTextColor(getResources().getColor(R.color.black_text));
+
+                    }
+
+
                     ClickPolylinesHome(finalJ);
+
                 }
             });
         }
@@ -415,9 +446,13 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
 
         if (fromLocation != null && toLocation != null) {
+
             GetfindDistanceAndTimeforTypes(fromLocation, toLocation);
+
         } else {
+
             Toast.makeText(activity, "null", Toast.LENGTH_SHORT).show();
+
         }
 
         poly_line_click_home = polylineData.get(finalJ);
@@ -426,13 +461,14 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
         String txt_Name[] = {" A", " B", " C"};
 
-        String color[] = {"#E53935", "#42A5F5", "#FBC02D"};
+        // String color[] = {"#E53935", "#42A5F5", "#FBC02D"};
 
         for (int j = 0; j < polylineData.size(); j++) {
 
             if (polylineData.get(j).getColor() == poly_line_click_home.getColor()) {
 
                 try {
+
                     Log.d("DatTest3Routes", String.valueOf(routeArray.getJSONObject(j).getJSONObject("overview_polyline").getString("points")));
 
                     OverView_Polyline_Home = routeArray.getJSONObject(j).getJSONObject("overview_polyline").getString("points");
@@ -447,8 +483,6 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                             .fromBitmap(getMarkerBitmapFromView(Time_Request_Home))));
 
 //                    txt_ShowNameRoutes.setBackgroundColor(Color.parseColor(color[j]));
-
-//                    Toast.makeText(activity, Distance_Request_Home + " " + Time_Request_Home, Toast.LENGTH_SHORT).show();
 
                     polylineData.get(j).setZIndex(1);
 
@@ -468,7 +502,16 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         }
 
         /*---- Open Bottom Sheet ----*/
+
+        OpenBottomSheet();
+
 //        Toast.makeText(activity, "Hihi", Toast.LENGTH_SHORT).show();
+
+
+    }
+
+    private void OpenBottomSheet() {
+
         bottomSheetLayout1.setVisibility(View.VISIBLE);
         bottomSheetBehavior1.setState(BottomSheetBehavior.STATE_EXPANDED);
         bottomSheetBehavior1.setState(BottomSheetBehavior.STATE_COLLAPSED);
@@ -492,20 +535,21 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
             }
         });
-
     }
 
     private void setVisiableCardShowMain() {
 
-        String color2[] = {"#E53935", "#42A5F5", "#FBC02D"};
+        // String color2[] = {"#E53935", "#42A5F5", "#FBC02D"};
         String txt_Name2[] = {"A", "B", "C"};
 
         for (int i = 0; i < polylineData.size(); i++) {
 
             arrayListLinearShow.get(i).setVisibility(View.VISIBLE);
+
+            txt_select_prefered.setVisibility(View.VISIBLE);
 //            arrayListButtonShow.get(i).setVisibility(View.VISIBLE);
 
-            arrayListButtonShow.get(i).setTextColor(Color.parseColor(color2[i]));
+            //   arrayListButtonShow.get(i).setTextColor(Color.parseColor(color2[i]));
 
             try {
 
@@ -575,6 +619,8 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         typeCarRequest_ArrayList_home = new ArrayList<>();
 
         progressBarHome = view.findViewById(R.id.spin_kitHome);
+
+        txt_select_prefered = view.findViewById(R.id.txt_select_prefered);
 
         com.github.ybq.android.spinkit.style.Circle fadingCircle = new Circle();
 
@@ -697,13 +743,13 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         ((ImageView) view.findViewById(R.id.btn_pickLoc)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (null != googleMap && currentLatLan != null){
-                 //   btn_pickLoc.setVisibility(View.VISIBLE);
+                if (null != googleMap && currentLatLan != null) {
+                    //   btn_pickLoc.setVisibility(View.VISIBLE);
                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLan, 15));
                     PickUpMarker.setPosition(currentLatLan);
                     getCompleteAddressString(currentLatLan);
-                }else {
-                    Toast.makeText(activity, ""+getResources().getString(R.string.txt_toast_not_found_current_location), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(activity, "" + getResources().getString(R.string.txt_toast_not_found_current_location), Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -1049,7 +1095,9 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
+
             if (resultCode == RESULT_OK) {
+
                 final Place place = PlaceAutocomplete.getPlace(activity, data);
                 /*gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(),
                         15));*/
@@ -1475,6 +1523,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                                         getTripOptional_Home(position + 1);
 
                                         if (mRequestOptional_Home != null) {
+
                                             // Save PreferenceHelper
                                             new PreferenceHelper(activity).putTypeCarBillingInfo(typeCarRequest_ArrayList_home.get(position).getName_Type_Car_Request());
                                             new PreferenceHelper(activity).putImageTypeCarBillingInfo(typeCarRequest_ArrayList_home.get(position).getImga_Type_Car_Request());
@@ -1486,7 +1535,11 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                                             BillingInfoFragment billingInfoFragment = new BillingInfoFragment();
                                             billingInfoFragment.setArguments(bundle);
-                                            activity.addFragment(billingInfoFragment, true, Const.BILLING_INFO_FRAGMENT, true);
+
+                                            activity.addFragmentNoRefresh(billingInfoFragment, false, Const.HOME_MAP_FRAGMENT, true);
+
+                                            bottomSheetLayout1.setVisibility(View.VISIBLE);
+
 
                                         } else {
                                             Toast.makeText(activity, "Null", Toast.LENGTH_SHORT).show();
@@ -1528,7 +1581,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                         for (int z = 0; z < polylineData.size(); z++) {
 
-                            arrayListLinearShow.get(z).setVisibility(View.INVISIBLE);
+                            arrayListLinearShow.get(z).setVisibility(View.GONE);
 
                         }
 
@@ -2149,7 +2202,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         Log.d("onPause", SearchPlaceFragment.class.getName());
         if (fromLocation != null && toLocation != null) {
 
-            Log.d("TEST", fromLocation.toString()+toLocation.toString());
+            Log.d("TEST", fromLocation.toString() + toLocation.toString());
 
             saveState = getActivity().getSharedPreferences("save_location", Context.MODE_PRIVATE);
 
@@ -2166,7 +2219,6 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
             editor.apply();
 
             editor.commit();
-
 
 
         }

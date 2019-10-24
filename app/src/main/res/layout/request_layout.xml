@@ -4,32 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-<RelativeLayout
 
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    <RelativeLayout
 
-    <TextView
-        android:textStyle="bold"
-        android:id="@+id/tv_optional"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_30sdp"
-        android:background="@color/white"
-        android:gravity="center"
-        android:text="@string/txt_next"
-        android:textAllCaps="true"
-        android:textColor="@color/color_btn_main"
-        android:textSize="@dimen/_14ssp" />
-    <ImageView
-        android:id="@+id/img_cancel_choss_type_car"
-        android:layout_marginRight="@dimen/_15sdp"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/crop__ic_cancel"
-        android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_30sdp" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tv_optional"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@color/color_btn_main"
+            android:gravity="center"
+            android:text="Select Car Type and Go"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/img_cancel_choss_type_car"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:src="@drawable/crop__ic_cancel" />
+
+    </RelativeLayout>
 
 
     <android.support.v4.widget.NestedScrollView
@@ -40,7 +42,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/color_btn_main"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -56,21 +58,24 @@
                     android:layout_height="@dimen/_1sdp"
                     android:layout_marginStart="@dimen/_20sdp"
                     android:layout_marginEnd="@dimen/_20sdp"
+                    android:background="@color/white"
                     android:gravity="center"
-                    android:background="@color/black_text"
                     android:textSize="@dimen/_10ssp"
                     android:textStyle="bold|italic" />
-<!--
-                android:text="@string/ambulance_operator_notice"
--->
+
+
+                <!--
+                                android:text="@string/ambulance_operator_notice"
+                -->
 
                 <!--Recycler View-->
                 <android.support.v7.widget.RecyclerView
-                    android:layout_marginTop="@dimen/_4sdp"
                     android:id="@+id/Recyc_Type_Car"
-                    android:layout_gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    >
 
                 </android.support.v7.widget.RecyclerView>
 
@@ -257,11 +262,11 @@
                 android:visibility="gone" />
 
             <LinearLayout
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <CheckBox
                     android:id="@+id/tv_tarmac_value"
@@ -279,7 +284,6 @@
                     android:visibility="gone" />
 
                 <CheckBox
-                    android:visibility="invisible"
                     android:id="@+id/cb_staircase_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -292,18 +296,20 @@
                     android:gravity="center"
                     android:text="@string/staircase_less_80"
                     android:textColor="@color/lightblueA700"
-                    android:textSize="@dimen/_12ssp" />
+                    android:textSize="@dimen/_12ssp"
+                    android:visibility="invisible" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginBottom="@dimen/_5sdp">
+                android:visibility="gone">
+
                 <TextView
                     android:id="@+id/tv_house_unit"
                     android:layout_width="match_parent"
@@ -337,11 +343,11 @@
             </LinearLayout>
 
             <LinearLayout
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_family_member"
@@ -374,11 +380,11 @@
             </LinearLayout>
 
             <LinearLayout
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_weight"
@@ -448,11 +454,11 @@
             </LinearLayout>-->
 
             <LinearLayout
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_oxygen_tank"
@@ -485,11 +491,11 @@
             </LinearLayout>
 
             <LinearLayout
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_pickup_type"
@@ -555,7 +561,6 @@
                 android:background="@color/dark_grey" />
 
             <EditText
-                android:visibility="gone"
                 android:id="@+id/trip_remark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -570,7 +575,8 @@
                 android:textColor="@color/lightblue700"
                 android:textColorHint="@color/lightblue700"
                 android:textSize="@dimen/_12ssp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:visibility="gone" />
 
             <!--Payment option-->
             <RelativeLayout
@@ -658,7 +664,6 @@
             </LinearLayout>
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/btn_request_cab"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
@@ -672,7 +677,8 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_10ssp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone" />
 
         </LinearLayout>
 

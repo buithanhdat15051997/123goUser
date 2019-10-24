@@ -87,11 +87,10 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
         mSwipeRefreshLayout = (SwipeRefreshLayout) mViewRoot.findViewById(R.id.swipe_refresh_history_ride_list);
 
 
-
         mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.color_background_main));
         mSwipeRefreshLayout.setOnRefreshListener(this);
 
-        if (getActivity() != null){
+        if (getActivity() != null) {
 
             ((AppCompatActivity) getActivity()).setSupportActionBar(historymainToolbar);
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(null);
@@ -100,23 +99,23 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
                 @Override
                 public void onItemClick(View view, int position) {
 
-                    switch (new PreferenceHelper(activity).getLoginType()){
+                    switch (new PreferenceHelper(activity).getLoginType()) {
 
-                        case Const.PatientService.PATIENT:{
+                        case Const.PatientService.PATIENT: {
 
                             showDetailedHistroy(historylst.get(position));
 
                         }
                         break;
 
-                        case Const.NursingHomeService.NURSING_HOME:{
+                        case Const.NursingHomeService.NURSING_HOME: {
 
                             showNursingHomeDetailedHistroy(historylst.get(position));
 
                         }
                         break;
 
-                        case Const.HospitalService.HOSPITAL:{
+                        case Const.HospitalService.HOSPITAL: {
 
                             showHospitalDetailedHistroy(historylst.get(position));
 
@@ -133,24 +132,24 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
             }));
         }
 
-        switch (new PreferenceHelper(activity).getLoginType()){
+        switch (new PreferenceHelper(activity).getLoginType()) {
 
-            case Const.PatientService.PATIENT:{
+            case Const.PatientService.PATIENT: {
 
                 new HistoryListAPI(activity, this).getPatientHistory(Const.ServiceCode.GET_HISTORY);
-                EbizworldUtils.showSimpleProgressDialog(activity,"Loading...",true);
+                EbizworldUtils.showSimpleProgressDialog(activity, getResources().getString(R.string.txt_load), true);
 
             }
             break;
 
-            case Const.NursingHomeService.NURSING_HOME:{
+            case Const.NursingHomeService.NURSING_HOME: {
 
                 new HistoryListAPI(activity, this).getNursingHomeHistory(Const.ServiceCode.GET_HISTORY);
 
             }
             break;
 
-            case Const.HospitalService.HOSPITAL:{
+            case Const.HospitalService.HOSPITAL: {
 
                 new HistoryListAPI(activity, this).getHospitalHistory(Const.ServiceCode.GET_HISTORY);
 
@@ -164,7 +163,7 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
     @Override
     public void onTaskCompleted(String response, int serviceCode) {
 
-        if (getActivity() != null){
+        if (getActivity() != null) {
 
             switch (serviceCode) {
 
@@ -214,57 +213,57 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
                                         history.setCurrnecy_unit(jsonObject.getString("currency"));
                                         history.setDistance_unit(jsonObject.optString("distance_unit"));
 
-                                        if (jsonObject.has(Const.Params.LATER)){
+                                        if (jsonObject.has(Const.Params.LATER)) {
 
                                             history.setLater(jsonObject.getString(Const.Params.LATER));
                                         }
 
-                                        if (jsonObject.has(Const.Params.PLATE_NO)){
+                                        if (jsonObject.has(Const.Params.PLATE_NO)) {
 
                                             history.setPlate_number(jsonObject.getString(Const.Params.PLATE_NO));
                                         }
 
-                                        if (jsonObject.has(Const.Params.A_AND_E)){
+                                        if (jsonObject.has(Const.Params.A_AND_E)) {
 
                                             history.setA_and_e(jsonObject.getString(Const.Params.A_AND_E));
                                         }
 
-                                        if (jsonObject.has(Const.Params.IMH)){
+                                        if (jsonObject.has(Const.Params.IMH)) {
 
                                             history.setImh(jsonObject.getString(Const.Params.IMH));
                                         }
 
-                                        if (jsonObject.has(Const.Params.FERRY_TERMINALS)){
+                                        if (jsonObject.has(Const.Params.FERRY_TERMINALS)) {
 
                                             history.setFerry_terminals(jsonObject.getString(Const.Params.FERRY_TERMINALS));
                                         }
 
-                                        if (jsonObject.has(Const.Params.STAIRCASE)){
+                                        if (jsonObject.has(Const.Params.STAIRCASE)) {
 
                                             history.setStaircase(jsonObject.getString(Const.Params.STAIRCASE));
                                         }
 
-                                        if (jsonObject.has(Const.Params.TARMAC)){
+                                        if (jsonObject.has(Const.Params.TARMAC)) {
 
                                             history.setTarmac(jsonObject.getString(Const.Params.TARMAC));
                                         }
 
-                                        if (jsonObject.has(Const.Params.WEIGHT)){
+                                        if (jsonObject.has(Const.Params.WEIGHT)) {
 
                                             history.setWeight(jsonObject.getString(Const.Params.WEIGHT));
                                         }
 
-                                        if (jsonObject.has(Const.Params.HOUSE_UNIT)){
+                                        if (jsonObject.has(Const.Params.HOUSE_UNIT)) {
 
                                             history.setHouseUnit(jsonObject.getString(Const.Params.HOUSE_UNIT));
                                         }
 
-                                        if (jsonObject.has(Const.Params.OXYGEN)){
+                                        if (jsonObject.has(Const.Params.OXYGEN)) {
 
                                             history.setOxygen_tank(jsonObject.getString(Const.Params.OXYGEN));
                                         }
 
-                                        if (jsonObject.has(Const.Params.CASE_TYPE)){
+                                        if (jsonObject.has(Const.Params.CASE_TYPE)) {
 
                                             history.setPickup_type(jsonObject.getString(Const.Params.CASE_TYPE));
                                         }
@@ -282,7 +281,7 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
                                         ride_lv.setLayoutManager(mLayoutManager);
                                         ride_lv.setItemAnimator(new DefaultItemAnimator());
                                         ride_lv.setAdapter(historyAdapter);
-                                        LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getActivity(),getResources().getIdentifier("layout_animation_from_left","anim", getActivity().getPackageName()));
+                                        LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getActivity(), getResources().getIdentifier("layout_animation_from_left", "anim", getActivity().getPackageName()));
                                         ride_lv.setLayoutAnimation(animation);
                                         historyAdapter.notifyDataSetChanged();
                                         ride_lv.scheduleLayoutAnimation();
@@ -304,7 +303,7 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
                             EbizworldUtils.removeProgressDialog();
                         }
 
-                    }else {
+                    } else {
 
                         EbizworldUtils.removeProgressDialog();
                     }
@@ -321,7 +320,7 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
 
     private void showDetailedHistroy(History history) {
 
-        if (getActivity() != null){
+        if (getActivity() != null) {
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("E, MMM, dd, yyyy hh:mm a");
             SimpleDateFormat inputformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -367,8 +366,8 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
 
             tv_history_detail_ferry_terminals_value.setText(history.getCurrnecy_unit() + " " + history.getFerry_terminals());
             tv_history_detail_staircase_value.setText(history.getCurrnecy_unit() + " " + history.getStaircase());
-            tv_history_detail_a_and_e_value.setText(history.getCurrnecy_unit()+ " " + history.getA_and_e());
-            tv_history_detail_imh_value.setText(history.getCurrnecy_unit()+ " " + history.getImh());
+            tv_history_detail_a_and_e_value.setText(history.getCurrnecy_unit() + " " + history.getA_and_e());
+            tv_history_detail_imh_value.setText(history.getCurrnecy_unit() + " " + history.getImh());
             tv_history_detail_tarmac_value.setText(history.getCurrnecy_unit() + " " + history.getTarmac());
             tv_history_detail_house_unit_value.setText(history.getHouseUnit());
             tv_history_detail_plate_number_value.setText(history.getPlate_number());
@@ -385,7 +384,7 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
                     .apply(new RequestOptions().error(R.drawable.defult_user))
                     .into(trip_driver_pic);
 
-            trip_driver_name.setText(getResources().getString(R.string.txt_ride_with)+" " + history.getProvider_name());
+            trip_driver_name.setText(getResources().getString(R.string.txt_ride_with) + " " + history.getProvider_name());
             trip_car_type.setText(history.getHistory_type() + " " + getResources().getString(R.string.reciept));
             trip_taxi_type.setText(getResources().getString(R.string.ambulance_operator) + ": " + history.getHistory_type());
             trip_source_address.setText(history.getHistory_Sadd());
@@ -414,7 +413,7 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
 
     private void showNursingHomeDetailedHistroy(History history) {
 
-        if (getActivity() != null){
+        if (getActivity() != null) {
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("E, MMM, dd, yyyy hh:mm a");
             SimpleDateFormat inputformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -459,17 +458,17 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
             TextView tv_history_detail_oxygen_tank_value = (TextView) detailedBill.findViewById(R.id.tv_history_detail_oxygen_tank_value);
             TextView tv_history_detail_pickup_type_value = (TextView) detailedBill.findViewById(R.id.tv_history_detail_pickup_type_value);
 
-            if (history.getLater().length() > 0 && Integer.parseInt(history.getLater()) == 1){
+            if (history.getLater().length() > 0 && Integer.parseInt(history.getLater()) == 1) {
 
                 history_detail_house_unit_group.setVisibility(View.GONE);
-            }else {
+            } else {
                 history_detail_house_unit_group.setVisibility(View.VISIBLE);
             }
 
             tv_history_detail_ferry_terminals_value.setText(history.getCurrnecy_unit() + " " + history.getFerry_terminals());
             tv_history_detail_staircase_value.setText(history.getCurrnecy_unit() + " " + history.getStaircase());
-            tv_history_detail_a_and_e_value.setText(history.getCurrnecy_unit()+ " " + history.getA_and_e());
-            tv_history_detail_imh_value.setText(history.getCurrnecy_unit()+ " " + history.getImh());
+            tv_history_detail_a_and_e_value.setText(history.getCurrnecy_unit() + " " + history.getA_and_e());
+            tv_history_detail_imh_value.setText(history.getCurrnecy_unit() + " " + history.getImh());
             tv_history_detail_tarmac_value.setText(history.getCurrnecy_unit() + " " + history.getTarmac());
             tv_history_detail_house_unit_value.setText(history.getHouseUnit());
             tv_history_detail_plate_number_value.setText(history.getPlate_number());
@@ -486,7 +485,7 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
                     .apply(new RequestOptions().error(R.drawable.defult_user))
                     .into(trip_driver_pic);
 
-            trip_driver_name.setText(getResources().getString(R.string.txt_ride_with)+" " + history.getProvider_name());
+            trip_driver_name.setText(getResources().getString(R.string.txt_ride_with) + " " + history.getProvider_name());
             trip_car_type.setText(history.getHistory_type() + " " + getResources().getString(R.string.reciept));
             trip_taxi_type.setText(getResources().getString(R.string.ambulance_operator) + ": " + history.getHistory_type());
             trip_source_address.setText(history.getHistory_Sadd());
@@ -515,7 +514,7 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
 
     private void showHospitalDetailedHistroy(History history) {
 
-        if (getActivity() != null){
+        if (getActivity() != null) {
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("E, MMM, dd, yyyy hh:mm a");
             SimpleDateFormat inputformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -559,17 +558,17 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
             TextView tv_history_detail_oxygen_tank_value = (TextView) detailedBill.findViewById(R.id.tv_history_detail_oxygen_tank_value);
             TextView tv_history_detail_pickup_type_value = (TextView) detailedBill.findViewById(R.id.tv_history_detail_pickup_type_value);
 
-            if (history.getLater().length() > 0 && Integer.parseInt(history.getLater()) == 1){
+            if (history.getLater().length() > 0 && Integer.parseInt(history.getLater()) == 1) {
 
                 history_detail_house_unit_group.setVisibility(View.GONE);
-            }else {
+            } else {
                 history_detail_house_unit_group.setVisibility(View.VISIBLE);
             }
 
             tv_history_detail_ferry_terminals_value.setText(history.getCurrnecy_unit() + " " + history.getFerry_terminals());
             tv_history_detail_staircase_value.setText(history.getCurrnecy_unit() + " " + history.getStaircase());
-            tv_history_detail_a_and_e_value.setText(history.getCurrnecy_unit()+ " " + history.getA_and_e());
-            tv_history_detail_imh_value.setText(history.getCurrnecy_unit()+ " " + history.getImh());
+            tv_history_detail_a_and_e_value.setText(history.getCurrnecy_unit() + " " + history.getA_and_e());
+            tv_history_detail_imh_value.setText(history.getCurrnecy_unit() + " " + history.getImh());
             tv_history_detail_tarmac_value.setText(history.getCurrnecy_unit() + " " + history.getTarmac());
             tv_history_detail_house_unit_value.setText(history.getHouseUnit());
             tv_history_detail_weight_value.setText(history.getCurrnecy_unit() + " " + history.getWeight());
@@ -585,7 +584,7 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
                     .apply(new RequestOptions().error(R.drawable.defult_user))
                     .into(trip_driver_pic);
 
-            trip_driver_name.setText(getResources().getString(R.string.txt_ride_with)+" " + history.getProvider_name());
+            trip_driver_name.setText(getResources().getString(R.string.txt_ride_with) + " " + history.getProvider_name());
             trip_car_type.setText(history.getHistory_type() + " " + getResources().getString(R.string.reciept));
             trip_taxi_type.setText(getResources().getString(R.string.ambulance_operator) + ": " + history.getHistory_type());
             trip_source_address.setText(history.getHistory_Sadd());
@@ -616,23 +615,23 @@ public class HistoryRideFragment extends Fragment implements AsyncTaskCompleteLi
     public void onRefresh() {
 
         mSwipeRefreshLayout.setRefreshing(true);
-        switch (new PreferenceHelper(activity).getLoginType()){
+        switch (new PreferenceHelper(activity).getLoginType()) {
 
-            case Const.PatientService.PATIENT:{
+            case Const.PatientService.PATIENT: {
 
                 new HistoryListAPI(activity, this).getPatientHistory(Const.ServiceCode.GET_HISTORY);
 
             }
             break;
 
-            case Const.NursingHomeService.NURSING_HOME:{
+            case Const.NursingHomeService.NURSING_HOME: {
 
                 new HistoryListAPI(activity, this).getNursingHomeHistory(Const.ServiceCode.GET_HISTORY);
 
             }
             break;
 
-            case Const.HospitalService.HOSPITAL:{
+            case Const.HospitalService.HOSPITAL: {
 
                 new HistoryListAPI(activity, this).getHospitalHistory(Const.ServiceCode.GET_HISTORY);
 

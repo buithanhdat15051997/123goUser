@@ -12,7 +12,11 @@
         <item name="android:textColor">@color/red</item>
         <item name="android:textSize">12sp</item>
     </style>
-
+<!--remove default check radio button-->
+    <style name="RadioButtonStyle" parent="@android:style/Widget.CompoundButton">
+        <item name="android:background">@drawable/radiobutton_selector</item>
+        <item name="android:button">@null</item>
+    </style>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">

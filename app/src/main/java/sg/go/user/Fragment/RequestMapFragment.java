@@ -112,7 +112,7 @@ import sg.go.user.Utils.RecyclerLongPressClickListener;
  * Created by user on 2/3/2017.
  */
 
-public class RequestMapFragment extends BaseFragment implements LocationHelper.OnLocationReceived, AsyncTaskCompleteListener, OnMapReadyCallback, AdapterCallback{
+public class RequestMapFragment extends BaseFragment implements LocationHelper.OnLocationReceived, AsyncTaskCompleteListener, OnMapReadyCallback, AdapterCallback {
 
     private GoogleMap googleMap;
     private Bundle mBundle;
@@ -135,11 +135,11 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
     private Spinner spn_oxygen_tank;
     private Spinner spn_pickup_type;
     private EditText trip_remark;
-    private static Marker pickup_marker, drop_marker,stop_marker;
+    private static Marker pickup_marker, drop_marker, stop_marker;
     MarkerOptions pickup_opt;
 
     private static Polyline poly_line_click;
-    private ArrayList<Polyline>  polylineData;
+    private ArrayList<Polyline> polylineData;
 
     private RelativeLayout lay_payment;
     public static ImageButton btn_mylocation;
@@ -153,7 +153,7 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
     private String nearest_eta = "--";
 
     // gửi point vẽ đường
-    public  static  String OverView_Polyline;
+    public static String OverView_Polyline;
     //
 
     private HashMap<Marker, Integer> markermap = new HashMap<>();
@@ -175,11 +175,11 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
     private LinearLayout promo_layout;
     private ProgressBar load_progress;
     private String TAG = "DatDirection";
-    private  LinearLayout linearLayoutShowDirec;
+    private LinearLayout linearLayoutShowDirec;
     private EditText dialog_remark_content;
     private Button dialog_remark_btn_okay, dialog_remark_btn_cancel;
 
-//    private int assistiveDeviceValue = 1;
+    //    private int assistiveDeviceValue = 1;
     private int oxygenTank = 0;
     private int case_type = 1, weight = 0, familyMember = 0;
     private TextView mTv_ambulance_operator_notice;
@@ -196,10 +196,10 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
     private RequestOptional mRequestOptional;
     // Distance and Time
 
-    public  static  String Distance_Request;
-    public  static  String Time_Request;
+    public static String Distance_Request;
+    public static String Time_Request;
 
-    private  JSONArray routeArray;
+    private JSONArray routeArray;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -257,16 +257,16 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
             @Override
             public void onStateChanged(@NonNull View view, int i) {
 
-                switch (i){
+                switch (i) {
 
-                    case BottomSheetBehavior.STATE_HIDDEN:{
+                    case BottomSheetBehavior.STATE_HIDDEN: {
 
                         EbizworldUtils.appLogDebug("HaoLS", "BottomSheet hidden");
                         bottomSheetBehavior.setPeekHeight(tv_optional.getHeight());
                     }
                     break;
 
-                    case BottomSheetBehavior.STATE_COLLAPSED:{
+                    case BottomSheetBehavior.STATE_COLLAPSED: {
 
                         EbizworldUtils.appLogDebug("HaoLS", "BottomSheet collapsed");
                         bottomSheetBehavior.setPeekHeight(tv_optional.getHeight());
@@ -275,7 +275,7 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
                     }
                     break;
 
-                    case BottomSheetBehavior.STATE_EXPANDED:{
+                    case BottomSheetBehavior.STATE_EXPANDED: {
 
                         tv_optional.setText(getResources().getString(R.string.txt_back));
                         EbizworldUtils.appLogDebug("HaoLS", "BottomSheet expanded");
@@ -293,12 +293,12 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
             @Override
             public void onClick(View v) {
 
-                if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_COLLAPSED){
+                if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_COLLAPSED) {
 
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                     tv_optional.setText(getResources().getString(R.string.txt_back));
 
-                }else {
+                } else {
 
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                     tv_optional.setText(getResources().getString(R.string.txt_next));
@@ -330,26 +330,26 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
             @Override
             public void onWheelSelected(int position) {
 
-                for (int i = 0; i < mAmbulanceOperatorsMain.size(); i++){
+                for (int i = 0; i < mAmbulanceOperatorsMain.size(); i++) {
 
-                    if(mAmbulanceOperatorsMain.get(i).getAmbulanceOperator().toLowerCase().equals(ambulanceOperatorsWheelView.get(position).toLowerCase())){
+                    if (mAmbulanceOperatorsMain.get(i).getAmbulanceOperator().toLowerCase().equals(ambulanceOperatorsWheelView.get(position).toLowerCase())) {
 
                         mAmbulanceOperator = mAmbulanceOperatorsMain.get(i);
                         break;
-                    }else {
+                    } else {
 
                         mAmbulanceOperator = null;
                     }
                 }
 
-                if(mAmbulanceOperator != null){
+                if (mAmbulanceOperator != null) {
 
                     EbizworldUtils.appLogDebug("HaoLS", "mAmbulanceOperator is " + mAmbulanceOperator.getAmbulanceOperator());
 
                     mTv_ambulance_operator_notice.setText(mAmbulanceOperator.getAmbulanceOperator().toUpperCase() + " " + getResources().getString(R.string.ambulance_operator_notice));
                     new PreferenceHelper(getActivity()).putRequestType(mAmbulanceOperator.getId());
                     new PreferenceHelper(getActivity()).putAmbulance_name(mAmbulanceOperator.getAmbulanceOperator());
-                }else {
+                } else {
 
                     EbizworldUtils.appLogDebug("HaoLS", "mAmbulanceOperator is null");
 
@@ -380,19 +380,19 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                switch (position){
+                switch (position) {
 
-                    case 1:{
+                    case 1: {
                         familyMember = 1;
                     }
                     break;
 
-                    case 2:{
+                    case 2: {
                         familyMember = 2;
                     }
                     break;
 
-                    default:{
+                    default: {
                         familyMember = 0;
                     }
                     break;
@@ -417,28 +417,28 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                switch (position){
+                switch (position) {
 
-                    case 0:{
+                    case 0: {
 
                         weight = 0;
 
                     }
                     break;
 
-                    case 1:{
+                    case 1: {
 
                         weight = 1;
                     }
                     break;
 
-                    case 2:{
+                    case 2: {
 
                         weight = 2;
                     }
                     break;
 
-                    case 3:{
+                    case 3: {
 
                         weight = 3;
                     }
@@ -523,38 +523,38 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                switch (position){
+                switch (position) {
 
-                    case 0:{
+                    case 0: {
 
                         case_type = 1;
                     }
                     break;
 
-                    case 1:{
+                    case 1: {
 
                         case_type = 2;
 
                     }
                     break;
 
-                    case 2:{
+                    case 2: {
 
                         case_type = 3;
                     }
                     break;
 
-                    case 3:{
+                    case 3: {
 
                         case_type = 4;
                     }
                     break;
 
-                    case 4:{
+                    case 4: {
 
 //                        case_type = 5;
 
-                        FragmentManager fragmentManager = ((AppCompatActivity)activity).getSupportFragmentManager();
+                        FragmentManager fragmentManager = ((AppCompatActivity) activity).getSupportFragmentManager();
                         HospitalDischargeWarningDialog hospitalDischargeWarningDialog = new HospitalDischargeWarningDialog();
                         hospitalDischargeWarningDialog.setCancelable(false);
                         hospitalDischargeWarningDialog.show(fragmentManager, Const.HOSPITAL_DISCHARGE_WARNING_DIALOGFRAGMENT);
@@ -562,7 +562,7 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
                             @Override
                             public void onDialogDismiss(Boolean isDismiss) {
 
-                                if (isDismiss == true){
+                                if (isDismiss == true) {
 
                                     case_type = 1;
                                     spn_pickup_type.setSelection(0, true);
@@ -573,25 +573,25 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
                     }
                     break;
 
-                    case 5:{
+                    case 5: {
 
                         case_type = 6;
                     }
                     break;
 
-                    case 6:{
+                    case 6: {
 
                         case_type = 7;
                     }
                     break;
 
-                    case 7:{
+                    case 7: {
 
                         case_type = 8;
                     }
                     break;
 
-                    case 8:{
+                    case 8: {
 
                         case_type = 9;
                     }
@@ -680,16 +680,16 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
             googleMap.setTrafficEnabled(false);
 
 
-            if (getActivity() != null){
+            if (getActivity() != null) {
 
                 try {
                     boolean success = googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.mapstyle));
 
-                    if (!success){
+                    if (!success) {
 
                         Log.e(TAG, "MapStyle: parse map style failed");
                     }
-                }catch (Resources.NotFoundException e){
+                } catch (Resources.NotFoundException e) {
 
                     Log.e(TAG, e.getMessage());
                 }
@@ -736,9 +736,8 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
             }
 
 
-
             if (stop_latlan != null) {
-                Log.e("asher","stop req map "+stop_latlan);
+                Log.e("asher", "stop req map " + stop_latlan);
                 MarkerOptions opt = new MarkerOptions();
                 opt.position(stop_latlan);
                 //       opt.title(activity.getResources().getString(R.string.txt_drop_loc));
@@ -1005,17 +1004,17 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
         }
 
         HashMap<String, String> map = new HashMap<String, String>();
-        if (getActivity() != null){
+        if (getActivity() != null) {
 
-            if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)){
+            if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)) {
 
                 map.put(Const.Params.URL, Const.ServiceType.OPERATORS_URL);
 
-            }else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+            } else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
                 map.put(Const.Params.URL, Const.NursingHomeService.OPERATORS_URL);
 
-            }else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+            } else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
                 map.put(Const.Params.URL, Const.HospitalService.OPERATORS_URL);
 
@@ -1072,15 +1071,15 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
 
         HashMap<String, String> map = new HashMap<String, String>();
 
-        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             map.put(Const.Params.URL, Const.ServiceType.GET_PROVIDERS);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
             map.put(Const.Params.URL, Const.NursingHomeService.GUEST_PROVIDER_URL);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
             map.put(Const.Params.URL, Const.HospitalService.GUEST_PROVIDER_LIST_URL);
 
@@ -1095,7 +1094,7 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
         }
 
         map.put(Const.Params.AMBULANCE_TYPE, new PreferenceHelper(activity).getRequestType());
-        Log.d(TAG, "serve id "+new PreferenceHelper(activity).getRequestType());
+        Log.d(TAG, "serve id " + new PreferenceHelper(activity).getRequestType());
 
         Log.d("HaoLS", "nearby drivers " + map.toString());
         new VolleyRequester(activity, Const.POST, map, Const.ServiceCode.GET_PROVIDERS,
@@ -1152,7 +1151,7 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
         map.put(Const.Params.URL, Const.DIRECTION_API_BASE + Const.ORIGIN + "="
                 + String.valueOf(latitude) + "," + String.valueOf(longitude) + "&" + Const.DESTINATION + "="
                 + String.valueOf(latitude1) + "," + String.valueOf(longitude1) + "&" + Const.EXTANCTION);
-        Log.d(TAG,"getDirections"+ map);
+        Log.d(TAG, "getDirections" + map);
         new VolleyRequester(activity, Const.GET, map, Const.ServiceCode.GOOGLE_DIRECTION_API, this);
 
     }
@@ -1173,8 +1172,6 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
         Log.e("asher", "directions stop map " + map);
         new VolleyRequester(activity, Const.GET, map, Const.ServiceCode.GOOGLE_DIRECTION_API, this);
     }
-
-
 
 
     private void findDistanceAndTime(LatLng s_latlan, LatLng d_latlan) {
@@ -1213,12 +1210,12 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
 //            float time1 = Float.parseFloat(time);
             OverView_Polyline = routeArray.getJSONObject(0).getJSONObject("overview_polyline").getString("points");
 
-            txt_ShowNameRoutes.setText("Name Routes : A"+"  Duration :" + Time_Request+"  Distance :" + Distance_Request);
+            txt_ShowNameRoutes.setText("Name Routes : A" + "  Duration :" + Time_Request + "  Distance :" + Distance_Request);
             txt_ShowNameRoutes.setBackgroundColor(Color.parseColor("#FF0000"));
 
             String color[] = {"#ff0000", "#00ff00", "#7883cf"};
             int i;
-            for ( i = 0; i < routeArray.length(); i++) {
+            for (i = 0; i < routeArray.length(); i++) {
 
                 JSONObject routes = routeArray.getJSONObject(i);
 
@@ -1227,7 +1224,7 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
                 String encodedString = overviewPolylines.getString("points");
 
 
-                Log.d(TAG,"enCodeString  :"+ encodedString);
+                Log.d(TAG, "enCodeString  :" + encodedString);
 
                 List<LatLng> list = decodePoly(encodedString);
 
@@ -1236,12 +1233,12 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
                 for (int z = 0; z < list.size(); z++) {
 
                     LatLng point = list.get(z);
-                   // check permission draw color
+                    // check permission draw color
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
                         options.add(point);
 
-                    }else {
+                    } else {
 
                         options.add(point);
                     }
@@ -1276,10 +1273,10 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
 
                                         OverView_Polyline = routeArray.getJSONObject(j).getJSONObject("overview_polyline").getString("points");
 
-                                        Distance_Request= routeArray.getJSONObject(j).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
+                                        Distance_Request = routeArray.getJSONObject(j).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
                                         Time_Request = routeArray.getJSONObject(j).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
 //                                        txt_ShowNameRoutes.setText("Name Routes :"+ txt_Name[j]);
-                                        txt_ShowNameRoutes.setText("Name Routes:"+txt_Name[j]+"  Duration:" + Time_Request+"  Distance:" + Distance_Request);
+                                        txt_ShowNameRoutes.setText("Name Routes:" + txt_Name[j] + "  Duration:" + Time_Request + "  Distance:" + Distance_Request);
 
                                         pickup_marker.setIcon((BitmapDescriptorFactory
                                                 .fromBitmap(getMarkerBitmapFromView(Time_Request))));
@@ -1288,7 +1285,6 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
                                         Toast.makeText(activity, Distance_Request + " " + Time_Request, Toast.LENGTH_SHORT).show();
 
                                         polylineData.get(j).setZIndex(1);
-
 
 
                                     } catch (JSONException e) {
@@ -1345,8 +1341,7 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
 
         //Click CardView
 
-        for ( int j = 0; j< polylineData.size(); j++)
-        {
+        for (int j = 0; j < polylineData.size(); j++) {
             final int finalJ = j;
             arrayListCardShow.get(j).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -1357,11 +1352,9 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
         }
     }
 
-    private void setVisiableCardShow()
-    {
+    private void setVisiableCardShow() {
         String color3[] = {"#FF0000", "#00FF00", "#7883CF"};
-        for(int i = 0; i <  polylineData.size();i++)
-        {
+        for (int i = 0; i < polylineData.size(); i++) {
             arrayListCardShow.get(i).setVisibility(View.VISIBLE);
             arrayListCardShow.get(i).setBackgroundColor(Color.parseColor(color3[i]));
 //            arrayListCardShow.get(i).setText();
@@ -1391,7 +1384,7 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
 
                     Time_Request = routeArray.getJSONObject(j).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
 //                                        txt_ShowNameRoutes.setText("Name Routes :"+ txt_Name[j]);
-                    txt_ShowNameRoutes.setText("Name Routes:"+txt_Name[j]+"  Duration:" + Time_Request+"  Distance:" + Distance_Request);
+                    txt_ShowNameRoutes.setText("Name Routes:" + txt_Name[j] + "  Duration:" + Time_Request + "  Distance:" + Distance_Request);
                     pickup_marker.setIcon((BitmapDescriptorFactory
                             .fromBitmap(getMarkerBitmapFromView(Time_Request))));
 
@@ -1513,10 +1506,10 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
                         15));*/
                 break;
             case R.id.btn_request_cab:
-               // chuyển fragment gửi đường
+                // chuyển fragment gửi đường
                 getTripOptional();
 
-                if (mRequestOptional != null){
+                if (mRequestOptional != null) {
 
                     Bundle bundle = new Bundle();
                     bundle.putParcelable(Const.Params.REQUEST_OPTIONAL, mRequestOptional);
@@ -1536,26 +1529,26 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
                 showpromo();
                 break;
 
-            case R.id.btn_another_ambulance_operator:{
+            case R.id.btn_another_ambulance_operator: {
 
                 showAmbulanceOperator(mAmbulanceOperatorsMain);
             }
             break;
 
-            case R.id.any_ambulance_operator_group:{
+            case R.id.any_ambulance_operator_group: {
 
                 isAnyAmbulanceOperatorGroup = true;
                 mView_select.setVisibility(View.VISIBLE);
                 mTv_ambulance_operator_notice.setText(getResources().getString(R.string.any_ambulance) + " " + getResources().getString(R.string.ambulance_operator_notice));
 
-                if (ambulanceOperatorHorizontalAdapter != null){
+                if (ambulanceOperatorHorizontalAdapter != null) {
 
                     ambulanceOperatorHorizontalAdapter.OnItemClicked(-1);
                     ambulanceOperatorHorizontalAdapter.notifyDataSetChanged();
 
                 }
 
-                if (providerhandler != null){
+                if (providerhandler != null) {
 
                     providerhandler.removeCallbacks(getProvidersRunnable);
 
@@ -1583,7 +1576,7 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
                 + new PreferenceHelper(activity).getUserId() + "&" + Const.Params.TOKEN + "="
                 + new PreferenceHelper(activity).getSessionToken());
 
-        Log.d("HaoLS","getPaymentModes: " + map.toString());
+        Log.d("HaoLS", "getPaymentModes: " + map.toString());
         new VolleyRequester(activity, Const.GET, map, Const.ServiceCode.GET_PAYMENT_MODES, this);
 
 
@@ -1624,48 +1617,48 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
         mRequestOptional.setPromoCode(promoCode);
         mRequestOptional.setRemark(trip_remark.getText().toString());
 
-        if (cb_a_and_e_value.isChecked()){
+        if (cb_a_and_e_value.isChecked()) {
 
             mRequestOptional.setA_and_e(1);
 
-        }else {
+        } else {
 
             mRequestOptional.setA_and_e(0);
         }
 
-        if (cb_imh_value.isChecked()){
+        if (cb_imh_value.isChecked()) {
 
             mRequestOptional.setImh(1);
 
-        }else {
+        } else {
 
             mRequestOptional.setImh(0);
         }
 
-        if (cb_ferry_terminals_value.isChecked()){
+        if (cb_ferry_terminals_value.isChecked()) {
 
             mRequestOptional.setFerry_terminals(1);
 
-        }else {
+        } else {
 
             mRequestOptional.setFerry_terminals(0);
         }
 
-        if (cb_staircase_value.isChecked()){
+        if (cb_staircase_value.isChecked()) {
 
             mRequestOptional.setStaircase(1);
 
-        }else {
+        } else {
 
             mRequestOptional.setStaircase(0);
 
         }
 
-        if (cb_tarmac_value.isChecked()){
+        if (cb_tarmac_value.isChecked()) {
 
             mRequestOptional.setTarmac(1);
 
-        }else {
+        } else {
 
             mRequestOptional.setTarmac(0);
 
@@ -1765,8 +1758,8 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
             }
         }
 
-          /*TO clear all views */
-        if (getActivity() != null){
+        /*TO clear all views */
+        if (getActivity() != null) {
 
             ViewGroup mContainer = (ViewGroup) getActivity().findViewById(R.id.content_frame);
             mContainer.removeAllViews();
@@ -1794,7 +1787,7 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
             case Const.ServiceCode.GOOGLE_DIRECTION_API:
 
                 if (response != null) {
-                    Log.d(TAG,"Reponse   1:"+response);
+                    Log.d(TAG, "Reponse   1:" + response);
                     drawPath(response);
 
                 }
@@ -1815,16 +1808,16 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
 
                             JSONArray jarray = new JSONArray();
 
-                            if(getActivity() != null){
+                            if (getActivity() != null) {
 
-                                if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)){
-
-                                    jarray = job.getJSONArray("operator");
-
-                                }else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+                                if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)) {
 
                                     jarray = job.getJSONArray("operator");
-                                }else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+
+                                } else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
+
+                                    jarray = job.getJSONArray("operator");
+                                } else if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
                                     jarray = job.getJSONArray("operator");
                                 }
@@ -1871,11 +1864,11 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
 
                                 }*/
 
-                                if (mAmbulanceOperatorsMain.size() > 0 && mAmbulanceOperatorsMain != null){
+                                if (mAmbulanceOperatorsMain.size() > 0 && mAmbulanceOperatorsMain != null) {
 
-                                    if (mAmbulanceOperatorsMain.size() > 0){
+                                    if (mAmbulanceOperatorsMain.size() > 0) {
 
-                                        for (int i = 0; i < mAmbulanceOperatorsMain.size(); i++){
+                                        for (int i = 0; i < mAmbulanceOperatorsMain.size(); i++) {
 
                                             ambulanceOperatorsWheelView.add(mAmbulanceOperatorsMain.get(i).getAmbulanceOperator());
                                         }
@@ -2093,7 +2086,7 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
 
                 EbizworldUtils.appLogInfo("HaoLS", "findDistanceandTime " + response);
 
-                if (response != null){
+                if (response != null) {
 
                     try {
                         JSONObject jsonObject = new JSONObject(response);
@@ -2143,7 +2136,7 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
                 break;
 
             case Const.ServiceCode.GOOGLE_MATRIX:
-                 EbizworldUtils.appLogInfo("HaoLS", "google distance api" + response);
+                EbizworldUtils.appLogInfo("HaoLS", "google distance api" + response);
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -2431,15 +2424,15 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
         HashMap<String, String> map = new HashMap<String, String>();
 
 
-        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(activity).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             map.put(Const.Params.URL, Const.ServiceType.FARE_CALCULATION);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
             map.put(Const.Params.URL, Const.NursingHomeService.FARE_CACULATION_URL);
 
-        }else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+        } else if (new PreferenceHelper(activity).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
             map.put(Const.Params.URL, Const.HospitalService.FARE_CACULATION_URL);
 
@@ -2661,7 +2654,7 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
 
     }
 
-    private void showRemarkDialog(){
+    private void showRemarkDialog() {
 
         final Dialog dialog = new Dialog(getActivity(), R.style.DialogThemeforview);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -2704,9 +2697,9 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
     }
 
     //    Show dialog AmbulanceOperator
-    private void showAmbulanceOperator(final List<AmbulanceOperator> ambulanceOperators){
+    private void showAmbulanceOperator(final List<AmbulanceOperator> ambulanceOperators) {
 
-        if (getActivity() != null){
+        if (getActivity() != null) {
 
             final Dialog dialog = new Dialog(getActivity(), R.style.DialogSlideAnim);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -2721,7 +2714,7 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
             ambulanceOperatorList.setHasFixedSize(true);
             ambulanceOperatorList.setItemAnimator(new DefaultItemAnimator());
 
-            if (ambulanceOperators.size() > 0){
+            if (ambulanceOperators.size() > 0) {
 
                 final AmbulanceOperatorVerticalAdaper ambulanceOperatorVerticalAdapter = new AmbulanceOperatorVerticalAdaper(getActivity(), ambulanceOperators);
                 ambulanceOperatorList.setAdapter(ambulanceOperatorVerticalAdapter);
@@ -2730,24 +2723,24 @@ public class RequestMapFragment extends BaseFragment implements LocationHelper.O
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
 
-                        for (int i = 0; i < mAmbulanceOperatorsTemp.size(); i++){
+                        for (int i = 0; i < mAmbulanceOperatorsTemp.size(); i++) {
 
-                            if (mAmbulanceOperatorsTemp.get(i).equals(ambulanceOperators.get(position))){
+                            if (mAmbulanceOperatorsTemp.get(i).equals(ambulanceOperators.get(position))) {
 
                                 isExist = true;
                                 break;
-                            }else {
+                            } else {
                                 isExist = false;
                             }
                         }
 
-                        if (isExist == false){
+                        if (isExist == false) {
 
-                            if (mAmbulanceOperatorsTemp.size() == 4){
+                            if (mAmbulanceOperatorsTemp.size() == 4) {
 
-                                mAmbulanceOperatorsTemp.set(3,ambulanceOperators.get(position));
+                                mAmbulanceOperatorsTemp.set(3, ambulanceOperators.get(position));
 
-                            }else {
+                            } else {
 
                                 mAmbulanceOperatorsTemp.add(ambulanceOperators.get(position));
 

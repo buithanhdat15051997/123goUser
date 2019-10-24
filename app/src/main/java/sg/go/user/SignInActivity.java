@@ -153,7 +153,28 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         btn_cancel.setOnClickListener(this);
         /*btn_login_fb.setOnClickListener(this);*/
-        btn_login_main.setOnClickListener(this);
+        btn_login_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (validate()) {
+
+                    if (new PreferenceHelper(SignInActivity.this).getLoginType().equals(Const.PatientService.PATIENT)){
+
+                        userLogin(Const.MANUAL);
+
+                    }
+//                    else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+//
+//                        nurseLogin(Const.MANUAL);
+//
+//                    }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+//
+//                        hospitalLogin(Const.MANUAL);
+//
+//                    }
+                }
+            }
+        });
 
         if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)) {
             btn_register_social.setVisibility(View.VISIBLE);
@@ -291,23 +312,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btn_login_main:
 
-                if (validate()) {
 
-                    if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)){
-
-                        userLogin(Const.MANUAL);
-
-                    }
-//                    else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
-//
-//                        nurseLogin(Const.MANUAL);
-//
-//                    }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
-//
-//                        hospitalLogin(Const.MANUAL);
-//
-//                    }
-                }
                 break;
             case R.id.btn_forgot_password_login:
 

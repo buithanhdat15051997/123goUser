@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout
+    android:id="@+id/linear_typeCar"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="120dp"
+    android:layout_width="@dimen/_90sdp"
     android:orientation="vertical"
     android:layout_gravity="center"
     android:layout_marginLeft="@dimen/_5sdp"
     android:layout_marginRight="@dimen/_5sdp"
-    android:background="@color/white"
     android:layout_height="130dp">
 
     <ImageView
@@ -15,7 +15,7 @@
         android:src="@drawable/background_user_login"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/_4sdp"
-        android:layout_width="@dimen/_60sdp"
+        android:layout_width="@dimen/_70sdp"
         android:layout_height="@dimen/_50sdp" />
 
     <TextView
@@ -23,7 +23,7 @@
         android:layout_width="@dimen/_90sdp"
         android:maxLines="1"
         android:textSize="@dimen/_12ssp"
-        android:layout_height="@dimen/_35sdp"
+        android:layout_height="@dimen/_32sdp"
         android:layout_gravity="center"
         android:gravity="center"
         android:text=""
@@ -38,7 +38,8 @@
         android:text=""
         android:gravity="center"
         android:layout_gravity="center"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
         android:layout_height="wrap_content" />
 
  <!--   android:background="@drawable/btn_item_type_car"-->

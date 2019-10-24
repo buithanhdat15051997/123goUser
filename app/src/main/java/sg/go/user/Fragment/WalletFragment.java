@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -55,6 +56,9 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
     private String Get_Money_Recharge_Wallet;
     private ImageButton img_wallet_back;
     private MainActivity activity;
+
+    private RecyclerView Recyc_history_TopUp_Wallet;
+    private  Button btn_show_history_TopUp_wallet;
     View view;
 
     @Nullable
@@ -86,7 +90,24 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
 
         img_wallet_back = view.findViewById(R.id.img_wallet_back);
 
+
+
+        btn_show_history_TopUp_wallet = view.findViewById(R.id.btn_show_history_TopUp_wallet);
+
         edt_input_money_wallet.addTextChangedListener(onTextChangedListener());
+
+        /*---Shơ history Top up ---*/
+        btn_show_history_TopUp_wallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                activity.addFragment(new HistoryTopUpWalletFragment(), true, Const.HISTORY_TOPUP_WALLET_FRAMENT, false);
+
+
+
+            }
+        });
+
 
         img_wallet_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +126,7 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
 
                 if (Get_Money_Recharge_Wallet.isEmpty()) {
 
-                    EbizworldUtils.showLongToast("Please enter the amount", activity);
+                    Toast.makeText(activity, ""+getResources().getString(R.string.error_empty_amount), Toast.LENGTH_SHORT).show();
 
                 } else {
 
@@ -123,12 +144,27 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
 
     }
 
+    private void GetHistoryTopUpWallet() {
+
+        HashMap<String, String> params = new HashMap<>();
+
+        params.put(Const.Params.URL,Const.ServiceType.HISTORY_TOPUP_WALLET);
+
+        params.put(Const.Params.ID, new PreferenceHelper(activity).getUserId());
+
+        params.put(Const.Params.TOKEN, new PreferenceHelper(activity).getSessionToken());
+
+        new VolleyRequester(activity,Const.POST,params,100100,this);
+
+    }
+
     private TextWatcher onTextChangedListener() {
         return new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
+
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -181,6 +217,7 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
             EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
             return;
         }
+        EbizworldUtils.showSimpleProgressDialog(activity,getResources().getString(R.string.txt_load),true);
 
         HashMap<String, String> map = new HashMap<String, String>();
 
@@ -210,6 +247,8 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
                 Log.d("DatGetWallet", "" + response);
 
                 if (response != null) {
+
+                    EbizworldUtils.removeProgressDialog();
 
                     JSONObject jsonObject = null;
                     try {
@@ -261,9 +300,11 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
                             ApiGetWallet();
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
                             builder.setTitle(getResources().getString(R.string.top_up_successfully));
                            // builder.setMessage("Bạn có muốn đăng xuất không?");
                             builder.setCancelable(true);
+
                             builder.setNegativeButton(getResources().getString(R.string.txt_btn_done), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -271,21 +312,12 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
                                     dialogInterface.dismiss();
                                 }
                             });
+
                             AlertDialog alertDialog = builder.create();
                             alertDialog.show();
 
-
                             edt_input_money_wallet.setText("");
 
-//                            if (!activity.currentFragment.equals(Const.RATING_FRAGMENT) && !activity.isFinishing()) {
-//
-//                                Bundle bundle = new Bundle();
-//                                RatingFragment ratingFragment = new RatingFragment();
-//                                bundle.putSerializable(Const.REQUEST_DETAIL, mRequestDetail);
-//                                ratingFragment.setArguments(bundle);
-//                                activity.addFragment(ratingFragment, false, Const.RATING_FRAGMENT, true);
-//
-//                            }
 
                         } else if (jsonObject.getString("success").equals("false")) {
 
@@ -309,11 +341,12 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
 
             }
             break;
-
             case Const.ServiceCode.GET_BRAIN_TREE_TOKEN_URL_WALLET: {
                 EbizworldUtils.appLogInfo("DAT_TOPUP_WALLET", "GET_BRAIN_TREE_TOKEN_URL: " + response);
 
                 if (response != null && activity != null) {
+
+
 
                     try {
                         JSONObject jsonObject = new JSONObject(response);
@@ -330,6 +363,8 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
                                 Log.d("DAT_TOPUP_WALLET", dropInRequest.toString().trim());
 
                                 startActivityForResult(dropInRequest.getIntent(activity), Const.ServiceCode.REQUEST_PAYPAL_WALLET);
+                                EbizworldUtils.removeProgressDialog();
+
                             }
 
                         } else if (jsonObject.getString("success").equals("false")) {
@@ -349,24 +384,27 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
 
                     }
 
+                }else {
 
+                    EbizworldUtils.removeProgressDialog();
                 }
-
 
             }
             break;
-
 
         }
     }
 
     private void getBrainTreeClientToken() {
 
-        if (!EbizworldUtils.isNetworkAvailable(getActivity())) {
+//        if (!EbizworldUtils.isNetworkAvailable(getActivity())) {
+//
+//            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
+//            return;
+//        }
 
-            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
-            return;
-        }
+
+        EbizworldUtils.showSimpleProgressDialog(activity,getResources().getString(R.string.txt_load),true);
 
         HashMap<String, String> map = new HashMap<>();
 
@@ -384,13 +422,13 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
 
         Amount.replaceAll(",", "");
 
-        if (!EbizworldUtils.isNetworkAvailable(getActivity())) {
-
-            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
-
-            return;
-
-        }
+//        if (!EbizworldUtils.isNetworkAvailable(getActivity())) {
+//
+//            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
+//
+//            return;
+//
+//        }
 
         Commonutils.progressdialog_show(activity, "Loading...");
 

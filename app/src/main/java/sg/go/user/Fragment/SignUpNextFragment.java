@@ -287,7 +287,9 @@ public class SignUpNextFragment extends BaseRegisterFragment implements AsyncTas
                                 new ParseContent(activity).parsePatientAndStoreToDb(response);
 
                                 new PreferenceHelper(activity).putPassword(user_password.getText().toString());
+
                                 startActivity(new Intent(activity, MainActivity.class));
+
                                 activity.finish();
 
 

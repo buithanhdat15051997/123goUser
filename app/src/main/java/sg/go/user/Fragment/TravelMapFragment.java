@@ -28,10 +28,12 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
@@ -49,6 +51,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import sg.go.user.HttpRequester.VolleyRequester;
+import sg.go.user.MainActivity;
 import sg.go.user.Models.RequestOptional;
 import sg.go.user.R;
 import sg.go.user.Adapter.CancelReasonAdapter;
@@ -161,6 +164,8 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         driver_mobile_number = (TextView) mViewRoot.findViewById(R.id.driver_mobile_number);
         address_title = (TextView) mViewRoot.findViewById(R.id.address_title);
         tv_driver_status = (TextView) mViewRoot.findViewById(R.id.tv_driver_status);
+
+        activity.mBottomNavigationView.setVisibility(View.GONE);
 
         /*       sosCall = (ImageView) mViewRoot.findViewById(R.id.sosCall);
         sosCall.setOnClickListener(new View.OnClickListener() {
@@ -1547,10 +1552,37 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
+
                     if (jsonObject.getString("success").equals("true")) {
+
+                        String message_cancle_user = jsonObject.getString("cancellation_message");
+
+                        DialogCancelByUser(message_cancle_user);
 
                         new PreferenceHelper(activity).clearRequestData();
                         getActivity().onBackPressed();
+
+
+
+//                        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(activity);
+//
+//                        builder.setMessage(activity.getResources().getString(R.string.txt_cancle_user1)+"S$ " + money_cancle_user+" "+activity.getResources().getString(R.string.txt_cancle_user2));
+//
+//                        builder.setCancelable(false);
+//
+//                        builder.setNegativeButton(getResources().getString(R.string.txt_btn_done), new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                                dialogInterface.dismiss();
+//
+//                            }
+//                        });
+//
+//                        android.support.v7.app.AlertDialog alertDialog = builder.create();
+//                        alertDialog.show();
+
+
                         // activity.addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true);
 
                     } else {
@@ -1636,10 +1668,25 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                 EbizworldUtils.appLogInfo("HaoLS", "check req status: " + response);
 
                 if (response != null) {
+                    int money_driver_cancel = 0;
 
                     Bundle bundle = new Bundle();
                     RequestDetail requestDetail = new ParseContent(activity).parseRequestStatusNormal(response);
                     TravelMapFragment travalfragment = new TravelMapFragment();
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+
+                        if (jsonObject.getInt("cancellation_fine") > 0) {
+
+                            money_driver_cancel = jsonObject.getInt("cancellation_fine");
+
+                        }
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
                     if (requestDetail == null) {
                         return;
@@ -1647,26 +1694,33 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
                     EbizworldUtils.appLogDebug("HaoLS", "Trip status " + requestDetail.getTripStatus());
                     switch (requestDetail.getTripStatus()) {
+
                         case Const.NO_REQUEST:
+
                             if (isAdded() && iscancelpopup == false && googleMap != null && activity.currentFragment.equals(Const.TRAVEL_MAP_FRAGMENT)) {
+
                                 iscancelpopup = true;
+
                                 stopCheckingforstatus();
-                                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                                builder.setMessage(getResources().getString(R.string.txt_cancel_driver))
-                                        .setCancelable(false)
-                                        .setPositiveButton(getResources().getString(R.string.txt_ok), new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int id) {
-                                                new PreferenceHelper(activity).clearRequestData();
-                                                //googleMap.clear();
-                                                dialog.dismiss();
-                                                getActivity().onBackPressed();
-                                                // activity.addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true);
 
-                                            }
-                                        });
-                                AlertDialog alert = builder.create();
-                                alert.show();
+                                DialogCacelByDriver(money_driver_cancel);
 
+//                                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+//                                builder.setMessage(activity.getResources().getString(R.string.txt_cancel_driver1)+" S$ "+money_driver_cancel+" "+activity.getResources().getString(R.string.txt_cancel_driver2))
+//                                        .setCancelable(false)
+//                                        .setPositiveButton(getResources().getString(R.string.txt_ok), new DialogInterface.OnClickListener() {
+//                                            public void onClick(DialogInterface dialog, int id) {
+//
+//                                                new PreferenceHelper(activity).clearRequestData();
+//                                                //googleMap.clear();
+//                                                dialog.dismiss();
+//                                                getActivity().onBackPressed();
+//                                                // activity.addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true);
+//
+//                                            }
+//                                        });
+//                                AlertDialog alert = builder.create();
+//                                alert.show();
                             }
                             break;
 
@@ -1833,7 +1887,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
                             jobStatus = Const.IS_DRIVER_TRIP_ENDED;
                             address_title.setText(activity.getString(R.string.txt_drop_address));
-                            address_title.setTextColor(ContextCompat.getColor(activity, R.color.red));
+                            address_title.setTextColor(ContextCompat.getColor(activity, R.color.color_btn_main));
                             findDistanceAndTime(d_latlon, driver_latlan);
                             if (!requestDetail.getD_address().equals("")) {
                                 tv_current_location.setText(requestDetail.getD_address());
@@ -1867,7 +1921,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
                             jobStatus = Const.IS_DRIVER_TRIP_ENDED;
                             address_title.setText(activity.getString(R.string.txt_drop_address));
-                            address_title.setTextColor(ContextCompat.getColor(activity, R.color.red));
+                            address_title.setTextColor(ContextCompat.getColor(activity, R.color.color_btn_main));
                             findDistanceAndTime(d_latlon, driver_latlan);
                             if (!requestDetail.getD_address().equals("")) {
                                 tv_current_location.setText(requestDetail.getD_address());
@@ -1903,6 +1957,92 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                     }
                 }
         }
+    }
+
+    private void DialogCancelByUser(String message_cancle_user) {
+
+        final Dialog dialog_cancel_by_user = new Dialog(activity);
+
+        dialog_cancel_by_user.setContentView(R.layout.dialog_notification_canceled_trip);
+
+        dialog_cancel_by_user.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
+
+        Window window = dialog_cancel_by_user.getWindow();
+
+        WindowManager.LayoutParams wlp = window.getAttributes();
+
+        wlp.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+
+        wlp.gravity = Gravity.CENTER;
+
+        window.setAttributes(wlp);
+
+
+        TextView txt_show_thereason_canceled = dialog_cancel_by_user.findViewById(R.id.txt_show_thereason_canceled);
+
+        txt_show_thereason_canceled.setText(message_cancle_user);
+
+        // txt_show_thereason_canceled.setText(activity.getResources().getString(R.string.txt_cancle_user1)+" S$" + money_cancle_user+" "+activity.getResources().getString(R.string.txt_cancle_user2));
+
+        final Button btn_dialog_thereason_confirm = dialog_cancel_by_user.findViewById(R.id.btn_dialog_thereason_confirm);
+
+        btn_dialog_thereason_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //googleMap.clear();
+                dialog_cancel_by_user.dismiss();
+
+
+            }
+        });
+
+        dialog_cancel_by_user.show();
+
+    }
+
+    private void DialogCacelByDriver(int money_driver_cancel) {
+
+        final Dialog dialog_cancel_by_driver = new Dialog(activity);
+
+        dialog_cancel_by_driver.setContentView(R.layout.dialog_notification_canceled_trip);
+
+        dialog_cancel_by_driver.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
+
+        Window window = dialog_cancel_by_driver.getWindow();
+
+        WindowManager.LayoutParams wlp = window.getAttributes();
+
+        wlp.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+
+        wlp.gravity = Gravity.CENTER;
+
+        window.setAttributes(wlp);
+
+        TextView txt_show_thereason_canceled = dialog_cancel_by_driver.findViewById(R.id.txt_show_thereason_canceled);
+
+
+        txt_show_thereason_canceled.setText(activity.getResources().getString(R.string.txt_cancel_driver1) + " S$ " + money_driver_cancel + " " + activity.getResources().getString(R.string.txt_cancel_driver2));
+
+        final Button btn_dialog_thereason_confirm = dialog_cancel_by_driver.findViewById(R.id.btn_dialog_thereason_confirm);
+
+        btn_dialog_thereason_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new PreferenceHelper(activity).clearRequestData();
+                //googleMap.clear();
+                dialog_cancel_by_driver.dismiss();
+
+                getActivity().onBackPressed();
+
+            }
+        });
+
+
+        dialog_cancel_by_driver.show();
     }
 
     private Emitter.Listener onConnect = new Emitter.Listener() {
@@ -2406,6 +2546,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
             public void onItemClick(View view, int position) {
 
                 cancelRide(cancelReasonLst.get(position).getReasonId(), cancelReasonLst.get(position).getReasontext());
+
                 CancelReasondialog.dismiss();
             }
 

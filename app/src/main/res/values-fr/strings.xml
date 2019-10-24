@@ -113,7 +113,7 @@
     <string name="txt_tap_any_button_change_option">Appuyez sur n\'importe quel bouton ci-dessous pour changer d\'option</string>
     <string name="txt_use_this_screen_cc_payment">Veuillez utiliser cet écran pour revenir au paiement CC.</string>
     <string name="txt_signup">Inscrivez-vous</string>
-    <string name="txt_next">Sélectionnez le type de voitures</string>
+    <string name="txt_next">Sélectionnez Type de voiture et Aller</string>
     <string name="txt_phone_number">Numéro de téléphone</string>
     <string name="txt_confirm_phone_number">Confirmer le numéro de téléphone</string>
     <string name="txt_choose_account">Choisir un compte</string>
@@ -385,7 +385,7 @@
     <string name="txt_braintree1">Vous ne serez débité qu\'après votre voyage!</string>
     <string name="txt_braintree2">Vos informations de paiement seront stockées de manière sécurisée.</string>
     <string name="txt_call">Téléphoner</string>
-    <string name="txt_cancel_driver">Voyage annulé par le conducteur!</string>
+    <string name="txt_cancel_driver1">Voyage annulé par le conducteur!</string>
     <string name="txt_cancel_ride">Annuler le trajet</string>
     <string name="txt_cancel_schedule">Horaire annulé avec succès!</string>
     <string name="txt_cancel_trans">Êtes-vous sûr? Vous souhaitez annuler la transaction?</string>
@@ -486,5 +486,19 @@
     <string name="txt_toast_not_found_current_location">Impossible d\'obtenir l\'emplacement actuel</string>
     <string name="toast_logout_notifi">Vous vous êtes connecté à un autre appareil !</string>
     <string name="top_up_successfully">Rechargez votre porte-monnaie avec succès!</string>
+    <string name="txt_type_top_up_wallet">Type Top Up</string>
+    <string name="txt_top_up_history">Histoire de recharge</string>
+    <string name="txt_error_empty_amount">S\'il vous plaît entrer Montant</string>
+    <string name="txt_choose_a_paymnet">Choisissez un paiement</string>
+    <string name="txt_selected_type">Le type de paiement sélectionné est</string>
+    <string name="cannot_back_on_thetrip">Je ne peux pas revenir! Parce que vous êtes en voyage</string>
+    <string name="txt_cancel_driver2">has been paid to you by the Driver for cancelling this trip request, please check your eWallet. We apologize for the inconvenience caused.</string>
+    <string name="txt_cancle_user1">Vous avez dépassé le délai de grâce d\'annulation de 3 minutes, frais d\'annulation de</string>
+    <string name="txt_cancle_user2">sera déduit de votre eWallet payé à Driver ou facturé à votre prochain trajet. Cliquez sur "Confirmer" pour procee</string>
+    <string name="txt_cancel_driver">Le voyage a été annulé</string>
+    <string name="txt_notification">notification</string>
+    <string name="txt_none">None</string>
+    <string name="txt_select_btn_route">Sélectionnez Itinéraire préféré</string>
+    <string name="txt_choose_a_payment">Choisissez un paiement</string>
 </resources>
 

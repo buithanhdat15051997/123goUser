@@ -58,6 +58,7 @@ import sg.go.user.Fragment.HomeMapFragment;
 import sg.go.user.Fragment.ScheduleListFragment;
 import sg.go.user.Fragment.SearchPlaceFragment;
 import sg.go.user.Fragment.TravelMapFragment;
+import sg.go.user.Fragment.WalletFragment;
 import sg.go.user.HttpRequester.VolleyRequester;
 import sg.go.user.Interface.AsyncTaskCompleteListener;
 import sg.go.user.Models.RequestDetail;
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
     private TextView txt_exit_gps;
 
     private Dialog gpsAlertDialog;
-    public BottomNavigationView mBottomNavigationView;
+    public static BottomNavigationView mBottomNavigationView;
 
     private BroadcastReceiver accountLogoutReceiver;
 
@@ -122,6 +123,11 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                 case "fr":
                     myLocale = new Locale("fr");
                     break;
+
+                case "vi":
+                    myLocale = new Locale("vi");
+                    break;
+
 
             }
 
@@ -163,6 +169,14 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
         if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)) {
             mbundle = savedInstanceState;
+
+            if (mBottomNavigationView != null) {
+
+                mBottomNavigationView.inflateMenu(R.menu.consumer_bottom_navigation_menu);
+                mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
+                addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
+
+            }
 
             /*if (TextUtils.isEmpty(new PreferenceHelper(this).getDeviceToken())) {
 
@@ -215,61 +229,61 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                 }
 
             }
+//            if (mBottomNavigationView != null) {
+//
+//                mBottomNavigationView.inflateMenu(R.menu.consumer_bottom_navigation_menu);
+//                mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
+//                addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
+//
+//            }
 
-            if (mBottomNavigationView != null) {
-
-                mBottomNavigationView.inflateMenu(R.menu.consumer_bottom_navigation_menu);
-                mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
-                addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
-
-            }
-
-        } else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
-
-            if (mBottomNavigationView != null) {
-
-                mBottomNavigationView.inflateMenu(R.menu.nursing_home_bottom_navigation_menu);
-                mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
-                //Check Intent received from FCMScheduleReceiver
-                if (getIntent().getExtras() != null &&
-                        getIntent().getExtras().getString(Const.NotificationType.ACTION) != null &&
-                        getIntent().getExtras().getString(Const.NotificationType.ACTION).equals(Const.NotificationType.SCHEDULE)) {
-
-                    EbizworldUtils.appLogDebug("AmbulanceFCMService", "MainActivity " + getIntent().getExtras().getString(Const.NotificationType.ACTION));
-
-                    addFragment(new ScheduleListFragment(), false, Const.SCHEDULE_LIST_FRAGMENT, true);
-
-                } else {
-
-                    addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
-                }
-
-
-            }
-        } else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
-
-            if (mBottomNavigationView != null) {
-
-                mBottomNavigationView.inflateMenu(R.menu.hospital_bottom_navigation_menu);
-
-
-                mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
-                //Check Intent received from FCMScheduleReceiver
-                if (getIntent().getExtras() != null &&
-                        getIntent().getExtras().getString(Const.NotificationType.ACTION) != null &&
-                        getIntent().getExtras().getString(Const.NotificationType.ACTION).equals(Const.NotificationType.SCHEDULE)) {
-
-                    EbizworldUtils.appLogDebug("AmbulanceFCMService", "MainActivity: " + getIntent().getExtras().getString(Const.NotificationType.ACTION));
-
-                    addFragment(new ScheduleListFragment(), false, Const.SCHEDULE_LIST_FRAGMENT, true);
-
-                } else {
-
-                    addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
-                }
-
-            }
         }
+//        else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
+//
+//            if (mBottomNavigationView != null) {
+//
+//                mBottomNavigationView.inflateMenu(R.menu.nursing_home_bottom_navigation_menu);
+//                mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
+//                //Check Intent received from FCMScheduleReceiver
+//                if (getIntent().getExtras() != null &&
+//                        getIntent().getExtras().getString(Const.NotificationType.ACTION) != null &&
+//                        getIntent().getExtras().getString(Const.NotificationType.ACTION).equals(Const.NotificationType.SCHEDULE)) {
+//
+//                    EbizworldUtils.appLogDebug("AmbulanceFCMService", "MainActivity " + getIntent().getExtras().getString(Const.NotificationType.ACTION));
+//
+//                    addFragment(new ScheduleListFragment(), false, Const.SCHEDULE_LIST_FRAGMENT, true);
+//
+//                } else {
+//
+//                    addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+//                }
+//
+//
+//            }
+//        } else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
+//
+//            if (mBottomNavigationView != null) {
+//
+//                mBottomNavigationView.inflateMenu(R.menu.hospital_bottom_navigation_menu);
+//
+//
+//                mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
+//                //Check Intent received from FCMScheduleReceiver
+//                if (getIntent().getExtras() != null &&
+//                        getIntent().getExtras().getString(Const.NotificationType.ACTION) != null &&
+//                        getIntent().getExtras().getString(Const.NotificationType.ACTION).equals(Const.NotificationType.SCHEDULE)) {
+//
+//                    EbizworldUtils.appLogDebug("AmbulanceFCMService", "MainActivity: " + getIntent().getExtras().getString(Const.NotificationType.ACTION));
+//
+//                    addFragment(new ScheduleListFragment(), false, Const.SCHEDULE_LIST_FRAGMENT, true);
+//
+//                } else {
+//
+//                    addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
+//                }
+//
+//            }
+//        }
 
 //        Get account status
         accountStatusHandler.postDelayed(accountStatusRunnable, 10000);
@@ -425,6 +439,16 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
             } else if (currentFragment.equals(Const.TRAVEL_MAP_FRAGMENT)) {
 
                 addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
+                mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
+
+            } else if (currentFragment.equals(Const.HISTORY_TOPUP_WALLET_FRAMENT)) {
+
+                addFragment(new WalletFragment(), true, Const.WALLET_FRAGMENT, true);
+
+            } else if (currentFragment.equals(Const.CHOOSE_PAYMENT_FRAGMENT)) {
+
+                addFragment(new AccountFragment(), true, Const.ACCOUNT_FRAGMENT, true);
+
                 mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
 
             } else {
@@ -599,6 +623,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
     public void addFragment(Fragment fragment, boolean addToBackStack,
                             String tag, boolean isAnimate) {
+        mBottomNavigationView.setVisibility(View.GONE);
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
         if (isAnimate) {
@@ -610,7 +635,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
         if (addToBackStack) {
             ft.addToBackStack(tag);
-        }else {
+        } else {
             ft.addToBackStack(null);
         }
 
@@ -624,17 +649,20 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                 tag.equals(Const.ACCOUNT_FRAGMENT)) {
 
             if (mBottomNavigationView != null)
+                Log.d("aaaaa1","hihi");
                 mBottomNavigationView.setVisibility(View.VISIBLE);
 
         } else {
 
             if (mBottomNavigationView != null)
+                Log.d("aaaaa2","hihi");
                 mBottomNavigationView.setVisibility(View.GONE);
 
         }
     }
+
     public void addFragmentNoRefresh(Fragment fragment, boolean addToBackStack,
-                            String tag, boolean isAnimate) {
+                                     String tag, boolean isAnimate) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
         if (isAnimate) {
@@ -646,24 +674,28 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
         if (addToBackStack) {
             ft.addToBackStack(tag);
-        }else {
+        } else {
             ft.addToBackStack(null);
         }
 
         ft.add(R.id.content_frame, fragment, tag);
         currentFragment = tag;
         ft.commitAllowingStateLoss();
-        mBottomNavigationView.setVisibility(View.VISIBLE);
+        mBottomNavigationView.setVisibility(View.GONE);
+
         if (tag.equals(Const.HOME_MAP_FRAGMENT) ||
                 tag.equals(Const.SCHEDULE_LIST_FRAGMENT) ||
                 tag.equals(Const.HISTORY_FRAGMENT) ||
-                tag.equals(Const.ACCOUNT_FRAGMENT)){
+                tag.equals(Const.ACCOUNT_FRAGMENT)) {
 
             if (mBottomNavigationView != null)
+
                 mBottomNavigationView.setVisibility(View.VISIBLE);
 
         } else {
+
             if (mBottomNavigationView != null)
+                Log.d("aaaaa2","hihi");
                 mBottomNavigationView.setVisibility(View.GONE);
 
         }
@@ -1136,7 +1168,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        Log.d("manh111111", "onNavigationItemSelected: "+currentFragment);
+        Log.d("manh111111", "onNavigationItemSelected: " + currentFragment);
 
         if (currentFragment.equals(Const.TRAVEL_MAP_FRAGMENT) ||
                 currentFragment.equals(Const.REQUEST_FRAGMENT) ||

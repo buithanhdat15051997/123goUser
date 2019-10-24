@@ -48,6 +48,8 @@ public class PreferenceHelper {
 
     private final  String AMOUNT_WALLET = "total_amount_wallet";
 
+    private final  String TYPE_PAYMENT_BILLINGINFO = "type_payment_billing";
+
 
 
     private Context context;
@@ -55,6 +57,20 @@ public class PreferenceHelper {
     public PreferenceHelper(Context context) {
         app_prefs = context.getSharedPreferences(Const.PREF_NAME,Context.MODE_PRIVATE);
         this.context = context;
+    }
+
+
+
+    public String gettypePaymentBilling(){
+
+        return app_prefs.getString(TYPE_PAYMENT_BILLINGINFO,"");
+    }
+
+    public void puttypePaymentBilling(String type_payment_billing){
+        Editor editor = app_prefs.edit();
+        editor.putString(TYPE_PAYMENT_BILLINGINFO,type_payment_billing);
+        editor.apply();
+
     }
 
 

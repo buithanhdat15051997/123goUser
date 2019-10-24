@@ -103,6 +103,8 @@ public class RatingFragment extends BaseFragment {
         layout_distance = (LinearLayout) view.findViewById(R.id.layout_distance);
         toll_layout = (LinearLayout) view.findViewById(R.id.toll_layout);
 
+        MainActivity.mBottomNavigationView.setVisibility(View.GONE);
+
         rating = simple_rating_bar.getRating();
 
         simple_rating_bar.setListener(new SimpleRatingBar.SimpleRatingBarListener() {

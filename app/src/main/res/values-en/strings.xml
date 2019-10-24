@@ -257,7 +257,7 @@
     <string name="txt_done">Done</string>
     <string name="txt_select_payment_note">Tap any button below to change option</string>
     <string name="txt_select_payment_note2">Please use this screen, to toggle back to CC payment.</string>
-    <string name="txt_next">Car Picking</string>
+    <string name="txt_next">Select Car Type and Go</string>
     <string name="txt_confirm_phone">Confirm phone number</string>
     <string name="txt_choose_account">Choose an account</string>
     <string name="txt_fb">Facebook</string>
@@ -313,7 +313,7 @@
     <string name="txt_car_no">Car.No:</string>
     <string name="txt_mobile">Mobile:</string>
     <string name="txt_no_cancel_reason">No Reasons found!</string>
-    <string name="txt_cancel_driver">Trip canceled by driver!</string>
+    <string name="txt_cancel_driver1">I am sorry that the driver has cancelled the trip, an amount of</string>
     <string name="network_error">No network connection.Please check your internet</string>
     <string name="memory_error">Run out of memory please close the other background apps and try again!</string>
     <string name="txt_load_web">Are you sure? You want to load this page?</string>
@@ -444,7 +444,7 @@
     <string name="hospital_discharge_warning_title">Notice for Discharge</string>
     <string name="txt_total_pay_wallet">"Total Money In Your Wallet: "</string>
     <string name="title_wallet">Your Wallet</string>
-    <string name="edt_hint_input_money_wallet">"Input Money: "</string>
+    <string name="edt_hint_input_money_wallet">Enter Money:</string>
     <string name="name_step_frag_one">Enjoy a balance lifestyle</string>
     <string name="name_step_frag_two">The trip fare is fair</string>
     <string name="name_step_frag_three">Earn decent income</string>
@@ -475,5 +475,18 @@
     <string name="min">mins</string>
     <string name="txt_request_is_canceled_paypal">Request is canceled</string>
     <string name="top_up_successfully">Top up to wallet successfully!</string>
+    <string name="txt_type_top_up_wallet">Type Top Up</string>
+    <string name="txt_top_up_history">Top Up History</string>
+    <string name="txt_error_empty_amount">Please enter Amount</string>
+    <string name="txt_choose_a_paymnet">Choose a payment</string>
+    <string name="cannot_back_on_thetrip">Can not back! Because you are on a trip</string>
+    <string name="txt_cancel_driver2">has been paid to you by the Driver for cancelling this trip request, please check your eWallet. We apologize for the inconvenience caused.</string>
+    <string name="txt_cancle_user1">You exceeded the cancellation grace period of 3 minutes, a cancellation fee of</string>
+    <string name="txt_cancle_user2">will be deducted from your eWallet paid to Driver or charged to your next ride. Click "Confirm" to procee</string>
+    <string name="txt_cancel_driver">The trip has been canceled</string>
+    <string name="txt_notification">Notification</string>
+    <string name="txt_none">None</string>
+    <string name="txt_select_btn_route">Select Prefered Route</string>
+    <string name="txt_choose_a_payment">Choose a payment</string>
 </resources>
 

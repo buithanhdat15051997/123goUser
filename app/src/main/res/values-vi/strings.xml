@@ -59,7 +59,7 @@
     <string name="action_history">Lịch sử</string>
     <string name="action_schedule">Lịch trình</string>
     <string name="action_account">Tài khoản</string>
-    <string name="txt_next">Chọn xe</string>
+    <string name="txt_next">"Chọn loại xe "</string>
     <string name="txt_current_loc">Chọn địa điểm</string>
     <string name="txt_current_location">Đặt địa điểm đón</string>
     <string name="add_stop">Thêm điểm dừng</string>
@@ -87,7 +87,7 @@
     <string name="txt_load_web">Bạn có chắc không? Bạn muốn tải trang này?</string>
     <string name="txt_continue">Tiếp tục</string>
     <string name="txt_cancel">Hủy bỏ</string>
-    <string name="txt_cancel_driver">Chuyến đi bị hủy bởi tài xế!</string>
+    <string name="txt_cancel_driver1">Tôi xin lỗi vì tài xế đã hủy chuyến đi, số tiền</string>
     <string name="txt_cancel_fav">Nơi lưu đã xóa</string>
     <string name="txt_cancel_ride">"Hủy bỏ chuyến "</string>
     <string name="txt_cancel_schedule">Lịch trình đã hủy thành công!</string>
@@ -182,6 +182,25 @@
     <string name="txt_btn_done">Xong</string>
     <string name="txt_cameray">Camera</string>
     <string name="txt_load">Đang tải...</string>
+    <string name="txt_type_top_up_wallet">Hình thức nạp tiền</string>
+    <string name="dolo_singapor">S$</string>
+    <string name="txt_top_up_history">"Lịch sử nạp tiền "</string>
+    <string name="error_empty_amount">Vui lòng nhập số tiền</string>
+    <string name="txt_pay_cash">Trả bằng tiền mặt</string>
+    <string name="txt_pay_paypal">Trả bằng Paypal</string>
+    <string name="txt_pay_wallet">"Trả bằng ví "</string>
+    <string name="txt_choose_a_paymnet">Chọn loại thanh toán</string>
+    <string name="txt_selected_type">Loại thanh toán được chọn là</string>
+    <string name="cannot_back_on_thetrip">Không thể trở lại! Bởi vì bạn đang trong chuyến đi</string>
+    <string name="txt_cancel_driver2">đã được Tài xế trả cho bạn vì đã hủy yêu cầu chuyến đi này, vui lòng kiểm tra eWallet của bạn. Chúng tôi xin lỗi vì đã gây ra sự bất tiện này.</string>
+    <string name="txt_cancle_user1">Bạn đã vượt quá thời gian hạn hủy là 3 phút, phí hủy</string>
+    <string name="txt_cancle_user2">sẽ được khấu trừ từ eWallet của bạn trả cho Tài xế hoặc tính phí cho chuyến đi tiếp theo của bạn. Nhấp vào "Xác nhận" để kết thúc</string>
+    <string name="txt_cancel_driver">" Chuyến đi đã bị hủy"</string>
+    <string name="txt_notification">Thông báo</string>
+    <string name="txt_none">Không chọn</string>
+    <string name="txt_select_btn_route">Chọn tuyến ưa thích</string>
+    <string name="txt_choose_a_payment">Chọn loại thanh toán</string>
+    <string name="submit">Xác nhận</string>
 
 
 </resources>
