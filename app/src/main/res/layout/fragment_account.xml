@@ -29,6 +29,7 @@
                 app:srcCompat="@drawable/ic_back_blue" />-->
 
             <TextView
+                android:fontFamily="@font/questrial_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -78,6 +79,7 @@
             app:civ_border_width="@dimen/_2sdp" />
 
         <TextView
+            android:fontFamily="@font/questrial_regular"
             android:id="@+id/tv_account_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

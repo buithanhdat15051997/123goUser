@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main_app">
+
+    <RelativeLayout
+        android:id="@+id/rela_dialog_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_background_main">
+
+        <ImageButton
+            android:id="@+id/img_dialog_back_schedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:padding="@dimen/_10sdp"
+            app:srcCompat="@drawable/ic_back_blue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/questrial_regular"
+            android:gravity="end"
+            android:text="@string/txt_schedule"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_dialog_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rela_dialog_schedule"
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/calendar_clock" />
+
+        <TextView
+            android:id="@+id/txt_date_time_billing_schedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:background="@drawable/background_rectango_stroke_blue"
+            android:fontFamily="@font/quicksand_bold"
+            android:gravity="center"
+            android:textColor="@color/color_btn_main"
+            android:textColorHint="@color/color_btn_main"
+            android:hint="@string/txt_select_time_pickup"
+            android:textSize="@dimen/_14ssp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear_dialog_schedule"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_billdetail_billinginfo"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:fontFamily="@font/quicksand_bold"
+            android:gravity="center"
+            android:text="@string/txt_total_pay"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_billing_info_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_80sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_toRightOf="@+id/txt_billdetail_billinginfo"
+            android:background="@drawable/background_rectango_stroke_blue"
+            android:fontFamily="@font/quicksand_bold"
+            android:gravity="center"
+            android:text="S$0"
+            android:textAlignment="center"
+            android:textColor="@color/color_btn_main"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_show_bill_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_billing_info_total_price"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="@string/txt_bill_detail"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_below="@+id/txt_show_bill_detail"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/background_gradient_line" />
+
+        <LinearLayout
+            android:id="@+id/tv_billing_info_kilo_distance1"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_billing_info_total_price"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/_5sdp">
+
+            <TextView
+                android:id="@+id/tv_billing_info_kilo_distance2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="@string/ferry_terminals"
+                android:textAlignment="center"
+                android:textColor="@color/black_text"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tv_billing_info_kilo_distance3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0 km"
+                android:textAlignment="center"
+                android:textColor="@color/color_btn_main"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold|italic" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/tv_billing_info_kilo_dola"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_billing_info_total_price"
+            android:layout_marginStart="@dimen/_95sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_toRightOf="@+id/tv_billing_info_kilo_distance1"
+            android:orientation="vertical"
+            android:padding="@dimen/_5sdp">
+
+            <TextView
+                android:id="@+id/tv_billing_info_kilo_dola1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="@string/staircase_less_80"
+                android:textAlignment="center"
+                android:textColor="@color/black_text"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_billing_info_kilo_dola2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:text="$ 0"
+                android:textAlignment="center"
+                android:textColor="@color/color_btn_main"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold|italic" />
+
+
+        </LinearLayout>
+
+        <!--Tarmac group-->
+        <LinearLayout
+            android:id="@+id/billing_info_tarmac_group"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_billing_info_kilo_dola"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/_5sdp"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/tv_billing_info_name_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="@string/airport_tarmac"
+                android:textAlignment="center"
+                android:textColor="@color/black_text"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_billing_info_name_typeCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:text="Car"
+                android:textAlignment="center"
+                android:textColor="@color/color_btn_main"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold|italic" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/billing_info_oxygen_tank_group"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_billing_info_kilo_dola"
+            android:layout_marginStart="@dimen/_95sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/billing_info_tarmac_group"
+            android:orientation="vertical"
+            android:padding="@dimen/_5sdp"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/tv_billing_info_img_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="@string/oxygen_liter"
+                android:textAlignment="center"
+                android:textColor="@color/black_text"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/img_billing_info_img_typeCar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_gravity="center"
+                android:text="$ 0"
+                android:textAlignment="center"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+        android:fontFamily="@font/questrial_regular"
+        android:id="@+id/tv_dialog_schedule_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@drawable/background_btn_confirm"
+        android:gravity="center"
+        android:layout_margin="@dimen/_10sdp"
+        android:text="@string/btn_confirm"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold" />
+        <TextView
+            android:fontFamily="@font/questrial_regular"
+            android:id="@+id/tv_dialog_schedule_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:gravity="center"
+            android:background="@drawable/background_rectango_gradient"
+            android:layout_margin="@dimen/_10sdp"
+            android:text="@string/txt_cancel"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16ssp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+</RelativeLayout>

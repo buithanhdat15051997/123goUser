@@ -95,7 +95,7 @@ public class RatingFragment extends BaseFragment {
         btn_submit_rating = (TextView) view.findViewById(R.id.btn_submit_rating);
         tv_no_tolls = (TextView) view.findViewById(R.id.tv_no_tolls);
         tv_payment_type = (TextView) view.findViewById(R.id.tv_payment_type);
-        tv_cancellation_fee = (TextView) view.findViewById(R.id.tv_cancellation_fee);
+       // tv_cancellation_fee = (TextView) view.findViewById(R.id.tv_cancellation_fee);
 
         iv_feedback_vehicle = (CircleImageView) view.findViewById(R.id.iv_feedback_vehicle);
         iv_feedback_user = (CircleImageView) view.findViewById(R.id.iv_feedback_user);
@@ -180,10 +180,10 @@ public class RatingFragment extends BaseFragment {
             }*/
 
             if (null != requestDetail.getCancellationFee() && !requestDetail.getCancellationFee().equals("0")) {
-                tv_cancellation_fee.setVisibility(View.VISIBLE);
-                tv_cancellation_fee.setText(getResources().getString(R.string.txt_trip_cancel_fee) + " " + requestDetail.getCurrnecy_unit() + " " + requestDetail.getCancellationFee());
+             //   tv_cancellation_fee.setVisibility(View.GONE);
+             //   tv_cancellation_fee.setText(getResources().getString(R.string.txt_trip_cancel_fee) + " " + requestDetail.getCurrnecy_unit() + " " + requestDetail.getCancellationFee());
             } else {
-                tv_cancellation_fee.setVisibility(View.GONE);
+             //   tv_cancellation_fee.setVisibility(View.GONE);
             }
 
             if (requestDetail.getRequest_type().equals("1") || requestDetail.getRequest_type().equals("2")) {

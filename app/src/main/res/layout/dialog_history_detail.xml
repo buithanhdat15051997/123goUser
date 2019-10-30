@@ -22,6 +22,7 @@
             app:srcCompat="@drawable/ic_back_blue" />
 
         <TextView
+            android:fontFamily="@font/questrial_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -66,6 +67,7 @@
                 android:weightSum="1">
 
                 <TextView
+                    android:fontFamily="@font/quicksand_bold"
                     android:id="@+id/trip_date"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -77,6 +79,7 @@
                     android:textStyle="bold|italic" />
 
                 <TextView
+                    android:fontFamily="@font/quicksand_bold"
                     android:id="@+id/trip_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -92,6 +95,7 @@
             </LinearLayout>
 
             <TextView
+                android:fontFamily="@font/quicksand_bold"
                 android:id="@+id/trip_ambulance_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -109,6 +113,7 @@
                 android:padding="@dimen/_5sdp">
 
                 <TextView
+                    android:fontFamily="@font/quicksand_bold"
                     android:id="@+id/trip_source_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -132,6 +137,7 @@
                     android:background="@drawable/background_gradient_line" />
 
                 <TextView
+                    android:fontFamily="@font/quicksand_bold"
                     android:id="@+id/trip_destination_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -172,6 +178,7 @@
                             android:src="@drawable/defult_user" />
 
                         <TextView
+                            android:fontFamily="@font/quicksand_bold"
                             android:id="@+id/trip_driver_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -1068,6 +1075,7 @@
                         android:weightSum="1">
 
                         <TextView
+                            android:fontFamily="@font/quicksand_bold"
                             android:id="@+id/tv_history_detail_total_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -1089,7 +1097,7 @@
                             android:visibility="invisible" />
 
                         <TextView
-
+                            android:fontFamily="@font/quicksand_bold"
                             android:id="@+id/tv_history_detail_total"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

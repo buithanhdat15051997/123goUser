@@ -160,7 +160,7 @@ public class AppController extends Application{
 
     private void overrideDefaultFont(Context context, String staticTypefaceFieldName){
 
-        final Typeface newFont = ResourcesCompat.getFont(context, R.font.proximanova_regular);
+        final Typeface newFont = ResourcesCompat.getFont(context, R.font.quicksand_regular);
 
         try {
             final Field staticField = Typeface.class.getDeclaredField(staticTypefaceFieldName);
@@ -184,7 +184,7 @@ public class AppController extends Application{
         }
 
         // Generate the certificate using the certificate file under res/raw/cert.cer
-        InputStream caInput = new BufferedInputStream(getResources().openRawResource(R.raw.halp));
+        InputStream caInput = new BufferedInputStream(getResources().openRawResource(R.raw.onetwothreego));
         Certificate ca = null;
         try {
             assert cf != null;

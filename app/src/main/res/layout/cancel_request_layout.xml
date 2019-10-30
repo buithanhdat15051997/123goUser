@@ -7,6 +7,7 @@
     android:gravity="center">
 
     <TextView
+        android:fontFamily="@font/questrial_regular"
         android:textStyle="bold"
         android:id="@+id/reason_title"
         android:layout_width="match_parent"

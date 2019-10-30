@@ -46,19 +46,15 @@ import sg.go.user.Utils.PreferenceHelper;
 
 public class WalletFragment extends BaseFragment implements AsyncTaskCompleteListener {
 
-    private Wallets wallets;
     private TextView txt_recharge_ewallet, txt_total_money_wallet;
     private ImageView img_pay_ewallet;
     private EditText edt_input_money_wallet;
     private Button btn_recharge_ewallet;
-    PreferenceHelper preferenceHelper_Wallet;
     private Toolbar toolbar_wallet;
     private String Get_Money_Recharge_Wallet;
     private ImageButton img_wallet_back;
     private MainActivity activity;
-
-    private RecyclerView Recyc_history_TopUp_Wallet;
-    private  Button btn_show_history_TopUp_wallet;
+    private Button btn_show_history_TopUp_wallet;
     View view;
 
     @Nullable
@@ -70,8 +66,6 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
         mapping();
 
         ApiGetWallet();
-
-        wallets = new Wallets();
 
         return view;
     }
@@ -144,19 +138,7 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
 
     }
 
-    private void GetHistoryTopUpWallet() {
 
-        HashMap<String, String> params = new HashMap<>();
-
-        params.put(Const.Params.URL,Const.ServiceType.HISTORY_TOPUP_WALLET);
-
-        params.put(Const.Params.ID, new PreferenceHelper(activity).getUserId());
-
-        params.put(Const.Params.TOKEN, new PreferenceHelper(activity).getSessionToken());
-
-        new VolleyRequester(activity,Const.POST,params,100100,this);
-
-    }
 
     private TextWatcher onTextChangedListener() {
         return new TextWatcher() {

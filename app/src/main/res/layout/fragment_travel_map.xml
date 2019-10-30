@@ -56,6 +56,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:fontFamily="@font/quicksand_bold"
             android:id="@+id/tv_driver_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,6 +68,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:fontFamily="@font/quicksand_bold"
             android:id="@+id/address_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,6 +80,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:fontFamily="@font/quicksand_bold"
             android:id="@+id/tv_current_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -158,6 +161,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:fontFamily="@font/questrial_regular"
                     android:id="@+id/driver_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -168,6 +172,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:fontFamily="@font/quicksand_bold"
                     android:id="@+id/driver_car_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -178,6 +183,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:fontFamily="@font/quicksand_bold"
                     android:id="@+id/driver_car_model"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -239,6 +245,7 @@
                     app:srcCompat="@drawable/phone" />
 
                 <TextView
+                    android:fontFamily="@font/quicksand_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txt_contact"
@@ -262,6 +269,7 @@
                     app:srcCompat="@drawable/close" />
 
                 <TextView
+                    android:fontFamily="@font/quicksand_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txt_cancel_ride"

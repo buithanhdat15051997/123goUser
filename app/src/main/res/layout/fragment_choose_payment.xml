@@ -32,6 +32,7 @@
                     app:srcCompat="@drawable/ic_back_blue" />
 
                 <TextView
+                    android:fontFamily="@font/questrial_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
@@ -47,6 +48,7 @@
         </android.support.v7.widget.Toolbar>
 
         <TextView
+            android:fontFamily="@font/quicksand_bold"
             android:id="@+id/txtShow_Payment_Selected"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,6 +93,7 @@
 
 
                     <RadioButton
+                        android:fontFamily="@font/quicksand_bold"
                         android:id="@+id/radioBtn_Payment_None"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
@@ -100,6 +103,7 @@
                         android:textStyle="bold" />
 
                     <RadioButton
+                        android:fontFamily="@font/quicksand_bold"
                         android:id="@+id/radioBtn_Payment_Cash"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
@@ -110,6 +114,7 @@
 
 
                     <RadioButton
+                        android:fontFamily="@font/quicksand_bold"
                         android:id="@+id/radioBtn_Payment_Ewallet"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
@@ -119,6 +124,7 @@
                         android:textStyle="bold" />
 
                     <RadioButton
+                        android:fontFamily="@font/quicksand_bold"
                         android:id="@+id/radioBtn_Payment_Paypal"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
@@ -175,16 +181,17 @@
 
         </android.support.v7.widget.CardView>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/logo_hide" />
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:background="@drawable/logo_hide" />-->
 
 
     </LinearLayout>
 
     <Button
+        android:fontFamily="@font/questrial_regular"
         android:id="@+id/btn_choose_payment"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"

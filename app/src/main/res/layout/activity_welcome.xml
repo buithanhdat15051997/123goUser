@@ -72,6 +72,7 @@
     </LinearLayout>
 
     <Button
+        android:fontFamily="@font/questrial_regular"
         android:id="@+id/welcome_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"

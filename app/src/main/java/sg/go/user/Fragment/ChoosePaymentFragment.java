@@ -102,25 +102,27 @@ public class ChoosePaymentFragment extends Fragment implements AsyncTaskComplete
 
                 switch (i) {
                     case R.id.radioBtn_Payment_None:
+
+                        btn_choose_payment.setText(getResources().getString(R.string.btn_confirm) + " " + getResources().getString(R.string.txt_none));
                         possiton = 0;
 
                         break;
 
                     case R.id.radioBtn_Payment_Cash:
 
-                        btn_choose_payment.setText(getResources().getString(R.string.submit) + " " + getResources().getString(R.string.txt_pay_cash));
+                        btn_choose_payment.setText(getResources().getString(R.string.btn_confirm) + " " + getResources().getString(R.string.txt_pay_cash));
                         possiton = 1;
                         break;
 
                     case R.id.radioBtn_Payment_Ewallet:
 
-                        btn_choose_payment.setText(getResources().getString(R.string.submit) + " " + getResources().getString(R.string.txt_pay_wallet));
+                        btn_choose_payment.setText(getResources().getString(R.string.btn_confirm) + " " + getResources().getString(R.string.txt_pay_wallet));
                         possiton = 2;
                         break;
 
                     case R.id.radioBtn_Payment_Paypal:
 
-                        btn_choose_payment.setText(getResources().getString(R.string.submit) + " " + getResources().getString(R.string.txt_pay_paypal));
+                        btn_choose_payment.setText(getResources().getString(R.string.btn_confirm) + " " + getResources().getString(R.string.txt_pay_paypal));
                         possiton = 3;
                         break;
 

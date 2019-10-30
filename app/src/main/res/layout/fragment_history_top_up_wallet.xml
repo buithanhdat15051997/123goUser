@@ -27,6 +27,7 @@
                 app:srcCompat="@drawable/ic_back_blue" />
 
             <TextView
+                android:fontFamily="@font/questrial_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -44,6 +45,7 @@
         android:id="@+id/txt_not_available_topup"
         android:textStyle="bold|italic"
         android:textSize="@dimen/_16sdp"
+        android:fontFamily="@font/quicksand_bold"
         android:text="@string/not_available"
         android:layout_centerInParent="true"
         android:gravity="center"

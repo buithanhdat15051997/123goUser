@@ -173,6 +173,7 @@
         android:paddingTop="@dimen/_5sdp">
 
         <TextView
+            android:fontFamily="@font/questrial_regular"
             android:id="@+id/txt_select_prefered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -206,6 +207,7 @@
                 android:src="@drawable/red_btn_marker" />
 
             <Button
+                android:fontFamily="@font/quicksand_bold"
                 android:id="@+id/btnRedMarker"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
@@ -236,6 +238,7 @@
                 android:src="@drawable/blue_btn_marker" />
 
             <Button
+                android:fontFamily="@font/quicksand_bold"
                 android:id="@+id/btnBlueMarker"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
@@ -269,6 +272,7 @@
                 android:src="@drawable/yellow_btn_marker" />
 
             <Button
+                android:fontFamily="@font/quicksand_bold"
                 android:id="@+id/btnYellowMarker"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
@@ -329,7 +333,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-
+                    android:fontFamily="@font/questrial_regular"
                     android:layout_width="40dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
@@ -347,6 +351,7 @@
                     android:src="@drawable/ic_destination_all" />
 
                 <AutoCompleteTextView
+                    android:fontFamily="@font/questrial_regular"
                     android:id="@+id/et_source_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -402,6 +407,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:fontFamily="@font/questrial_regular"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
@@ -418,6 +424,7 @@
                     android:src="@drawable/ic_destination_all" />
                 <!-- android:background="@drawable/background_rectango_stroke_blue"-->
                 <AutoCompleteTextView
+                    android:fontFamily="@font/questrial_regular"
                     android:id="@+id/et_destination_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

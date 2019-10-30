@@ -72,6 +72,7 @@
                 android:src="@drawable/background_gradient_line" />
 
             <TextView
+                android:fontFamily="@font/questrial_regular"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -113,9 +114,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
                     android:background="@color/white"
+                    android:fontFamily="@font/quicksand_bold"
                     android:textColorHint="@color/black_text">
 
                     <EditText
+                        android:fontFamily="@font/quicksand_bold"
                         android:id="@+id/user_fullname"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_35sdp"
@@ -164,11 +167,13 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@color/white"
+                android:fontFamily="@font/quicksand_bold"
                 android:paddingBottom="@dimen/_5sdp"
                 android:textColorHint="@color/black_text"
                 android:visibility="gone">
 
                 <EditText
+                    android:fontFamily="@font/quicksand_bold"
                     android:id="@+id/user_email"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_35sdp"
@@ -194,6 +199,7 @@
                     android:id="@+id/input_layout_pass"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
+                    android:fontFamily="@font/quicksand_bold"
                     android:background="@color/white"
                     android:textColorHint="@color/black_text"
                     android:visibility="gone"
@@ -201,6 +207,7 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
+                        android:fontFamily="@font/quicksand_bold"
                         android:id="@+id/user_password"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_35sdp"
@@ -220,6 +227,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/quicksand_bold"
                     android:layout_weight="10"
                     android:textColorHint="@color/black_text">
 
@@ -230,6 +238,7 @@
                         android:weightSum="2">
 
                         <EditText
+                            android:fontFamily="@font/quicksand_bold"
                             android:id="@+id/user_referral_code"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_45sdp"
@@ -247,6 +256,7 @@
                             android:visibility="gone" />
 
                         <TextView
+                            android:fontFamily="@font/quicksand_bold"
                             android:id="@+id/applyRefCode"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_45sdp"
@@ -284,6 +294,7 @@
                 android:background="@null"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"
+                android:fontFamily="@font/questrial_regular"
                 android:text="@string/txt_next_signup"
                 android:textAllCaps="true"
                 android:textColor="@color/white"

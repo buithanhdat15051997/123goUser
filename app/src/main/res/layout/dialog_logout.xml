@@ -20,6 +20,7 @@
                  app:srcCompat="@drawable/ic_power_off" />-->
 
         <TextView
+            android:fontFamily="@font/questrial_regular"
             android:textStyle="bold"
             android:id="@+id/logout_title"
             android:layout_width="wrap_content"
@@ -42,6 +43,7 @@
         android:background="@color/black" />
 
     <TextView
+        android:fontFamily="@font/quicksand_bold"
         android:id="@+id/logout_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,6 +67,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:fontFamily="@font/questrial_regular"
             android:id="@+id/btn_logout_yes"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
@@ -79,6 +82,7 @@
             android:textSize="@dimen/_14sdp" />
 
         <TextView
+            android:fontFamily="@font/questrial_regular"
             android:textStyle="bold"
             android:id="@+id/btn_logout_no"
             android:layout_width="match_parent"

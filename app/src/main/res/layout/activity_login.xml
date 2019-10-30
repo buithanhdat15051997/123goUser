@@ -155,6 +155,7 @@
                         android:paddingBottom="@dimen/_20sdp">
 
                         <TextView
+                            android:fontFamily="@font/questrial_regular"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_45sdp"
                             android:layout_gravity="center"
@@ -194,10 +195,12 @@
                                 app:boxStrokeColor="@color/white">
 
                                 <EditText
+
                                     android:id="@+id/et_login_userid"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_35sdp"
                                     android:background="@color/white"
+                                    android:fontFamily="@font/quicksand_bold"
                                     android:hint="@string/email_mobile"
                                     android:inputType="textEmailAddress"
                                     android:maxLines="1"
@@ -247,6 +250,7 @@
                                 app:passwordToggleEnabled="true">
 
                                 <EditText
+                                    android:fontFamily="@font/quicksand_bold"
                                     android:id="@+id/et_login_password"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_35sdp"
@@ -273,7 +277,8 @@
                             </android.support.design.widget.TextInputLayout>
                         </LinearLayout>
 
-                        <TextView
+                        <Button
+                            android:fontFamily="@font/questrial_regular"
                             android:id="@+id/btn_login_main"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_45sdp"
@@ -295,6 +300,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:fontFamily="@font/quicksand_bold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -305,6 +311,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:fontFamily="@font/quicksand_bold"
                                 android:id="@+id/btn_new_user"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -323,6 +330,7 @@
                         </LinearLayout>
 
                         <TextView
+                            android:fontFamily="@font/quicksand_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_15sdp"
@@ -376,6 +384,7 @@
 
                         <!--</RelativeLayout>-->
                         <TextView
+                            android:fontFamily="@font/quicksand_bold"
                             android:id="@+id/btn_forgot_password_login"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

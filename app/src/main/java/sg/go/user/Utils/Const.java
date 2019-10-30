@@ -69,6 +69,8 @@ public class Const {
     //  Trip request status
     public static final int IS_CREATED = 0;
     public static final int IS_ACCEPTED = 1;
+
+
     public static final int IS_DRIVER_DEPARTED = 2;
     public static final int IS_DRIVER_ARRIVED = 3;
     public static final int IS_DRIVER_TRIP_STARTED = 4;
@@ -231,11 +233,12 @@ public class Const {
         public static final String SERVICE_TYPE_CAR = "service_type";
         public static final String SERVICE_KILOMET = "km";
 
-        public static final String CHOOSE_PAYMENT_SELECT_TYPE ="pre_select_type";
+        public static final String CHOOSE_PAYMENT_SELECT_TYPE = "pre_select_type";
     }
 
     public class ServiceType {
-        public static final String SOCKET_URL = "http://go123.cf:4000?";// dev socket server
+        public static final String SOCKET_URL = "https://123-go.co:4000?";// dev socket server
+
         //  public static final String SOCKET_URL = "http://ambulance2u.qooservices.cf:3000?";// dev socket server
 //        public static final String HOST_URL = "http://ambulance2u.qooservices.cf/";// PL developing server
 
@@ -243,7 +246,7 @@ public class Const {
 //        public static final String HOST_URL = "https://halp.sg/";// PL developing server
 
 
-        public static final String HOST_URL = "http://go123.cf/";// PL developing server
+        public static final String HOST_URL = "https://123-go.co/";// PL developing server
 
 
         public static final String BASE_URL = HOST_URL + "userApi/";

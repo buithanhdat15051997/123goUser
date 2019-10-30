@@ -17,6 +17,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -93,7 +94,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private GoogleApiClient mGoogleApiClient;
     private String filePath = "";
     private SocialMediaProfile mediaProfile;
-    private TextView btn_login_main;
+    private Button btn_login_main;
     private EditText et_login_password, et_login_userid;
     private int mFragmentId = 0;
     private String mFragmentTag = null;
@@ -101,7 +102,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private boolean isclicked = false;
     private ParseContent pcontent;
     private TextInputLayout input_layout_userid, input_layout_pass;
-   // private TextView btn_register_social;
+    // private TextView btn_register_social;
     private static final int RC_SIGN_IN = 007;
     Dialog social_dialog;
     private ImageView social_img;
@@ -111,7 +112,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             FacebookSdk.sdkInitialize(this);
             callbackManager = CallbackManager.Factory.create();
@@ -143,11 +144,11 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         btn_forgot_password_login = (TextView) findViewById(R.id.btn_forgot_password_login);
         btn_new_user = (TextView) findViewById(R.id.btn_new_user);
         //underline
-        btn_new_user.setPaintFlags(btn_new_user.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+        btn_new_user.setPaintFlags(btn_new_user.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         log_layout = (RelativeLayout) findViewById(R.id.log_layout);
         /*btn_login_fb = (Button) findViewById(R.id.btn_login_fb);*/
-        btn_login_main = (TextView) findViewById(R.id.btn_login_main);
+        btn_login_main = findViewById(R.id.btn_login_main);
         loc_pass = (ImageButton) findViewById(R.id.loc_pass);
         btn_register_social = (RelativeLayout) findViewById(R.id.btn_register_social);
 
@@ -158,7 +159,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             public void onClick(View view) {
                 if (validate()) {
 
-                    if (new PreferenceHelper(SignInActivity.this).getLoginType().equals(Const.PatientService.PATIENT)){
+                    if (new PreferenceHelper(SignInActivity.this).getLoginType().equals(Const.PatientService.PATIENT)) {
 
                         userLogin(Const.MANUAL);
 
@@ -198,7 +199,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             /*et_login_userid.setText("cr7juve@gmail.com");
             et_login_password.setText("123456");*/
 
-        }else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)){
+        } else if (new PreferenceHelper(this).getLoginType().equals(Const.NursingHomeService.NURSING_HOME)) {
 
             btn_register_social.setVisibility(View.GONE);
             btn_new_user.setVisibility(View.GONE);
@@ -207,7 +208,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             /*et_login_userid.setText("haols@ebizworld.com.vn");
             et_login_password.setText("123456");*/
 
-        }else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)){
+        } else if (new PreferenceHelper(this).getLoginType().equals(Const.HospitalService.HOSPITAL)) {
 
             btn_new_user.setVisibility(View.GONE);
             btn_forgot_password_login.setVisibility(View.GONE);
@@ -310,10 +311,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 showSocialPopUP();
 
                 break;
-            case R.id.btn_login_main:
-
-
-                break;
+//            case R.id.btn_login_main:
+//
+//
+//                break;
             case R.id.btn_forgot_password_login:
 
                 addFragment(new ForgotPasswordFragment(), false, Const.FORGOT_PASSWORD_FRAGMENT, true);
@@ -528,7 +529,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             map.put(Const.Params.EMAIL, sLoginUserId);
             map.put(Const.Params.PASSWORD, sLoginPassword);
 
-            if (new PreferenceHelper(this).getDeviceToken() == null){
+            if (new PreferenceHelper(this).getDeviceToken() == null) {
 
                 final String[] token = {""};
 
@@ -536,10 +537,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
 
-                        if (!task.isSuccessful()){
+                        if (!task.isSuccessful()) {
 
                             EbizworldUtils.appLogDebug("HaoLS", "Get Firebase token failed: " + task.getException());
-                        }else {
+                        } else {
 
                             token[0] = task.getResult().getToken();
                             EbizworldUtils.appLogDebug("HaoLS", "Firebase token: " + token[0]);
@@ -549,18 +550,18 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
                 });
 
-                if (!token[0].equals("")){
+                if (!token[0].equals("")) {
 
                     map.put(Const.Params.DEVICE_TOKEN, new PreferenceHelper(this).getDeviceToken());
 
-                }else {
+                } else {
 
                     Commonutils.progressdialog_hide();
                     EbizworldUtils.showLongToast(getResources().getString(R.string.something_was_wrong), SignInActivity.this);
                     return;
                 }
 
-            }else {
+            } else {
 
                 map.put(Const.Params.DEVICE_TOKEN, new PreferenceHelper(this).getDeviceToken());
             }
@@ -579,7 +580,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
             map.put(Const.Params.SOCIAL_ID, sSocial_unique_id);
 
-            if (new PreferenceHelper(this).getDeviceToken() == null){
+            if (new PreferenceHelper(this).getDeviceToken() == null) {
 
                 final String[] token = {""};
 
@@ -587,10 +588,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
 
-                        if (!task.isSuccessful()){
+                        if (!task.isSuccessful()) {
 
                             EbizworldUtils.appLogDebug("HaoLS", "Get Firebase token failed: " + task.getException());
-                        }else {
+                        } else {
 
                             token[0] = task.getResult().getToken();
                             EbizworldUtils.appLogDebug("HaoLS", "Firebase token: " + token[0]);
@@ -600,18 +601,18 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
                 });
 
-                if (!token[0].equals("")){
+                if (!token[0].equals("")) {
 
                     map.put(Const.Params.DEVICE_TOKEN, new PreferenceHelper(this).getDeviceToken());
 
-                }else {
+                } else {
 
                     Commonutils.progressdialog_hide();
                     EbizworldUtils.showLongToast(getResources().getString(R.string.something_was_wrong), SignInActivity.this);
                     return;
                 }
 
-            }else {
+            } else {
 
                 map.put(Const.Params.DEVICE_TOKEN, new PreferenceHelper(this).getDeviceToken());
             }
@@ -628,7 +629,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    private void nurseLogin(String loginType){
+    private void nurseLogin(String loginType) {
 
         if (!EbizworldUtils.isNetworkAvailable(SignInActivity.this)) {
 
@@ -639,13 +640,13 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         Commonutils.progressdialog_show(this, getResources().getString(R.string.txt_signin));
 
-        if (loginType.equalsIgnoreCase(Const.MANUAL)){
+        if (loginType.equalsIgnoreCase(Const.MANUAL)) {
 
-            HashMap<String,String> map = new HashMap<>();
+            HashMap<String, String> map = new HashMap<>();
             map.put(Const.Params.URL, Const.NursingHomeService.LOGIN_URL);
             map.put(Const.Params.TOKEN, new PreferenceHelper(this).getDeviceToken());
 
-            if (new PreferenceHelper(this).getDeviceToken() == null){
+            if (new PreferenceHelper(this).getDeviceToken() == null) {
 
                 final String[] token = {""};
 
@@ -653,11 +654,11 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
 
-                        if (!task.isSuccessful()){
+                        if (!task.isSuccessful()) {
 
                             EbizworldUtils.appLogDebug("HaoLS", "Get Firebase token failed: " + task.getException());
 
-                        }else {
+                        } else {
 
                             token[0] = task.getResult().getToken();
                             EbizworldUtils.appLogDebug("HaoLS", "Firebase token: " + token[0]);
@@ -667,18 +668,18 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
                 });
 
-                if (!token[0].equals("")){
+                if (!token[0].equals("")) {
 
                     map.put(Const.Params.DEVICE_TOKEN, new PreferenceHelper(this).getDeviceToken());
 
-                }else {
+                } else {
 
                     Commonutils.progressdialog_hide();
                     EbizworldUtils.showLongToast(getResources().getString(R.string.something_was_wrong), SignInActivity.this);
                     return;
                 }
 
-            }else {
+            } else {
 
                 map.put(Const.Params.DEVICE_TOKEN, new PreferenceHelper(this).getDeviceToken());
             }
@@ -697,7 +698,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    private void hospitalLogin(String loginType){
+    private void hospitalLogin(String loginType) {
 
         if (!EbizworldUtils.isNetworkAvailable(SignInActivity.this)) {
 
@@ -708,13 +709,13 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         Commonutils.progressdialog_show(this, getResources().getString(R.string.txt_signin));
 
-        if (loginType.equalsIgnoreCase(Const.MANUAL)){
+        if (loginType.equalsIgnoreCase(Const.MANUAL)) {
 
-            HashMap<String,String> map = new HashMap<>();
+            HashMap<String, String> map = new HashMap<>();
             map.put(Const.Params.URL, Const.HospitalService.LOGIN_URL);
             map.put(Const.Params.TOKEN, new PreferenceHelper(this).getDeviceToken());
 
-            if (new PreferenceHelper(this).getDeviceToken() == null){
+            if (new PreferenceHelper(this).getDeviceToken() == null) {
 
                 final String[] token = {""};
 
@@ -722,11 +723,11 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
 
-                        if (!task.isSuccessful()){
+                        if (!task.isSuccessful()) {
 
                             EbizworldUtils.appLogDebug("HaoLS", "Get Firebase token failed: " + task.getException());
 
-                        }else {
+                        } else {
 
                             token[0] = task.getResult().getToken();
                             EbizworldUtils.appLogDebug("HaoLS", "Firebase token: " + token[0]);
@@ -736,18 +737,18 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
                 });
 
-                if (!token[0].equals("")){
+                if (!token[0].equals("")) {
 
                     map.put(Const.Params.DEVICE_TOKEN, new PreferenceHelper(this).getDeviceToken());
 
-                }else {
+                } else {
 
                     Commonutils.progressdialog_hide();
                     EbizworldUtils.showLongToast(getResources().getString(R.string.something_was_wrong), SignInActivity.this);
                     return;
                 }
 
-            }else {
+            } else {
 
                 map.put(Const.Params.DEVICE_TOKEN, new PreferenceHelper(this).getDeviceToken());
             }
@@ -880,7 +881,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 sEmailId = email;
                 userLogin(loginType);
 
-            }else {
+            } else {
 
                 EbizworldUtils.removeProgressDialog();
                 EbizworldUtils.showShortToast(getResources().getString(R.string.login_failed), SignInActivity.this);
@@ -952,12 +953,12 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
                                 }
 
-                            }else if (job1.getString("error_code").equals("167")){
+                            } else if (job1.getString("error_code").equals("167")) {
 
                                 String error = job1.getString("error");
                                 EbizworldUtils.showLongToast(error, this);
 
-                            }else {
+                            } else {
                                 String error = job1.getString("error");
                                 EbizworldUtils.showLongToast(error, this);
                             }
@@ -969,18 +970,18 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 }
                 break;
 
-            case Const.ServiceCode.NURSE_LOGIN:{
+            case Const.ServiceCode.NURSE_LOGIN: {
                 Log.d("HaoLS", "Nurse login Response " + response);
                 Commonutils.progressdialog_hide();
 
-                if (response != null){
+                if (response != null) {
 
                     try {
                         JSONObject jsonObject = new JSONObject(response);
 
-                        if (jsonObject.getString("success").equals("true")){
+                        if (jsonObject.getString("success").equals("true")) {
 
-                            if (pcontent.isSuccessWithStoreId(response)){
+                            if (pcontent.isSuccessWithStoreId(response)) {
 
                                 pcontent.parseNurseAndStoreToDb(response);
                                 new PreferenceHelper(this).putPassword(et_login_password.getText()
@@ -988,12 +989,12 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
                                 startActivity(new Intent(this, MainActivity.class));
                                 this.finish();
-                            }else {
+                            } else {
 
                                 EbizworldUtils.appLogDebug("HaoLS", "Login failed");
                             }
 
-                        }else {
+                        } else {
 
                             String error = jsonObject.getString("error");
                             EbizworldUtils.showLongToast(error, this);
@@ -1007,19 +1008,19 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             }
             break;
 
-            case Const.ServiceCode.HOSPITAL_LOGIN:{
+            case Const.ServiceCode.HOSPITAL_LOGIN: {
                 Log.d("HaoLS", "Hospital login Response " + response);
                 Commonutils.progressdialog_hide();
 
-                if (response != null){
+                if (response != null) {
 
                     try {
 
                         JSONObject jsonObject = new JSONObject(response);
 
-                        if (jsonObject.getString("success").equals("true")){
+                        if (jsonObject.getString("success").equals("true")) {
 
-                            if (pcontent.isSuccessWithStoreId(response)){
+                            if (pcontent.isSuccessWithStoreId(response)) {
 
                                 pcontent.parseHospitalAndStoreToDb(response);
 
@@ -1029,12 +1030,12 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                                 this.finish();
 
                                 EbizworldUtils.appLogDebug("HaoLS", "Login succeeded");
-                            }else {
+                            } else {
 
                                 EbizworldUtils.appLogDebug("HaoLS", "Login failed");
                             }
 
-                        }else {
+                        } else {
 
                             String error = jsonObject.getString("error");
                             EbizworldUtils.showLongToast(error, this);
@@ -1134,7 +1135,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onPause() {
         super.onPause();
-        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             LoginManager.getInstance().logOut();
 
@@ -1147,7 +1148,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         super.onStart();
 
-        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             mGoogleApiClient.connect();
 
@@ -1180,7 +1181,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     public void onStop() {
         // TODO Auto-generated method stub
         super.onStop();
-        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)){
+        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             if (mGoogleApiClient.isConnected()) {
                 mGoogleApiClient.disconnect();
@@ -1206,7 +1207,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    private Bitmap downloadSocialNetworkBitmap(String url){
+    private Bitmap downloadSocialNetworkBitmap(String url) {
 
         HttpURLConnection urlConnection = null;
 
@@ -1217,7 +1218,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
             int statusCode = urlConnection.getResponseCode();
 
-            if (statusCode != HttpStatus.SC_OK){
+            if (statusCode != HttpStatus.SC_OK) {
 
                 return null;
 
@@ -1225,7 +1226,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
             InputStream inputStream = urlConnection.getInputStream();
 
-            if (inputStream != null){
+            if (inputStream != null) {
 
                 Log.d(TAG, "downloadSocialNetworkBitmap: Success");
 
@@ -1242,9 +1243,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
             e.printStackTrace();
 
-        }finally {
+        } finally {
 
-            if (urlConnection != null){
+            if (urlConnection != null) {
 
                 urlConnection.disconnect();
 

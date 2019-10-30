@@ -278,7 +278,9 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                 for (int z = 0; z < list.size(); z++) {
 
                     LatLng point = list.get(z);
+
                     // check permission draw color
+
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         options.add(point);
 
@@ -303,10 +305,9 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                         @Override
                         public void onPolylineClick(Polyline polyline) {
 
-                            //  linearLayoutShowDirec.setVisibility(View.VISIBLE);
 
                             String txt_Name[] = {" A", " B", " C"};
-                            //  String color[] = {"#E53935", "#42A5F5", "#FBC02D"};
+
                             for (int j = 0; j < polylineData.size(); j++) {
 
                                 if (polylineData.get(j).getColor() == polyline.getColor()) {
@@ -315,14 +316,17 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                                         Log.d("DatTest3Routes", String.valueOf(routeArray.getJSONObject(j).getJSONObject("overview_polyline").getString("points")));
 
                                         OverView_Polyline_Home = routeArray.getJSONObject(j).getJSONObject("overview_polyline").getString("points");
+
                                         Distance_Request_Home = routeArray.getJSONObject(j).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
 
                                         Time_Request_Home = routeArray.getJSONObject(j).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
+
 //                                        txt_ShowNameRoutes.setText("Name Routes :"+ txt_Name[j]);
                                         //  txt_ShowNameRoutes.setText("Name Routes:"+txt_Name[j]+"  Duration:" + Time_Request+"  Distance:" + Distance_Request);
 
                                         PickUpMarker.setIcon((BitmapDescriptorFactory
                                                 .fromBitmap(getMarkerBitmapFromView(Time_Request_Home))));
+
                                         //  txt_ShowNameRoutes.setBackgroundColor(Color.parseColor(color[j]));
                                         //   Toast.makeText(activity, Distance_Request_Home + " " + Time_Request_Home, Toast.LENGTH_SHORT).show();
 
@@ -1070,7 +1074,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
     }
 
 
-    private void getDiverOperators(String dis, String dur) {
+    private void getDiverOperators(String dis, String dur, String Distance_Request_Home) {
 
         if (!EbizworldUtils.isNetworkAvailable(activity)) {
 
@@ -1078,13 +1082,14 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
             return;
         }
 
+
         HashMap<String, String> map = new HashMap<String, String>();
         map.put(Const.Params.URL, Const.ServiceType.OPERATORS_URL);
 
         map.put(Const.Params.ID, new PreferenceHelper(activity).getUserId());
         map.put(Const.Params.TOKEN, new PreferenceHelper(activity).getSessionToken());
 
-        map.put(Const.Params.DISTANCE, dis);
+        map.put(Const.Params.DISTANCE, Distance_Request_Home.replaceAll(" km",""));
         map.put(Const.Params.TIME, dur);
 
         Log.d("HaoLS", "Getting ambulance operators " + map.toString());
@@ -1451,7 +1456,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                             double trip_dis = Integer.valueOf(dis) * 0.001;
 
-                            getDiverOperators(String.valueOf(trip_dis), dur);
+                            getDiverOperators(String.valueOf(trip_dis), dur, Distance_Request_Home);
 
                         }
                     } catch (JSONException e) {
@@ -1464,6 +1469,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
 
             case Const.ServiceCode.AMBULANCE_OPERATOR:
+
                 if (response != null) {
 
                     progressBarHome.setVisibility(View.GONE);
@@ -1492,25 +1498,25 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                                 for (int i = 0; i < jarray.length(); i++) {
 
                                     JSONObject jarrayJSONObject = jarray.getJSONObject(i);
-                                    AmbulanceOperator type = new AmbulanceOperator();
 
-                                    type.setCurrencey_unit(job.optString("currency"));
-                                    type.setId(jarrayJSONObject.getString("id"));
-                                    type.setAmbulanceCost(jarrayJSONObject.getString("estimated_fare"));
-
-                                    type.setAmbulanceImage(jarrayJSONObject.getString("picture"));
-                                    type.setAmbulanceOperator(jarrayJSONObject.getString("name"));
-
-                                    type.setAmbulance_price_min(jarrayJSONObject.getString("price_per_min"));
-                                    type.setAmbulance_price_distance(jarrayJSONObject.getString("price_per_unit_distance"));
-                                    type.setAmbulanceSeats(jarrayJSONObject.getString("number_seat"));
-                                    type.setBasefare(jarrayJSONObject.optString("min_fare"));
-                                    /* ADD ARRAYLIST TYPE CAR */
+//                                    AmbulanceOperator type = new AmbulanceOperator();
+//                                    type.setCurrencey_unit(job.optString("currency"));
+//                                    type.setId(jarrayJSONObject.getString("id"));
+//                                    type.setAmbulanceCost(jarrayJSONObject.getString("estimated_fare"));
+//
+//                                    type.setAmbulanceImage(jarrayJSONObject.getString("picture"));
+//                                    type.setAmbulanceOperator(jarrayJSONObject.getString("name"));
+//
+//                                    type.setAmbulance_price_min(jarrayJSONObject.getString("price_per_min"));
+//                                    type.setAmbulance_price_distance(jarrayJSONObject.getString("price_per_unit_distance"));
+//                                    type.setAmbulanceSeats(jarrayJSONObject.getString("number_seat"));
+//                                    type.setBasefare(jarrayJSONObject.optString("min_fare"));
+//                                    /* ADD ARRAYLIST TYPE CAR */
 
                                     //  Log.d("aaaaaa",jarrayJSONObject.getString("name")+jarrayJSONObject.getString("picture").toString());
 
                                     typeCarRequest_ArrayList_home.add(new TypeCarRequest(jarrayJSONObject.getString("name").toString(),
-                                            jarrayJSONObject.getString("picture").toString(), jarrayJSONObject.getString("service_fee").toString()));
+                                            jarrayJSONObject.getString("picture").toString(), jarrayJSONObject.getInt("total_fare_value")));
 
                                 }
 
@@ -1536,7 +1542,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                                             BillingInfoFragment billingInfoFragment = new BillingInfoFragment();
                                             billingInfoFragment.setArguments(bundle);
 
-                                            activity.addFragmentNoRefresh(billingInfoFragment, false, Const.HOME_MAP_FRAGMENT, true);
+                                            activity.addFragmentNoRefresh(billingInfoFragment, false, Const.BILLING_INFO_FRAGMENT, true);
 
                                             bottomSheetLayout1.setVisibility(View.VISIBLE);
 

@@ -71,6 +71,7 @@
                 android:src="@drawable/background_gradient_line" />
 
             <TextView
+                android:fontFamily="@font/questrial_regular"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,6 +103,7 @@
             android:weightSum="1">
 
             <TextView
+                android:fontFamily="@font/quicksand_bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
@@ -134,6 +136,7 @@
             android:gravity="center">
 
             <com.hbb20.CountryCodePicker
+                android:fontFamily="@font/quicksand_bold"
                 android:id="@+id/ccp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
@@ -150,6 +153,7 @@
 
 
             <EditText
+                android:fontFamily="@font/quicksand_bold"
                 android:id="@+id/et_otp_mobile"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
@@ -188,6 +192,7 @@
             android:layout_margin="@dimen/_10sdp">
 
             <EditText
+                android:fontFamily="@font/quicksand_bold"
                 android:id="@+id/user_otp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -216,6 +221,7 @@
             android:padding="@dimen/_5sdp">
 
             <TextView
+                android:fontFamily="@font/quicksand_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_no_otp"
@@ -226,6 +232,7 @@
 
 
             <TextView
+                android:fontFamily="@font/quicksand_bold"
                 android:id="@+id/btn_resend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -238,6 +245,7 @@
 
         </LinearLayout>
         <TextView
+            android:fontFamily="@font/questrial_regular"
             android:background="@color/color_btn_login_signin"
             android:id="@+id/btn_confirm_otp"
             android:layout_width="match_parent"

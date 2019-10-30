@@ -434,7 +434,10 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
             } else if (currentFragment.equals(Const.BILLING_INFO_FRAGMENT)) {
 
-                Toast.makeText(this, "Cannot", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Cannot", Toast.LENGTH_SHORT).show();
+               getSupportFragmentManager().popBackStack();
+
+
 
             } else if (currentFragment.equals(Const.TRAVEL_MAP_FRAGMENT)) {
 

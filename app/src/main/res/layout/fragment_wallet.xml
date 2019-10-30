@@ -27,6 +27,7 @@
                 app:srcCompat="@drawable/ic_back_blue" />
 
             <TextView
+                android:fontFamily="@font/questrial_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -71,6 +72,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:fontFamily="@font/quicksand_bold"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:gravity="center_vertical"
@@ -80,6 +82,7 @@
             android:textStyle="bold|italic" />
 
         <TextView
+            android:fontFamily="@font/quicksand_bold"
             android:id="@+id/txt_total_money_wallet"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
@@ -115,6 +118,7 @@
             android:weightSum="10">
 
             <EditText
+                android:fontFamily="@font/quicksand_bold"
                 android:id="@+id/edt_input_money_wallet"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -138,6 +142,7 @@
 
 
     <Button
+        android:fontFamily="@font/questrial_regular"
         android:id="@+id/btn_recharge_ewallet"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
@@ -161,6 +166,7 @@
     <!--android:src="@drawable/ic_by_paypal" />-->
 
     <Button
+        android:fontFamily="@font/questrial_regular"
         android:id="@+id/btn_show_history_TopUp_wallet"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"

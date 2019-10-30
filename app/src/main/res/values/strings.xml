@@ -61,7 +61,7 @@
 
     <string name="txt_toast_not_found_current_location">Unable to get current location</string>
 
-    <string name="txt_booking_success">Thank you using for 123GO!</string>
+    <string name="txt_booking_success">Thank you for traveling with 123GO!</string>
     <string name="txt_content_booking_success">Your booking taxi has been confirmed, our diver will pickedup in 5 minutes, have a happy journey!</string>
     <string name="btn_booking_success">BACK TO HOME</string>
     <string name="txt_title_dialog_cancel_trip">You are sure you want to cancel this booking ?</string>

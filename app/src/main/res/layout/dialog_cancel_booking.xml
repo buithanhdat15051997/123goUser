@@ -8,6 +8,7 @@
         android:gravity="center"
         android:maxLines="2"
         android:textSize="@dimen/_18sdp"
+        android:fontFamily="@font/questrial_regular"
         android:textColor="@color/black_text"
         android:textStyle="bold"
         android:text="@string/txt_title_dialog_cancel_trip"

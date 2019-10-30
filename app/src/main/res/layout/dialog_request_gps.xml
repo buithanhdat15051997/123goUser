@@ -27,6 +27,7 @@
         android:src="@drawable/ic_location_gps" />
 
     <TextView
+        android:fontFamily="@font/questrial_regular"
         android:padding="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,6 +42,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:fontFamily="@font/quicksand_bold"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,6 +56,7 @@
         android:textColor="@color/gray600"
         android:textSize="@dimen/_12sdp" />
     <Button
+        android:fontFamily="@font/questrial_regular"
         android:id="@+id/btn_select_gps"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/_15sdp"
@@ -70,6 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <TextView
+        android:fontFamily="@font/quicksand_bold"
         android:id="@+id/txt_exit_gps"
         android:layout_gravity="center"
         android:gravity="center"

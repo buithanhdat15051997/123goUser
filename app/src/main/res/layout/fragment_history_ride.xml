@@ -30,6 +30,7 @@
                     app:srcCompat="@drawable/ic_back_blue" />-->
 
                 <TextView
+                    android:fontFamily="@font/questrial_regular"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

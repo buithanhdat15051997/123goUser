@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/_200sdp">
     <TextView
+        android:fontFamily="@font/questrial_regular"
         android:layout_marginTop="@dimen/_50sdp"
         android:id="@+id/txt_title_contact_numberPhone"
         android:gravity="center"

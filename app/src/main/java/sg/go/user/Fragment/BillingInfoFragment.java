@@ -2,10 +2,13 @@ package sg.go.user.Fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,6 +36,8 @@ import com.skyfishjy.library.RippleBackground;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import butterknife.BindView;
@@ -118,13 +123,13 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
 
     private View mView;
-    private TextView custom_simple_title_paymentwallet, custom_simple_content_paymentwallet, btn_yes1_paymentwallet, btn_no_paymentwallet;
+    private TextView custom_simple_title_paymentwallet, custom_simple_content_paymentwallet, btn_yes1_paymentwallet, btn_no_paymentwallet, txt_show_auto_payment;
     private MainActivity activity;
     private DatabaseHandler mDatabaseHandler;
     private RequestDetail mRequestDetail;
     private RequestOptional mRequestOptional;
     private Dialog requestDialog;
-    private TextView cancel_req_create;
+    private TextView cancel_req_create, tv_billing_info_schedule;
     private Handler checkRequestStatusHandler;
     private Button btn_pay_wallet_demo1;
     private ImageView img_logo_hide_billinginfo;
@@ -132,6 +137,14 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
     private Dialog dialog_payment_wallet;
     private String TotalMoney;
     private int type_payment;
+
+    private Dialog dialog_billing_Schedule;
+    private TextView txt_date_time_schedule;
+
+    private DatePickerDialog dpd;
+    private TimePickerDialog tpd;
+
+    private String datetime = "", timeSet = "", date = "", time = "", pickupDateTime = "";
 
 
     private Runnable requestStatusCheckRunnable = new Runnable() {
@@ -171,10 +184,20 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         mView = inflater.inflate(R.layout.fragment_billing_info, container, false);
+
         ButterKnife.bind(this, mView);
+
         btn_pay_wallet_demo1 = mView.findViewById(R.id.btn_pay_wallet_demo1);
+
         img_logo_hide_billinginfo = mView.findViewById(R.id.img_logo_hide_billinginfo);
+
+        txt_show_auto_payment = mView.findViewById(R.id.txt_show_auto_payment);
+
+        tv_billing_info_schedule = mView.findViewById(R.id.tv_billing_info_schedule);
+
+
         activity.mBottomNavigationView.setVisibility(View.GONE);
 
 //        mRequestOptional.setRemark(tv_billing_info_table_price_content_warning.getText().toString());
@@ -184,6 +207,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
             mTv_billing_info_notice.setVisibility(View.GONE);
             billing_info_payment_group.setVisibility(View.GONE);
+            txt_show_auto_payment.setVisibility(View.GONE);
 
             billing_info_table_price_notice_group.setVisibility(View.VISIBLE);
             billing_info_request_group.setVisibility(View.VISIBLE);
@@ -200,48 +224,75 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
         } else {
 
             /*---- SET NAME - IMAGE  TYPE CAR ----*/
+
             mTv_billing_info_name_typeCar.setText(new PreferenceHelper(activity).getTypeCarBillingInfo());
             Glide.with(activity).load(new PreferenceHelper(activity).getImageTypeCarBillingInfo()).into(img_billing_info_img_typeCar);
+
             /*---- SET NAME - IMAGE - DISTANCE - TIME ----*/
+
             tv_billing_info_kilo_distance3.setText(new PreferenceHelper(activity).getDistanceBillingInfo() + " km");
             tv_billing_info_kilo_dola2.setText(new PreferenceHelper(activity).getTimeBillingInfo());
-
-
-//            mTv_billing_info_notice.setVisibility(View.VISIBLE);
-//            billing_info_payment_group.setVisibility(View.VISIBLE);
-//            img_logo_hide_billinginfo.setVisibility(View.VISIBLE);
 
             billing_info_table_price_notice_group.setVisibility(View.GONE);
             billing_info_request_group.setVisibility(View.GONE);
 
+            if (new PreferenceHelper(activity).gettypePaymentBilling().isEmpty()) {
 
-            switch (Integer.parseInt(new PreferenceHelper(activity).gettypePaymentBilling())) {
+                mTv_billing_info_notice.setVisibility(View.VISIBLE);
+                billing_info_payment_group.setVisibility(View.VISIBLE);
+                img_logo_hide_billinginfo.setVisibility(View.VISIBLE);
 
-                case 0:
-                    Log.d("Test_billing",type_payment+"");
-                    mTv_billing_info_notice.setVisibility(View.VISIBLE);
-                    billing_info_payment_group.setVisibility(View.VISIBLE);
-                    img_logo_hide_billinginfo.setVisibility(View.VISIBLE);
-                    break;
+            } else {
 
-                case 1:
-                    Log.d("Test_billing",type_payment+"");
-                    mTv_billing_info_notice.setVisibility(View.GONE);
-                    billing_info_payment_group.setVisibility(View.GONE);
-                    img_logo_hide_billinginfo.setVisibility(View.GONE);
-                    getPaymentByCash();
-                    break;
+                switch (Integer.parseInt(new PreferenceHelper(activity).gettypePaymentBilling())) {
 
-                case 2:
-                    Log.d("Test_billing",type_payment+"");
-                    mTv_billing_info_notice.setVisibility(View.GONE);
-                    billing_info_payment_group.setVisibility(View.GONE);
-                    img_logo_hide_billinginfo.setVisibility(View.GONE);
-                    getPaymentWallet();
-                    break;
+                    case 0:
+                        Log.d("Test_billing", type_payment + "");
+                        mTv_billing_info_notice.setVisibility(View.VISIBLE);
+                        billing_info_payment_group.setVisibility(View.VISIBLE);
+                        img_logo_hide_billinginfo.setVisibility(View.VISIBLE);
+                        break;
 
+                    case 1:
+                        Log.d("Test_billing", type_payment + "");
+                        mTv_billing_info_notice.setVisibility(View.GONE);
+                        billing_info_payment_group.setVisibility(View.GONE);
+                        img_logo_hide_billinginfo.setVisibility(View.GONE);
+
+                        txt_show_auto_payment.setText(activity.getResources().getString(R.string.txt_pay_cash));
+                        txt_show_auto_payment.setVisibility(View.VISIBLE);
+
+                        getPaymentByCash();
+                        break;
+
+                    case 2:
+                        Log.d("Test_billing", type_payment + "");
+                        mTv_billing_info_notice.setVisibility(View.GONE);
+                        billing_info_payment_group.setVisibility(View.GONE);
+                        img_logo_hide_billinginfo.setVisibility(View.GONE);
+
+                        txt_show_auto_payment.setText(activity.getResources().getString(R.string.txt_pay_wallet));
+                        txt_show_auto_payment.setVisibility(View.VISIBLE);
+
+                        getPaymentWallet();
+                        break;
+
+                    case 3:
+                        Log.d("Test_billing", type_payment + "");
+                        mTv_billing_info_notice.setVisibility(View.GONE);
+                        billing_info_payment_group.setVisibility(View.GONE);
+                        img_logo_hide_billinginfo.setVisibility(View.GONE);
+
+                        txt_show_auto_payment.setText(activity.getResources().getString(R.string.txt_pay_paypal));
+                        txt_show_auto_payment.setVisibility(View.VISIBLE);
+
+                        getBrainTreeClientToken();
+                        break;
+
+                }
 
             }
+
 
             checkreqstatus(); //Get check status of request
 
@@ -268,40 +319,43 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 //                });
 //                AlertDialog alertDialog = builder.create();
 //                alertDialog.show();
-                dialog_payment_wallet = new Dialog(activity);
 
-                dialog_payment_wallet.setContentView(R.layout.dialog_payment_with_wallet);
+                getPaymentWallet();
 
-                custom_simple_title_paymentwallet = dialog_payment_wallet.findViewById(R.id.custom_simple_title_paymentwallet);
-
-                custom_simple_content_paymentwallet = dialog_payment_wallet.findViewById(R.id.custom_simple_content_paymentwallet);
-
-                btn_yes1_paymentwallet = dialog_payment_wallet.findViewById(R.id.btn_yes1_paymentwallet);
-
-                btn_no_paymentwallet = dialog_payment_wallet.findViewById(R.id.btn_no_paymentwallet);
-
-                dialog_payment_wallet.show();
-
-                custom_simple_title_paymentwallet.setText(getResources().getString(R.string.txt_dialog_pay_ewallet));
-
-                custom_simple_content_paymentwallet.setText(getResources().getString(R.string.txt_content_pay_ewallet));
-
-                btn_yes1_paymentwallet.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        getPaymentWallet();
-                    }
-                });
-
-                btn_no_paymentwallet.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        dialog_payment_wallet.dismiss();
-
-                    }
-                });
+//                dialog_payment_wallet = new Dialog(activity);
+//
+//                dialog_payment_wallet.setContentView(R.layout.dialog_payment_with_wallet);
+//
+//                custom_simple_title_paymentwallet = dialog_payment_wallet.findViewById(R.id.custom_simple_title_paymentwallet);
+//
+//                custom_simple_content_paymentwallet = dialog_payment_wallet.findViewById(R.id.custom_simple_content_paymentwallet);
+//
+//                btn_yes1_paymentwallet = dialog_payment_wallet.findViewById(R.id.btn_yes1_paymentwallet);
+//
+//                btn_no_paymentwallet = dialog_payment_wallet.findViewById(R.id.btn_no_paymentwallet);
+//
+//                dialog_payment_wallet.show();
+//
+//                custom_simple_title_paymentwallet.setText(getResources().getString(R.string.txt_dialog_pay_ewallet));
+//
+//                custom_simple_content_paymentwallet.setText(getResources().getString(R.string.txt_content_pay_ewallet));
+//
+//                btn_yes1_paymentwallet.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//
+//
+//                    }
+//                });
+//
+//                btn_no_paymentwallet.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//
+//                        dialog_payment_wallet.dismiss();
+//
+//                    }
+//                });
 
 
             }
@@ -311,6 +365,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
         tv_billing_info_confirm.setOnClickListener(this);
         tv_billing_info_deny.setOnClickListener(this);
+        tv_billing_info_schedule.setOnClickListener(this);
 
         return mView;
     }
@@ -398,17 +453,244 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
             }
             break;
 
+            case R.id.tv_billing_info_schedule:
+
+                if (getActivity() != null) {
+
+                    DialogSchedule();
+
+                }
+
+                break;
+
             case R.id.tv_billing_info_deny: {
-                // back fragment
-                //   getActivity().onBackPressed();
 
                 getActivity().getSupportFragmentManager().popBackStack();
 //                activity.onBackPressed();
-//                activity.addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
+
                 new RequestOptional().setOverView_Polyline("");
             }
             break;
         }
+    }
+
+    private void DialogSchedule() {
+
+        dialog_billing_Schedule = new Dialog(getActivity(), R.style.DialogSlideAnim_leftright_Fullscreen);
+        dialog_billing_Schedule.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog_billing_Schedule.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        dialog_billing_Schedule.setCancelable(true);
+
+        dialog_billing_Schedule.setContentView(R.layout.dialog_schedule);
+
+        txt_date_time_schedule = dialog_billing_Schedule.findViewById(R.id.txt_date_time_billing_schedule);
+
+        ImageView img_dialog_back_schedule = dialog_billing_Schedule.findViewById(R.id.img_dialog_back_schedule);
+
+        TextView tv_dialog_schedule_confirm = dialog_billing_Schedule.findViewById(R.id.tv_dialog_schedule_confirm);
+
+        TextView tv_dialog_schedule_cancel = dialog_billing_Schedule.findViewById(R.id.tv_dialog_schedule_cancel);
+
+        tv_dialog_schedule_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                dialog_billing_Schedule.dismiss();
+
+            }
+        });
+
+
+        img_dialog_back_schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                dialog_billing_Schedule.dismiss();
+
+            }
+        });
+
+        txt_date_time_schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                DatePickerSchedule();
+            }
+        });
+
+        tv_dialog_schedule_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (!pickupDateTime.isEmpty()) {
+
+                    Toast.makeText(activity, "" + pickupDateTime.toString(), Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+
+        dialog_billing_Schedule.show();
+
+    }
+
+    private void DatePickerSchedule() {
+
+        final Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+        dpd = new DatePickerDialog(getActivity(), R.style.datepicker,
+                new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(android.widget.DatePicker view,
+                                          int year, int monthOfYear, int dayOfMonth) {
+
+                        if (view.isShown()) {
+
+                            date = Integer.toString(year) + "-"
+                                    + Integer.toString(monthOfYear + 1) + "-"
+                                    + Integer.toString(dayOfMonth);
+
+                            datetime = date;
+
+                            Log.d("DAT_BILLING", date.toString());
+
+                            TimePickerSchedule();
+
+                            dpd.dismiss();
+                        }
+                    }
+                }, mYear, mMonth, mDay);
+
+        dpd.setButton(DialogInterface.BUTTON_NEGATIVE, getResources().getString(R.string.txt_cancel),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dpd.dismiss();
+                    }
+                });
+
+
+        // dpd.getDatePicker().setMaxDate(addDays(new Date(),90).getTime());
+        // dpd.getDatePicker().setMinDate(new Date().getTime());
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, 3);
+        cal.set(Calendar.HOUR_OF_DAY, cal.getMaximum(Calendar.HOUR_OF_DAY));
+        cal.set(Calendar.MINUTE, cal.getMaximum(Calendar.MINUTE));
+        /*cal.set(Calendar.SECOND, cal.getMaximum(Calendar.SECOND));*/
+        cal.set(Calendar.SECOND, 0);
+        /*cal.set(Calendar.MILLISECOND, cal.getMaximum(Calendar.MILLISECOND));*/
+        cal.set(Calendar.MILLISECOND, 0);
+        dpd.getDatePicker().setMaxDate(cal.getTimeInMillis());
+
+        cal.setTime(new Date());
+        cal.set(Calendar.HOUR_OF_DAY, cal.getMinimum(Calendar.HOUR_OF_DAY));
+        cal.set(Calendar.MINUTE, cal.getMinimum(Calendar.MINUTE));
+        /*cal.set(Calendar.SECOND, cal.getMinimum(Calendar.SECOND));*/
+        cal.set(Calendar.SECOND, 0);
+
+        /*cal.set(Calendar.MILLISECOND, cal.getMinimum(Calendar.MILLISECOND));*/
+        cal.set(Calendar.MILLISECOND, 0);
+        dpd.getDatePicker().setMinDate(cal.getTimeInMillis());
+
+
+        dpd.show();
+
+    }
+
+    private void TimePickerSchedule() {
+
+
+        final Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MINUTE, 30);
+        int mHour = calendar.get(Calendar.HOUR_OF_DAY);
+        int mMinute = calendar.get(Calendar.MINUTE);
+
+
+        tpd = new TimePickerDialog(getActivity(), R.style.datepicker,
+                new TimePickerDialog.OnTimeSetListener() {
+
+                    @Override
+                    public void onTimeSet(android.widget.TimePicker view,
+                                          int hourOfDay, int minute) {
+
+
+                        if (view.isShown()) {
+
+                            tpd.dismiss();
+
+                            // isTimePickerOpen = false;
+
+
+                            int hour = hourOfDay;
+                            int min = minute;
+
+                            if (hourOfDay > 12) {
+
+                                hour -= 12;
+
+                                timeSet = "PM";
+
+                            } else if (hourOfDay == 0) {
+
+                                timeSet = "AM";
+
+                            } else if (hourOfDay == 12) {
+
+                                timeSet = "PM";
+                            } else {
+
+                                timeSet = "AM";
+
+                            }
+
+                            if (minute < 10) {
+
+                                time = String.valueOf(hourOfDay) + ":0" +
+                                        String.valueOf(min) + ":" + "00 " + timeSet;
+
+                            } else {
+
+                                time = String.valueOf(hourOfDay) + ":" +
+                                        String.valueOf(min) + ":" + "00 " + timeSet;
+
+                            }
+
+                            pickupDateTime = date + " " + time;
+
+                            datetime = datetime.concat(" "
+                                    + Integer.toString(hourOfDay) + ":"
+                                    + Integer.toString(minute) + ":" + "00");
+
+                            Log.d("DAT_BILLING", pickupDateTime.toString());
+
+                            txt_date_time_schedule.setText(pickupDateTime);
+
+                            calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                            calendar.set(Calendar.MINUTE, minute);
+
+                            /*AlarmUtil.scheduleNotification(getActivity(), calendar);*/
+                        }
+                    }
+                }, mHour, mMinute, false);
+
+        tpd.setButton(DialogInterface.BUTTON_NEGATIVE, getResources().getString(R.string.txt_cancel),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        tpd.dismiss();
+
+                    }
+                });
+
+        tpd.show();
+
+
     }
 
     private void DialogPaymentWithWallet() {
@@ -702,7 +984,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
         map.put("km", requestOptional.getKm_send_billinginfo().toString());
 
-        Log.d("GetRequest_Diver", "Request ambulance: " + map.toString());
+        Log.d("DAT_BILLING", "Request ambulance: " + map.toString());
 
         new VolleyRequester(activity, Const.POST, map, Const.ServiceCode.REQUEST_AMBULANCE,
                 this);
@@ -782,9 +1064,9 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
                         if (jsonObject.getBoolean("success")) {
 
-                            dialog_payment_wallet.dismiss();
 
                             if (!activity.currentFragment.equals(Const.RATING_FRAGMENT) && !activity.isFinishing()) {
+
 
                                 EbizworldUtils.appLogInfo("DAT_BILLING", "payment_wallet: " + response);
 
@@ -800,20 +1082,20 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                         } else if (jsonObject.getBoolean("success") == false) {
 
                             EbizworldUtils.showLongToast("Payment with Wallet Failed", activity);
-                            dialog_payment_wallet.dismiss();
+
 
                         }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        dialog_payment_wallet.dismiss();
+
                         EbizworldUtils.appLogError("DAT_BILLING", "Get billing info failed: " + e.toString());
                     }
 
                 } else {
 
                     EbizworldUtils.showLongToast("Payment with Wallet Failed", activity);
-                    dialog_payment_wallet.dismiss();
+
                 }
 
 
@@ -832,7 +1114,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                     if (object.getString("success").equals("true")) {
 
                         JSONObject jsonObject = object.getJSONObject(Const.Params.BILLING_INFO);
-                        Log.d("DatBilling", String.valueOf(jsonObject));
+                        Log.d("DAT_BILLING", String.valueOf(jsonObject));
 
                         if (jsonObject.has("pre_select_type")) {
 
@@ -840,9 +1122,10 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
                             new PreferenceHelper(activity).puttypePaymentBilling(String.valueOf(type_payment));
 
-                            Log.d("Test_billing", new PreferenceHelper(activity).gettypePaymentBilling());
+                            Log.d("DAT_BILLING", new PreferenceHelper(activity).gettypePaymentBilling());
 
                         }
+
 //                        if (jsonObject.has(Const.Params.A_AND_E)){
 //
 //                            mTv_billing_info_a_and_e_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.A_AND_E));
@@ -885,6 +1168,8 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                         if (jsonObject.has(Const.Params.TOTAL)) {
 
                             mTv_billing_info_total_price.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.TOTAL));
+
+                            Log.d("DAT_BILLING", jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.TOTAL).toString());
 
                             new PreferenceHelper(activity).putTotalPaymentWallet(jsonObject.getString(Const.Params.TOTAL));
 

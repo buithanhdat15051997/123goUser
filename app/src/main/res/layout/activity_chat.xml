@@ -36,14 +36,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/questrial_regular"
                     android:gravity="end"
-                    android:textStyle="bold"
                     android:paddingRight="@dimen/_10sdp"
+                    android:singleLine="true"
                     android:text="@string/msgr"
                     android:textColor="@color/white"
-                    android:singleLine="true"
-                    android:textSize="@dimen/_16sdp" />
+                    android:textSize="@dimen/_16sdp"
+                    android:textStyle="bold" />
             </RelativeLayout>
         </android.support.v7.widget.Toolbar>
     </RelativeLayout>
@@ -79,11 +79,12 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/_10sdp"
 
+            android:fontFamily="@font/quicksand_bold"
             android:hint="@string/typ_msg"
             android:maxLines="1"
             android:padding="@dimen/_10sdp"
-            android:textColor="@color/black_text"
             android:singleLine="true"
+            android:textColor="@color/black_text"
             android:textColorHint="@color/black_text"
             android:textSize="@dimen/_13sdp" />
 

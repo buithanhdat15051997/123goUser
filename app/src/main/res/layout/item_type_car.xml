@@ -19,6 +19,7 @@
         android:layout_height="@dimen/_50sdp" />
 
     <TextView
+        android:fontFamily="@font/quicksand_bold"
         android:id="@+id/txt_Item_Type_Car"
         android:layout_width="@dimen/_90sdp"
         android:maxLines="1"
@@ -31,6 +32,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:fontFamily="@font/quicksand_bold"
         android:textSize="@dimen/_10ssp"
         android:textColor="@color/color_btn_main"
         android:textStyle="bold|italic"

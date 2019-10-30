@@ -56,29 +56,36 @@ public class HistoryTopUpWalletAdapter extends RecyclerView.Adapter<HistoryTopUp
         viewHolder.txt_MoneyOld_TopUp.setText("  "+mcontext.getResources().getString(R.string.dolo_singapor)+" "+moneyOld);
 
         String hitory_Date ="";
+
         try {
             hitory_Date = historyTopUpWallets.get(i).getDateTime_TopUp();
             Date date = inputformat.parse(hitory_Date);
             hitory_Date = simpleDateFormat.format(date);
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         viewHolder.txt_DateTime_TopUp.setText(hitory_Date);
 
     }
 
     @Override
     public int getItemCount() {
+
         return historyTopUpWallets.size();
+
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {
+
        TextView txt_paymentType_TopUp, txt_Money_TopUp,txt_MoneyOld_TopUp, txt_DateTime_TopUp;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
 
             txt_paymentType_TopUp = itemView.findViewById(R.id.txt_paymentType_TopUp);
+
             txt_MoneyOld_TopUp = itemView.findViewById(R.id.txt_MoneyOld_TopUp);
 
             txt_Money_TopUp = itemView.findViewById(R.id.txt_Money_TopUp);

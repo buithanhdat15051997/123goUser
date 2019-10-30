@@ -11,12 +11,14 @@
         android:layout_alignParentLeft="true"
         android:text="@string/homelogin_notice"
         android:layout_marginTop="5dp"
+        android:fontFamily="@font/quicksand_bold"
         android:layout_marginBottom="5dp"
         android:layout_below="@+id/txt_out_Message"
         android:background="@drawable/out_message_bg2"
         android:textColor="@android:color/white" />
 
     <TextView
+        android:fontFamily="@font/quicksand_bold"
         android:id="@+id/txt_out_Message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

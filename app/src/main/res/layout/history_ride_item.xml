@@ -51,6 +51,7 @@
                     android:textStyle="bold|italic" />
 
                 <TextView
+                    android:fontFamily="@font/quicksand_bold"
                     android:textStyle="bold"
                     android:id="@+id/tv_history_car_type"
                     android:layout_width="wrap_content"
@@ -63,6 +64,7 @@
                     android:textSize="@dimen/_12ssp" />
 
                 <TextView
+                    android:fontFamily="@font/quicksand_bold"
                     android:id="@+id/tv_history_source"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -78,6 +80,7 @@
                     android:textSize="@dimen/_12sdp" />
 
                 <TextView
+                    android:fontFamily="@font/quicksand_bold"
                     android:id="@+id/tv_history_destination"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -102,6 +105,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:fontFamily="@font/quicksand_bold"
                     android:textStyle="bold"
                     android:id="@+id/tv_history_total"
                     android:layout_width="wrap_content"
@@ -113,6 +117,7 @@
                     android:textSize="@dimen/_14sdp" />
 
                 <TextView
+                    android:fontFamily="@font/quicksand_bold"
                     android:textStyle="bold"
                     android:id="@+id/tv_history_driver_name"
                     android:layout_width="wrap_content"

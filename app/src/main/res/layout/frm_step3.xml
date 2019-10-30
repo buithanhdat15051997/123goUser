@@ -1,30 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
     android:gravity="center"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
+
     <ImageView
         android:id="@+id/img_step1"
-        android:src="@drawable/img_viewpager_three"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_150sdp" />
+        android:layout_height="@dimen/_150sdp"
+        android:src="@drawable/img_viewpager_three" />
+
     <TextView
-        android:textStyle="bold"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
         android:layout_below="@+id/img_step1"
-        android:textColor="@color/black_text"
+        android:fontFamily="@font/questrial_regular"
         android:gravity="center"
-        android:textSize="@dimen/_16sdp"
         android:text="@string/name_step_frag_three"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textColor="@color/black_text"
+        android:textSize="@dimen/_16sdp"
+        android:textStyle="bold" />
+
     <TextView
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:maxLines="2"
-        android:gravity="center"
-        android:text="@string/body_text_step_wellcome"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/quicksand_bold"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="@string/body_text_step_wellcome"
+        android:textStyle="bold" />
 </LinearLayout>

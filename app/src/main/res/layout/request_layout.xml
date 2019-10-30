@@ -12,12 +12,13 @@
         android:orientation="horizontal">
 
         <TextView
+            android:fontFamily="@font/questrial_regular"
             android:id="@+id/tv_optional"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:background="@color/color_btn_main"
             android:gravity="center"
-            android:text="Select Car Type and Go"
+            android:text="@string/txt_next"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"

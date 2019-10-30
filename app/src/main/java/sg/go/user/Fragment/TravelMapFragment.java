@@ -692,7 +692,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         HashMap<String, String> map = new HashMap<>();
         map.put(Const.Params.URL, Const.ADDRESS_API_BASE + target.latitude + "," + target.longitude + "&key=" + Const.GOOGLE_API_KEY);
 
-        EbizworldUtils.appLogDebug("HaoLS", "map for address" + map);
+        EbizworldUtils.appLogDebug("DAT_TRAVELMAP", "map for address" + map);
         new VolleyRequester(activity, Const.GET, map, Const.ServiceCode.ADDRESS_API_BASE, this);
     }
 
@@ -792,7 +792,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                     + new PreferenceHelper(activity).getSessionToken() + "&" + Const.Params.REQUEST_ID + "=" + new PreferenceHelper(activity).getRequestId());
         }
 
-        EbizworldUtils.appLogDebug("HaoLS", "send_notification: " + map.toString());
+        EbizworldUtils.appLogDebug("DAT_TRAVELMAP", "send_notification: " + map.toString());
 
         new VolleyRequester(activity, Const.GET, map, Const.ServiceCode.USER_MESSAGE_NOTIFY, this);
     }
@@ -925,7 +925,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
             jobStatus = mBundle.getInt(Const.DRIVER_STATUS,
                     Const.IS_DRIVER_DEPARTED);
 
-            EbizworldUtils.appLogDebug("HaoLS", "jobStatus " + String.valueOf(jobStatus));
+            EbizworldUtils.appLogDebug("DAT_TRAVELMAP", "jobStatus " + String.valueOf(jobStatus));
 
             /*Picasso.get().load(requestDetail.getDriver_picture()).error(R.drawable.defult_user).into(driver_img);
             Picasso.get().load(requestDetail.getDriver_car_picture()).error(R.drawable.carambulance).into(driver_car_img);*/
@@ -1248,7 +1248,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         }
         map.put(Const.Params.ID, new PreferenceHelper(activity).getUserId());
         map.put(Const.Params.TOKEN, new PreferenceHelper(activity).getSessionToken());
-        Log.d("HaoLS", map.toString());
+        Log.d("DAT_TRAVELMAP", map.toString());
         new VolleyRequester(activity, Const.POST, map, Const.ServiceCode.CHECKREQUEST_STATUS,
                 this);
     }
@@ -1340,7 +1340,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         switch (serviceCode) {
 
             case Const.ServiceCode.UPDATE_ADDRESS:
-                EbizworldUtils.appLogInfo("HaoLS", "update address response " + response);
+                EbizworldUtils.appLogInfo("DAT_TRAVELMAP", "update address response " + response);
                 Commonutils.progressdialog_hide();
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -1492,7 +1492,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                 break;
 
             case Const.ServiceCode.CANCEL_REASON:
-                EbizworldUtils.appLogInfo("HaoLS", "cancel reason: " + response);
+                EbizworldUtils.appLogInfo("DAT_TRAVELMAP", "cancel reason: " + response);
                 Commonutils.progressdialog_hide();
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -1526,20 +1526,20 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                     } else {
 
                         EbizworldUtils.showShortToast(jsonObject.optString("error_message"), activity);
-                        EbizworldUtils.appLogError("HaoLS", "Cancel reason: " + jsonObject.getString("error_message"));
+                        EbizworldUtils.appLogError("DAT_TRAVELMAP", "Cancel reason: " + jsonObject.getString("error_message"));
 
                     }
 
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    EbizworldUtils.appLogError("HaoLS", "Cancel reason: " + e.toString());
+                    EbizworldUtils.appLogError("DAT_TRAVELMAP", "Cancel reason: " + e.toString());
                 }
 
                 break;
 
             case Const.ServiceCode.USER_MESSAGE_NOTIFY:
-                EbizworldUtils.appLogInfo("HaoLS", "notify trip" + response);
+                EbizworldUtils.appLogInfo("DAT_TRAVELMAP", "notify trip" + response);
 
                 if (response != null) {
 
@@ -1592,7 +1592,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    EbizworldUtils.appLogDebug("HaoLS", "Cancel request failed " + e.toString());
+                    EbizworldUtils.appLogDebug("DAT_TRAVELMAP", "Cancel request failed " + e.toString());
                 }
                 break;
 
@@ -1665,7 +1665,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                 break;
 
             case Const.ServiceCode.CHECKREQUEST_STATUS:
-                EbizworldUtils.appLogInfo("HaoLS", "check req status: " + response);
+                EbizworldUtils.appLogInfo("DAT_TRAVELMAP", "check req status: " + response);
 
                 if (response != null) {
                     int money_driver_cancel = 0;
@@ -1677,9 +1677,13 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                     try {
                         JSONObject jsonObject = new JSONObject(response);
 
-                        if (jsonObject.getInt("cancellation_fine") > 0) {
+                        if (jsonObject.has("cancellation_fine")) {
 
                             money_driver_cancel = jsonObject.getInt("cancellation_fine");
+
+                        }else {
+
+                            Log.d("DAT_TRAVELMAP","null");
 
                         }
 
@@ -1692,7 +1696,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                         return;
                     }
 
-                    EbizworldUtils.appLogDebug("HaoLS", "Trip status " + requestDetail.getTripStatus());
+                    EbizworldUtils.appLogDebug("DAT_TRAVELMAP", "Trip status " + requestDetail.getTripStatus());
                     switch (requestDetail.getTripStatus()) {
 
                         case Const.NO_REQUEST:
@@ -1745,7 +1749,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                                 }
                             }
 
-                            EbizworldUtils.appLogDebug("HaoLS", "Driver is accepted " + String.valueOf(jobStatus));
+                            EbizworldUtils.appLogDebug("DAT_TRAVELMAP", "Driver is accepted " + String.valueOf(jobStatus));
 
                         }
                         break;
@@ -1769,7 +1773,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                                 }
                             }
 
-                            EbizworldUtils.appLogDebug("HaoLS", "Driver is departed " + String.valueOf(jobStatus));
+                            EbizworldUtils.appLogDebug("DAT_TRAVELMAP", "Driver is departed " + String.valueOf(jobStatus));
 
                         }
                         break;
@@ -1802,7 +1806,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                             driver_latlan = new LatLng(requestDetail.getDriver_latitude(), requestDetail.getDriver_longitude());
                             findDistanceAndTime(s_latlon, driver_latlan);
 
-                            EbizworldUtils.appLogDebug("HaoLS", "Driver arrived " + String.valueOf(jobStatus));
+                            EbizworldUtils.appLogDebug("DAT_TRAVELMAP", "Driver arrived " + String.valueOf(jobStatus));
 
                         }
                         break;
@@ -1834,7 +1838,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                             cancel_trip.setVisibility(View.GONE);
                             findDistanceAndTime(d_latlon, driver_latlan);
 
-                            EbizworldUtils.appLogDebug("HaoLS", "Trip is started " + String.valueOf(jobStatus));
+                            EbizworldUtils.appLogDebug("DAT_TRAVELMAP", "Trip is started " + String.valueOf(jobStatus));
                         }
                         break;
 
@@ -1879,7 +1883,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
                             }
 
-                            EbizworldUtils.appLogDebug("HaoLS", "Trip end " + String.valueOf(jobStatus));
+                            EbizworldUtils.appLogDebug("DAT_TRAVELMAP", "Trip end " + String.valueOf(jobStatus));
 
                         }
                         break;
@@ -1912,7 +1916,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                                         true);
                             }
 
-                            EbizworldUtils.appLogDebug("HaoLS", "Trip rated " + String.valueOf(jobStatus));
+                            EbizworldUtils.appLogDebug("DAT_TRAVELMAP", "Trip rated " + String.valueOf(jobStatus));
                         }
 
                         break;
@@ -1946,7 +1950,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                                         true);
                             }
 
-                            EbizworldUtils.appLogDebug("HaoLS", "Trip rated " + String.valueOf(jobStatus));
+                            EbizworldUtils.appLogDebug("DAT_TRAVELMAP", "Trip rated " + String.valueOf(jobStatus));
                         }
 
                         break;
