@@ -203,6 +203,7 @@
     <string name="submit">Xác nhận</string>
     <string name="txt_schedule">Lịch Trình</string>
     <string name="txt_select_time_pickup">Chọn ngày và giờ đón</string>
+    <string name="txt_pls_choose_payment_type">" Vui lòng chọn loại thanh toán!"</string>
 
 
 </resources>

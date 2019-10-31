@@ -143,7 +143,7 @@ public class ChoosePaymentFragment extends Fragment implements AsyncTaskComplete
 
                 } else {
 
-                    Toast.makeText(activity, "Please choose type payment!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, activity.getResources().getString(R.string.txt_pls_choose_payment_type), Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -230,6 +230,7 @@ public class ChoosePaymentFragment extends Fragment implements AsyncTaskComplete
                                 case 0:
                                     txtShow_Payment_Selected.setText(getResources().getString(R.string.txt_selected_type) + ": " + arrayTypePayment.get(0));
                                     radioBtn_Payment_None.setChecked(true);
+                                    break;
 
                                 case 1:
 

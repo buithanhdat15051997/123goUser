@@ -123,7 +123,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
 
     private View mView;
-    private TextView custom_simple_title_paymentwallet, custom_simple_content_paymentwallet, btn_yes1_paymentwallet, btn_no_paymentwallet, txt_show_auto_payment;
+    private TextView txt_show_auto_payment, tv_total_erp_charges, tv_total_child_seat_charges, tv_total_orthers, tv_total_extra_cost;
     private MainActivity activity;
     private DatabaseHandler mDatabaseHandler;
     private RequestDetail mRequestDetail;
@@ -137,6 +137,8 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
     private Dialog dialog_payment_wallet;
     private String TotalMoney;
     private int type_payment;
+
+    private LinearLayout billing_info_payment_summary_group;
 
     private Dialog dialog_billing_Schedule;
     private TextView txt_date_time_schedule;
@@ -197,41 +199,51 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
         tv_billing_info_schedule = mView.findViewById(R.id.tv_billing_info_schedule);
 
+        billing_info_payment_summary_group = mView.findViewById(R.id.billing_info_payment_summary_group);
 
-        activity.mBottomNavigationView.setVisibility(View.GONE);
+        tv_total_erp_charges = mView.findViewById(R.id.tv_total_erp_charges);
+
+        tv_total_child_seat_charges = mView.findViewById(R.id.tv_total_child_seat_charges);
+
+        tv_total_orthers = mView.findViewById(R.id.tv_total_orthers);
+
+        tv_total_extra_cost = mView.findViewById(R.id.tv_total_extra_cost);
+
+
+        //  activity.mBottomNavigationView.setVisibility(View.GONE);
 
 //        mRequestOptional.setRemark(tv_billing_info_table_price_content_warning.getText().toString());
 
         if (mRequestOptional != null) {
 
-
             mTv_billing_info_notice.setVisibility(View.GONE);
             billing_info_payment_group.setVisibility(View.GONE);
             txt_show_auto_payment.setVisibility(View.GONE);
+            billing_info_payment_summary_group.setVisibility(View.GONE);
 
             billing_info_table_price_notice_group.setVisibility(View.VISIBLE);
             billing_info_request_group.setVisibility(View.VISIBLE);
 
-            /*---- SET NAME - IMAGE - DISTANCE - TIME ----*/
+            /*---- SET NAME - IMAGE  TYPE CAR - DISTANCE - TIME ----*/
             tv_billing_info_kilo_distance3.setText(mRequestOptional.getKm_send_billinginfo() + " km");
             tv_billing_info_kilo_dola2.setText(mRequestOptional.getTime_send_billinginfo());
-
             mTv_billing_info_name_typeCar.setText(new PreferenceHelper(activity).getTypeCarBillingInfo());
             Glide.with(activity).load(new PreferenceHelper(activity).getImageTypeCarBillingInfo()).into(img_billing_info_img_typeCar);
+
 
             getBillingInfo(mRequestOptional);
 
         } else {
 
-            /*---- SET NAME - IMAGE  TYPE CAR ----*/
-
+            /*---- SET NAME - IMAGE  TYPE CAR - DISTANCE - TIME ----*/
             mTv_billing_info_name_typeCar.setText(new PreferenceHelper(activity).getTypeCarBillingInfo());
             Glide.with(activity).load(new PreferenceHelper(activity).getImageTypeCarBillingInfo()).into(img_billing_info_img_typeCar);
-
-            /*---- SET NAME - IMAGE - DISTANCE - TIME ----*/
-
             tv_billing_info_kilo_distance3.setText(new PreferenceHelper(activity).getDistanceBillingInfo() + " km");
             tv_billing_info_kilo_dola2.setText(new PreferenceHelper(activity).getTimeBillingInfo());
+
+
+            getExtraCost();
+
 
             billing_info_table_price_notice_group.setVisibility(View.GONE);
             billing_info_request_group.setVisibility(View.GONE);
@@ -241,23 +253,28 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                 mTv_billing_info_notice.setVisibility(View.VISIBLE);
                 billing_info_payment_group.setVisibility(View.VISIBLE);
                 img_logo_hide_billinginfo.setVisibility(View.VISIBLE);
+                billing_info_payment_summary_group.setVisibility(View.VISIBLE);
 
             } else {
 
                 switch (Integer.parseInt(new PreferenceHelper(activity).gettypePaymentBilling())) {
 
                     case 0:
+
                         Log.d("Test_billing", type_payment + "");
                         mTv_billing_info_notice.setVisibility(View.VISIBLE);
                         billing_info_payment_group.setVisibility(View.VISIBLE);
                         img_logo_hide_billinginfo.setVisibility(View.VISIBLE);
+                        billing_info_payment_summary_group.setVisibility(View.VISIBLE);
                         break;
 
                     case 1:
+
                         Log.d("Test_billing", type_payment + "");
                         mTv_billing_info_notice.setVisibility(View.GONE);
                         billing_info_payment_group.setVisibility(View.GONE);
                         img_logo_hide_billinginfo.setVisibility(View.GONE);
+                        billing_info_payment_summary_group.setVisibility(View.VISIBLE);
 
                         txt_show_auto_payment.setText(activity.getResources().getString(R.string.txt_pay_cash));
                         txt_show_auto_payment.setVisibility(View.VISIBLE);
@@ -266,10 +283,12 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                         break;
 
                     case 2:
+
                         Log.d("Test_billing", type_payment + "");
                         mTv_billing_info_notice.setVisibility(View.GONE);
                         billing_info_payment_group.setVisibility(View.GONE);
                         img_logo_hide_billinginfo.setVisibility(View.GONE);
+                        billing_info_payment_summary_group.setVisibility(View.VISIBLE);
 
                         txt_show_auto_payment.setText(activity.getResources().getString(R.string.txt_pay_wallet));
                         txt_show_auto_payment.setVisibility(View.VISIBLE);
@@ -278,10 +297,12 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                         break;
 
                     case 3:
+
                         Log.d("Test_billing", type_payment + "");
                         mTv_billing_info_notice.setVisibility(View.GONE);
                         billing_info_payment_group.setVisibility(View.GONE);
                         img_logo_hide_billinginfo.setVisibility(View.GONE);
+                        billing_info_payment_summary_group.setVisibility(View.VISIBLE);
 
                         txt_show_auto_payment.setText(activity.getResources().getString(R.string.txt_pay_paypal));
                         txt_show_auto_payment.setVisibility(View.VISIBLE);
@@ -292,7 +313,6 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                 }
 
             }
-
 
             checkreqstatus(); //Get check status of request
 
@@ -368,6 +388,31 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
         tv_billing_info_schedule.setOnClickListener(this);
 
         return mView;
+    }
+
+    private void getExtraCost() {
+        if (!EbizworldUtils.isNetworkAvailable(getActivity())) {
+
+            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
+            return;
+        }
+
+
+        HashMap<String, String> map = new HashMap<>();
+
+        map.put(Const.Params.URL, Const.ServiceType.BILLING_EXTRA_COST);
+
+        map.put(Const.Params.ID, new PreferenceHelper(getActivity()).getUserId());
+
+        map.put(Const.Params.REQUEST_ID, String.valueOf(new PreferenceHelper(getActivity()).getRequestId()));
+
+        map.put(Const.Params.TOKEN, new PreferenceHelper(getActivity()).getSessionToken());
+
+        EbizworldUtils.appLogDebug("DAT_BILLING", "getExtraCost: " + map.toString());
+
+        new VolleyRequester(getActivity(), Const.POST, map, Const.ServiceCode.GET_EXTRA_COST, this);
+
+
     }
 
     private void getPaymentWallet() {
@@ -1052,6 +1097,71 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
     public void onTaskCompleted(String response, int serviceCode) {
 
         switch (serviceCode) {
+
+            case Const.ServiceCode.GET_EXTRA_COST:
+
+                EbizworldUtils.appLogInfo("DAT_BILLING", "getExtraCost: " + response);
+
+
+                if (response != null) {
+
+
+                    try {
+
+                        JSONObject jsonObject = new JSONObject(response);
+
+                        if (jsonObject.has("ERP")) {
+
+                            EbizworldUtils.appLogInfo("DAT_BILLING", "getExtraCost1: " + jsonObject.getString("ERP"));
+                            tv_total_erp_charges.setText(jsonObject.getString("ERP"));
+
+
+                        } else {
+
+                        }
+
+                        if (jsonObject.has("child_seat")) {
+
+                            EbizworldUtils.appLogInfo("DAT_BILLING", "getExtraCost2: " + jsonObject.getString("child_seat"));
+                            tv_total_child_seat_charges.setText(jsonObject.getString("child_seat"));
+
+                        } else {
+
+                        }
+
+                        if (jsonObject.has("otherExtraValue")) {
+
+                            EbizworldUtils.appLogInfo("DAT_BILLING", "getExtraCost3: " + jsonObject.getString("otherExtraValue"));
+                            tv_total_orthers.setText(jsonObject.getString("otherExtraValue"));
+
+                        } else {
+
+                        }
+
+                        if (jsonObject.has("totalExtraCost")) {
+
+                            EbizworldUtils.appLogInfo("DAT_BILLING", "getExtraCost4: " + jsonObject.getString("totalExtraCost"));
+                            tv_total_extra_cost.setText(jsonObject.getString("totalExtraCost"));
+
+                        } else {
+
+                        }
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+
+                    Toast.makeText(activity, "getExtraCost: Failed", Toast.LENGTH_SHORT).show();
+
+
+                }
+
+                break;
+
+
             case Const.ServiceCode.PAYMENT_WALLET: {
 
                 EbizworldUtils.appLogInfo("DAT_BILLING", "payment_wallet: " + response);
@@ -1064,9 +1174,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
                         if (jsonObject.getBoolean("success")) {
 
-
                             if (!activity.currentFragment.equals(Const.RATING_FRAGMENT) && !activity.isFinishing()) {
-
 
                                 EbizworldUtils.appLogInfo("DAT_BILLING", "payment_wallet: " + response);
 
@@ -1078,11 +1186,9 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
                             }
 
-
                         } else if (jsonObject.getBoolean("success") == false) {
 
                             EbizworldUtils.showLongToast("Payment with Wallet Failed", activity);
-
 
                         }
 
@@ -1097,7 +1203,6 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                     EbizworldUtils.showLongToast("Payment with Wallet Failed", activity);
 
                 }
-
 
             }
 
@@ -1402,6 +1507,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                             } else {
 
                                 mTv_billing_info_total_price.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getTrip_total_price());
+
                                 //   mTv_billing_info_a_and_e_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getA_and_e());
                                 //    mTv_billing_info_imh_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getImh());
                                 //    mTv_billing_info_ferry_terminals_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getFerry_terminals());
@@ -1514,6 +1620,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                     } catch (JSONException e) {
                         e.printStackTrace();
                         EbizworldUtils.appLogError("DAT_BILLING", getResources().getString(R.string.payment_by_cash_failed) + " " + e.toString());
+                        Commonutils.progressdialog_hide();
                         EbizworldUtils.showShortToast(getResources().getString(R.string.payment_by_cash_failed), activity);
                     }
                 }

@@ -124,7 +124,7 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
 
                 } else {
 
-                    Get_Money_Recharge_Wallet.replaceAll(",", "");
+
 
                     getBrainTreeClientToken();
 
@@ -402,14 +402,12 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
 
     private void postNonceToServerWallet(String nonce, String Amount) {
 
-        Amount.replaceAll(",", "");
 
 //        if (!EbizworldUtils.isNetworkAvailable(getActivity())) {
 //
 //            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
 //
 //            return;
-//
 //        }
 
         Commonutils.progressdialog_show(activity, "Loading...");
@@ -419,11 +417,11 @@ public class WalletFragment extends BaseFragment implements AsyncTaskCompleteLis
         map.put(Const.Params.URL, Const.ServiceType.TOP_UP_WALLET);
         map.put(Const.Params.ID, new PreferenceHelper(getActivity()).getUserId());
         map.put(Const.Params.TOKEN, new PreferenceHelper(getActivity()).getSessionToken());
+
         // map.put(Const.Params.REQUEST_ID, String.valueOf(new PreferenceHelper(getActivity()).getUserId()));
+        map.put(Const.Params.USER_TYPE_WALLET, Const.PatientService.PATIENT);
 
-        map.put("usertype", Const.PatientService.PATIENT);
-
-        map.put(Const.Params.AMOUNT, Amount);
+        map.put(Const.Params.AMOUNT, Amount.replaceAll(",",""));
 
         map.put(Const.Params.PAYMENT_METHOD_NONCE, nonce);
 

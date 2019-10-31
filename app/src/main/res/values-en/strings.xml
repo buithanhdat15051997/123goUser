@@ -488,5 +488,6 @@
     <string name="txt_none">None</string>
     <string name="txt_select_btn_route">Select Prefered Route</string>
     <string name="txt_choose_a_payment">Choose a payment</string>
+    <string name="txt_pls_choose_payment_type">Please choose type payment!</string>
 </resources>
 

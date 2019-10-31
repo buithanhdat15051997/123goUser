@@ -500,5 +500,6 @@
     <string name="txt_none">None</string>
     <string name="txt_select_btn_route">Sélectionnez Itinéraire préféré</string>
     <string name="txt_choose_a_payment">Choisissez un paiement</string>
+    <string name="txt_pls_choose_payment_type">S\'il vous plaît choisir le paiement de type!</string>
 </resources>
 

@@ -327,8 +327,6 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                                         PickUpMarker.setIcon((BitmapDescriptorFactory
                                                 .fromBitmap(getMarkerBitmapFromView(Time_Request_Home))));
 
-                                        //  txt_ShowNameRoutes.setBackgroundColor(Color.parseColor(color[j]));
-                                        //   Toast.makeText(activity, Distance_Request_Home + " " + Time_Request_Home, Toast.LENGTH_SHORT).show();
 
                                         polylineData.get(j).setZIndex(1);
 
@@ -349,7 +347,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                             poly_line_click_home = polyline;
 
                             /*---- Open Bottom Sheet ----*/
-                            OpenBottomSheet();
+                            //  OpenBottomSheet();
 
                         }
                     });
@@ -385,7 +383,6 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                 @Override
                 public void onClick(View view) {
 
-                    Log.d("TEST", finalJ + "");
 
                     if (finalJ == 0) {
 
@@ -1089,7 +1086,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         map.put(Const.Params.ID, new PreferenceHelper(activity).getUserId());
         map.put(Const.Params.TOKEN, new PreferenceHelper(activity).getSessionToken());
 
-        map.put(Const.Params.DISTANCE, Distance_Request_Home.replaceAll(" km",""));
+        map.put(Const.Params.DISTANCE, Distance_Request_Home.replaceAll(" km", ""));
         map.put(Const.Params.TIME, dur);
 
         Log.d("HaoLS", "Getting ambulance operators " + map.toString());
@@ -1498,7 +1495,6 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                                 for (int i = 0; i < jarray.length(); i++) {
 
                                     JSONObject jarrayJSONObject = jarray.getJSONObject(i);
-
 //                                    AmbulanceOperator type = new AmbulanceOperator();
 //                                    type.setCurrencey_unit(job.optString("currency"));
 //                                    type.setId(jarrayJSONObject.getString("id"));
@@ -1530,22 +1526,30 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                                         if (mRequestOptional_Home != null) {
 
-                                            // Save PreferenceHelper
-                                            new PreferenceHelper(activity).putTypeCarBillingInfo(typeCarRequest_ArrayList_home.get(position).getName_Type_Car_Request());
-                                            new PreferenceHelper(activity).putImageTypeCarBillingInfo(typeCarRequest_ArrayList_home.get(position).getImga_Type_Car_Request());
-                                            new PreferenceHelper(activity).putDistanceBillingInfo(mRequestOptional_Home.getKm_send_billinginfo());
-                                            new PreferenceHelper(activity).putTimeBillingInfo(mRequestOptional_Home.getTime_send_billinginfo());
+                                            if (mRequestOptional_Home.getPic_address().length()>0 && mRequestOptional_Home.getDrop_address().length()>0){
 
-                                            Bundle bundle = new Bundle();
-                                            bundle.putParcelable(Const.Params.REQUEST_OPTIONAL, mRequestOptional_Home);
+                                                // Save PreferenceHelper
+                                                new PreferenceHelper(activity).putTypeCarBillingInfo(typeCarRequest_ArrayList_home.get(position).getName_Type_Car_Request());
+                                                new PreferenceHelper(activity).putImageTypeCarBillingInfo(typeCarRequest_ArrayList_home.get(position).getImga_Type_Car_Request());
+                                                new PreferenceHelper(activity).putDistanceBillingInfo(mRequestOptional_Home.getKm_send_billinginfo());
+                                                new PreferenceHelper(activity).putTimeBillingInfo(mRequestOptional_Home.getTime_send_billinginfo());
 
-                                            BillingInfoFragment billingInfoFragment = new BillingInfoFragment();
-                                            billingInfoFragment.setArguments(bundle);
+                                                Bundle bundle = new Bundle();
+                                                bundle.putParcelable(Const.Params.REQUEST_OPTIONAL, mRequestOptional_Home);
 
-                                            activity.addFragmentNoRefresh(billingInfoFragment, false, Const.BILLING_INFO_FRAGMENT, true);
+                                                BillingInfoFragment billingInfoFragment = new BillingInfoFragment();
+                                                billingInfoFragment.setArguments(bundle);
 
-                                            bottomSheetLayout1.setVisibility(View.VISIBLE);
+                                                activity.addFragmentNoRefresh(billingInfoFragment, false, Const.BILLING_INFO_FRAGMENT, true);
 
+                                                bottomSheetLayout1.setVisibility(View.VISIBLE);
+
+
+                                            }else {
+
+                                                Toast.makeText(activity, "Cannot find pickup address and drop address!", Toast.LENGTH_SHORT).show();
+
+                                            }
 
                                         } else {
                                             Toast.makeText(activity, "Null", Toast.LENGTH_SHORT).show();
@@ -1992,6 +1996,8 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
         mRequestOptional_Home.setPic_address(et_source_address.getText().toString().trim());
         mRequestOptional_Home.setDrop_address(et_destination_address.getText().toString().trim());
+
+        Log.d("DAT_SEARCHPLACE",mRequestOptional_Home.getPic_address()+"  drop:"+mRequestOptional_Home.getDrop_address());
 
         mRequestOptional_Home.setKm_send_billinginfo(Distance_Request_Home.replaceAll(" km", "").toString());
         mRequestOptional_Home.setTime_send_billinginfo(Time_Request_Home);

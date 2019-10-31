@@ -1560,8 +1560,8 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                         DialogCancelByUser(message_cancle_user);
 
                         new PreferenceHelper(activity).clearRequestData();
-                        getActivity().onBackPressed();
-
+                       // getActivity().onBackPressed();
+                        activity.addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
 
 
 //                        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(activity);
@@ -1736,7 +1736,9 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                             address_title.setTextColor(ContextCompat.getColor(activity, R.color.green));
                             tv_current_location.setText(requestDetail.getS_address());
                             tv_driver_status.setText(activity.getString(R.string.text_job_accepted));
+
 //                            addNotification(activity.getString(R.string.text_job_accepted));
+
                             findDistanceAndTime(s_latlon, driver_latlan);
                             if (Integer.valueOf(requestDetail.getIsAdStop()) == 1 && stop_marker == null) {
                                 getDirectionsWay(s_latlon.latitude, s_latlon.longitude, d_latlon.latitude, d_latlon.longitude, stop_latlng.latitude, stop_latlng.longitude);
@@ -2130,8 +2132,8 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                     JSONObject data = (JSONObject) args[0];
                     String sender;
                     String receiver;
-                    String latitude;
-                    String longitude;
+                    String latitude = "";
+                    String longitude = "";
                     String bearing;
                     String location;
 
@@ -2147,22 +2149,29 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                         Log.d("mahi", "message from socket" + data.toString());
                         if (googleMap != null) {
 
-                            driver_latlan = new LatLng(Double.valueOf(latitude), Double.valueOf(longitude));
-                            delayLatlan = driver_latlan;
-                            Location driver_location = new Location("Driver Location");
-                            driver_location.setLatitude(driver_latlan.latitude);
-                            driver_location.setLongitude(driver_latlan.longitude);
+                            if(latitude == ""&& longitude == "" && driver_latlan.toString().isEmpty()){
 
-                            if (driver_car == null && null != driver_latlan && null != googleMap) {
-                                driver_car = googleMap.addMarker(new MarkerOptions()
-                                        .position(driver_latlan)
-                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.carambulance))
-                                        .title(getResources().getString(R.string.txt_driver)));
 
-                                AnimateMarker.animateMarker(activity, driver_location, driver_car, googleMap, bearing);
-                            } else {
-                                AnimateMarker.animateMarker(activity, driver_location, driver_car, googleMap, bearing);
+                            }else {
+
+                                driver_latlan = new LatLng(Double.valueOf(latitude), Double.valueOf(longitude));
+                                delayLatlan = driver_latlan;
+                                Location driver_location = new Location("Driver Location");
+                                driver_location.setLatitude(driver_latlan.latitude);
+                                driver_location.setLongitude(driver_latlan.longitude);
+
+                                if (driver_car == null && null != driver_latlan && null != googleMap) {
+                                    driver_car = googleMap.addMarker(new MarkerOptions()
+                                            .position(driver_latlan)
+                                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.carambulance))
+                                            .title(getResources().getString(R.string.txt_driver)));
+
+                                    AnimateMarker.animateMarker(activity, driver_location, driver_car, googleMap, bearing);
+                                } else {
+                                    AnimateMarker.animateMarker(activity, driver_location, driver_car, googleMap, bearing);
+                                }
                             }
+
 
                         }
 

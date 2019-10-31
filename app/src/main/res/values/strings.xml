@@ -186,6 +186,7 @@
     <string name="total_fare">TOTAL FARE</string>
     <string name="trip_summary">TRIP SUMMARY</string>
     <string name="rate_ride">Rate your riding trip experience?</string>
+    <string name="txt_pls_choose_payment_type">Please choose type payment!</string>
     <string name="table_price_notice">The fare reflected is indicative only, Final fare will be subjected to changes as deemed by Diver.</string>
 
 

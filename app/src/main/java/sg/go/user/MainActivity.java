@@ -441,8 +441,8 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
             } else if (currentFragment.equals(Const.TRAVEL_MAP_FRAGMENT)) {
 
-                addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
-                mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
+//                addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
+//                mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
 
             } else if (currentFragment.equals(Const.HISTORY_TOPUP_WALLET_FRAMENT)) {
 

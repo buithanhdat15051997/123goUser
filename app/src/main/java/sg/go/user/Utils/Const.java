@@ -234,6 +234,8 @@ public class Const {
         public static final String SERVICE_KILOMET = "km";
 
         public static final String CHOOSE_PAYMENT_SELECT_TYPE = "pre_select_type";
+
+        public static final String USER_TYPE_WALLET ="usertype";
     }
 
     public class ServiceType {
@@ -303,6 +305,8 @@ public class Const {
         public static final String CHOOSE_PAYMENT_TYPE = BASE_URL + "selectpaymenttype";
 
         public static final String GET_TYPE_CHOOSE_PAYMENT = BASE_URL + "checkselectedType";
+
+        public static final String BILLING_EXTRA_COST= BASE_URL + "getExtraCost";
 
 
         // wallet config
@@ -491,6 +495,8 @@ public class Const {
         public static final int PAYMENT_CASH = 131;
         public static final int HISTORY_PAYMENT = 130;
         public static final int PAYMENT_WALLET = 135;
+        public static final int GET_EXTRA_COST = 134;
+
 
 
         public static final int GET_BRAIN_TREE_TOKEN_URL_WALLET = 1997;
