@@ -308,7 +308,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
             case R.id.btn_register_social:
 
-                showSocialPopUP();
+               // showSocialPopUP();
 
                 break;
 //            case R.id.btn_login_main:
