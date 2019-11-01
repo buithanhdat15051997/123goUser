@@ -84,7 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/questrial_regular"
-                    android:text="Summary"
+                    android:text="@string/txt_summary_extra_cost"
                     android:textColor="@color/black_text"
                     android:textSize="@dimen/_14ssp"
                     android:textStyle="bold" />
@@ -120,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:fontFamily="@font/quicksand_bold"
-                    android:text="Add ERP Charges:"
+                    android:text="@string/txt_cost_erp_charges"
                     android:textColor="@color/black_text"
                     android:textSize="@dimen/_12ssp" />
 
@@ -149,7 +149,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:fontFamily="@font/quicksand_bold"
-                    android:text="Add Child Seat Charges:"
+                    android:text="@string/txt_cost_add_child_seat_charges"
                     android:textColor="@color/black_text"
                     android:textSize="@dimen/_12ssp" />
 
@@ -178,7 +178,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:fontFamily="@font/quicksand_bold"
-                    android:text="Add Others:"
+                    android:text="@string/txt_cost_add_orther"
                     android:textColor="@color/black_text"
                     android:textSize="@dimen/_12ssp" />
 

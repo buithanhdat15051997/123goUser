@@ -502,5 +502,9 @@
     <string name="txt_choose_a_payment">Choisissez un paiement</string>
     <string name="txt_pls_choose_payment_type">S\'il vous plaît choisir le paiement de type!</string>
     <string name="txt_cannot_find_location_googlemap">Impossible de trouver l\'adresse de ramassage et l\'adresse goutte!</string>
+    <string name="txt_summary_extra_cost">résumé</string>
+    <string name="txt_cost_erp_charges">Ajouter les frais ERP:</string>
+    <string name="txt_cost_add_child_seat_charges">Ajouter les frais de siège d\'enfant :</string>
+    <string name="txt_cost_add_orther">Ajouter d\'autres:</string>
 </resources>
 

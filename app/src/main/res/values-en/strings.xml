@@ -490,5 +490,9 @@
     <string name="txt_choose_a_payment">Choose a payment</string>
     <string name="txt_pls_choose_payment_type">Please choose type payment!</string>
     <string name="txt_cannot_find_location_googlemap">Please enter pickup address and drop address!</string>
+    <string name="txt_summary_extra_cost">Summary</string>
+    <string name="txt_cost_erp_charges">Add ERP Charges:</string>
+    <string name="txt_cost_add_child_seat_charges">Add Child Seat Charges:</string>
+    <string name="txt_cost_add_orther">Add Others:</string>
 </resources>
 

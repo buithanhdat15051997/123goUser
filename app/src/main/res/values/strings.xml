@@ -185,6 +185,10 @@
     <string name="txt_driver">Driver</string>
     <string name="total_fare">TOTAL FARE</string>
     <string name="trip_summary">TRIP SUMMARY</string>
+    <string name="txt_summary_extra_cost">Summary</string>
+    <string name="txt_cost_erp_charges">Add ERP Charges:</string>
+    <string name="txt_cost_add_child_seat_charges">Add Child Seat Charges:</string>
+    <string name="txt_cost_add_orther">Add Others:</string>
     <string name="txt_cannot_find_location_googlemap">Please enter pickup address and drop address!</string>
     <string name="rate_ride">Rate your riding trip experience?</string>
     <string name="txt_pls_choose_payment_type">Please choose type payment!</string>

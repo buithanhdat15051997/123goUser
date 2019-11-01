@@ -205,6 +205,10 @@
     <string name="txt_select_time_pickup">Chọn ngày và giờ đón</string>
     <string name="txt_pls_choose_payment_type">" Vui lòng chọn loại thanh toán!"</string>
     <string name="txt_cannot_find_location_googlemap">Vui lòng nhập địa chỉ đón và địa chỉ thả!</string>
+    <string name="txt_summary_extra_cost">Tóm tắt</string>
+    <string name="txt_cost_erp_charges">Thêm phí ERP:</string>
+    <string name="txt_cost_add_child_seat_charges">Thêm phí chỗ ngồi trẻ em:</string>
+    <string name="txt_cost_add_orther">Thêm những phí khác:</string>
 
 
 </resources>
