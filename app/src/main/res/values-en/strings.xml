@@ -489,5 +489,6 @@
     <string name="txt_select_btn_route">Select Prefered Route</string>
     <string name="txt_choose_a_payment">Choose a payment</string>
     <string name="txt_pls_choose_payment_type">Please choose type payment!</string>
+    <string name="txt_cannot_find_location_googlemap">Please enter pickup address and drop address!</string>
 </resources>
 

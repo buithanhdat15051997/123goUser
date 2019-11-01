@@ -182,7 +182,7 @@
     <string name="txt_btn_done">Xong</string>
     <string name="txt_cameray">Camera</string>
     <string name="txt_load">Đang tải...</string>
-    <string name="txt_type_top_up_wallet">Hình thức nạp tiền</string>
+    <string name="txt_type_top_up_wallet">Loại nạp tiền</string>
     <string name="dolo_singapor">S$</string>
     <string name="txt_top_up_history">"Lịch sử nạp tiền "</string>
     <string name="error_empty_amount">Vui lòng nhập số tiền</string>
@@ -204,6 +204,7 @@
     <string name="txt_schedule">Lịch Trình</string>
     <string name="txt_select_time_pickup">Chọn ngày và giờ đón</string>
     <string name="txt_pls_choose_payment_type">" Vui lòng chọn loại thanh toán!"</string>
+    <string name="txt_cannot_find_location_googlemap">Vui lòng nhập địa chỉ đón và địa chỉ thả!</string>
 
 
 </resources>

@@ -1495,6 +1495,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                                 for (int i = 0; i < jarray.length(); i++) {
 
                                     JSONObject jarrayJSONObject = jarray.getJSONObject(i);
+
 //                                    AmbulanceOperator type = new AmbulanceOperator();
 //                                    type.setCurrencey_unit(job.optString("currency"));
 //                                    type.setId(jarrayJSONObject.getString("id"));
@@ -1547,7 +1548,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                                             }else {
 
-                                                Toast.makeText(activity, "Cannot find pickup address and drop address!", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(activity, activity.getResources().getString(R.string.txt_cannot_find_location_googlemap), Toast.LENGTH_SHORT).show();
 
                                             }
 
@@ -1585,6 +1586,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                 if (null != response) {
 
+                    Log.d("DAT_SEARCHPLACE", "  "+response);
                     // an linearlayout
 
                     if (polylineData != null) {
@@ -1594,6 +1596,8 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                             arrayListLinearShow.get(z).setVisibility(View.GONE);
 
                         }
+                        bottomSheetLayout1.setVisibility(View.GONE);
+
 
                     }
 
@@ -1609,12 +1613,12 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                         if (s_click == true && currentLatLan != null) {
                             //   et_source_dia_address.setText(locObj.optString("formatted_address"));
                             //     parseLocationDetails(response);
-                            Log.d("getApigoogle", "khi click vào ");
+
                             source_LatLng = new LatLng(lat, lng);
 //                            source_LatLng = currentLatLan;
                             fromLocation = source_LatLng;
 
-                            Log.d("getApigoogle", "khi click vào  " + sourceAddress);
+
 
                             et_source_address.setText(sourceAddress);
 
@@ -1703,7 +1707,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
 
                         if (fromLocation != null && des_latLng != null) {
-                            Log.d(TAG, "ve duong");
+
                             if (polylineData != null) {
 //                                routeArray
                                 for (Polyline line : polylineData) {
@@ -1713,7 +1717,23 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                                 Log.d(TAG, "soduong: " + polylineData.size());
                             }
                             fitmarkers_toMap(fromLocation, des_latLng);
-                            getDirections(fromLocation.latitude, fromLocation.longitude, toLocation.latitude, toLocation.longitude);
+
+                            if(fromLocation != null && toLocation!=null){
+
+                                Log.d("DAT_SEARCHPLACE",fromLocation.toString()+"  "+toLocation.toString());
+
+                                getDirections(fromLocation.latitude, fromLocation.longitude, toLocation.latitude, toLocation.longitude);
+
+                            }else {
+
+                                Toast.makeText(activity, activity.getResources().getString(R.string.txt_cannot_find_location_googlemap), Toast.LENGTH_SHORT).show();
+
+                            }
+
+                        }else {
+
+                            Toast.makeText(activity, activity.getResources().getString(R.string.txt_cannot_find_location_googlemap), Toast.LENGTH_SHORT).show();
+
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

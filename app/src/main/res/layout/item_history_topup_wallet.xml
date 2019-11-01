@@ -47,7 +47,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginBottom="@dimen/_5sdp"
                     android:singleLine="true"
-                    android:text="payment tpye"
+                    android:text=""
                     android:textColor="@color/background123go"
                     android:textSize="@dimen/_14ssp"
                     android:textStyle="bold" />
