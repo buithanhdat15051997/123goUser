@@ -330,6 +330,7 @@
                         </LinearLayout>
 
                         <TextView
+                            android:visibility="gone"
                             android:fontFamily="@font/quicksand_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -340,6 +341,7 @@
                             android:textSize="@dimen/_10ssp" />
 
                         <RelativeLayout
+                            android:visibility="gone"
                             android:id="@+id/btn_register_social"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_30sdp"

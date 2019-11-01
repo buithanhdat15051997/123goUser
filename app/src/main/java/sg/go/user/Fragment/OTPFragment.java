@@ -92,7 +92,7 @@ public class OTPFragment extends BaseRegisterFragment implements AsyncTaskComple
 
             ccp.setDefaultCountryUsingNameCode(country_code);
             ccp.resetToDefaultCountry();
-            user_otp.setText(code);
+            //user_otp.setText(code);
         }
 
     }
@@ -188,7 +188,7 @@ public class OTPFragment extends BaseRegisterFragment implements AsyncTaskComple
                     JSONObject job = new JSONObject(response);
                     if (job.getString("success").equals("true")) {
                         code = job.optString("code");
-                        user_otp.setText(code);
+                       // user_otp.setText(code);
 
                     } else {
 
