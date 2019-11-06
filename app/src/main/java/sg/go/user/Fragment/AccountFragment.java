@@ -426,7 +426,7 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
 
         accountSettingsList.add(0, new AccountSettings(R.drawable.ic_account_wallet, getString(R.string.nikola_wallet)));
         accountSettingsList.add(1, new AccountSettings(R.drawable.help_circle, getString(R.string.my_help)));
-        accountSettingsList.add(2, new AccountSettings(R.drawable.ic_account_wallet, activity.getResources().getString(R.string.txt_choose_a_payment)));
+        accountSettingsList.add(2, new AccountSettings(R.drawable.ic_choose_payment, activity.getResources().getString(R.string.txt_choose_a_payment)));
         accountSettingsList.add(3, new AccountSettings(R.drawable.ic_power_off, getString(R.string.txt_logout)));
 
 

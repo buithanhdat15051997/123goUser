@@ -73,7 +73,7 @@ public class SplashAnimation extends AppCompatActivity implements AsyncTaskCompl
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashAnimation.this, WellcomeSkipActivity.class);
+                Intent i = new Intent(SplashAnimation.this, WelcomeActivity.class);
                 startActivity(i);
                 // close this activity
                 finish();

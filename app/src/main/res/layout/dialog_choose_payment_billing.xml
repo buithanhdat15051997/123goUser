@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RadioGroup
+        android:id="@+id/radioGroup_Choose_payment_billing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_weight="0.2">
+
+        <RadioButton
+            android:fontFamily="@font/quicksand_bold"
+            android:id="@+id/radioBtn_Payment_Cash_billing"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text="@string/txt_pay_cash"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
+
+
+        <RadioButton
+            android:fontFamily="@font/quicksand_bold"
+            android:id="@+id/radioBtn_Payment_Ewallet_billing"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text="@string/txt_pay_wallet"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:fontFamily="@font/quicksand_bold"
+            android:id="@+id/radioBtn_Payment_Paypal_billing"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text="@string/txt_pay_paypal"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
+    </RadioGroup>
+    <Button
+        android:fontFamily="@font/questrial_regular"
+        android:id="@+id/btn_dialog_choose_payment_billing"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@color/color_btn_main"
+        android:text="@string/btn_confirm"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold" />
+
+</LinearLayout>

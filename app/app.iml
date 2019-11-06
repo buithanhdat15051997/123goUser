@@ -107,6 +107,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant_run_split_apk_resources" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javac" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/legacy_multidex_aapt_derived_proguard_rules" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/legacy_multidex_main_dex_list" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifest-checker" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/merged_assets" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/merged_jni_libs" />
@@ -278,6 +279,16 @@
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-measurement-impl:16.5.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.bumptech.glide:glide:4.3.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-tasks:16.0.1@aar" level="project" />
+    <orderEntry type="module" module-name="reclv_animation" />
+    <orderEntry type="module" module-name="reclv_animation" />
+    <orderEntry type="module" module-name="reclv_animation" />
+    <orderEntry type="module" module-name="reclv_animation" />
+    <orderEntry type="module" module-name="reclv_animation" />
+    <orderEntry type="module" module-name="reclv_animation" />
+    <orderEntry type="module" module-name="reclv_animation" />
+    <orderEntry type="module" module-name="reclv_animation" />
+    <orderEntry type="module" module-name="reclv_animation" />
+    <orderEntry type="module" module-name="reclv_animation" />
     <orderEntry type="module" module-name="reclv_animation" />
     <orderEntry type="module" module-name="reclv_animation" />
     <orderEntry type="module" module-name="reclv_animation" />

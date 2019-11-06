@@ -186,7 +186,9 @@ public class OTPFragment extends BaseRegisterFragment implements AsyncTaskComple
                 EbizworldUtils.removeProgressDialog();
                 try {
                     JSONObject job = new JSONObject(response);
+
                     if (job.getString("success").equals("true")) {
+
                         code = job.optString("code");
                        // user_otp.setText(code);
 

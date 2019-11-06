@@ -417,6 +417,9 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
         if (!currentFragment.equals(Const.HOME_MAP_FRAGMENT)) {
 
+            checkreqstatus();
+
+
 //            if (currentFragment.equals(Const.REQUEST_FRAGMENT)){
 //
 //                addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true);
@@ -437,6 +440,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
 //                Toast.makeText(this, "Cannot", Toast.LENGTH_SHORT).show();
                getSupportFragmentManager().popBackStack();
+
 
 
             } else if (currentFragment.equals(Const.TRAVEL_MAP_FRAGMENT)) {

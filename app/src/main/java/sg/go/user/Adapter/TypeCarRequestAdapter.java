@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,7 +79,11 @@ public class TypeCarRequestAdapter extends RecyclerView.Adapter<TypeCarRequestAd
 
         viewholderTypeCar.txt_Item_Type_Car.setText(typeCar_Request_ArrayList.get(i).getName_Type_Car_Request());
 
-        viewholderTypeCar.txt_Item_Type_service_fee.setText(typeCar_Request_ArrayList.get(i).getName_Type_service_fee() + " S$");
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+
+        float service_fee = (float) typeCar_Request_ArrayList.get(i).getName_Type_service_fee();
+
+        viewholderTypeCar.txt_Item_Type_service_fee.setText("S$ "+ decimalFormat.format(service_fee));
 
         if (typeCar_Request_ArrayList.get(i).getImga_Type_Car_Request() != null) {
 

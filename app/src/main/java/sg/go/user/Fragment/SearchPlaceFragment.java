@@ -1513,7 +1513,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                                     //  Log.d("aaaaaa",jarrayJSONObject.getString("name")+jarrayJSONObject.getString("picture").toString());
 
                                     typeCarRequest_ArrayList_home.add(new TypeCarRequest(jarrayJSONObject.getString("name").toString(),
-                                            jarrayJSONObject.getString("picture").toString(), jarrayJSONObject.getInt("total_fare_value")));
+                                            jarrayJSONObject.getString("picture").toString(), jarrayJSONObject.getDouble("total_fare_value")));
 
                                 }
 

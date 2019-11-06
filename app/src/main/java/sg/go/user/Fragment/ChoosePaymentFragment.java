@@ -90,7 +90,20 @@ public class ChoosePaymentFragment extends Fragment implements AsyncTaskComplete
             @Override
             public void onClick(View view) {
 
-                activity.addFragment(new AccountFragment(), true, Const.ACCOUNT_FRAGMENT, false);
+                if(getArguments()!=null){
+
+                    if(getArguments().getString("billinginfo")!=null){
+
+                        getActivity().getSupportFragmentManager().popBackStack();
+
+                    }
+
+                }else {
+
+                    activity.addFragment(new AccountFragment(), true, Const.ACCOUNT_FRAGMENT, false);
+
+                }
+
 
             }
         });
@@ -315,6 +328,12 @@ public class ChoosePaymentFragment extends Fragment implements AsyncTaskComplete
 
         }
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        activity.mBottomNavigationView.setVisibility(View.GONE);
     }
 
     @Override
