@@ -140,7 +140,10 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
         }
 
         setContentView(R.layout.activity_main);
+
         mFcmScheduleReceiver = new FCMScheduleReceiver();
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         /*bnt_menu = (ImageButton) findViewById(R.id.bnt_menu);
         bnt_menu.setOnClickListener(new View.OnClickListener() {
@@ -417,7 +420,6 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
         if (!currentFragment.equals(Const.HOME_MAP_FRAGMENT)) {
 
-            checkreqstatus();
 
 
 //            if (currentFragment.equals(Const.REQUEST_FRAGMENT)){

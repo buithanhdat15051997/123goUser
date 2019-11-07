@@ -92,15 +92,15 @@
                     android:layout_weight="0.2">
 
 
-                    <RadioButton
-                        android:fontFamily="@font/quicksand_bold"
-                        android:id="@+id/radioBtn_Payment_None"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_50sdp"
-                        android:paddingLeft="@dimen/_10sdp"
-                        android:text="@string/txt_none"
-                        android:textSize="@dimen/_14ssp"
-                        android:textStyle="bold" />
+                    <!--<RadioButton-->
+                        <!--android:fontFamily="@font/quicksand_bold"-->
+                        <!--android:id="@+id/radioBtn_Payment_None"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="@dimen/_50sdp"-->
+                        <!--android:paddingLeft="@dimen/_10sdp"-->
+                        <!--android:text="@string/txt_none"-->
+                        <!--android:textSize="@dimen/_14ssp"-->
+                        <!--android:textStyle="bold" />-->
 
                     <RadioButton
                         android:fontFamily="@font/quicksand_bold"
@@ -140,13 +140,13 @@
                     android:layout_weight="0.8"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <!--<ImageView-->
 
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_50sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_weight="1"
-                        android:background="@color/white" />
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="@dimen/_50sdp"-->
+                        <!--android:layout_marginEnd="@dimen/_5sdp"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:background="@color/white" />-->
 
                     <ImageView
 

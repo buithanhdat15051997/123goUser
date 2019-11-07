@@ -70,8 +70,8 @@
     <string name="txt_content_dialog_gps">Choose your location to start find the taxi near you</string>
     <string name="txt_btn_gps">USE CURRENT LOCATION</string>
     <string name="txt_exit_gps">SELECT MANUALLY</string>
-    <string name="txt_dialog_pay_ewallet">Payment With Wallet</string>
-    <string name="txt_content_pay_ewallet">Your wallet will be deducted</string>
+    <string name="txt_dialog_pay_ewallet">Payment With E-Wallet</string>
+    <string name="txt_content_pay_ewallet">Your e-wallet will be deducted</string>
 
     <string name="txt_content_ratings">You feedback will help to improve our driving experience</string>
 
@@ -228,7 +228,7 @@
 
     <string name="my_home">Home</string>
     <string name="my_payment">Add Payment Options</string>
-    <string name="nikola_wallet">Wallet</string>
+    <string name="nikola_wallet">E-Wallet</string>
     <string name="my_free_ride">Free Rides</string>
     <string name="ask_bot">Ask Bot</string>
     <string name="ride_history">Ride History</string>
@@ -421,9 +421,9 @@
 
     <string name="txt_pay_cash">Pay by Cash</string>
     <string name="txt_pay_paypal">Pay by Paypal</string>
-    <string name="txt_pay_wallet">Pay by Wallet</string>
-    <string name="title_wallet">Your Wallet</string>
-    <string name="txt_total_pay_wallet">Total Money In Your Wallet: </string>
+    <string name="txt_pay_wallet">Pay by E-Wallet</string>
+    <string name="title_wallet">Your E-Wallet</string>
+    <string name="txt_total_pay_wallet">Total Money In Your E-Wallet: </string>
     <string name="edt_hint_input_money_wallet">Enter Money:</string>
     <string name="txt_choose_a_paymnet">Choose a payment</string>
 
@@ -456,7 +456,7 @@
 
     <string name="txt_cash">CASH</string>
     <string name="txt_paypal">PAYPAL</string>
-    <string name="txt_wallet">WALLET</string>
+    <string name="txt_wallet">E-WALLET</string>
     <string name="txt_card">CARD</string>
     <string name="txt_finish">FINISH</string>
     <string name="txt_card_success">Card Added Successfully</string>
@@ -474,12 +474,12 @@
     <string name="txt_no_cancel_reason">No Reasons found!</string>
 
     <string name="txt_cancle_user1">You exceeded the cancellation grace period of 3 minutes, a cancellation fee of</string>
-    <string name="txt_cancle_user2">will be deducted from your eWallet paid to Driver or charged to your next ride. Click "Confirm" to procee</string>
+    <string name="txt_cancle_user2">will be deducted from your E-Wallet paid to Driver or charged to your next ride. Click "Confirm" to procee</string>
 
     <string name="txt_cancel_driver">The trip has been canceled</string>
 
     <string name="txt_cancel_driver1">I am sorry that the driver has cancelled the trip, an amount of</string>
-    <string name="txt_cancel_driver2">has been paid to you by the Driver for cancelling this trip request, please check your eWallet. We apologize for the inconvenience caused.</string>
+    <string name="txt_cancel_driver2">has been paid to you by the Driver for cancelling this trip request, please check your E-Wallet. We apologize for the inconvenience caused.</string>
 
     <string name="network_error">No network connection.Please check your internet</string>
     <string name="memory_error">Run out of memory please close the other background apps and try again!</string>
@@ -487,10 +487,10 @@
     <string name="txt_continue">Continue</string>
     <string name="empty_error_msg">Please Enter Message before send</string>
     <string name="error_empty_amount">Please enter Amount</string>
-    <string name="error_no_wallet_gateway">No Wallet Gateway found! Please Configure Payment Gateway from dashboard.</string>
+    <string name="error_no_wallet_gateway">No E-Wallet Gateway found! Please Configure Payment Gateway from dashboard.</string>
     <string name="error_payment_key">Please Add Payment Key in Dashboard!</string>
     <string name="error_card">Please Enter Card Details!</string>
-    <string name="add_money_success">Amount Added to your wallet!</string>
+    <string name="add_money_success">Amount Added to your e-wallet!</string>
     <string name="fail_add_money">Fails to add amount!</string>
     <string name="txt_warn">Warning!</string>
     <string name="txt_cancel_trans">Are you sure? You want to cancel transaction?</string>

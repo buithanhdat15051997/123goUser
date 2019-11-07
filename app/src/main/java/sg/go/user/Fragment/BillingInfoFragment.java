@@ -132,7 +132,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
     private DatabaseHandler mDatabaseHandler;
     private RequestDetail mRequestDetail;
     private RequestOptional mRequestOptional;
-    private Dialog requestDialog;
+    private Dialog requestDialog,dialog_choose_payment;
     private TextView cancel_req_create, tv_billing_info_schedule;
     private Handler checkRequestStatusHandler;
     private Button btn_pay_wallet_demo1;
@@ -141,6 +141,9 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
     private Dialog dialog_payment_wallet;
     private String TotalMoney;
     private int type_payment;
+    private float total_billing;
+    private double total_after_trip;
+    private int type_payment_selected;
 
     private LinearLayout billing_info_payment_summary_group;
 
@@ -242,7 +245,6 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
             Glide.with(activity).load(new PreferenceHelper(activity).getImageTypeCarBillingInfo()).into(img_billing_info_img_typeCar);
 
 
-
         } else {
 
             /*---- SET NAME - IMAGE  TYPE CAR - DISTANCE - TIME ----*/
@@ -251,14 +253,13 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
             tv_billing_info_kilo_distance3.setText(new PreferenceHelper(activity).getDistanceBillingInfo() + " km");
             tv_billing_info_kilo_dola2.setText(new PreferenceHelper(activity).getTimeBillingInfo());
 
-
             getExtraCost();
 
-            GetTypePayment();
-
+            //GetTypePayment();
 
             billing_info_table_price_notice_group.setVisibility(View.GONE);
             billing_info_request_group.setVisibility(View.GONE);
+            btn_choose_type_payment_billing.setVisibility(View.GONE);
 
             if (new PreferenceHelper(activity).gettypePaymentBilling().isEmpty()) {
 
@@ -278,6 +279,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                         billing_info_payment_group.setVisibility(View.VISIBLE);
                         img_logo_hide_billinginfo.setVisibility(View.VISIBLE);
                         billing_info_payment_summary_group.setVisibility(View.VISIBLE);
+                        btn_choose_type_payment_billing.setVisibility(View.GONE);
                         break;
 
                     case 1:
@@ -287,6 +289,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                         billing_info_payment_group.setVisibility(View.GONE);
                         img_logo_hide_billinginfo.setVisibility(View.GONE);
                         billing_info_payment_summary_group.setVisibility(View.VISIBLE);
+                        btn_choose_type_payment_billing.setVisibility(View.GONE);
 
                         txt_show_auto_payment.setText(activity.getResources().getString(R.string.txt_pay_cash));
                         txt_show_auto_payment.setVisibility(View.VISIBLE);
@@ -301,6 +304,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                         billing_info_payment_group.setVisibility(View.GONE);
                         img_logo_hide_billinginfo.setVisibility(View.GONE);
                         billing_info_payment_summary_group.setVisibility(View.VISIBLE);
+                        btn_choose_type_payment_billing.setVisibility(View.GONE);
 
                         txt_show_auto_payment.setText(activity.getResources().getString(R.string.txt_pay_wallet));
                         txt_show_auto_payment.setVisibility(View.VISIBLE);
@@ -315,6 +319,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                         billing_info_payment_group.setVisibility(View.GONE);
                         img_logo_hide_billinginfo.setVisibility(View.GONE);
                         billing_info_payment_summary_group.setVisibility(View.VISIBLE);
+                        btn_choose_type_payment_billing.setVisibility(View.GONE);
 
                         txt_show_auto_payment.setText(activity.getResources().getString(R.string.txt_pay_paypal));
                         txt_show_auto_payment.setVisibility(View.VISIBLE);
@@ -935,6 +940,16 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
         map.put(Const.Params.TOKEN, new PreferenceHelper(getActivity()).getSessionToken());
         map.put(Const.Params.REQUEST_ID, String.valueOf(new PreferenceHelper(getActivity()).getRequestId()));
 
+//        if(total_after_trip>0){
+//
+//            map.put("totalPrice",String.valueOf(total_after_trip));
+//
+//
+//        }else {
+//
+//            map.put("totalPrice", 0+"");
+//        }
+
         EbizworldUtils.appLogDebug("DAT_BILLING", "getPaymentByCash: " + map.toString());
 
         new VolleyRequester(getActivity(), Const.POST, map, Const.ServiceCode.PAYMENT_CASH, this);
@@ -1025,8 +1040,11 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
         //
         if (requestOptional.getOperator_id() != 0) {
+
             map.put(Const.Params.SERVICE_TYPE, String.valueOf(requestOptional.getOperator_id()));
+
         } else {
+
             map.put(Const.Params.SERVICE_TYPE, new PreferenceHelper(getActivity()).getRequestType());
         }
 
@@ -1055,6 +1073,15 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 //        map.put(Const.Params.OXYGEN,String.valueOf(requestOptional.getOxygen()));
 //        map.put(Const.Params.CASE_TYPE, String.valueOf(requestOptional.getCaseType()));
 //        map.put("overview_polyline", String.valueOf(requestOptional.getOverView_Polyline()));
+        if(total_billing>0){
+
+            map.put("totalPrice",String.valueOf(total_billing));
+
+        }else {
+
+            map.put("totalPrice",String.valueOf(0));
+
+        }
 
         map.put("overview_polyline", new PreferenceHelper(activity).getOverViewPolyline());
 
@@ -1145,27 +1172,35 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
                             if(jsonObject.has("selected_type")){
 
-                                int typePayment = jsonObject.getInt("selected_type");
+                                type_payment_selected = jsonObject.getInt("selected_type");
 
-                                EbizworldUtils.appLogDebug("DAT_CHOOSE_PAYMENT", String.valueOf(typePayment));
+                                /*---SET BUTTON---*/
+                                switch (type_payment_selected){
 
-                                new PreferenceHelper(activity).puttypePaymentBilling(String.valueOf(typePayment));
+                                    case 0:
+                                        btn_choose_type_payment_billing.setText(activity.getResources().getString(R.string.txt_choose_a_payment));
+                                        break;
 
-                                if (typePayment>0){
+                                    case 1:
+                                        btn_choose_type_payment_billing.setText(activity.getResources().getString(R.string.txt_pay_cash));
 
-                                    btn_choose_type_payment_billing.setVisibility(View.GONE);
+                                        break;
 
-                                    tv_billing_info_confirm.setVisibility(View.VISIBLE);
+                                    case 2:
+                                        btn_choose_type_payment_billing.setText(activity.getResources().getString(R.string.txt_pay_wallet));
+                                        break;
 
-                                }else {
+                                }
 
-                                    btn_choose_type_payment_billing.setVisibility(View.VISIBLE);
+                                EbizworldUtils.appLogDebug("DAT_CHOOSE_PAYMENT", String.valueOf(type_payment_selected));
 
-                                    tv_billing_info_confirm.setVisibility(View.GONE);
+                                new PreferenceHelper(activity).puttypePaymentBilling(String.valueOf(type_payment_selected));
 
-                                    btn_choose_type_payment_billing.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
+                                btn_choose_type_payment_billing.setVisibility(View.VISIBLE);
+
+                                btn_choose_type_payment_billing.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
 
 //                                        Bundle bundle = new Bundle();
 //
@@ -1175,10 +1210,21 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 //
 //                                        activity.addFragmentNoRefresh(choosePaymentFragment,true,Const.CHOOSE_PAYMENT_FRAGMENT,true);
 
-                                            DialogChooseTypePayment();
+                                        DialogChooseTypePayment();
 
-                                        }
-                                    });
+                                    }
+                                });
+
+                                if (type_payment_selected>0){
+
+                                    tv_billing_info_confirm.setVisibility(View.VISIBLE);
+
+                                }else {
+
+                                    btn_choose_type_payment_billing.setVisibility(View.VISIBLE);
+
+                                    tv_billing_info_confirm.setVisibility(View.GONE);
+
 
                                 }
                             }
@@ -1210,22 +1256,24 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
                             GetTypePayment();
 
-                            android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(activity);
+                            dialog_choose_payment.dismiss();
 
-                            builder.setTitle("Selected Successfully");
-
-                            builder.setCancelable(true);
-
-                            builder.setNegativeButton(getResources().getString(R.string.txt_btn_done), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-
-                                    dialogInterface.dismiss();
-                                }
-                            });
-
-                            android.support.v7.app.AlertDialog alertDialog = builder.create();
-                            alertDialog.show();
+//                            android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(activity);
+//
+//                            builder.setTitle("Selected Successfully");
+//
+//                            builder.setCancelable(true);
+//
+//                            builder.setNegativeButton(getResources().getString(R.string.txt_btn_done), new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                                    dialogInterface.dismiss();
+//                                }
+//                            });
+//
+//                            android.support.v7.app.AlertDialog alertDialog = builder.create();
+//                            alertDialog.show();
 
                         } else {
 
@@ -1337,6 +1385,16 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
                         } else if (jsonObject.getBoolean("success") == false) {
 
+                            if(jsonObject.has("e_wallet_allowed")){
+                                
+                                if(jsonObject.getBoolean("e_wallet_allowed")==false){
+
+                                    Toast.makeText(activity, ""+jsonObject.getString("e_wallet_message"), Toast.LENGTH_SHORT).show();
+                                    billing_info_payment_group.setVisibility(View.VISIBLE);
+                                    btn_pay_wallet_demo1.setVisibility(View.GONE);
+
+                                }
+                            }
                             EbizworldUtils.showLongToast("Payment with Wallet Failed", activity);
 
                         }
@@ -1423,7 +1481,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
                             DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
-                            float total_billing = (float) jsonObject.getDouble(Const.Params.TOTAL);
+                            total_billing = (float) jsonObject.getDouble(Const.Params.TOTAL);
 
                             mTv_billing_info_total_price.setText(jsonObject.getString("currency") + " " + decimalFormat.format(total_billing));
 
@@ -1451,6 +1509,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
             break;
 
             case Const.ServiceCode.REQUEST_AMBULANCE:
+
                 EbizworldUtils.appLogInfo("DAT_BILLING", "create req_response succeeded: " + response);
 
                 if (response != null) {
@@ -1459,17 +1518,44 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
                     try {
                         JSONObject job1 = new JSONObject(response);
+
                         if (job1.getString("success").equals("true")) {
+                            /*---SET EWALLET---*/
+                            if(job1.has("e_wallet_allowed")){
 
-                            new PreferenceHelper(activity).putRequestId(Integer.parseInt(job1.getString("request_id")));
-                            startGetRequestStatus();
+                                if(job1.getBoolean("e_wallet_allowed")==false){
 
-                            if (requestDialog != null && requestDialog.isShowing()) {
+                                    Log.d("DatCheckReponse", job1.getBoolean("e_wallet_allowed")+"");
 
-                                if (cancel_req_create != null) {
+                                    if (requestDialog != null && requestDialog.isShowing()) {
 
-                                    cancel_req_create.setEnabled(true);
-                                    cancel_req_create.setBackgroundColor(getResources().getColor(R.color.color_background_main));
+                                        requestDialog.dismiss();
+
+                                       // stopCheckingforstatus();
+                                    }
+                                    if(!job1.getString("e_wallet_message").isEmpty()){
+
+                                        Toast.makeText(activity, ""+job1.getString("e_wallet_message"), Toast.LENGTH_SHORT).show();
+
+                                    }
+
+                                }
+                                if(job1.getBoolean("e_wallet_allowed")==true){
+
+                                    Log.d("DatCheckReponse", job1.getBoolean("e_wallet_allowed")+"");
+                                    new PreferenceHelper(activity).putRequestId(Integer.parseInt(job1.getString("request_id")));
+                                    startGetRequestStatus();
+
+                                    if (requestDialog != null && requestDialog.isShowing()) {
+
+                                        if (cancel_req_create != null) {
+
+                                            cancel_req_create.setEnabled(true);
+                                            cancel_req_create.setBackgroundColor(getResources().getColor(R.color.color_background_main));
+
+                                        }
+
+                                    }
 
                                 }
 
@@ -1486,11 +1572,25 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 //                        }
                         else {
 
+                            if(job1.has("e_wallet_message")){
+
+                                if(!job1.getString("e_wallet_message").isEmpty()){
+
+                                    Toast.makeText(activity, ""+job1.getString("e_wallet_message"), Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+
+
                             // startgetProvider();
+
                             if (requestDialog != null && requestDialog.isShowing()) {
+
                                 requestDialog.dismiss();
+
                                 stopCheckingforstatus();
                             }
+
                             String error = job1.getString("error");
                             Commonutils.showtoast(error, activity);
 
@@ -1661,6 +1761,10 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
                                 mTv_billing_info_total_price.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getTrip_total_price());
 
+                                total_after_trip = Double.parseDouble(mRequestDetail.getTrip_total_price());
+
+                                Log.d("DAT_BILLING_tt",total_after_trip+"");
+
                                 //   mTv_billing_info_a_and_e_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getA_and_e());
                                 //    mTv_billing_info_imh_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getImh());
                                 //    mTv_billing_info_ferry_terminals_value.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getFerry_terminals());
@@ -1785,7 +1889,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
     private void DialogChooseTypePayment() {
 
 
-        Dialog dialog_choose_payment = new Dialog(activity);
+        dialog_choose_payment = new Dialog(activity);
         dialog_choose_payment.setContentView(R.layout.dialog_choose_payment_billing);
         dialog_choose_payment.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
 
@@ -1793,8 +1897,29 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
         RadioGroup  radioGroup_Choose_payment_billing = dialog_choose_payment.findViewById(R.id.radioGroup_Choose_payment_billing);
         final RadioButton radioBtn_Payment_Cash_billing = dialog_choose_payment.findViewById(R.id.radioBtn_Payment_Cash_billing);
         final RadioButton radioBtn_Payment_Ewallet_billing = dialog_choose_payment.findViewById(R.id.radioBtn_Payment_Ewallet_billing);
-        final RadioButton radioBtn_Payment_Paypal_billing = dialog_choose_payment.findViewById(R.id.radioBtn_Payment_Paypal_billing);
+       // final RadioButton radioBtn_Payment_Paypal_billing = dialog_choose_payment.findViewById(R.id.radioBtn_Payment_Paypal_billing);
         final Button btn_dialog_choose_payment_billing = dialog_choose_payment.findViewById(R.id.btn_dialog_choose_payment_billing);
+
+
+        switch (type_payment_selected){
+            case 0:
+                radioBtn_Payment_Cash_billing.setChecked(false);
+                radioBtn_Payment_Ewallet_billing.setChecked(false);
+
+                break;
+
+            case 1:
+                radioBtn_Payment_Cash_billing.setChecked(true);
+                radioBtn_Payment_Ewallet_billing.setChecked(false);
+                break;
+            case 2:
+
+                radioBtn_Payment_Cash_billing.setChecked(false);
+                radioBtn_Payment_Ewallet_billing.setChecked(true);
+
+                break;
+        }
+
 
         radioGroup_Choose_payment_billing.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -1814,11 +1939,11 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                         possiton_radio_button = 2;
                         break;
 
-                    case R.id.radioBtn_Payment_Paypal_billing:
-
-                        btn_dialog_choose_payment_billing.setText(getResources().getString(R.string.btn_confirm) + " " + getResources().getString(R.string.txt_pay_paypal));
-                        possiton_radio_button = 3;
-                        break;
+//                    case R.id.radioBtn_Payment_Paypal_billing:
+//
+//                        btn_dialog_choose_payment_billing.setText(getResources().getString(R.string.btn_confirm) + " " + getResources().getString(R.string.txt_pay_paypal));
+//                        possiton_radio_button = 3;
+//                        break;
 
                 }
             }
@@ -1828,7 +1953,9 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
             @Override
             public void onClick(View view) {
 
-                if (radioBtn_Payment_Cash_billing.isChecked() || radioBtn_Payment_Ewallet_billing.isChecked() || radioBtn_Payment_Paypal_billing.isChecked()) {
+//           || radioBtn_Payment_Paypal_billing.isChecked()
+
+                if (radioBtn_Payment_Cash_billing.isChecked() || radioBtn_Payment_Ewallet_billing.isChecked() ) {
 
                     SendChooseAPaymentBilling(possiton_radio_button);
 

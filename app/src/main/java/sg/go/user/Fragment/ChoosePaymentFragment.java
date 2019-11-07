@@ -76,7 +76,7 @@ public class ChoosePaymentFragment extends Fragment implements AsyncTaskComplete
 
         radioBtn_Payment_Paypal = view.findViewById(R.id.radioBtn_Payment_Paypal);
 
-        radioBtn_Payment_None = view.findViewById(R.id.radioBtn_Payment_None);
+       // radioBtn_Payment_None = view.findViewById(R.id.radioBtn_Payment_None);
 
 
         btn_choose_payment = view.findViewById(R.id.btn_choose_payment);
@@ -114,12 +114,12 @@ public class ChoosePaymentFragment extends Fragment implements AsyncTaskComplete
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
 
                 switch (i) {
-                    case R.id.radioBtn_Payment_None:
-
-                        btn_choose_payment.setText(getResources().getString(R.string.btn_confirm) + " " + getResources().getString(R.string.txt_none));
-                        possiton = 0;
-
-                        break;
+//                    case R.id.radioBtn_Payment_None:
+//
+//                        btn_choose_payment.setText(getResources().getString(R.string.btn_confirm) + " " + getResources().getString(R.string.txt_none));
+//                        possiton = 0;
+//
+//                        break;
 
                     case R.id.radioBtn_Payment_Cash:
 
@@ -148,7 +148,7 @@ public class ChoosePaymentFragment extends Fragment implements AsyncTaskComplete
             @Override
             public void onClick(View view) {
 
-                if (radioBtn_Payment_None.isChecked() || radioBtn_Payment_Cash.isChecked() || radioBtn_Payment_Ewallet.isChecked() || radioBtn_Payment_Paypal.isChecked()) {
+                if (radioBtn_Payment_Cash.isChecked() || radioBtn_Payment_Ewallet.isChecked() || radioBtn_Payment_Paypal.isChecked()) {
 
                     SendChooseAPayment(possiton);
 
@@ -242,7 +242,9 @@ public class ChoosePaymentFragment extends Fragment implements AsyncTaskComplete
                             switch (typePayment) {
                                 case 0:
                                     txtShow_Payment_Selected.setText(getResources().getString(R.string.txt_selected_type) + ": " + arrayTypePayment.get(0));
-                                    radioBtn_Payment_None.setChecked(true);
+                                    radioBtn_Payment_Cash.setChecked(false);
+                                    radioBtn_Payment_Ewallet.setChecked(false);
+                                    radioBtn_Payment_Paypal.setChecked(false);
                                     break;
 
                                 case 1:
