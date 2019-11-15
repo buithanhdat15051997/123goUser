@@ -30,10 +30,9 @@
     </RelativeLayout>
 
     <View
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/layout_driverdetails"
-        android:layout_below="@+id/layout_address"
+        android:id="@+id/view_gray_travelmap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#3B000000" />
     <!--
         <ImageView
@@ -49,6 +48,7 @@
     -->
 
     <LinearLayout
+        android:visibility="visible"
         android:id="@+id/layout_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -132,7 +132,13 @@
 
     </LinearLayout>
 
-
+<ImageView
+    android:layout_width="@dimen/_30sdp"
+    android:layout_alignParentStart="true"
+    android:src="@drawable/icon_hide"
+    android:id="@+id/img_hide_show_travel"
+    android:layout_below="@+id/layout_address"
+    android:layout_height="@dimen/_30sdp" />
     <RelativeLayout
         android:id="@+id/layout_driverdetails"
         android:layout_width="match_parent"
@@ -356,7 +362,8 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/linear_img_driver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

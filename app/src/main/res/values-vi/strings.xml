@@ -11,7 +11,7 @@
     <string name="txt_social_login">"Đăng nhập với "</string>
     <string name="forgot_pass_btn">Quên mật khẩu</string>
     <string name="txt_choose_account">"Chọn một tài khoản "</string>
-    <string name="login_email">Email của bạn là?</string>
+    <string name="login_email">Email hoặc số điện thoại của bạn là?</string>
     <string name="req_pass_btn">Yêu cầu đặt lại mật khẩu</string>
     <string name="txt_email_error">Vui lòng nhập ID email!</string>
     <string name="txt_success_forgot_password">Mật khẩu đã được gửi thành công tới Email đã đăng ký!</string>
@@ -35,7 +35,7 @@
     <string name="txt_no_otp">Không nhận được Otp của bạn?</string>
     <string name="txt_resend">Gửi lại</string>
     <string name="txt_proceed">Tiến hành</string>
-    <string name="txt_finish">Kết thúc</string>
+    <string name="txt_finish">KẾT THÚC</string>
     <string name="reg_load">Đang đăng ký...</string>
     <string name="txt_fname_error">Vui lòng nhập tên!</string>
     <string name="txt_incorrect_error">Id email không chính xác!</string>
@@ -106,7 +106,7 @@
     <string name="btn_confirm">Xác nhận</string>
     <string name="txt_bill_detail">Chi tiết hóa đơn</string>
     <string name="ferry_terminals">Khoảng cách chuyến đi:</string>
-    <string name="airport_tarmac">Loại xe được chọn</string>
+    <string name="airport_tarmac">Loại xe</string>
     <string name="oxygen_liter">Hình ảnh xe được chọn</string>
     <string name="txt_pickup_address">Địa chỉ chọn</string>
     <string name="txt_drop_address">"Địa chỉ thả "</string>
@@ -209,6 +209,29 @@
     <string name="txt_cost_erp_charges">Thêm phí ERP:</string>
     <string name="txt_cost_add_child_seat_charges">Thêm phí chỗ ngồi trẻ em:</string>
     <string name="txt_cost_add_orther">Thêm những phí khác:</string>
+    <string name="txt_taxi_comingsoon">Taxi hiện không có sẵn. Sẽ quay trở lại sớm!</string>
+    <string name="txt_terms_conditions">Các điều khoản và điều kiện</string>
+    <string name="txt_i_gree_terms_conditons">Tôi đồng ý với các Điều khoản và Điều kiện cũng như Quyền riêng tư của Chính sách</string>
+    <string name="txt_change_password">Đổi mật khẩu</string>
+    <string name="txt_please_enter_changepassword">Vui lòng nhập tất cả, không bỏ trống!</string>
+    <string name="txt_btn_comfirm_changepassword">Xác nhận mật khẩu mới</string>
+    <string name="txt_old_changepassword">Mật khẩu cũ</string>
+    <string name="txt_new_changepassword">Mật khẩu mới</string>
+    <string name="txt_policy_privacy">" Chính sách bảo mật"</string>
+    <string name="no_history">Lịch sử chuyến đi không có</string>
+    <string name="txt_select_date_history">Phạm vi ngày</string>
+    <string name="txt_accept_term_condition">" Bạn nên chấp nhận Điều khoản và Điều kiện của chúng tôi trước"</string>
+    <string name="txt_faild_server">" Máy chủ bị lỗi!"</string>
+    <string name="txt_pass_confirmpass_not_match">Mật khẩu và Mật khẩu được xác nhận không khớp!</string>
+    <string name="txt_exit_gps">Không và thoát 123GO</string>
+    <string name="txt_btn_gps">SỬ DỤNG VỊ TRÍ HIỆN TẠI</string>
+    <string name="txt_content_dialog_gps">" Chọn vị trí hiện tại của bạn để bắt đầu tìm taxi gần bạn"</string>
+    <string name="txt_title_dialog_gps">Xin chào, Chào mừng bạn đến 123GO</string>
+    <string name="txt_no_booking">Không có</string>
+    <string name="txt_extra_cost">Phụ Phí:</string>
+    <string name="txt_payment_mode">Phương thức thanh toán:</string>
+    <string name="distance">Khoảng cách</string>
+    <string name="txt_cash">Tiền mặt</string>
 
 
 </resources>

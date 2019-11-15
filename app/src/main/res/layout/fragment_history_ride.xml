@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background_main_app"
     android:orientation="vertical">
 
@@ -10,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+        <android.support.v7.widget.Toolbar
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/toolbar_history"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
@@ -44,6 +46,36 @@
 
             </RelativeLayout>
         </android.support.v7.widget.Toolbar>
+        <LinearLayout
+            android:id="@+id/linear_dialog_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar_history"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/calendar_clock" />
+
+            <TextView
+                android:id="@+id/txt_date_time_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:background="@drawable/background_rectango_stroke_blue"
+                android:fontFamily="@font/quicksand_bold"
+                android:gravity="center"
+                android:textColor="@color/color_btn_main"
+                android:textColorHint="@color/color_btn_main"
+                android:hint="@string/txt_select_date_history"
+                android:textSize="@dimen/_14ssp" />
+        </LinearLayout>
+
     </RelativeLayout>
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -72,9 +104,12 @@
         android:layout_width="wrap_content"
         android:layout_centerInParent="true"
         android:textStyle="bold"
-        android:textSize="20sp"
+        android:fontFamily="@font/quicksand_bold"
+        android:textSize="@dimen/_20sdp"
         android:visibility="gone"
         android:textColor="@color/black"
         android:layout_height="wrap_content" />
+
+
 
 </RelativeLayout>

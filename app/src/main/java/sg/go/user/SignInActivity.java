@@ -1,6 +1,7 @@
 package sg.go.user;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,6 +13,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -24,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxStatus;
@@ -158,7 +161,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onClick(View view) {
                 if (validate()) {
-
+                    new PreferenceHelper(SignInActivity.this).putLoginType(Const.PatientService.PATIENT);
                     if (new PreferenceHelper(SignInActivity.this).getLoginType().equals(Const.PatientService.PATIENT)) {
 
                         userLogin(Const.MANUAL);
@@ -308,7 +311,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
             case R.id.btn_register_social:
 
-               // showSocialPopUP();
+                // showSocialPopUP();
 
                 break;
 //            case R.id.btn_login_main:
@@ -476,7 +479,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
                                         } else {
 
-                                            EbizworldUtils.showShortToast("Invalidate Data", SignInActivity.this);
+                                            EbizworldUtils.showLongToast("Invalidate Data", SignInActivity.this);
 
                                         }
 
@@ -884,7 +887,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             } else {
 
                 EbizworldUtils.removeProgressDialog();
-                EbizworldUtils.showShortToast(getResources().getString(R.string.login_failed), SignInActivity.this);
+                EbizworldUtils.showLongToast(getResources().getString(R.string.login_failed), SignInActivity.this);
 
             }
 
@@ -892,7 +895,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         } else {
 
             EbizworldUtils.removeProgressDialog();
-            EbizworldUtils.showShortToast(getResources().getString(R.string.login_failed), SignInActivity.this);
+            EbizworldUtils.showLongToast(getResources().getString(R.string.login_failed), SignInActivity.this);
 
         }
     }
@@ -933,11 +936,19 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                                 startActivity(new Intent(this, MainActivity.class));
                                 this.finish();
                             } else {
-
+                                Toast.makeText(this, "loi", Toast.LENGTH_LONG).show();
                             }
 
                         } else {
                             Commonutils.progressdialog_hide();
+
+
+                            if(job1.has("error")){
+
+                                String error = job1.getString("error");
+                                EbizworldUtils.showShortToast(error, this);
+                                DialogShowErrorLogin(error);
+                            }
 
                             if (job1.getString("error_code").equals("125")) {
 
@@ -956,13 +967,17 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                             } else if (job1.getString("error_code").equals("167")) {
 
                                 String error = job1.getString("error");
-                                EbizworldUtils.showLongToast(error, this);
+                                EbizworldUtils.showShortToast(error, this);
+                                DialogShowErrorLogin(error);
 
                             } else {
+
                                 String error = job1.getString("error");
                                 EbizworldUtils.showLongToast(error, this);
+
                             }
                         }
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                         EbizworldUtils.appLogError("Manh", "Login failed: " + e.toString());
@@ -1088,6 +1103,22 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    private void DialogShowErrorLogin(String Message_error ) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(Message_error);
+        builder.setCancelable(false);
+        builder.setNegativeButton(getResources().getString(R.string.txt_ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+    }
+
     private void registerSocial(SocialMediaProfile mediaProfile) {
 
         HashMap<String, String> map = new HashMap<String, String>();
@@ -1181,13 +1212,13 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     public void onStop() {
         // TODO Auto-generated method stub
         super.onStop();
-        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)) {
-
-            if (mGoogleApiClient.isConnected()) {
-                mGoogleApiClient.disconnect();
-            }
-
-        }
+//        if (new PreferenceHelper(this).getLoginType().equals(Const.PatientService.PATIENT)) {
+//
+//            if (mGoogleApiClient.isConnected()) {
+//                mGoogleApiClient.disconnect();
+//            }
+//
+//        }
     }
 
     @Override

@@ -15,7 +15,7 @@
 
         <Spinner
             android:id="@+id/sp_country_reg"
-            android:layout_width="@dimen/_100sdp"
+            android:layout_width="@dimen/_120sdp"
             android:layout_height="@dimen/_40sdp"
             android:layout_alignParentTop="true"
             android:background="@android:color/transparent"

@@ -1,6 +1,7 @@
 package sg.go.user.Fragment;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -69,6 +70,8 @@ public class OTPFragment extends BaseRegisterFragment implements AsyncTaskComple
         View view = inflater.inflate(R.layout.fragment_otp_verify, container, false);
 
         ButterKnife.bind(this, view);
+
+        btn_resend.setPaintFlags(btn_resend.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         close_sign.setOnClickListener(this);
         btn_edit_number.setOnClickListener(this);

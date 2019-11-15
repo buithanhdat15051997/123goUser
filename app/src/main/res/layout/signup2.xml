@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -59,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_above="@id/input_group"
-            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_7sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -72,10 +71,10 @@
                 android:src="@drawable/background_gradient_line" />
 
             <TextView
-                android:fontFamily="@font/questrial_regular"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:fontFamily="@font/questrial_regular"
                 android:gravity="center"
                 android:text="@string/txt_sign_up"
                 android:textAllCaps="true"
@@ -100,7 +99,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:padding="@dimen/_10sdp">
+            android:padding="@dimen/_5sdp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -118,12 +117,12 @@
                     android:textColorHint="@color/black_text">
 
                     <EditText
-                        android:fontFamily="@font/quicksand_bold"
                         android:id="@+id/user_fullname"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_gravity="center_vertical"
                         android:background="@color/white"
+                        android:fontFamily="@font/quicksand_bold"
                         android:hint="@string/full_name"
                         android:inputType="text"
                         android:padding="@dimen/_10sdp"
@@ -173,11 +172,11 @@
                 android:visibility="gone">
 
                 <EditText
-                    android:fontFamily="@font/quicksand_bold"
                     android:id="@+id/user_email"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_35sdp"
                     android:background="@color/white"
+                    android:fontFamily="@font/quicksand_bold"
                     android:hint="@string/login_email"
                     android:inputType="textEmailAddress"
                     android:padding="@dimen/_10sdp"
@@ -199,21 +198,50 @@
                     android:id="@+id/input_layout_pass"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
-                    android:fontFamily="@font/quicksand_bold"
                     android:background="@color/white"
+                    android:fontFamily="@font/quicksand_bold"
                     android:textColorHint="@color/black_text"
                     android:visibility="gone"
                     app:passwordToggleDrawable="@mipmap/eye"
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:fontFamily="@font/quicksand_bold"
                         android:id="@+id/user_password"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_35sdp"
                         android:background="@color/white"
+                        android:fontFamily="@font/quicksand_bold"
                         android:hint="@string/login_Password"
                         android:inputType="textPassword"
+                        android:padding="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/black_text"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:id="@+id/input_layout_confirmpass"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textColorHint="@color/black_text"
+                    android:visibility="gone"
+                    app:passwordToggleDrawable="@mipmap/eye"
+                    app:passwordToggleEnabled="true">
+
+                    <EditText
+                        android:id="@+id/user_confirmpassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:background="@color/white"
+                        android:hint="@string/txt_btn_comfirm_changepassword"
+                        android:inputType="textPassword"
+                        android:fontFamily="@font/quicksand_bold"
                         android:padding="@dimen/_5sdp"
                         android:singleLine="true"
                         android:textColor="@color/black_text"
@@ -227,8 +255,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:fontFamily="@font/quicksand_bold"
                     android:layout_weight="10"
+                    android:fontFamily="@font/quicksand_bold"
                     android:textColorHint="@color/black_text">
 
                     <LinearLayout
@@ -238,13 +266,13 @@
                         android:weightSum="2">
 
                         <EditText
-                            android:fontFamily="@font/quicksand_bold"
                             android:id="@+id/user_referral_code"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_45sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_weight="0.5"
                             android:background="@color/white"
+                            android:fontFamily="@font/quicksand_bold"
                             android:gravity="center"
                             android:hint="@string/txt_referral_code"
                             android:inputType="text"
@@ -256,12 +284,12 @@
                             android:visibility="gone" />
 
                         <TextView
-                            android:fontFamily="@font/quicksand_bold"
                             android:id="@+id/applyRefCode"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_45sdp"
                             android:layout_weight="1.5"
                             android:background="@color/white"
+                            android:fontFamily="@font/quicksand_bold"
                             android:gravity="center"
                             android:text="@string/apply"
                             android:textColor="@color/black_text"
@@ -278,11 +306,61 @@
         </FrameLayout>
 
         <LinearLayout
+            android:id="@+id/linear_Terms_Policy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/txtTermsAndCondition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:fontFamily="@font/quicksand_bold"
+                android:gravity="center_horizontal"
+                android:text="@string/txt_terms_conditions"
+                android:textColor="@color/deep_grey"
+                android:textSize="@dimen/_12ssp"></TextView>
+
+            <TextView
+                android:id="@+id/txt_policy_privacy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:fontFamily="@font/quicksand_bold"
+                android:gravity="center"
+                android:text="@string/txt_policy_privacy"
+                android:textColor="@color/deep_grey"
+                android:textSize="@dimen/_12ssp" />
+
+            <CheckBox
+                android:id="@+id/cbTermsAndCondition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:buttonTint="@color/color_btn_main"
+                android:fontFamily="@font/quicksand_bold"
+                android:gravity="center"
+                android:text="@string/txt_i_gree_terms_conditons"
+                android:textSize="@dimen/_11ssp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/otp_next_lay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:background="@color/color_btn_login_signin">
@@ -292,9 +370,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_45sdp"
                 android:background="@null"
+                android:fontFamily="@font/questrial_regular"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"
-                android:fontFamily="@font/questrial_regular"
                 android:text="@string/txt_next_signup"
                 android:textAllCaps="true"
                 android:textColor="@color/white"

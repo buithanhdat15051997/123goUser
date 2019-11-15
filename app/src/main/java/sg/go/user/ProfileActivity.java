@@ -723,7 +723,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         if (!EbizworldUtils.isNetworkAvailable(this)){
 
-            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), ProfileActivity.this);
+            EbizworldUtils.showLongToast(getResources().getString(R.string.network_error), ProfileActivity.this);
             return;
 
         }
@@ -928,7 +928,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         if(!EbizworldUtils.isNetworkAvailable(ProfileActivity.this)){
 
-            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), ProfileActivity.this);
+            EbizworldUtils.showLongToast(getResources().getString(R.string.network_error), ProfileActivity.this);
             return;
 
         }
@@ -997,14 +997,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         }
 
-        if(mPatientCondition != null){
-
-            map.put(Const.Params.PATIENT_CONDITION, mPatientCondition.toLowerCase());
-
-        }else {
-
-            map.put(Const.Params.PATIENT_CONDITION, spn_patient_condition.getItemAtPosition(0).toString()); //Need change
-        }
+//        if(mPatientCondition != null){
+//
+//            map.put(Const.Params.PATIENT_CONDITION, mPatientCondition.toLowerCase());
+//
+//        }else {
+//
+//            map.put(Const.Params.PATIENT_CONDITION, spn_patient_condition.getItemAtPosition(0).toString()); //Need change
+//        }
 
 //        if (cb_stretcher.isChecked()){
 //
@@ -1189,7 +1189,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         if(!EbizworldUtils.isNetworkAvailable(ProfileActivity.this)){
 
-            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), ProfileActivity.this);
+            EbizworldUtils.showLongToast(getResources().getString(R.string.network_error), ProfileActivity.this);
             return;
 
         }
@@ -1411,7 +1411,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         } else if (resultCode == Crop.RESULT_ERROR) {
             Toast.makeText(this, Crop.getError(result).getMessage(),
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_LONG).show();
         }
     }
 
@@ -1592,7 +1592,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                                 String errorMessage = jsonObject.getString("error_messages");
 
-                                EbizworldUtils.showShortToast(errorMessage, this);
+                                EbizworldUtils.showLongToast(errorMessage, this);
                                 EbizworldUtils.appLogDebug("HaoLS", "Get account information isSuccessWithStore failed ");
 
                             }

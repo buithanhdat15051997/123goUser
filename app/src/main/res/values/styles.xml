@@ -13,6 +13,12 @@
         <item name="android:textColor">@color/red</item>
         <item name="android:textSize">12sp</item>
     </style>
+
+<!--dialog choose date history-->
+    <style name="DatePickerTheme" parent="@android:style/Theme.Holo.Light.Dialog.MinWidth">
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+    </style>
 <!--remove default check radio button-->
     <style name="RadioButtonStyle" parent="@android:style/Widget.CompoundButton">
         <item name="android:background">@drawable/radiobutton_selector</item>

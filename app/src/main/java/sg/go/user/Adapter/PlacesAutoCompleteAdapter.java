@@ -20,6 +20,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class PlacesAutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
@@ -86,18 +87,29 @@ public class PlacesAutoCompleteAdapter extends ArrayAdapter<String> implements F
 
     private ArrayList<String> autocomplete(String input) {
 
+        String locale = mContext.getResources().getConfiguration().locale.getCountry();
+
+        Log.d("PlaceAdapter", "Place Url : " + locale.toString());
+
         HttpURLConnection conn = null;
         StringBuilder jsonResults = new StringBuilder();
         try {
             StringBuilder sb = new StringBuilder(Const.PLACES_API_BASE
                     + Const.TYPE_AUTOCOMPLETE + Const.OUT_JSON);
+
             sb.append("?sensor=false&key=" + Const.PLACES_AUTOCOMPLETE_API_KEY);
             // sb.append("&location=" + BeanLocation.getLocation().getLatitude()
             // + "," + BeanLocation.getLocation().getLongitude());
-            sb.append("&radius=500");
 
+            if(locale.equals("VN")||locale.equals("SG")){
+
+                sb.append("&components=country:"+locale.toString().trim());
+
+            }
+
+            sb.append("&radius=500");
             sb.append("&input=" + URLEncoder.encode(input, "utf8"));
-            // AppLog.Log("PlaceAdapter", "Place Url : " + sb.toString());
+            Log.d("PlaceAdapter", "Place Url : " + sb.toString());
             URL url = new URL(sb.toString());
             conn = (HttpURLConnection) url.openConnection();
             InputStreamReader in = new InputStreamReader(conn.getInputStream());

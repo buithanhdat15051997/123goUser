@@ -440,16 +440,16 @@
         android:padding="@dimen/_5sdp"
         android:visibility="visible">
 
-        <TextView
-            android:id="@+id/tv_billing_info_img_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_bold"
-            android:text="@string/oxygen_liter"
-            android:textAlignment="center"
-            android:textColor="@color/black_text"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="bold" />
+        <!--<TextView-->
+            <!--android:id="@+id/tv_billing_info_img_type"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:fontFamily="@font/quicksand_bold"-->
+            <!--android:text="@string/oxygen_liter"-->
+            <!--android:textAlignment="center"-->
+            <!--android:textColor="@color/black_text"-->
+            <!--android:textSize="@dimen/_12ssp"-->
+            <!--android:textStyle="bold" />-->
 
         <!--     <View
                  android:layout_width="match_parent"

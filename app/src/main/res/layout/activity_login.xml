@@ -323,7 +323,7 @@
                                 android:onClick="onClick"
                                 android:selectAllOnFocus="false"
                                 android:text="@string/txt_signup_now"
-                                android:textColor="@color/black_text"
+                                android:textColor="@color/deep_grey"
                                 android:textSize="@dimen/_14ssp"
                                 android:textStyle="bold" />
 
@@ -400,7 +400,7 @@
                             android:text="@string/forgot_pass_btn"
                             android:textColor="@color/black_text"
                             android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <!--</ScrollView>-->

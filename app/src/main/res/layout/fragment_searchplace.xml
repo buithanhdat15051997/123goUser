@@ -465,7 +465,7 @@
             android:elevation="@dimen/_5sdp"
             android:orientation="vertical"
             android:visibility="gone"
-            app:behavior_peekHeight="@dimen/_150sdp"
+            app:behavior_peekHeight="@dimen/_170sdp"
             app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
             tools:ignore="MissingPrefix">
 

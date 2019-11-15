@@ -1,6 +1,8 @@
 package sg.go.user.Fragment;
 
 import android.content.Intent;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -9,8 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,6 +64,12 @@ public class SignUpNextFragment extends BaseRegisterFragment implements AsyncTas
     @BindView(R.id.applyRefCode)
     TextView applyRefCode;
 
+    @BindView(R.id.txtTermsAndCondition)
+    TextView txtTermsAndCondition;
+
+    @BindView(R.id.cbTermsAndCondition)
+    CheckBox cbTermsAndCondition;
+
     @BindView(R.id.input_layout_fullname)
     TextInputLayout input_layout_fname;/*, input_layout_lname*/
 
@@ -75,6 +85,11 @@ public class SignUpNextFragment extends BaseRegisterFragment implements AsyncTas
     private static final int REQUEST_CODE = 133;
     private String mobile = "", country_code = "";
     int i = 0;
+    private LinearLayout linear_Terms_Policy;
+    private TextView txt_policy_privacy;
+    private TextInputLayout input_layout_confirmpass;
+    private TextView user_confirmpassword;
+
 
     @Nullable
     @Override
@@ -83,9 +98,21 @@ public class SignUpNextFragment extends BaseRegisterFragment implements AsyncTas
 
         ButterKnife.bind(this, view);
 
+        linear_Terms_Policy = view.findViewById(R.id.linear_Terms_Policy);
+        txt_policy_privacy = view.findViewById(R.id.txt_policy_privacy);
+
+        input_layout_confirmpass = view.findViewById(R.id.input_layout_confirmpass);
+        user_confirmpassword = view.findViewById(R.id.user_confirmpassword);
+
+        txtTermsAndCondition.setPaintFlags(txtTermsAndCondition.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        txt_policy_privacy.setPaintFlags(txt_policy_privacy.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+
         close_sign.setOnClickListener(this);
         btn_next.setOnClickListener(this);
         applyRefCode.setOnClickListener(this);
+        txtTermsAndCondition.setOnClickListener(this);
+        txt_policy_privacy.setOnClickListener(this);
 
         return view;
     }
@@ -110,13 +137,13 @@ public class SignUpNextFragment extends BaseRegisterFragment implements AsyncTas
 
         switch (v.getId()) {
 
-            case R.id.close_sign:{
+            case R.id.close_sign: {
 
                 startActivity(new Intent(activity, WelcomeActivity.class));
             }
             break;
 
-            case R.id.btn_next:{
+            case R.id.btn_next: {
 
                 switch (i) {
                     case 0:
@@ -129,49 +156,134 @@ public class SignUpNextFragment extends BaseRegisterFragment implements AsyncTas
                             user_email.setVisibility(View.VISIBLE);
 
                         }
-                    break;
+                        break;
 
                     case 1:
                         if (isEmailvalid()) {
                             i++;
                             input_layout_email.setVisibility(View.GONE);
                             input_layout_pass.setVisibility(View.VISIBLE);
-                            input_layout_referral_code.setVisibility(View.VISIBLE);
+                            input_layout_confirmpass.setVisibility(View.VISIBLE);
+                            linear_Terms_Policy.setVisibility(View.VISIBLE);
+//                            cbTermsAndCondition.setVisibility(View.VISIBLE);
+//                            txtTermsAndCondition.setVisibility(View.VISIBLE);
+                            input_layout_referral_code.setVisibility(View.GONE);
                             user_password.setVisibility(View.VISIBLE);
                             user_referral_code.setVisibility(View.VISIBLE);
                             applyRefCode.setVisibility(View.VISIBLE);
                             btn_next.setText(getResources().getString(R.string.txt_finish));
                         }
-                    break;
+                        break;
 
                     case 2:
-                        if (TextUtils.isEmpty(user_password.getText().toString())) {
-                            input_layout_pass.setError(getResources().getString(R.string.txt_pass_error));
+                        if (TextUtils.isEmpty(user_password.getText().toString())||TextUtils.isEmpty(user_confirmpassword.getText().toString())) {
+
+                            Log.d("DAT_SIGN_UP", "Hai text rong");
+
+                           // input_layout_pass.setError(getResources().getString(R.string.txt_pass_error));
+                            user_password.setError(getResources().getString(R.string.txt_pass_error));
+                            user_confirmpassword.setError(getResources().getString(R.string.txt_pass_error));
+
                             user_password.requestFocus();
+                            user_confirmpassword.requestFocus();
 
                         } else {
-                            i++;
-                            input_layout_pass.setVisibility(View.GONE);
-                            input_layout_referral_code.setVisibility(View.GONE);
-                            registerManual();
+
+                            String pass = user_password.getText().toString();
+                            String pass2 = user_confirmpassword.getText().toString();
+                            Log.d("DAT_SIGN_UP", "2"+pass+"    "+pass2 );
+
+                          if(user_password.getText().toString().trim().equals(user_confirmpassword.getText().toString().trim())){
+
+                              Log.d("DAT_SIGN_UP", "mat khau da trung nhau");
+
+                              input_layout_pass.setVisibility(View.GONE);
+                              input_layout_confirmpass.setVisibility(View.GONE);
+                              input_layout_referral_code.setVisibility(View.GONE);
+
+
+
+                              if (cbTermsAndCondition.isChecked() == true) {
+
+                                  Log.d("DAT_SIGN_UP", "Check thanh cong");
+//                                input_layout_pass.setVisibility(View.GONE);
+//                                input_layout_referral_code.setVisibility(View.GONE);
+                                  registerManual();
+
+                              } else {
+                                  Log.d("DAT_SIGN_UP", "Chua check");
+
+                                  input_layout_pass.setVisibility(View.VISIBLE);
+                                  input_layout_confirmpass.setVisibility(View.VISIBLE);
+                                  input_layout_referral_code.setVisibility(View.GONE);
+//                                btn_next.setEnabled(false);
+                                  Toast.makeText(activity, activity.getResources().getString(R.string.txt_accept_term_condition), Toast.LENGTH_LONG).show();
+                              }
+
+                          } else {
+
+                              Log.d("DAT_SIGN_UP", "Khong giong nhau");
+
+                              EbizworldUtils.showLongToast(activity.getResources().getString(R.string.txt_pass_confirmpass_not_match),activity);
+
+                          }
 
                         }
-                    break;
+
+                        break;
+//                    case 3:
+//                        if (TextUtils.isEmpty(user_password.getText().toString())) {
+//                            input_layout_pass.setError(getResources().getString(R.string.txt_pass_error));
+//                            user_password.requestFocus();
+//
+//                        } else {
+//                            i++;
+////                            input_layout_pass.setVisibility(View.GONE);
+////                            input_layout_referral_code.setVisibility(View.GONE);
+//                            Log.d("manhdanglam", "onClick: "+cbTermsAndCondition.isChecked());
+//                            if (cbTermsAndCondition.isChecked() == true) {
+//                                input_layout_pass.setVisibility(View.VISIBLE);
+//                                input_layout_referral_code.setVisibility(View.VISIBLE);
+//                                registerManual();
+//                            }else {
+//                                input_layout_pass.setVisibility(View.VISIBLE);
+//                                input_layout_referral_code.setVisibility(View.GONE);
+////                                btn_next.setEnabled(false);
+//                                Toast.makeText(activity, "You should accept our Term & Condition first", Toast.LENGTH_SHORT).show();
+//                            }
+//
+//                        }
+//                        break;
 
                 }
             }
             break;
 
-            case R.id.applyRefCode:{
+            case R.id.applyRefCode: {
 
-                if(user_referral_code.getText().toString().length() > 0 && !user_referral_code.getText().toString().isEmpty()){
+                if (user_referral_code.getText().toString().length() > 0 && !user_referral_code.getText().toString().isEmpty()) {
 
                     applyReferral();
 
                 }
-
             }
             break;
+            case R.id.txtTermsAndCondition:
+
+                String url = "https://123-go.co/public/Term&ConditionRider.pdf";
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
+                break;
+
+            case R.id.txt_policy_privacy:
+
+                String url_policy = "https://123-go.co/public/Privacy.pdf";
+                Intent intent_policy = new Intent(Intent.ACTION_VIEW);
+                intent_policy.setData(Uri.parse(url_policy));
+                startActivity(intent_policy);
+
+                break;
         }
     }
 
@@ -184,10 +296,6 @@ public class SignUpNextFragment extends BaseRegisterFragment implements AsyncTas
         Log.d("HaoLS", "referral map: " + map.toString());
         new VolleyRequester(activity, Const.POST, map, Const.ServiceCode.APPLY_REFERRAL, this);
     }
-
-
-
-
 
 
     private void registerManual() {
@@ -253,16 +361,16 @@ public class SignUpNextFragment extends BaseRegisterFragment implements AsyncTas
             case Const.ServiceCode.APPLY_REFERRAL:
                 Log.d("HaoLS", "Referral response: " + response);
 
-                if(response!=null) {
+                if (response != null) {
                     try {
 
                         JSONObject job1 = new JSONObject(response);
                         if (job1.getString("success").equals("true")) {
                             Commonutils.progressdialog_hide();
-                            Toast.makeText(activity,job1.getString("message"),Toast.LENGTH_SHORT).show();
-                        }else{
+                            Toast.makeText(activity, job1.getString("message"), Toast.LENGTH_LONG).show();
+                        } else {
                             Commonutils.progressdialog_hide();
-                            Toast.makeText(activity,job1.getString("error"),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(activity, job1.getString("error"), Toast.LENGTH_LONG).show();
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -305,6 +413,7 @@ public class SignUpNextFragment extends BaseRegisterFragment implements AsyncTas
                                     i = 2;
                                     input_layout_email.setVisibility(View.GONE);
                                     input_layout_pass.setVisibility(View.VISIBLE);
+                                    input_layout_confirmpass.setVisibility(View.VISIBLE);
                                     input_layout_referral_code.setVisibility(View.VISIBLE);
                                     user_password.setVisibility(View.VISIBLE);
                                     user_referral_code.setVisibility(View.VISIBLE);
@@ -334,7 +443,7 @@ public class SignUpNextFragment extends BaseRegisterFragment implements AsyncTas
                     }
 
             }
-                   break;
+            break;
 
             case Const.ServiceCode.CREATE_ADD_CARD_URL:
                 EbizworldUtils.appLogDebug("Ashutosh", "BrainTreeClientTokenResponse" + response);

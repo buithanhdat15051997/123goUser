@@ -239,7 +239,7 @@
                 android:gravity="center"
                 android:text="@string/txt_resend"
                 android:padding="@dimen/_5sdp"
-                android:textColor="@color/black_text"
+                android:textColor="@color/deep_grey"
                 android:textSize="@dimen/_14ssp"
                 android:textStyle="bold"/>
 

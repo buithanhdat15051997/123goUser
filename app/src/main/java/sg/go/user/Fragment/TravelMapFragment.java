@@ -38,6 +38,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -123,7 +124,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
             driver_mobile_number, address_title, tv_driver_status, stopAddress;
     private CircleImageView driver_img;
     private Marker driver_car, source_marker, destination_marker, stop_marker;
-    private LatLng d_latlon, s_latlon, driver_latlan, changeLatLng, stop_latlng;
+    private LatLng d_latlon, s_latlon, driver_latlan, changeLatLng, stop_latlng, user_latlan;
     Handler checkRequestStatus;
     private NotificationManager mNotificationManager;
     private String eta_time = "--";
@@ -138,7 +139,8 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
     private List<LatLng> mPathPolygonPoints;
     int mIndexCurrentPoint = 0;
     Bitmap mMarkerIcon;
-    private LinearLayout cancel_trip, moreLay, addEditLay;
+    private LinearLayout cancel_trip, moreLay, addEditLay, layout_address;
+    private RelativeLayout layout_driverdetails;
     private ArrayList<CancelReason> cancelReasonLst;
     ImageView sosCall;
     AutoCompleteTextView et_source_dia_address;
@@ -146,7 +148,11 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
     private ImageView pin_marker;
     RelativeLayout stopLay;
     TextView addStop, editDestination, optionsLine, line;
-    ImageView img_confrim_cancel_booking, img_no_cancel_booking;
+    ImageView img_confrim_cancel_booking, img_no_cancel_booking, img_hide_show_travel;
+    private FrameLayout linear_img_driver;
+    private View view_gray_travelmap;
+
+    private Boolean hide_show = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -164,8 +170,49 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         driver_mobile_number = (TextView) mViewRoot.findViewById(R.id.driver_mobile_number);
         address_title = (TextView) mViewRoot.findViewById(R.id.address_title);
         tv_driver_status = (TextView) mViewRoot.findViewById(R.id.tv_driver_status);
+        img_hide_show_travel = mViewRoot.findViewById(R.id.img_hide_show_travel);
+        layout_address = mViewRoot.findViewById(R.id.layout_address);
+        layout_driverdetails = mViewRoot.findViewById(R.id.layout_driverdetails);
+        linear_img_driver = mViewRoot.findViewById(R.id.linear_img_driver);
+        view_gray_travelmap = mViewRoot.findViewById(R.id.view_gray_travelmap);
 
         activity.mBottomNavigationView.setVisibility(View.GONE);
+
+        img_hide_show_travel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (hide_show == false) {
+
+                    img_hide_show_travel.setImageResource(R.drawable.icon_show);
+
+                    layout_address.setVisibility(View.GONE);
+
+                    view_gray_travelmap.setVisibility(View.GONE);
+
+                    layout_driverdetails.setVisibility(View.GONE);
+
+                    linear_img_driver.setVisibility(View.GONE);
+
+                    hide_show = true;
+
+                } else {
+
+                    layout_address.setVisibility(View.VISIBLE);
+
+                    layout_driverdetails.setVisibility(View.VISIBLE);
+
+                    view_gray_travelmap.setVisibility(View.VISIBLE);
+
+                    linear_img_driver.setVisibility(View.VISIBLE);
+
+                    img_hide_show_travel.setImageResource(R.drawable.icon_hide);
+
+                    hide_show = false;
+                }
+
+            }
+        });
 
         /*       sosCall = (ImageView) mViewRoot.findViewById(R.id.sosCall);
         sosCall.setOnClickListener(new View.OnClickListener() {
@@ -658,6 +705,8 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                     DropMarker = gMap.addMarker(markerOpt);
 
                 }*/
+
+                //dat_comment
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(changeLatLng,
                         15));
 
@@ -1051,8 +1100,27 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         map.put(Const.Params.URL, Const.DIRECTION_API_BASE + Const.ORIGIN + "="
                 + String.valueOf(latitude) + "," + String.valueOf(longitude) + "&" + Const.DESTINATION + "="
                 + String.valueOf(latitude1) + "," + String.valueOf(longitude1) + "&" + Const.EXTANCTION);
+        Log.d(TAG, "location111111: " + map);
 
         new VolleyRequester(activity, Const.GET, map, Const.ServiceCode.GOOGLE_DIRECTION_API, this);
+
+    }
+
+    private void getDirectionsmy(double latitude, double longitude, double latitude1, double longitude1) {
+
+        if (!EbizworldUtils.isNetworkAvailable(activity)) {
+
+            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
+            return;
+        }
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put(Const.Params.URL, Const.DIRECTION_API_BASE + Const.ORIGIN + "="
+                + String.valueOf(latitude) + "," + String.valueOf(longitude) + "&" + Const.DESTINATION + "="
+                + String.valueOf(latitude1) + "," + String.valueOf(longitude1) + "&" + Const.EXTANCTION);
+        Log.d("mapdata", "getDirectionsmy: " + map);
+
+        new VolleyRequester(activity, Const.GET, map, Const.ServiceCode.POLYLINE_DRIVER_TO_USER, this);
 
     }
 
@@ -1102,6 +1170,12 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
     @Override
     public void onLocationReceived(Location location) {
+// dia diem hien tai
+        myLocation = location;
+        Double lat = location.getLatitude();
+        Double log = location.getLongitude();
+
+        Log.d("DAT_TEST", +location.getLongitude() + "" + location.getLatitude());
 
     }
 
@@ -1113,6 +1187,8 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
     @Override
     public void onConntected(Location location) {
         if (null != googleMap) {
+
+            //dat_comment
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(s_latlon,
                     17));
         }
@@ -1140,7 +1216,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         List<LatLng> list = decodePoly(encodedString);
 
 
-        PolylineOptions options = new PolylineOptions().width(8).color(Color.BLACK).geodesic(true);
+        PolylineOptions options = new PolylineOptions().width(8).color(getResources().getColor(R.color.color_background_main)).geodesic(true);
 
         for (int z = 0; z < list.size(); z++) {
             LatLng point = list.get(z);
@@ -1265,7 +1341,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
         int width = getResources().getDisplayMetrics().widthPixels;
         int height = getResources().getDisplayMetrics().heightPixels;
-        int padding = (int) (width * 0.10); // offset from edges of the map 12% of screen
+        int padding = (int) (width * 0.20); // offset from edges of the map 12% of screen
 
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding);
 
@@ -1416,7 +1492,38 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                 }
 
                 break;
+            case Const.ServiceCode.POLYLINE_DRIVER_TO_USER:
+                try {
 
+
+                    final JSONObject json = new JSONObject(response);
+                    JSONArray routeArray = json.getJSONArray("routes");
+                    JSONObject routes = routeArray.getJSONObject(0);
+                    JSONObject overviewPolylines = routes.getJSONObject("overview_polyline");
+                    String encodedString = overviewPolylines.getString("points");
+                    List<LatLng> list = decodePoly(encodedString);
+
+
+                    PolylineOptions options = new PolylineOptions().width(8).color(getResources().getColor(R.color.color_btn_main)).geodesic(true);
+
+                    for (int z = 0; z < list.size(); z++) {
+                        LatLng point = list.get(z);
+                        options.add(point);
+                    }
+                    if (googleMap != null) {
+                        if (poly_line != null) {
+                            poly_line.remove();
+                        }
+                        poly_line = googleMap.addPolyline(options);
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Log.d(TAG, "vao view polyline " + response);
+
+                break;
 
             case Const.ServiceCode.LOCATION_API_BASE_SOURCE:
                 if (null != response) {
@@ -1429,6 +1536,8 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                         double lat = locationOBJ.getDouble("lat");
                         double lan = locationOBJ.getDouble("lng");
                         changeLatLng = new LatLng(lat, lan);
+
+                        //dat_comment
                         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(changeLatLng,
                                 15));
                         //    DropMarker.setPosition(changeLatLng);
@@ -1463,14 +1572,16 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                         destination_marker.remove();
 
                         d_latlon = new LatLng(Double.valueOf(requestDetail.getD_lat()), Double.valueOf(requestDetail.getD_lng()));
+                        if (d_latlon != null) {
+                            MarkerOptions opt = new MarkerOptions();
+                            opt.position(d_latlon);
+                            //       opt.title(activity.getResources().getString(R.string.txt_drop_loc));
+                            opt.anchor(0.5f, 0.5f);
+                            opt.icon(BitmapDescriptorFactory
+                                    .fromResource(R.mipmap.drop_location));
+                            destination_marker = googleMap.addMarker(opt);
+                        }
 
-                        MarkerOptions opt = new MarkerOptions();
-                        opt.position(d_latlon);
-                        //       opt.title(activity.getResources().getString(R.string.txt_drop_loc));
-                        opt.anchor(0.5f, 0.5f);
-                        opt.icon(BitmapDescriptorFactory
-                                .fromResource(R.mipmap.drop_location));
-                        destination_marker = googleMap.addMarker(opt);
 
                     } else {
 
@@ -1560,7 +1671,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                         DialogCancelByUser(message_cancle_user);
 
                         new PreferenceHelper(activity).clearRequestData();
-                       // getActivity().onBackPressed();
+                        // getActivity().onBackPressed();
                         activity.addFragment(new SearchPlaceFragment(), false, Const.HOME_MAP_FRAGMENT, true);
 
 
@@ -1581,8 +1692,6 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 //
 //                        android.support.v7.app.AlertDialog alertDialog = builder.create();
 //                        alertDialog.show();
-
-
                         // activity.addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true);
 
                     } else {
@@ -1665,25 +1774,43 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                 break;
 
             case Const.ServiceCode.CHECKREQUEST_STATUS:
-                EbizworldUtils.appLogInfo("DAT_TRAVELMAP", "check req status: " + response);
+
+//                EbizworldUtils.appLogInfo("DAT_TRAVELMAP", "check req status: " + response);
+//                if (requestDetail.getTripStatus()>3){
+//
+//                }else {
+//
+//                    Log.d("aaaaaaaaa", "aaaaaaaaa: ");
+//                }
 
                 if (response != null) {
+
                     int money_driver_cancel = 0;
+
+                    String message_driver_cancel = "";
 
                     Bundle bundle = new Bundle();
                     RequestDetail requestDetail = new ParseContent(activity).parseRequestStatusNormal(response);
                     TravelMapFragment travalfragment = new TravelMapFragment();
 
                     try {
+
                         JSONObject jsonObject = new JSONObject(response);
+
+                        if (jsonObject.has("cancellation_message")) {
+
+                            message_driver_cancel = jsonObject.getString("cancellation_message");
+
+                            EbizworldUtils.appLogDebug("DAT_TRAVEL", message_driver_cancel);
+                        }
 
                         if (jsonObject.has("cancellation_fine")) {
 
                             money_driver_cancel = jsonObject.getInt("cancellation_fine");
 
-                        }else {
+                        } else {
 
-                            Log.d("DAT_TRAVELMAP","null");
+                            Log.d("DAT_TRAVELMAP", "null");
 
                         }
 
@@ -1697,6 +1824,8 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                     }
 
                     EbizworldUtils.appLogDebug("DAT_TRAVELMAP", "Trip status " + requestDetail.getTripStatus());
+//                    getDirections(s_latlon.latitude, s_latlon.longitude, d_latlon.latitude, d_latlon.longitude);
+
                     switch (requestDetail.getTripStatus()) {
 
                         case Const.NO_REQUEST:
@@ -1707,7 +1836,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
                                 stopCheckingforstatus();
 
-                                DialogCacelByDriver(money_driver_cancel);
+                                DialogCacelByDriver(message_driver_cancel);
 
 //                                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 //                                builder.setMessage(activity.getResources().getString(R.string.txt_cancel_driver1)+" S$ "+money_driver_cancel+" "+activity.getResources().getString(R.string.txt_cancel_driver2))
@@ -1719,16 +1848,24 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 //                                                //googleMap.clear();
 //                                                dialog.dismiss();
 //                                                getActivity().onBackPressed();
-//                                                // activity.addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true);
-//
+//                                                // activity.addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true)
 //                                            }
 //                                        });
 //                                AlertDialog alert = builder.create();
 //                                alert.show();
+
                             }
                             break;
 
                         case Const.IS_ACCEPTED: {
+                            Log.d("DAT_TRAVELMAP1", "" + Double.valueOf(requestDetail.getS_lat()) + " " + Double.valueOf(requestDetail.getS_lat()) + "    " + driver_latlan.latitude + driver_latlan.longitude);
+
+
+                            // getDirectionsmy(Double.valueOf(requestDetail.getS_lat()),Double.valueOf(requestDetail.getS_lat()),driver_latlan.latitude,driver_latlan.longitude);
+
+                            // getDirectionsmy(myLocation.getLatitude(),myLocation.getLongitude(),driver_latlan.latitude,driver_latlan.longitude);
+
+                            getDirectionsmy(driver_latlan.latitude, driver_latlan.longitude, s_latlon.latitude, s_latlon.longitude);
 
                             jobStatus = Const.IS_ACCEPTED;
 
@@ -1758,6 +1895,13 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
                         case Const.IS_DRIVER_DEPARTED: {
 
+                            Log.d("DAT_TRAVELMAP1", "" + myLocation.getLatitude() + "" + myLocation.getLongitude() + "       " + driver_latlan.latitude + "" + driver_latlan.longitude);
+
+                            // getDirectionsmy(myLocation.getLatitude(),myLocation.getLongitude(),driver_latlan.latitude,driver_latlan.longitude);
+
+                            getDirectionsmy(driver_latlan.latitude, driver_latlan.longitude, d_latlon.latitude, d_latlon.longitude);
+
+
                             jobStatus = Const.IS_DRIVER_DEPARTED;
                             address_title.setText(activity.getString(R.string.txt_pickup_address));
                             address_title.setTextColor(ContextCompat.getColor(activity, R.color.green));
@@ -1781,6 +1925,16 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                         break;
 
                         case Const.IS_DRIVER_ARRIVED: {
+
+                            Log.d("DAT_TRAVELMAP2", "" + myLocation.getLatitude() + "" + myLocation.getLongitude() + "       " + d_latlon.latitude + "" + d_latlon.longitude);
+
+                            // getDirectionsmy(myLocation.getLatitude(),myLocation.getLongitude(),d_latlon.latitude,d_latlon.longitude);
+
+                            //getDirectionsmy(Double.valueOf(requestDetail.getS_lat()),Double.valueOf(requestDetail.getS_lat()),d_latlon.latitude,d_latlon.longitude);
+
+
+                            getDirectionsmy(s_latlon.latitude, s_latlon.longitude, d_latlon.latitude, d_latlon.longitude);
+
 
                             jobStatus = Const.IS_DRIVER_ARRIVED;
                             address_title.setText(activity.getString(R.string.txt_drop_address));
@@ -1814,6 +1968,10 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                         break;
                         case Const.IS_DRIVER_TRIP_STARTED: {
 
+
+                            getDirections(s_latlon.latitude, s_latlon.longitude, d_latlon.latitude, d_latlon.longitude);
+
+
                             cancel_trip.setVisibility(View.GONE);
                             jobStatus = Const.IS_DRIVER_TRIP_STARTED;
                             address_title.setText(activity.getString(R.string.txt_drop_address));
@@ -1845,6 +2003,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                         break;
 
                         case Const.IS_DRIVER_TRIP_ENDED: {
+
                             /*jobStatus = Const.IS_DRIVER_TRIP_ENDED;
                             address_title.setText(activity.getString(R.string.txt_drop_address));
                             address_title.setTextColor(ContextCompat.getColor(activity, R.color.red));
@@ -2008,7 +2167,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
     }
 
-    private void DialogCacelByDriver(int money_driver_cancel) {
+    private void DialogCacelByDriver(String dialog_message_driver_cancel) {
 
         final Dialog dialog_cancel_by_driver = new Dialog(activity);
 
@@ -2030,7 +2189,9 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
         TextView txt_show_thereason_canceled = dialog_cancel_by_driver.findViewById(R.id.txt_show_thereason_canceled);
 
 
-        txt_show_thereason_canceled.setText(activity.getResources().getString(R.string.txt_cancel_driver1) + " S$ " + money_driver_cancel + " " + activity.getResources().getString(R.string.txt_cancel_driver2));
+        //txt_show_thereason_canceled.setText(activity.getResources().getString(R.string.txt_cancel_driver1) + " S$ " + money_driver_cancel + " " + activity.getResources().getString(R.string.txt_cancel_driver2));
+
+        txt_show_thereason_canceled.setText(dialog_message_driver_cancel);
 
         final Button btn_dialog_thereason_confirm = dialog_cancel_by_driver.findViewById(R.id.btn_dialog_thereason_confirm);
 
@@ -2149,10 +2310,10 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                         Log.d("mahi", "message from socket" + data.toString());
                         if (googleMap != null) {
 
-                            if(latitude == ""&& longitude == "" && driver_latlan.toString().isEmpty()){
+                            if (latitude == "" && longitude == "" && driver_latlan.toString().isEmpty()) {
 
 
-                            }else {
+                            } else {
 
                                 driver_latlan = new LatLng(Double.valueOf(latitude), Double.valueOf(longitude));
                                 delayLatlan = driver_latlan;
@@ -2403,8 +2564,10 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                         getDirectionsWay(s_latlon.latitude, s_latlon.longitude, d_latlon.latitude, d_latlon.longitude, stop_latlng.latitude, stop_latlng.longitude);
 
                     } else {
-
+// dang lam,f
                         getDirections(s_latlon.latitude, s_latlon.longitude, d_latlon.latitude, d_latlon.longitude);
+
+                        //  getDirections(s_latlon.latitude, s_latlon.longitude, d_latlon.latitude, d_latlon.longitude);
 
                     }
                 }
@@ -2489,9 +2652,9 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                                                }
                 );
 
-                if (isAdded() && destination_marker != null) {
-                    fitmarkers_toMap();
-                }
+//                if (isAdded() && destination_marker != null) {
+//                    fitmarkers_toMap();
+//                }
 
             }
         }

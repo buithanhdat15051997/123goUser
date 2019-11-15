@@ -24,15 +24,15 @@
             android:textStyle="bold" />
 
 
-        <RadioButton
-            android:fontFamily="@font/quicksand_bold"
-            android:id="@+id/radioBtn_Payment_Ewallet_billing"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            android:paddingLeft="@dimen/_10sdp"
-            android:text="@string/txt_pay_wallet"
-            android:textSize="@dimen/_14ssp"
-            android:textStyle="bold" />
+        <!--<RadioButton-->
+            <!--android:fontFamily="@font/quicksand_bold"-->
+            <!--android:id="@+id/radioBtn_Payment_Ewallet_billing"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/_50sdp"-->
+            <!--android:paddingLeft="@dimen/_10sdp"-->
+            <!--android:text="@string/txt_pay_wallet"-->
+            <!--android:textSize="@dimen/_14ssp"-->
+            <!--android:textStyle="bold" />-->
 
         <!--<RadioButton-->
             <!--android:fontFamily="@font/quicksand_bold"-->

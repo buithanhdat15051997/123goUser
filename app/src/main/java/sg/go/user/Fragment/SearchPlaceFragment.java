@@ -2,6 +2,7 @@ package sg.go.user.Fragment;
 
 import android.Manifest;
 import android.animation.Animator;
+import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.app.Dialog;
 import android.content.Context;
@@ -13,6 +14,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
@@ -61,6 +63,8 @@ import sg.go.user.Utils.PreferenceHelper;
 import com.aurelhubert.simpleratingbar.SimpleRatingBar;
 import com.github.ybq.android.spinkit.style.Circle;
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.maps.CameraUpdate;
@@ -72,6 +76,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.GroundOverlay;
+import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
@@ -79,6 +85,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -168,6 +176,8 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
     private RequestOptional mRequestOptional_Home;
     private ImageView img_cancel_choss_type_car;
     private TextView txt_select_prefered;
+
+    private FusedLocationProviderClient mFusedLocationProviderClient;
 
     ProgressBar progressBarHome;
 
@@ -358,7 +368,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
         }
 
-        // ------- VISIBLE AND EVENT CLICK CARDVIEW -------
+        // ------- VISIBLE AND EVENT CLICK CARDVIEW -------getDirections
         setVisiableCardShowMain();
 
         ClickButtonRoutes();
@@ -428,7 +438,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                 + "en-EN" + "&" + "key=" + Const.GOOGLE_API_KEY + "&" + Const.Params.SENSOR + "="
                 + String.valueOf(false));
 
-        EbizworldUtils.appLogDebug("HaoLS", "distance api " + map.toString());
+        EbizworldUtils.appLogDebug("DAT_SEARCHPLACE", "distance api " + map.toString());
 
         new VolleyRequester(activity, Const.GET, map, 123456, this);
 
@@ -477,13 +487,13 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                     Distance_Request_Home = routeArray.getJSONObject(j).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
 
                     Time_Request_Home = routeArray.getJSONObject(j).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
+
 //                                        txt_ShowNameRoutes.setText("Name Routes :"+ txt_Name[j]);
 //                    txt_ShoweDetailRoutes.setText("Name Routes:"+txt_Name[j]+"  Duration:" + Time_Request+"  Distance:" + Distance_Request);
 
                     PickUpMarker.setIcon((BitmapDescriptorFactory
                             .fromBitmap(getMarkerBitmapFromView(Time_Request_Home))));
 
-//                    txt_ShowNameRoutes.setBackgroundColor(Color.parseColor(color[j]));
 
                     polylineData.get(j).setZIndex(1);
 
@@ -606,7 +616,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         }
 //        map.put(Const.Params.AMBULANCE_TYPE, new PreferenceHelper(activity).getRequestType());
         map.put(Const.Params.AMBULANCE_TYPE, "0");
-        Log.d("HaoLS", "nearby drivers home " + map.toString());
+        Log.d("DAT_SEARCHPLACE", "nearby drivers home " + map.toString());
         new VolleyRequester(activity, Const.POST, map, Const.ServiceCode.GET_PROVIDERS,
                 this);
 
@@ -681,14 +691,14 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                     case BottomSheetBehavior.STATE_HIDDEN: {
 
-                        EbizworldUtils.appLogDebug("HaoLS", "BottomSheet hidden");
+                        EbizworldUtils.appLogDebug("DAT_SEARCHPLACE", "BottomSheet hidden");
                         bottomSheetBehavior1.setPeekHeight(tv_optional_home.getHeight());
                     }
                     break;
 
                     case BottomSheetBehavior.STATE_COLLAPSED: {
 
-                        EbizworldUtils.appLogDebug("HaoLS", "BottomSheet collapsed");
+                        EbizworldUtils.appLogDebug("DAT_SEARCHPLACE", "BottomSheet collapsed");
                         bottomSheetBehavior1.setPeekHeight(tv_optional_home.getHeight());
                         tv_optional_home.setText(getResources().getString(R.string.txt_next));
 
@@ -698,7 +708,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                     case BottomSheetBehavior.STATE_EXPANDED: {
 
                         tv_optional_home.setText(getResources().getString(R.string.txt_next));
-                        EbizworldUtils.appLogDebug("HaoLS", "BottomSheet expanded");
+                        EbizworldUtils.appLogDebug("DAT_SEARCHPLACE", "BottomSheet expanded");
                     }
                 }
             }
@@ -744,13 +754,18 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         ((ImageView) view.findViewById(R.id.btn_pickLoc)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (null != googleMap && currentLatLan != null) {
+
                     //   btn_pickLoc.setVisibility(View.VISIBLE);
                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLan, 15));
-                    PickUpMarker.setPosition(currentLatLan);
-                    getCompleteAddressString(currentLatLan);
+                   // PickUpMarker.setPosition(currentLatLan);
+                   // getCompleteAddressString(currentLatLan);
+
                 } else {
-                    Toast.makeText(activity, "" + getResources().getString(R.string.txt_toast_not_found_current_location), Toast.LENGTH_SHORT).show();
+
+                    EbizworldUtils.showLongToast(getResources().getString(R.string.txt_toast_not_found_current_location), activity);
+
 
                 }
 
@@ -1089,7 +1104,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         map.put(Const.Params.DISTANCE, Distance_Request_Home.replaceAll(" km", ""));
         map.put(Const.Params.TIME, dur);
 
-        Log.d("HaoLS", "Getting ambulance operators " + map.toString());
+        Log.d("DAT_SEARCHPLACE", "Getting ambulance operators " + map.toString());
         new VolleyRequester(activity, Const.POST, map, Const.ServiceCode.AMBULANCE_OPERATOR,
                 this);
     }
@@ -1322,6 +1337,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                         return;
                     }
 
+
                     //   gMap.setMyLocationEnabled(true);
 //                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLan,
 //                            15));
@@ -1347,6 +1363,135 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         searchMap.show();
     }
 
+    private void getDeviceLocation() {
+
+        Log.d(TAG, "getDeviceLocation: getting the device current location");
+
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+
+        try {
+
+            //    if (mLocationPermissionGranted){
+
+            Task location = mFusedLocationProviderClient.getLastLocation();
+
+            location.addOnCompleteListener(new OnCompleteListener() {
+                @Override
+                public void onComplete(@NonNull Task task) {
+
+                    if (task.isSuccessful()) {
+
+                        Log.d(TAG, "onComplete: Location found" + task.getResult());
+
+                        Location location = (Location) task.getResult();
+
+                       // BaseFragment.pic_latlan = new LatLng(location.getLatitude(), location.getLongitude());
+
+                        Log.d(TAG, "onComplete: Location" + location.getLatitude()+"  "+location.getLongitude());
+
+                        moveCamera(new LatLng(location.getLatitude(), location.getLongitude()), 15);
+
+                          //  addOverlay(location.getLatitude(), location.getLongitude());
+
+                    } else {
+
+                        Log.d(TAG, "onComplete: Location not found");
+
+                        EbizworldUtils.showShortToast("Unable to get current location", getActivity());
+                    }
+                }
+            });
+            //     }
+        } catch (SecurityException e) {
+
+            Log.d(TAG, e.getMessage());
+        }
+
+    }
+    private void addOverlay(double latitude, double longitude) {
+
+        if (null != mGoogleMap) {
+
+            GroundOverlay groundOverlay = mGoogleMap.addGroundOverlay(new
+                    GroundOverlayOptions()
+                    .position(new LatLng(latitude, longitude), 100)
+                    .transparency(0.5f)
+                    .zIndex(3)
+                    .image(BitmapDescriptorFactory.fromBitmap(drawableToBitmap(activity.getResources().getDrawable(R.drawable.map_overlay)))));
+
+            startOverlayAnimation(groundOverlay);
+        }
+    }
+    private Bitmap drawableToBitmap(Drawable drawable) {
+        Bitmap bitmap = null;
+
+        if (drawable instanceof BitmapDrawable) {
+            BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+            if (bitmapDrawable.getBitmap() != null) {
+                return bitmapDrawable.getBitmap();
+            }
+        }
+
+        if (drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
+            bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
+        } else {
+            bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        }
+
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+        return bitmap;
+    }
+    private void startOverlayAnimation(final GroundOverlay groundOverlay) {
+
+        AnimatorSet animatorSet = new AnimatorSet();
+
+        ValueAnimator vAnimator = ValueAnimator.ofInt(0, 200);
+        vAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        vAnimator.setRepeatMode(ValueAnimator.RESTART);
+        vAnimator.setInterpolator(new LinearInterpolator());
+
+        vAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                final Integer val = (Integer) valueAnimator.getAnimatedValue();
+                groundOverlay.setDimensions(val);
+
+            }
+
+        });
+
+        ValueAnimator tAnimator = ValueAnimator.ofFloat(0, 1);
+        tAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        tAnimator.setRepeatMode(ValueAnimator.RESTART);
+        tAnimator.setInterpolator(new LinearInterpolator());
+
+        tAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                Float val = (Float) valueAnimator.getAnimatedValue();
+                groundOverlay.setTransparency(val);
+            }
+
+        });
+
+        animatorSet.setDuration(3000);
+        animatorSet.playTogether(vAnimator, tAnimator);
+        animatorSet.start();
+    }
+
+
+
+    private void moveCamera(LatLng latLng, float zoom) {
+
+        Log.d(TAG, "moveCamera: moving to the latitude " + latLng.latitude + " and longitude " + latLng.longitude);
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+
+    }
 
     private void getCompleteAddressSource(LatLng target) {
 
@@ -1458,7 +1603,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        EbizworldUtils.appLogError("HaoLS", "findDistanceandTime " + e.toString());
+                        EbizworldUtils.appLogError("DAT_SEARCHPLACE", "findDistanceandTime " + e.toString());
                     }
                 }
 
@@ -1486,6 +1631,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
 
                             JSONArray jarray = new JSONArray();
+
                             jarray = job.getJSONArray("operator");
 
                             Log.d("Dat_operator3", jarray.toString());
@@ -1523,39 +1669,50 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                                     @Override
                                     public void onItemClick(View view, int position) {
 
-                                        getTripOptional_Home(position + 1);
 
-                                        if (mRequestOptional_Home != null) {
+                                        if (position == 1) {
 
-                                            if (mRequestOptional_Home.getPic_address().length()>0 && mRequestOptional_Home.getDrop_address().length()>0){
+                                            EbizworldUtils.showLongToast(activity.getResources().getString(R.string.txt_taxi_comingsoon), activity);
 
-                                                // Save PreferenceHelper
-                                                new PreferenceHelper(activity).putTypeCarBillingInfo(typeCarRequest_ArrayList_home.get(position).getName_Type_Car_Request());
-                                                new PreferenceHelper(activity).putImageTypeCarBillingInfo(typeCarRequest_ArrayList_home.get(position).getImga_Type_Car_Request());
-                                                new PreferenceHelper(activity).putDistanceBillingInfo(mRequestOptional_Home.getKm_send_billinginfo());
-                                                new PreferenceHelper(activity).putTimeBillingInfo(mRequestOptional_Home.getTime_send_billinginfo());
+                                        } else {
 
-                                                Bundle bundle = new Bundle();
-                                                bundle.putParcelable(Const.Params.REQUEST_OPTIONAL, mRequestOptional_Home);
+                                            getTripOptional_Home(position + 1);
 
-                                                BillingInfoFragment billingInfoFragment = new BillingInfoFragment();
-                                                billingInfoFragment.setArguments(bundle);
+                                            if (mRequestOptional_Home != null) {
 
-                                                activity.addFragmentNoRefresh(billingInfoFragment, false, Const.BILLING_INFO_FRAGMENT, true);
+                                                if (mRequestOptional_Home.getPic_address().length() > 0 && mRequestOptional_Home.getDrop_address().length() > 0) {
 
-                                                bottomSheetLayout1.setVisibility(View.VISIBLE);
+                                                    // Save PreferenceHelper
+                                                    new PreferenceHelper(activity).putTypeCarBillingInfo(typeCarRequest_ArrayList_home.get(position).getName_Type_Car_Request());
+                                                    new PreferenceHelper(activity).putImageTypeCarBillingInfo(typeCarRequest_ArrayList_home.get(position).getImga_Type_Car_Request());
+                                                    new PreferenceHelper(activity).putDistanceBillingInfo(mRequestOptional_Home.getKm_send_billinginfo());
+                                                    new PreferenceHelper(activity).putTimeBillingInfo(mRequestOptional_Home.getTime_send_billinginfo());
+
+                                                    Bundle bundle = new Bundle();
+                                                    bundle.putParcelable(Const.Params.REQUEST_OPTIONAL, mRequestOptional_Home);
+
+                                                    BillingInfoFragment billingInfoFragment = new BillingInfoFragment();
+                                                    billingInfoFragment.setArguments(bundle);
+
+                                                    activity.addFragmentNoRefresh(billingInfoFragment, false, Const.BILLING_INFO_FRAGMENT, true);
+
+                                                    bottomSheetLayout1.setVisibility(View.VISIBLE);
 
 
-                                            }else {
+                                                } else {
 
-                                                Toast.makeText(activity, activity.getResources().getString(R.string.txt_cannot_find_location_googlemap), Toast.LENGTH_SHORT).show();
+                                                    EbizworldUtils.showLongToast(activity.getResources().getString(R.string.txt_cannot_find_location_googlemap), activity);
+
+                                                }
+
+                                            } else {
+
+                                                Toast.makeText(activity, "Null", Toast.LENGTH_SHORT).show();
 
                                             }
 
-                                        } else {
-                                            Toast.makeText(activity, "Null", Toast.LENGTH_SHORT).show();
-                                        }
 
+                                        }
 
                                     }
                                 });
@@ -1567,15 +1724,21 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                         } else {
 
-                            EbizworldUtils.appLogError("HaoLS", "Get Ambulance Operator failed");
+                            EbizworldUtils.appLogError("DAT_SEARCHPLACE", "Get Type Car Failed From Server!");
+                            bottomSheetLayout1.setVisibility(View.GONE);
+
+                            EbizworldUtils.showLongToast(activity.getResources().getString(R.string.txt_faild_server), activity);
 
                         }
-
 
                     } catch (JSONException e) {
 
                         e.printStackTrace();
-                        EbizworldUtils.appLogError("HaoLS", "Get Ambulance Operator failed");
+                        EbizworldUtils.appLogError("DAT_SEARCHPLACE", "Get Type Car Failed From Server!");
+                        bottomSheetLayout1.setVisibility(View.GONE);
+
+                        EbizworldUtils.showLongToast(activity.getResources().getString(R.string.txt_faild_server), activity);
+
 
                     }
 
@@ -1586,7 +1749,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                 if (null != response) {
 
-                    Log.d("DAT_SEARCHPLACE", "  "+response);
+                    Log.d("DAT_SEARCHPLACE", "  " + response);
                     // an linearlayout
 
                     if (polylineData != null) {
@@ -1617,7 +1780,6 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                             source_LatLng = new LatLng(lat, lng);
 //                            source_LatLng = currentLatLan;
                             fromLocation = source_LatLng;
-
 
 
                             et_source_address.setText(sourceAddress);
@@ -1718,25 +1880,27 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                             }
                             fitmarkers_toMap(fromLocation, des_latLng);
 
-                            if(fromLocation != null && toLocation!=null){
+                            if (fromLocation != null && toLocation != null) {
 
-                                Log.d("DAT_SEARCHPLACE",fromLocation.toString()+"  "+toLocation.toString());
+                                Log.d("DAT_SEARCHPLACE", fromLocation.toString() + "  " + toLocation.toString());
 
                                 getDirections(fromLocation.latitude, fromLocation.longitude, toLocation.latitude, toLocation.longitude);
 
-                            }else {
+                            } else {
 
-                                Toast.makeText(activity, activity.getResources().getString(R.string.txt_cannot_find_location_googlemap), Toast.LENGTH_SHORT).show();
+                                EbizworldUtils.showLongToast(activity.getResources().getString(R.string.txt_cannot_find_location_googlemap), activity);
 
                             }
 
-                        }else {
+                        } else {
 
-                            Toast.makeText(activity, activity.getResources().getString(R.string.txt_cannot_find_location_googlemap), Toast.LENGTH_SHORT).show();
+                            EbizworldUtils.showLongToast(activity.getResources().getString(R.string.txt_cannot_find_location_googlemap), activity);
 
                         }
                     } catch (JSONException e) {
+
                         e.printStackTrace();
+
                     }
                 } else {
 
@@ -1839,7 +2003,9 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                 break;
             case Const.ServiceCode.ADDRESS_API_BASE:
+
                 Log.d("getApigoogle", "lay vi tri dang text");
+
                 if (null != response) {
                     try {
                         JSONObject job = new JSONObject(response);
@@ -1906,7 +2072,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                 break;
 
             case Const.ServiceCode.GET_PROVIDERS:
-                EbizworldUtils.appLogInfo("HaoLS", "providers: " + response);
+                EbizworldUtils.appLogInfo("DAT_SEARCHPLACE", "providers: " + response);
                 if (response != null) {
                     try {
                         if (googleMap != null) {
@@ -1936,7 +2102,7 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                         } else {
 
 
-                            EbizworldUtils.appLogDebug("HaoLS", "Get providers failed");
+                            EbizworldUtils.appLogDebug("DAT_SEARCHPLACE", "Get providers failed");
                         }
 
 
@@ -2007,17 +2173,19 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         mRequestOptional_Home = new RequestOptional();
         mRequestOptional_Home.setId(new PreferenceHelper(activity).getUserId());
         mRequestOptional_Home.setToken(new PreferenceHelper(activity).getSessionToken());
+
         mRequestOptional_Home.setOperator_id(possitionType_Car);
 
-        mRequestOptional_Home.setPic_lat(toLocation.latitude);
-        mRequestOptional_Home.setPic_lng(toLocation.longitude);
-        mRequestOptional_Home.setDrop_lat(fromLocation.latitude);
-        mRequestOptional_Home.setDrop_lng(fromLocation.longitude);
+        mRequestOptional_Home.setPic_lat(fromLocation.latitude);
+        mRequestOptional_Home.setPic_lng(fromLocation.longitude);
+
+        mRequestOptional_Home.setDrop_lat(toLocation.latitude);
+        mRequestOptional_Home.setDrop_lng(toLocation.longitude);
 
         mRequestOptional_Home.setPic_address(et_source_address.getText().toString().trim());
         mRequestOptional_Home.setDrop_address(et_destination_address.getText().toString().trim());
 
-        Log.d("DAT_SEARCHPLACE",mRequestOptional_Home.getPic_address()+"  drop:"+mRequestOptional_Home.getDrop_address());
+        Log.d("DAT_SEARCHPLACE", mRequestOptional_Home.getPic_address() + "  drop:" + mRequestOptional_Home.getDrop_address());
 
         mRequestOptional_Home.setKm_send_billinginfo(Distance_Request_Home.replaceAll(" km", "").toString());
         mRequestOptional_Home.setTime_send_billinginfo(Time_Request_Home);
@@ -2091,12 +2259,28 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
         googleMap = gMap;
         EbizworldUtils.removeProgressDialog();
         if (googleMap != null) {
-            googleMap.getUiSettings().setMyLocationButtonEnabled(false);
+
+            googleMap.getUiSettings().setMyLocationButtonEnabled(true);
             googleMap.getUiSettings().setMapToolbarEnabled(false);
             googleMap.getUiSettings().setScrollGesturesEnabled(true);
             googleMap.getUiSettings().setZoomGesturesEnabled(true);
             googleMap.getUiSettings().setRotateGesturesEnabled(false);
             googleMap.getUiSettings().setTiltGesturesEnabled(false);
+
+
+            if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED
+                    && ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+
+                return;
+            }
+           // getDeviceLocation();
+            googleMap.setMyLocationEnabled(true);
+
             googleMap.setTrafficEnabled(false);
             //    googleMap.setMyLocationEnabled(true);
             if (getActivity() != null) {
@@ -2112,7 +2296,9 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
 
                     Log.e(TAG, e.getMessage());
                 }
-                //Log.d(TAG, "onMapReady: "+currentLatLan);
+
+
+
                 if (currentLatLan != null) {
                     CameraPosition cameraPosition = new CameraPosition.Builder()
                             .target(currentLatLan)
@@ -2124,7 +2310,6 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                         markerOpt.position(currentLatLan);
                         markerOpt.icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_stop));
                         PickUpMarker = googleMap.addMarker(markerOpt);
-                        //  Log.d("ccccccccccc", "onMapReady: ");
 
                     }
                 }
@@ -2134,15 +2319,17 @@ public class SearchPlaceFragment extends BaseFragment implements View.OnClickLis
                     @Override
                     public void onCameraMove() {
                         if (d_click) {
-                            //pin_drop_location.setVisibility(View.VISIBLE);
+
                         }
                     }
                 });
                 // vị trí điểm đến thay đổi theo cammera
+
                 googleMap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
                     @Override
                     public void onCameraIdle() {
                         if (d_click) {
+
                             des_latLng = googleMap.getCameraPosition().target;
 /*                            getCompleteAddressString(des_latLng);
                               pin_drop_location.setVisibility(View.VISIBLE);

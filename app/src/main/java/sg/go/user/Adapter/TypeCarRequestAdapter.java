@@ -79,11 +79,11 @@ public class TypeCarRequestAdapter extends RecyclerView.Adapter<TypeCarRequestAd
 
         viewholderTypeCar.txt_Item_Type_Car.setText(typeCar_Request_ArrayList.get(i).getName_Type_Car_Request());
 
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
         float service_fee = (float) typeCar_Request_ArrayList.get(i).getName_Type_service_fee();
 
-        viewholderTypeCar.txt_Item_Type_service_fee.setText("S$ "+ decimalFormat.format(service_fee));
+        viewholderTypeCar.txt_Item_Type_service_fee.setText("S$ " + decimalFormat.format(service_fee));
 
         if (typeCar_Request_ArrayList.get(i).getImga_Type_Car_Request() != null) {
 
@@ -105,6 +105,7 @@ public class TypeCarRequestAdapter extends RecyclerView.Adapter<TypeCarRequestAd
                 Log.d("Dat_Test", i + "");
 
                 switch (i) {
+
                     case 0:
                         itemViewList.get(0).setBackgroundColor(context_typecar_request.getResources().getColor(R.color.color_background_main));
                         itemViewList.get(1).setBackgroundColor(context_typecar_request.getResources().getColor(R.color.white));

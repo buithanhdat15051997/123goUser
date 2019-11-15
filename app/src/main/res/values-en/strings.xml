@@ -13,7 +13,7 @@
     <string name="dialog_remark_title"> Write something </string>
     <string name="schedule_ride_notification"> You have a notification from schedule ride </string>
     <string name="apply"> Apply</string>
-    <string name="login_email">Email Id</string>
+    <string name="login_email">Email Id Or Number Phone</string>
     <string name="login_Password">Password</string>
     <string name="login_btn">Sign In</string>
     <string name="forgot_pass_btn">Forgot Password</string>
@@ -412,7 +412,6 @@
     <string name="family_member_name">" Family member name "</string>
     <string name="payment_by_cash_failed">Payment failed</string>
     <string name="txt_patient_conditions">Patient condition</string>
-    <string name="txt_payment_mode">Payment mode</string>
     <string name="weight_less_than_eighty" translatable="false">" 0KG - 80KG"</string>
     <string name="weight_over_eighty" translatable="false">80KG - 100KG</string>
     <string name="weight_over_one_hundred" translatable="false">100KG - 120KG</string>
@@ -420,7 +419,7 @@
     <string name="pickup_type">Pickup type</string>
     <string name="a_and_e">" A&amp;E "</string>
     <string name="imh">IMH</string>
-    <string name="airport_tarmac">Type car selected</string>
+    <string name="airport_tarmac">"Type car "</string>
     <string name="any_ambulance">Any 123Go Diver</string>
     <string name="family_member">Family member</string>
     <string name="optional">Optional</string>
@@ -457,7 +456,7 @@
     <string name="txt_name_profilepicture">PROFILE PICTURE</string>
     <string name="txt_next_signup">Confirm</string>
     <string name="txt_title_dialog_gps">Hello, Welcome to 123GO!</string>
-    <string name="txt_content_dialog_gps">Choose your location to start find the taxi near you</string>
+    <string name="txt_content_dialog_gps">Choose your current location to start find the taxi near you</string>
     <string name="txt_btn_gps">USE CURRENT LOCATION</string>
     <string name="txt_exit_gps">SELECT MANUALLY</string>
     <string name="txt_booking_success">Thank you for traveling with 123GO!</string>
@@ -494,5 +493,21 @@
     <string name="txt_cost_erp_charges">Add ERP Charges:</string>
     <string name="txt_cost_add_child_seat_charges">Add Child Seat Charges:</string>
     <string name="txt_cost_add_orther">Add Others:</string>
+    <string name="txt_taxi_comingsoon">Taxi is not available now. Coming soon!</string>
+    <string name="txt_terms_conditions">Terms And Conditions</string>
+    <string name="txt_i_gree_terms_conditons">I agree to the Terms and Conditions as well as Privacy Policy</string>
+    <string name="txt_change_password">Change Password</string>
+    <string name="txt_please_enter_changepassword">Please Verify All Field</string>
+    <string name="txt_btn_comfirm_changepassword">Confirm Password</string>
+    <string name="txt_old_changepassword">Old password</string>
+    <string name="txt_new_changepassword">New password</string>
+    <string name="txt_policy_privacy">Privacy Policy</string>
+    <string name="txt_select_date_history">Date range</string>
+    <string name="txt_accept_term_condition">You should accept our Term and Condition first</string>
+    <string name="txt_faild_server">Failed Server</string>
+    <string name="txt_pass_confirmpass_not_match">Password and Confirmed Password doesn\'t match!</string>
+    <string name="txt_no_booking">No Booking</string>
+    <string name="txt_extra_cost">Extra Charges:</string>
+    <string name="txt_payment_mode">" Payment Mode:"</string>
 </resources>
 

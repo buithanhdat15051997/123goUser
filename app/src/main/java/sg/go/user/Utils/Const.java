@@ -61,6 +61,8 @@ public class Const {
 
     public static final String HISTORY_PAYMENT_FRAGMENT = "history_payment_fragment";
 
+    public static final String CHANGEPASSWORD = "changePassword_fragment";
+
 
     public static final String CANCELLATION_POLICY_DIALOGFRAGMENT = "cancellation_policy_dialogfragment";
     public static final String HOSPITAL_DISCHARGE_OPTION_DIALOGFRAGMENT = "hospital_discharge_option_dialogfragment";
@@ -269,7 +271,9 @@ public class Const {
         public static final String PAYNOW = BASE_URL + "payment";
         public static final String RATE_PROVIDER = BASE_URL + "rateProvider";
         public static final String CANCEL_RIDE = BASE_URL + "cancelRequest";
+        public static final String GET_HISTORY_MONTH = BASE_URL + "historybymonth";
         public static final String GET_HISTORY = BASE_URL + "history";
+
         public static final String GET_PAYMENT_MODES = BASE_URL + "getPaymentModes?";
         public static final String PAYMENT_MODE_UPDATE = BASE_URL + "PaymentModeUpdate";
         public static final String GET_BRAIN_TREE_TOKEN_URL = BASE_URL + "getbraintreetoken";
@@ -307,6 +311,8 @@ public class Const {
         public static final String GET_TYPE_CHOOSE_PAYMENT = BASE_URL + "checkselectedType";
 
         public static final String BILLING_EXTRA_COST= BASE_URL + "getExtraCost";
+
+        public static final String CHANGE_PASSWORD = BASE_URL+"changePassword";
 
 
         // wallet config
@@ -496,6 +502,7 @@ public class Const {
         public static final int HISTORY_PAYMENT = 130;
         public static final int PAYMENT_WALLET = 135;
         public static final int GET_EXTRA_COST = 134;
+        public static final int POLYLINE_DRIVER_TO_USER = 211;
 
 
 
@@ -506,6 +513,8 @@ public class Const {
         public static final int GET_TYPE_CHOOSE_PAYMENT = 61;
 
         public static final int CHOOSE_A_PAYMENT = 62;
+
+        public static final int CHANGE_PASSWORD = 63;
 
     }
 

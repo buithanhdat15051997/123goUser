@@ -21,7 +21,7 @@
     <string name="ferry_terminals"> Trip Distance: </string>
     <string name="a_and_e"> A&amp;E </string>
     <string name="imh"> IMH </string>
-    <string name="airport_tarmac">Type car selected</string>
+    <string name="airport_tarmac">Type car</string>
     <string name="base_price"> Base price </string>
     <string name="distance_price"> Distance price </string>
     <string name="extra_time_price"> Extra time price </string>
@@ -52,6 +52,7 @@
     <string name="txt_top_up_history">Top Up History</string>
 
     <string name="txt_type_top_up_wallet">Type Top Up</string>
+    <string name="txt_no_booking">No Booking</string>
 
     <string name="cannot_back_on_thetrip">Can not back! Because you are on a trip</string>
 
@@ -67,16 +68,21 @@
     <string name="txt_title_dialog_cancel_trip">You are sure you want to cancel this booking ?</string>
 
     <string name="txt_title_dialog_gps">Hello, Welcome to 123GO!</string>
-    <string name="txt_content_dialog_gps">Choose your location to start find the taxi near you</string>
+    <string name="txt_content_dialog_gps">Choose your current location to start find the taxi near you</string>
     <string name="txt_btn_gps">USE CURRENT LOCATION</string>
-    <string name="txt_exit_gps">SELECT MANUALLY</string>
+    <string name="txt_exit_gps">NO AND EXIT 123GO</string>
     <string name="txt_dialog_pay_ewallet">Payment With E-Wallet</string>
     <string name="txt_content_pay_ewallet">Your e-wallet will be deducted</string>
 
     <string name="txt_content_ratings">You feedback will help to improve our driving experience</string>
 
     <string name="txt_toast_event_back_rating">Please rate stars before exiting</string>
-
+    <string name="txt_taxi_comingsoon">Taxi is not available now. Coming soon!</string>
+    <string name="txt_terms_conditions">Terms And Conditions</string>
+    <string name="txt_i_gree_terms_conditons">I agree to the Terms and Conditions as well as Privacy Policy</string>
+<string name="txt_change_password">Change Password</string>
+    <string name="txt_old_changepassword">Old password</string>
+    <string name="txt_new_changepassword">New password</string>
 
     //
     <string name="oxygen_tank"> Oxygen tank </string>
@@ -134,7 +140,8 @@
     <string name="txt_hourly_booking"> Rent by hour </string>
     <string name="edittext_inapproriate_notice"> This field is invalid</string>
     <string name="txt_patient_conditions"> Patient condition </string>
-    <string name="txt_payment_mode"> Payment mode </string>
+
+    <string name="txt_payment_mode"> Payment Mode:</string>
     <string name="add_schedule"> Add schedule </string>
     <string name="weight_less_than_eighty" translatable="false"> 0KG - 80KG</string>
     <string name="weight_over_eighty" translatable="false"> 80KG - 100KG</string>
@@ -151,7 +158,7 @@
     <string name="action_schedule"> Schedule </string>
     <string name="action_account"> Account </string>
     <string name="pickup_type"> Pickup type </string>
-    <string name="login_email">Email Id</string>
+    <string name="login_email">Email Id Or Number Phone</string>
     <string name="email_mobile">Email or Phone number</string>
     <string name="login_Password">Password</string>
     <string name="login_btn">Sign In</string>
@@ -159,9 +166,11 @@
     <string name="new_user_btn">New to 123GO ? </string>
     <string name="txt_signup_now">Signup now </string>
     <string name="req_pass_btn">Request Password</string>
+    <string name="txt_faild_server">Failed Server!</string>
     <string name="register_btn">Register</string>
     <string name="forgot_txt_note">Please Enter Email Id to Receive Password</string>
     <string name="full_name">Fullname</string>
+    <string name="txt_accept_term_condition">You should accept our Term and Condition first</string>
     <string name="last_Name">Last Name</string>
 
     <string name="your_password">Your Password</string>
@@ -185,6 +194,7 @@
     <string name="txt_driver">Driver</string>
     <string name="total_fare">TOTAL FARE</string>
     <string name="trip_summary">TRIP SUMMARY</string>
+    <string name="txt_extra_cost">Extra Charges:</string>
     <string name="txt_summary_extra_cost">Summary</string>
     <string name="txt_cost_erp_charges">Add ERP Charges:</string>
     <string name="txt_cost_add_child_seat_charges">Add Child Seat Charges:</string>
@@ -206,6 +216,9 @@
     <string name="dialog_enable_3g">Enable 3G</string>
     <string name="dialog_enable_wifi">Enable WIFI</string>
     <string name="dialog_exit">Exit</string>
+    <string name="txt_btn_comfirm_changepassword">Confirm Password</string>
+
+    <string name="txt_please_enter_changepassword">Please Verify All Field</string>
 
     <string name="txt_mobile_error">Please Enter Mobile number!</string>
     <string name="txt_fname_error">Please Enter First name!</string>
@@ -332,6 +345,7 @@
     <string name="payment_note1">For Demo Purpose use the following card details</string>
     <string name="payment_note2">Card Number: 4242 4242 4242 4242\n Expiration: 12/20</string>
     <string name="no_history">" No Ride History Available "</string>
+    <string name="txt_select_date_history">Date range</string>
 
     <string name="no_places">--- No Saved Places ---</string>
     <string name="airport_title">Airport ride booking</string>
@@ -375,6 +389,8 @@
     <string name="txt_capacity">Capacity</string>
     <string name="txt_fare_popup">The fare will be the price presented upon booking, or, if the journey changes, the fare will be based on the rates provided. Tap fare for details.</string>
     <string name="txt_payment_type">Payment Type:</string>
+
+
     <string name="txt_no_tolls">No. Tolls:</string>
 
     <string name="txt_ride_detail">Ride Details</string>
@@ -471,6 +487,7 @@
     <string name="txt_msg">Message</string>
     <string name="txt_car_no">Car.No:</string>
     <string name="txt_mobile">Mobile:</string>
+    <string name="txt_policy_privacy">Privacy Policy</string>
     <string name="txt_no_cancel_reason">No Reasons found!</string>
 
     <string name="txt_cancle_user1">You exceeded the cancellation grace period of 3 minutes, a cancellation fee of</string>
@@ -522,6 +539,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_pass_confirmpass_not_match">Password and Confirmed Password doesn\'t match!</string>
 
 
 </resources>

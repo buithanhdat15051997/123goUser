@@ -424,10 +424,11 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
 
         //  }
 
-        accountSettingsList.add(0, new AccountSettings(R.drawable.ic_account_wallet, getString(R.string.nikola_wallet)));
-        accountSettingsList.add(1, new AccountSettings(R.drawable.help_circle, getString(R.string.my_help)));
-        accountSettingsList.add(2, new AccountSettings(R.drawable.ic_choose_payment, activity.getResources().getString(R.string.txt_choose_a_payment)));
-        accountSettingsList.add(3, new AccountSettings(R.drawable.ic_power_off, getString(R.string.txt_logout)));
+       // accountSettingsList.add(0, new AccountSettings(R.drawable.ic_account_wallet, getString(R.string.nikola_wallet)));
+        accountSettingsList.add(0, new AccountSettings(R.drawable.help_circle, getString(R.string.my_help)));
+        accountSettingsList.add(1, new AccountSettings(R.drawable.ic_changepassword, activity.getResources().getString(R.string.txt_change_password)));
+        //  accountSettingsList.add(2, new AccountSettings(R.drawable.ic_choose_payment, activity.getResources().getString(R.string.txt_choose_a_payment)));
+        accountSettingsList.add(2, new AccountSettings(R.drawable.ic_power_off, getString(R.string.txt_logout)));
 
 
         return accountSettingsList;
@@ -446,10 +447,11 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
         if (new PreferenceHelper(getActivity()).getLoginType().equals(Const.PatientService.PATIENT)) {
 
             switch (position) {
-                case 0:
+
+               // case 0:
                     //  DialogPayWallet();
-                    mMainActivity.addFragment(new WalletFragment(), true, Const.WALLET_FRAGMENT, true);
-                    break;
+//                    mMainActivity.addFragment(new WalletFragment(), true, Const.WALLET_FRAGMENT, true);
+//                    break;
 //                case 1:
 //                    startActivity(new Intent(mMainActivity, AskBotActivity.class));
 //
@@ -484,15 +486,19 @@ public class AccountFragment extends BaseFragment implements AdapterView.OnItemC
 //                    mMainActivity.addFragment(new HistoryPaymentFragment(), false, Const.HISTORY_PAYMENT_FRAGMENT, true);
 //                }
 //                break;
-                case 1:
+
+                case 0:
                     startActivity(new Intent(mMainActivity, HelpwebActivity.class));
                     break;
 
-                case 2:
-                    mMainActivity.addFragment(new ChoosePaymentFragment(), true, Const.CHOOSE_PAYMENT_FRAGMENT, true);
+//                case 2:
+//                    mMainActivity.addFragment(new ChoosePaymentFragment(), true, Const.CHOOSE_PAYMENT_FRAGMENT, true);
+//                    break;
+                case 1:
+                    mMainActivity.addFragment(new ChangePasswordFragment(), true, Const.CHANGEPASSWORD, true);
                     break;
 
-                case 3:
+                case 2:
                     showLogoutDialog();
                     break;
             }

@@ -386,7 +386,7 @@
                     app:drawableHeight="@dimen/_25sdp"
                     app:drawablePadding="@dimen/_10sdp"
                     app:maxRating="5"
-                    app:rating="3"
+                    app:rating="5"
                     app:selectedDrawable="@drawable/rating_selected"
                     app:srb_backgroundColor="@color/white"
                     app:srb_borderColor="@color/color_btn_main" />

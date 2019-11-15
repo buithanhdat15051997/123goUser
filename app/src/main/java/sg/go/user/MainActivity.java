@@ -336,6 +336,8 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
     public void onResume() {
         super.onResume();
 
+        Log.d("LifeCycle_MainActivity","onResume");
+
         LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(accountLogoutReceiver
                 , new IntentFilter(Const.NotificationType.TYPE_ACCOUNT_LOGOUT));
 
@@ -351,6 +353,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 //            addFragment(new HomeMapFragment(), false, Const.HOME_MAP_FRAGMENT, true);
 //            Log.e("mahi","coming 2");
 //        }
+
     }
 
     /*public void registerGcmReceiver(BroadcastReceiver mHandleMessageReceiver) {
@@ -456,6 +459,12 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
                 addFragment(new WalletFragment(), true, Const.WALLET_FRAGMENT, true);
 
             } else if (currentFragment.equals(Const.CHOOSE_PAYMENT_FRAGMENT)) {
+
+                addFragment(new AccountFragment(), true, Const.ACCOUNT_FRAGMENT, true);
+
+                mBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
+
+            }else if(currentFragment.equals(Const.CHANGEPASSWORD)){
 
                 addFragment(new AccountFragment(), true, Const.ACCOUNT_FRAGMENT, true);
 
@@ -579,7 +588,6 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
             @Override
             public void onClick(View view) {
 
-                removeGpsDialog();
                 finishAffinity();
 
             }
@@ -1192,14 +1200,33 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
                 case R.id.action_home: {
 
-                    addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
+                 if(currentFragment.equals(Const.HOME_MAP_FRAGMENT)){
+
+                     Log.d("DAT_MAIN", "onNavigationItemSelected: " + currentFragment);
+
+                 }else {
+
+                     Log.d("DAT_MAIN", "onNavigationItemSelected: " + currentFragment);
+
+                     addFragment(new SearchPlaceFragment(), true, Const.HOME_MAP_FRAGMENT, true);
+                 }
 
                 }
                 return true;
 
                 case R.id.action_history: {
 
-                    addFragment(new HistoryRideFragment(), false, Const.HISTORY_FRAGMENT, true);
+                    if(currentFragment.equals(Const.HISTORY_FRAGMENT)){
+
+                        Log.d("DAT_MAIN", "onNavigationItemSelected: " + currentFragment);
+                    }else {
+
+                        Log.d("DAT_MAIN", "onNavigationItemSelected: " + currentFragment);
+
+                        addFragment(new HistoryRideFragment(), false, Const.HISTORY_FRAGMENT, true);
+
+                    }
+
 
                 }
 
@@ -1213,14 +1240,34 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskComplete
 
                 case R.id.action_account: {
 
-                    addFragment(new AccountFragment(), false, Const.ACCOUNT_FRAGMENT, true);
+                    if(currentFragment.equals(Const.ACCOUNT_FRAGMENT)){
+
+                        Log.d("DAT_MAIN", "onNavigationItemSelected: " + currentFragment);
+
+                    }else {
+
+                        Log.d("DAT_MAIN", "onNavigationItemSelected: " + currentFragment);
+
+                        addFragment(new AccountFragment(), false, Const.ACCOUNT_FRAGMENT, true);
+
+                    }
 
                 }
                 return true;
 
                 case R.id.action_nurse_list_schedule: {
 
-                    addFragment(new ScheduleListFragment(), false, Const.SCHEDULE_LIST_FRAGMENT, true);
+                    if(currentFragment.equals(Const.SCHEDULE_LIST_FRAGMENT)){
+
+                        Log.d("DAT_MAIN", "onNavigationItemSelected: " + currentFragment);
+
+                    }else {
+
+                        Log.d("DAT_MAIN", "onNavigationItemSelected: " + currentFragment);
+
+                        addFragment(new ScheduleListFragment(), false, Const.SCHEDULE_LIST_FRAGMENT, true);
+
+                    }
 
                 }
                 return true;

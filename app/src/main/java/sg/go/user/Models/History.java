@@ -11,6 +11,41 @@ public class History {
     private String min_price, booking_fee, currnecy_unit, distance_unit;
     private String lift_landing, trips;
     private String a_and_e, imh, ferry_terminals, staircase, tarmac, weight, oxygen_tank, pickup_type, houseUnit, later, plate_number;
+    private String payment_mode_his,extra_charges_his,money_type_car;
+
+    private Double distance_his;
+
+    public String getPayment_mode_his() {
+        return payment_mode_his;
+    }
+
+    public void setPayment_mode_his(String payment_mode_his) {
+        this.payment_mode_his = payment_mode_his;
+    }
+
+    public Double getDistance_his() {
+        return distance_his;
+    }
+
+    public void setDistance_his(Double distance_his) {
+        this.distance_his = distance_his;
+    }
+
+    public String getExtra_charges_his() {
+        return extra_charges_his;
+    }
+
+    public void setExtra_charges_his(String extra_charges_his) {
+        this.extra_charges_his = extra_charges_his;
+    }
+
+    public String getMoney_type_car() {
+        return money_type_car;
+    }
+
+    public void setMoney_type_car(String money_type_car) {
+        this.money_type_car = money_type_car;
+    }
 
     public History() {
     }

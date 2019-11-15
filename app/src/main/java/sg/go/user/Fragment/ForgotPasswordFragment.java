@@ -79,7 +79,7 @@ public class ForgotPasswordFragment extends BaseRegisterFragment implements Asyn
 
         if (!EbizworldUtils.isNetworkAvailable(activity)){
 
-            EbizworldUtils.showShortToast(getResources().getString(R.string.network_error), activity);
+            EbizworldUtils.showLongToast(getResources().getString(R.string.network_error), activity);
             return;
 
         }
@@ -136,16 +136,24 @@ public class ForgotPasswordFragment extends BaseRegisterFragment implements Asyn
             case Const.ServiceCode.FORGOT_PASSWORD:
 
                 Commonutils.progressdialog_hide();
+                EbizworldUtils.appLogError("HaoLS", "Forgot password: " + response.toString());
+
 
                 try {
                     JSONObject job = new JSONObject(response);
                     if (job.getString("success").equals("true")) {
 
-                        EbizworldUtils.showShortToast(activity.getResources().getString(R.string.txt_success_forgot_password), activity);
+                        EbizworldUtils.showLongToast(activity.getResources().getString(R.string.txt_success_forgot_password), activity);
                         Intent i = new Intent(activity, SignInActivity.class);
                         startActivity(i);
 
                     } else {
+
+                        if(job.has("error")){
+                            String error = job.getString("error");
+                            EbizworldUtils.showLongToast(error, activity);
+
+                        }
 
                         String error = job.getString("error_messages");
                         Commonutils.showtoast(error, activity);

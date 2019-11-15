@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -109,7 +110,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 //    @BindView(R.id.tv_billing_info_pickup_type_value)
 //    TextView mTv_billing_info_pickup_type_value;
 
-    //kiểu của bạn hào
+
     @BindView(R.id.billing_info_payment_group)
     LinearLayout billing_info_payment_group;
 
@@ -148,12 +149,14 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
     private LinearLayout billing_info_payment_summary_group;
 
     private Dialog dialog_billing_Schedule;
-    private TextView txt_date_time_schedule;
+    private TextView txt_date_time_schedule,txt_show_time_down;
 
     private DatePickerDialog dpd;
     private TimePickerDialog tpd;
 
-    private  int possiton_radio_button = 0;
+    private  CountDownTimer countDownTimer_billing;
+
+    private  int possiton_radio_button = 0, count_time_server;
 
     private String datetime = "", timeSet = "", date = "", time = "", pickupDateTime = "";
 
@@ -1073,6 +1076,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 //        map.put(Const.Params.OXYGEN,String.valueOf(requestOptional.getOxygen()));
 //        map.put(Const.Params.CASE_TYPE, String.valueOf(requestOptional.getCaseType()));
 //        map.put("overview_polyline", String.valueOf(requestOptional.getOverView_Polyline()));
+
         if(total_billing>0){
 
             map.put("totalPrice",String.valueOf(total_billing));
@@ -1128,6 +1132,9 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
         final RippleBackground rippleBackground = (RippleBackground) requestDialog.findViewById(R.id.content);
         cancel_req_create = (TextView) requestDialog.findViewById(R.id.cancel_req_create);
         final TextView req_status = (TextView) requestDialog.findViewById(R.id.req_status);
+
+        txt_show_time_down = requestDialog.findViewById(R.id.txt_show_time_down);
+
         rippleBackground.startRippleAnimation();
 
         cancel_req_create.setEnabled(false);
@@ -1438,6 +1445,17 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
                         }
 
+
+                        if(jsonObject.has("provider_timeout")){
+
+                            count_time_server = Integer.parseInt(jsonObject.getString("provider_timeout"));
+
+                            Log.d("DAT_TIME",""+count_time_server);
+
+
+
+                        }
+
 //                        if (jsonObject.has(Const.Params.A_AND_E)){
 //
 //                            mTv_billing_info_a_and_e_value.setText(jsonObject.getString("currency") + " " + jsonObject.getString(Const.Params.A_AND_E));
@@ -1479,7 +1497,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 //                        }
                         if (jsonObject.has(Const.Params.TOTAL)) {
 
-                            DecimalFormat decimalFormat = new DecimalFormat("#.##");
+                            DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
                             total_billing = (float) jsonObject.getDouble(Const.Params.TOTAL);
 
@@ -1552,6 +1570,8 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
                                             cancel_req_create.setEnabled(true);
                                             cancel_req_create.setBackgroundColor(getResources().getColor(R.color.color_background_main));
+
+                                           // CountDownTime();
 
                                         }
 
@@ -1759,6 +1779,8 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
                             } else {
 
+
+
                                 mTv_billing_info_total_price.setText(mRequestDetail.getCurrnecy_unit() + " " + mRequestDetail.getTrip_total_price());
 
                                 total_after_trip = Double.parseDouble(mRequestDetail.getTrip_total_price());
@@ -1863,6 +1885,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
                         } else if (jsonObject.getString("success").equals("false")) {
 
+
                             if (jsonObject.has("error")) {
 
                                 EbizworldUtils.showShortToast(jsonObject.getString("error"), activity);
@@ -1886,6 +1909,42 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
         }
     }
 
+    private void CountDownTime() {
+
+        int count_time = 1000*2;
+        int count_time_total = count_time * count_time_server;
+
+        Log.d("DAT_TIME",count_time+"  "+count_time_total+"  "+count_time_server);
+
+
+        countDownTimer_billing = new CountDownTimer(count_time_total, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+
+                txt_show_time_down.setText("seconds remaining: " + millisUntilFinished / 1000);
+                //here you can have your logic to set text to edittext
+            }
+
+            public void onFinish() {
+
+                txt_show_time_down.setText("done!");
+
+                cancel_create_req();
+
+                if(requestDialog != null){
+
+                    requestDialog.cancel();
+                }
+            }
+
+        }.start();
+    }
+
+    private void cancelTimer() {
+        if(countDownTimer_billing!=null)
+            countDownTimer_billing.cancel();
+    }
+
     private void DialogChooseTypePayment() {
 
 
@@ -1896,7 +1955,7 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
         RadioGroup  radioGroup_Choose_payment_billing = dialog_choose_payment.findViewById(R.id.radioGroup_Choose_payment_billing);
         final RadioButton radioBtn_Payment_Cash_billing = dialog_choose_payment.findViewById(R.id.radioBtn_Payment_Cash_billing);
-        final RadioButton radioBtn_Payment_Ewallet_billing = dialog_choose_payment.findViewById(R.id.radioBtn_Payment_Ewallet_billing);
+       // final RadioButton radioBtn_Payment_Ewallet_billing = dialog_choose_payment.findViewById(R.id.radioBtn_Payment_Ewallet_billing);
        // final RadioButton radioBtn_Payment_Paypal_billing = dialog_choose_payment.findViewById(R.id.radioBtn_Payment_Paypal_billing);
         final Button btn_dialog_choose_payment_billing = dialog_choose_payment.findViewById(R.id.btn_dialog_choose_payment_billing);
 
@@ -1904,20 +1963,22 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
         switch (type_payment_selected){
             case 0:
                 radioBtn_Payment_Cash_billing.setChecked(false);
-                radioBtn_Payment_Ewallet_billing.setChecked(false);
+               // radioBtn_Payment_Ewallet_billing.setChecked(false);
 
                 break;
 
             case 1:
                 radioBtn_Payment_Cash_billing.setChecked(true);
-                radioBtn_Payment_Ewallet_billing.setChecked(false);
-                break;
-            case 2:
+                possiton_radio_button = 1;
 
-                radioBtn_Payment_Cash_billing.setChecked(false);
-                radioBtn_Payment_Ewallet_billing.setChecked(true);
-
+               // radioBtn_Payment_Ewallet_billing.setChecked(false);
                 break;
+//            case 2:
+//
+//                radioBtn_Payment_Cash_billing.setChecked(false);
+//                radioBtn_Payment_Ewallet_billing.setChecked(true);
+//
+//                break;
         }
 
 
@@ -1931,13 +1992,14 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
 
                         btn_dialog_choose_payment_billing.setText(getResources().getString(R.string.btn_confirm) + " " + getResources().getString(R.string.txt_pay_cash));
                         possiton_radio_button = 1;
+
                         break;
 
-                    case R.id.radioBtn_Payment_Ewallet_billing:
-
-                        btn_dialog_choose_payment_billing.setText(getResources().getString(R.string.btn_confirm) + " " + getResources().getString(R.string.txt_pay_wallet));
-                        possiton_radio_button = 2;
-                        break;
+//                    case R.id.radioBtn_Payment_Ewallet_billing:
+//
+//                        btn_dialog_choose_payment_billing.setText(getResources().getString(R.string.btn_confirm) + " " + getResources().getString(R.string.txt_pay_wallet));
+//                        possiton_radio_button = 2;
+//                        break;
 
 //                    case R.id.radioBtn_Payment_Paypal_billing:
 //
@@ -1953,9 +2015,10 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
             @Override
             public void onClick(View view) {
 
-//           || radioBtn_Payment_Paypal_billing.isChecked()
+//           || radioBtn_Payment_Paypal_billing.isChecked()|| || radioBtn_Payment_Ewallet_billing.isChecked()
 
-                if (radioBtn_Payment_Cash_billing.isChecked() || radioBtn_Payment_Ewallet_billing.isChecked() ) {
+                if (radioBtn_Payment_Cash_billing.isChecked()) {
+
 
                     SendChooseAPaymentBilling(possiton_radio_button);
 

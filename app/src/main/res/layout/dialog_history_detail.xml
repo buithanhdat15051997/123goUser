@@ -22,10 +22,10 @@
             app:srcCompat="@drawable/ic_back_blue" />
 
         <TextView
-            android:fontFamily="@font/questrial_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:fontFamily="@font/questrial_regular"
             android:gravity="center"
             android:text="@string/txt_ride_detail"
             android:textColor="@color/white"
@@ -67,64 +67,206 @@
                 android:weightSum="1">
 
                 <TextView
-                    android:fontFamily="@font/quicksand_bold"
                     android:id="@+id/trip_date"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.8"
+                    android:fontFamily="@font/quicksand_bold"
                     android:gravity="center|start"
                     android:text="00-00-2017"
                     android:textColor="@color/color_background_main"
                     android:textSize="@dimen/_14ssp"
-                    android:textStyle="bold|italic" />
-
-                <TextView
-                    android:fontFamily="@font/quicksand_bold"
-                    android:id="@+id/trip_amount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_weight="0.2"
-                    android:gravity="center"
-                    android:maxLines="2"
-                    android:text="000"
-                    android:textColor="@color/color_btn_main"
-                    android:textSize="@dimen/_14ssp"
                     android:textStyle="bold" />
+
 
             </LinearLayout>
 
-            <TextView
-                android:fontFamily="@font/quicksand_bold"
-                android:id="@+id/trip_ambulance_type"
-                android:layout_width="wrap_content"
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:text="Diver type"
-                android:textColor="@color/gray600"
-                android:textStyle="bold" />
+                android:layout_marginEnd="@dimen/_10sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/txt_payment_mode"
+                    android:textColor="@color/black_text"
+                    android:textSize="@dimen/_12ssp" />
+
+                <TextView
+                    android:id="@+id/txt_paymenttype_history_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/txt_payment_type"
+                    android:textColor="@color/color_background_main"
+                    android:textSize="@dimen/_12ssp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/distance"
+                    android:textColor="@color/black_text"
+                    android:textSize="@dimen/_12ssp" />
+
+                <TextView
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/txt_distance_history_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/distance"
+                    android:textColor="@color/color_background_main"
+                    android:textSize="@dimen/_12ssp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="Diver type"
+                    android:textColor="@color/black_text"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/trip_ambulance_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="bottom"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="Diver type"
+                    android:textColor="@color/color_btn_main"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/txt_extra_cost"
+                    android:textColor="@color/black_text"
+                    android:textSize="@dimen/_12ssp" />
+
+                <TextView
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/txt_extracost_history_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/txt_extra_cost"
+                    android:textColor="@color/color_btn_main"
+                    android:textSize="@dimen/_12ssp" />
+            </RelativeLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:background="@color/color_btn_main" />
+
+            <RelativeLayout
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:id="@+id/tv_history_detail_total_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv_history_detail_total_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/total"
+                    android:textColor="@color/color_btn_main"
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold" />
+
+
+
+                <TextView
+                    android:id="@+id/tv_history_detail_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="$ 0"
+                    android:textColor="@color/color_btn_main"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
 
 
             <LinearLayout
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/_5sdp">
+                android:orientation="vertical">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:src="@drawable/ic_from"
+        android:layout_gravity="center"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp" />
+    <TextView
+        android:id="@+id/trip_source_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_bold"
+        android:maxLines="2"
+        android:padding="@dimen/_10sdp"
+        android:singleLine="false"
+        android:text="@string/txt_current_loc"
+        android:textColor="@color/color_background_main"
+        android:textSize="@dimen/_14sdp" />
 
-                <TextView
-                    android:fontFamily="@font/quicksand_bold"
-                    android:id="@+id/trip_source_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_destination_all"
-                    android:drawablePadding="@dimen/_10sdp"
-                    android:maxLines="2"
-                    android:padding="@dimen/_10sdp"
-                    android:singleLine="false"
-                    android:text="@string/txt_current_loc"
-                    android:textColor="@color/color_background_main"
-                    android:textSize="@dimen/_14sdp" />
+</LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -134,21 +276,29 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:background="@drawable/background_gradient_line" />
+                    android:background="@color/black_text" />
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:src="@drawable/ic_to"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_gravity="center"
+        android:layout_height="@dimen/_30sdp" />
+    <TextView
+        android:id="@+id/trip_destination_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_bold"
+        android:maxLines="2"
+        android:padding="@dimen/_10sdp"
+        android:singleLine="false"
+        android:text="@string/not_available"
+        android:textColor="@color/color_background_main"
+        android:textSize="@dimen/_14sdp" />
+</LinearLayout>
 
-                <TextView
-                    android:fontFamily="@font/quicksand_bold"
-                    android:id="@+id/trip_destination_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_destination_all"
-                    android:drawablePadding="@dimen/_10sdp"
-                    android:maxLines="2"
-                    android:padding="@dimen/_10sdp"
-                    android:singleLine="false"
-                    android:text="@string/not_available"
-                    android:textColor="@color/color_background_main"
-                    android:textSize="@dimen/_14sdp" />
             </LinearLayout>
 
             <android.support.v7.widget.CardView
@@ -168,7 +318,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_margin="@dimen/_5sdp"
                         android:orientation="horizontal">
 
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -178,12 +328,12 @@
                             android:src="@drawable/defult_user" />
 
                         <TextView
-                            android:fontFamily="@font/quicksand_bold"
                             android:id="@+id/trip_driver_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginStart="@dimen/_10sdp"
+                            android:fontFamily="@font/quicksand_bold"
                             android:text="@string/txt_ride_with"
                             android:textColor="@color/color_background_main"
                             android:textSize="@dimen/_14sdp"
@@ -481,635 +631,447 @@
                     </LinearLayout>-->
 
                     <!--A and E group-->
-                    <LinearLayout
-                        android:id="@+id/tv_history_detail_a_and_e_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_5sdp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_5sdp"
-                        android:visibility="gone"
-                        android:weightSum="1">
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/tv_history_detail_a_and_e_group"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/_5sdp"-->
+                    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/_5sdp"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:weightSum="1">-->
 
-                        <TextView
-                            android:id="@+id/tv_history_detail_a_and_e_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.35"
-                            android:text="@string/a_and_e"
-                            android:textAlignment="center"
-                            android:textColor="@color/lightblue700"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_a_and_e_text"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.35"-->
+                    <!--android:text="@string/a_and_e"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/lightblue700"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_2sdp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginEnd="@dimen/_5sdp"
-                            android:layout_weight="0.25"
-                            android:background="@drawable/background_gradient_line"
-                            android:visibility="invisible" />
+                    <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="@dimen/_2sdp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginStart="@dimen/_5sdp"-->
+                    <!--android:layout_marginEnd="@dimen/_5sdp"-->
+                    <!--android:layout_weight="0.25"-->
+                    <!--android:background="@drawable/background_gradient_line"-->
+                    <!--android:visibility="invisible" />-->
 
-                        <TextView
-                            android:id="@+id/tv_history_detail_a_and_e_value"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
-                            android:text="$ 0"
-                            android:textAlignment="center"
-                            android:textColor="@color/gray600"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_a_and_e_value"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.4"-->
+                    <!--android:text="$ 0"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/gray600"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
 
-                    </LinearLayout>
+                    <!--</LinearLayout>-->
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_2sdp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_weight="0.25"
-                        android:background="@drawable/background_gradient_line"
-                        android:visibility="gone" />
 
                     <!--IMH group-->
-                    <LinearLayout
-                        android:id="@+id/tv_history_detail_imh_price_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_5sdp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_5sdp"
-                        android:visibility="gone"
-                        android:weightSum="1">
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/tv_history_detail_imh_price_group"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/_5sdp"-->
+                    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/_5sdp"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:weightSum="1">-->
 
-                        <TextView
-                            android:id="@+id/tv_history_detail_imh_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.35"
-                            android:text="@string/imh"
-                            android:textAlignment="center"
-                            android:textColor="@color/lightblue700"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_imh_text"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.35"-->
+                    <!--android:text="@string/imh"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/lightblue700"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_2sdp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginEnd="@dimen/_5sdp"
-                            android:layout_weight="0.25"
-                            android:background="@drawable/background_gradient_line"
-                            android:visibility="invisible" />
+                    <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="@dimen/_2sdp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginStart="@dimen/_5sdp"-->
+                    <!--android:layout_marginEnd="@dimen/_5sdp"-->
+                    <!--android:layout_weight="0.25"-->
+                    <!--android:background="@drawable/background_gradient_line"-->
+                    <!--android:visibility="invisible" />-->
 
-                        <TextView
-                            android:id="@+id/tv_history_detail_imh_value"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
-                            android:text="$ 0"
-                            android:textAlignment="center"
-                            android:textColor="@color/gray600"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_imh_value"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.4"-->
+                    <!--android:text="$ 0"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/gray600"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_2sdp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_weight="0.25"
-                        android:background="@drawable/background_gradient_line"
-                        android:visibility="gone" />
+                    <!--</LinearLayout>-->
+                    <!---->
 
                     <!--Ferry terminals group-->
-                    <LinearLayout
-                        android:id="@+id/tv_history_detail_ferry_terminals_price_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_5sdp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_5sdp"
-                        android:visibility="gone"
-                        android:weightSum="1">
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/tv_history_detail_ferry_terminals_price_group"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/_5sdp"-->
+                    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/_5sdp"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:weightSum="1">-->
 
-                        <TextView
-                            android:id="@+id/tv_history_detail_ferry_terminals_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.35"
-                            android:text="@string/ferry_terminals"
-                            android:textAlignment="center"
-                            android:textColor="@color/lightblue700"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_ferry_terminals_text"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.35"-->
+                    <!--android:text="@string/ferry_terminals"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/lightblue700"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_2sdp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginEnd="@dimen/_5sdp"
-                            android:layout_weight="0.25"
-                            android:background="@drawable/background_gradient_line"
-                            android:visibility="invisible" />
+                    <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="@dimen/_2sdp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginStart="@dimen/_5sdp"-->
+                    <!--android:layout_marginEnd="@dimen/_5sdp"-->
+                    <!--android:layout_weight="0.25"-->
+                    <!--android:background="@drawable/background_gradient_line"-->
+                    <!--android:visibility="invisible" />-->
 
-                        <TextView
-                            android:id="@+id/tv_history_detail_ferry_terminals_value"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
-                            android:text="$ 0"
-                            android:textAlignment="center"
-                            android:textColor="@color/gray600"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_ferry_terminals_value"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.4"-->
+                    <!--android:text="$ 0"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/gray600"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
 
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_2sdp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_weight="0.25"
-                        android:background="@drawable/background_gradient_line"
-                        android:visibility="gone" />
+                    <!--</LinearLayout>-->
 
                     <!--Plate number group-->
-                    <LinearLayout
-                        android:id="@+id/history_detail_plate_number_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/history_detail_plate_number_group"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical">-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:layout_marginBottom="@dimen/_5sdp"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/_5sdp"
-                            android:visibility="gone"
-                            android:weightSum="1">
+                    <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/_5sdp"-->
+                    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/_5sdp"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:weightSum="1">-->
 
-                            <TextView
-                                android:id="@+id/tv_history_detail_plate_number_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.35"
-                                android:text="@string/plate_number"
-                                android:textAlignment="center"
-                                android:textColor="@color/lightblue700"
-                                android:textSize="@dimen/_12ssp"
-                                android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_plate_number_text"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.35"-->
+                    <!--android:text="@string/plate_number"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/lightblue700"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_2sdp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="@dimen/_5sdp"
-                                android:layout_marginEnd="@dimen/_5sdp"
-                                android:layout_weight="0.35"
-                                android:background="@drawable/background_gradient_line"
-                                android:visibility="invisible" />
+                    <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="@dimen/_2sdp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginStart="@dimen/_5sdp"-->
+                    <!--android:layout_marginEnd="@dimen/_5sdp"-->
+                    <!--android:layout_weight="0.35"-->
+                    <!--android:background="@drawable/background_gradient_line"-->
+                    <!--android:visibility="invisible" />-->
 
-                            <TextView
-                                android:id="@+id/tv_history_detail_plate_number_value"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.3"
-                                android:maxLines="2"
-                                android:text="@string/plate_number"
-                                android:textAlignment="center"
-                                android:textColor="@color/gray600"
-                                android:textSize="@dimen/_12ssp"
-                                android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_plate_number_value"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.3"-->
+                    <!--android:maxLines="2"-->
+                    <!--android:text="@string/plate_number"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/gray600"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
-                        </LinearLayout>
+                    <!--</LinearLayout>-->
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_2sdp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginEnd="@dimen/_5sdp"
-                            android:layout_weight="0.25"
-                            android:background="@drawable/background_gradient_line" />
-                    </LinearLayout>
+
+                    <!--</LinearLayout>-->
 
                     <!--House Unit group-->
-                    <LinearLayout
-                        android:id="@+id/history_detail_house_unit_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/history_detail_house_unit_group"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical">-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:layout_marginBottom="@dimen/_5sdp"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/_5sdp"
-                            android:visibility="gone"
-                            android:weightSum="1">
+                    <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/_5sdp"-->
+                    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/_5sdp"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:weightSum="1">-->
 
-                            <TextView
-                                android:id="@+id/tv_history_detail_house_unit_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.35"
-                                android:text="@string/house_unit"
-                                android:textAlignment="center"
-                                android:textColor="@color/lightblue700"
-                                android:textSize="@dimen/_12ssp"
-                                android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_house_unit_text"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.35"-->
+                    <!--android:text="@string/house_unit"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/lightblue700"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_2sdp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="@dimen/_5sdp"
-                                android:layout_marginEnd="@dimen/_5sdp"
-                                android:layout_weight="0.35"
-                                android:background="@drawable/background_gradient_line"
-                                android:visibility="invisible" />
 
-                            <TextView
-                                android:id="@+id/tv_history_detail_house_unit_value"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.3"
-                                android:maxLines="2"
-                                android:text="@string/house_unit"
-                                android:textAlignment="center"
-                                android:textColor="@color/gray600"
-                                android:textSize="@dimen/_12ssp"
-                                android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_house_unit_value"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.3"-->
+                    <!--android:maxLines="2"-->
+                    <!--android:text="@string/house_unit"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/gray600"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
-                        </LinearLayout>
+                    <!--</LinearLayout>-->
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_2sdp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginEnd="@dimen/_5sdp"
-                            android:layout_weight="0.25"
-                            android:background="@drawable/background_gradient_line" />
-                    </LinearLayout>
+                    <!--</LinearLayout>-->
 
                     <!--Staircase group-->
-                    <LinearLayout
-                        android:id="@+id/tv_history_detail_staircase_price_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_5sdp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_5sdp"
-                        android:visibility="gone"
-                        android:weightSum="1">
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/tv_history_detail_staircase_price_group"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/_5sdp"-->
+                    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/_5sdp"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:weightSum="1">-->
 
-                        <TextView
-                            android:id="@+id/tv_history_detail_staircase_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.35"
-                            android:text="@string/staircase_less_80"
-                            android:textAlignment="center"
-                            android:textColor="@color/lightblue700"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_staircase_text"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.35"-->
+                    <!--android:text="@string/staircase_less_80"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/lightblue700"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_2sdp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginEnd="@dimen/_5sdp"
-                            android:layout_weight="0.25"
-                            android:background="@drawable/background_gradient_line"
-                            android:visibility="invisible" />
-
-                        <TextView
-                            android:id="@+id/tv_history_detail_staircase_value"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
-                            android:text="$ 0"
-                            android:textAlignment="center"
-                            android:textColor="@color/gray600"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_staircase_value"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.4"-->
+                    <!--android:text="$ 0"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/gray600"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
 
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_2sdp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_weight="0.25"
-                        android:background="@drawable/background_gradient_line" />
+                    <!--</LinearLayout>-->
 
 
                     <!--Tarmac group-->
-                    <LinearLayout
-                        android:id="@+id/history_detail_tarmac_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_5sdp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_5sdp"
-                        android:visibility="gone"
-                        android:weightSum="1">
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/history_detail_tarmac_group"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/_5sdp"-->
+                    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/_5sdp"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:weightSum="1">-->
 
-                        <TextView
-                            android:id="@+id/tv_history_detail_tarmac_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.35"
-                            android:text="@string/airport_tarmac"
-                            android:textAlignment="center"
-                            android:textColor="@color/lightblue700"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_2sdp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginEnd="@dimen/_5sdp"
-                            android:layout_weight="0.25"
-                            android:background="@drawable/background_gradient_line"
-                            android:visibility="invisible" />
-
-                        <TextView
-                            android:id="@+id/tv_history_detail_tarmac_value"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
-                            android:text="$ 0"
-                            android:textAlignment="center"
-                            android:textColor="@color/gray600"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_tarmac_text"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.35"-->
+                    <!--android:text="@string/airport_tarmac"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/lightblue700"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
 
-                    </LinearLayout>
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_tarmac_value"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.4"-->
+                    <!--android:text="$ 0"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/gray600"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_2sdp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_weight="0.25"
-                        android:background="@drawable/background_gradient_line"
-                        android:visibility="gone" />
+
+                    <!--</LinearLayout>-->
+
 
                     <!--Weight group-->
-                    <LinearLayout
-                        android:id="@+id/history_detail_weight_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_5sdp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_5sdp"
-                        android:visibility="gone"
-                        android:weightSum="1">
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/history_detail_weight_group"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/_5sdp"-->
+                    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/_5sdp"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:weightSum="1">-->
 
-                        <TextView
-                            android:id="@+id/tv_history_detail_weight_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.35"
-                            android:text="@string/weight"
-                            android:textAlignment="center"
-                            android:textColor="@color/lightblue700"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_weight_text"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.35"-->
+                    <!--android:text="@string/weight"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/lightblue700"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_2sdp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginEnd="@dimen/_5sdp"
-                            android:layout_weight="0.25"
-                            android:background="@drawable/background_gradient_line"
-                            android:visibility="invisible" />
-
-                        <TextView
-                            android:id="@+id/tv_history_detail_weight_value"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
-                            android:text="$ 0"
-                            android:textAlignment="center"
-                            android:textColor="@color/gray600"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_weight_value"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.4"-->
+                    <!--android:text="$ 0"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/gray600"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
 
-                    </LinearLayout>
+                    <!--</LinearLayout>-->
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_2sdp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_weight="0.25"
-                        android:background="@drawable/background_gradient_line" />
 
                     <!--Oxygen group-->
-                    <LinearLayout
-                        android:id="@+id/history_detail_oxygen_tank_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_5sdp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_5sdp"
-                        android:visibility="gone"
-                        android:weightSum="1">
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/history_detail_oxygen_tank_group"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/_5sdp"-->
+                    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/_5sdp"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:weightSum="1">-->
 
-                        <TextView
-                            android:id="@+id/tv_history_detail_oxygen_tank_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.35"
-                            android:text="@string/oxygen_liter"
-                            android:textAlignment="center"
-                            android:textColor="@color/lightblue700"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_2sdp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginEnd="@dimen/_5sdp"
-                            android:layout_weight="0.25"
-                            android:background="@drawable/background_gradient_line"
-                            android:visibility="invisible" />
-
-                        <TextView
-                            android:id="@+id/tv_history_detail_oxygen_tank_value"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
-                            android:text="$ 0"
-                            android:textAlignment="center"
-                            android:textColor="@color/gray600"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_oxygen_tank_text"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.35"-->
+                    <!--android:text="@string/oxygen_liter"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/lightblue700"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
 
-                    </LinearLayout>
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_oxygen_tank_value"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.4"-->
+                    <!--android:text="$ 0"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/gray600"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_2sdp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_weight="0.25"
-                        android:background="@drawable/background_gradient_line" />
+
+                    <!--</LinearLayout>-->
+
 
                     <!--Case type group-->
-                    <LinearLayout
-                        android:id="@+id/history_detail_case_type_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_5sdp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_5sdp"
-                        android:visibility="gone"
-                        android:weightSum="1">
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/history_detail_case_type_group"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/_5sdp"-->
+                    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/_5sdp"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:weightSum="1">-->
 
-                        <TextView
-                            android:id="@+id/tv_history_detail_pickup_type_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.35"
-                            android:text="@string/case_type"
-                            android:textAlignment="center"
-                            android:textColor="@color/lightblue700"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_pickup_type_text"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.35"-->
+                    <!--android:text="@string/case_type"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/lightblue700"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_2sdp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginEnd="@dimen/_5sdp"
-                            android:layout_weight="0.25"
-                            android:background="@drawable/background_gradient_line"
-                            android:visibility="invisible" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_history_detail_pickup_type_value"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="0.4"-->
+                    <!--android:text="$ 0"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/gray600"-->
+                    <!--android:textSize="@dimen/_12ssp"-->
+                    <!--android:textStyle="italic" />-->
 
-                        <TextView
-                            android:id="@+id/tv_history_detail_pickup_type_value"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
-                            android:text="$ 0"
-                            android:textAlignment="center"
-                            android:textColor="@color/gray600"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="italic" />
+                    <!--</LinearLayout>-->
 
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_2sdp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_weight="0.25"
-                        android:background="@drawable/background_gradient_line" />
-
-                    <LinearLayout
-                        android:id="@+id/tv_history_detail_total_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_5sdp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:fontFamily="@font/quicksand_bold"
-                            android:id="@+id/tv_history_detail_total_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.35"
-                            android:text="@string/total"
-                            android:textAlignment="center"
-                            android:textColor="@color/color_btn_main"
-                            android:textSize="@dimen/_20ssp"
-                            android:textStyle="italic|bold" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_2sdp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginEnd="@dimen/_5sdp"
-                            android:layout_weight="0.25"
-                            android:background="@drawable/background_gradient_line"
-                            android:visibility="invisible" />
-
-                        <TextView
-                            android:fontFamily="@font/quicksand_bold"
-                            android:id="@+id/tv_history_detail_total"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
-                            android:text="$ 0"
-                            android:textAlignment="center"
-                            android:textColor="@color/color_btn_main"
-                            android:textSize="@dimen/_14ssp"
-                            android:textStyle="italic|bold" />
-
-
-                    </LinearLayout>
 
                 </LinearLayout>
 

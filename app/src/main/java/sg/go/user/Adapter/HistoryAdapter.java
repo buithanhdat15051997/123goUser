@@ -15,6 +15,7 @@ import com.bumptech.glide.request.RequestOptions;
 import sg.go.user.Models.History;
 import sg.go.user.R;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -67,15 +68,46 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.typesVie
             }
 
             holder.tv_history_car_type.setText(history_itme.getHistory_type());
+
             holder.tv_history_source.setText(history_itme.getHistory_Sadd());
+
             if(!history_itme.getHistory_Dadd().equals("")){
+
                 holder.tv_history_destination.setText(history_itme.getHistory_Dadd());
+
             } else {
+
                 holder.tv_history_destination.setText(mContext.getResources().getString(R.string.not_available));
+
             }
 
-            holder.tv_history_total.setText(history_itme.getCurrnecy_unit()+" "+history_itme.getHistory_total());
-            holder.tv_history_driver_name.setText(history_itme.getProvider_name());
+            float total_history = Float.parseFloat(history_itme.getHistory_total());
+
+            DecimalFormat decimalFormat = new DecimalFormat("0.00");
+
+            holder.tv_history_total.setText(history_itme.getCurrnecy_unit()+" "+decimalFormat.format(total_history));
+
+            if(total_history > 0){
+
+                holder.txt_status_history.setText(mContext.getResources().getString(R.string.txt_finish));
+                holder.txt_status_history.setTextColor(mContext.getResources().getColor(R.color.green));
+
+            }else {
+
+                holder.txt_status_history.setText(mContext.getResources().getString(R.string.txt_no));
+                holder.txt_status_history.setTextColor(mContext.getResources().getColor(R.color.red));
+
+            }
+
+            if(history_itme.getProvider_name().equals("null")||history_itme.getProvider_name().equals("")){
+
+                holder.tv_history_driver_name.setText(mContext.getResources().getString(R.string.txt_no_booking));
+
+            }else {
+
+                holder.tv_history_driver_name.setText(history_itme.getProvider_name());
+            }
+
             holder.tv_history_date.setText(hitory_Date);
 
             /*Picasso.get().load(history_itme.getHistory_picture()).error(R.drawable.defult_user).into(holder.iv_history_img);*/
@@ -99,7 +131,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.typesVie
 
     public class typesViewHolder extends RecyclerView.ViewHolder {
         private CircleImageView iv_history_img;
-        private TextView tv_history_date,tv_history_car_type,tv_history_source,tv_history_destination,tv_history_total,tv_history_driver_name;
+        private TextView tv_history_date,tv_history_car_type,tv_history_source,tv_history_destination,tv_history_total,tv_history_driver_name,txt_status_history;
 
         public typesViewHolder(View itemView) {
             super(itemView);
@@ -110,6 +142,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.typesVie
             tv_history_destination = (TextView) itemView.findViewById(R.id.tv_history_destination);
             tv_history_total = (TextView) itemView.findViewById(R.id.tv_history_total);
             tv_history_driver_name = (TextView) itemView.findViewById(R.id.tv_history_driver_name);
+            txt_status_history= itemView.findViewById(R.id.txt_status_history);
         }
     }
 

@@ -305,7 +305,8 @@ public class RatingFragment extends BaseFragment {
                 Commonutils.progressdialog_hide();
                 try {
                     JSONObject job = new JSONObject(response);
-                    if (job.getString("success").equals("true")) {
+
+                    if (job.getString("success").equals("true") || job.getString("success").equals("false")) {
 
                         Dialog dialog_booking_success = new Dialog(activity);
 

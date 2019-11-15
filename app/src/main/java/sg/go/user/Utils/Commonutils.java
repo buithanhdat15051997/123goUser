@@ -19,7 +19,7 @@ public class Commonutils {
     private static Dialog mProgressDialog;
 
     public static void showtoast(String msg, Context context) {
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
     }
 
     public static void progressdialog_show(Context context, String msg) {

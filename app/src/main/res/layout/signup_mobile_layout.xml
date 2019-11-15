@@ -126,16 +126,17 @@
                         android:fontFamily="@font/quicksand_bold"
                         android:id="@+id/ccp"
                         android:layout_width="@dimen/_80sdp"
+                        app:ccp_defaultNameCode="SG"
                         android:layout_height="@dimen/_45sdp"
                         android:layout_marginStart="@dimen/_5sdp"
                         android:background="@color/white"
                         android:gravity="center"
-                        app:ccpDialog_textColor="@color/lightblueA700"
+                        app:ccpDialog_textColor="@color/background123go"
                         app:ccp_autoDetectCountry="true"
                         app:ccp_autoDetectLanguage="true"
                         app:ccp_autoFormatNumber="true"
                         app:ccp_contentColor="@color/black_text"
-                        app:ccp_textSize="@dimen/_12sdp" />
+                        app:ccp_textSize="@dimen/_10sdp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/input_layout_phone"

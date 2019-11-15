@@ -14,7 +14,7 @@
     <string name="schedule_ride_notification"> Vous avez une notification de tour de calendrier </string>
     <string name="apply"> Appliquer</string>
     <string name="sign_in">Se Connecter</string>
-    <string name="login_email">ID e-mail</string>
+    <string name="login_email">Email Id Or Number Phone</string>
     <string name="login_Password">Passe</string>
     <string name="login_btn">Connexion</string>
     <string name="forgot_pass_btn">Mot de passe oublié</string>
@@ -379,7 +379,7 @@
     <string name="staircase_less_80">Temps total</string>
     <string name="street_name">nom de rue</string>
     <string name="stretcher">Civière</string>
-    <string name="airport_tarmac">Types Voitures sélectionnées</string>
+    <string name="airport_tarmac">"Types Voitures "</string>
     <string name="tax_price">Prix ​​taxe</string>
     <string name="txt_apply_promo">Appliquer le PromoCode</string>
     <string name="txt_braintree1">Vous ne serez débité qu\'après votre voyage!</string>
@@ -417,7 +417,7 @@
     <string name="txt_pay_cash">Payer en espèce</string>
     <string name="txt_pay_paypal">Payer par Paypal</string>
     <string name="txt_pay_wallet">Payer par portefeuille</string>
-    <string name="txt_payment_mode">Mode de paiement</string>
+
     <string name="txt_payment_success">Paiement effectué avec succès!</string>
     <string name="txt_ride_detail">Détails de la course</string>
     <string name="txt_ride_with">Votre voyage avec</string>
@@ -506,5 +506,22 @@
     <string name="txt_cost_erp_charges">Ajouter les frais ERP:</string>
     <string name="txt_cost_add_child_seat_charges">Ajouter les frais de siège d\'enfant :</string>
     <string name="txt_cost_add_orther">Ajouter d\'autres:</string>
+    <string name="txt_taxi_comingsoon">Le taxi n\'est pas disponible maintenant. À venir!</string>
+    <string name="txt_terms_conditions">Conditions générales</string>
+    <string name="txt_i_gree_terms_conditons">J\'accepte les Conditions générales</string>
+    <string name="txt_change_password">Changer de mot de passe</string>
+    <string name="txt_please_enter_changepassword">S\'il vous plaît vérifier tous les champs</string>
+    <string name="txt_btn_comfirm_changepassword">Confirmer le mot de passe</string>
+    <string name="txt_old_changepassword">Ancien mot de passe</string>
+    <string name="txt_new_changepassword">Nouveau mot de passe</string>
+    <string name="txt_finish">FINISH</string>
+    <string name="txt_policy_privacy">Confidentialité des politiques</string>
+    <string name="txt_select_date_history">Date range</string>
+    <string name="txt_accept_term_condition">Vous devez d\'abord accepter notre condition</string>
+    <string name="txt_faild_server">Serveur échoué!</string>
+    <string name="txt_pass_confirmpass_not_match">Mot de passe et mot de passe confirmé ne correspond pas!</string>
+    <string name="txt_no_booking">Pas de réservation</string>
+    <string name="txt_extra_cost">Coûts supplémentaires:</string>
+    <string name="txt_payment_mode">Mode de paiement:</string>
 </resources>
 
