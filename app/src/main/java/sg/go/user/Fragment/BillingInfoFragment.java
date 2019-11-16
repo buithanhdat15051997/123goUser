@@ -1446,15 +1446,15 @@ public class BillingInfoFragment extends DialogFragment implements AsyncTaskComp
                         }
 
 
-                        if(jsonObject.has("provider_timeout")){
-
-                            count_time_server = Integer.parseInt(jsonObject.getString("provider_timeout"));
-
-                            Log.d("DAT_TIME",""+count_time_server);
-
-
-
-                        }
+//                        if(jsonObject.has("provider_timeout")){
+//
+//                            count_time_server = Integer.parseInt(jsonObject.getString("provider_timeout"));
+//
+//                            Log.d("DAT_TIME",""+count_time_server);
+//
+//
+//
+//                        }
 
 //                        if (jsonObject.has(Const.Params.A_AND_E)){
 //
