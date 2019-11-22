@@ -375,12 +375,18 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private boolean validate() {
         getLoginDetails();
         if (sLoginUserId.length() == 0) {
-            input_layout_userid.setError(getResources().getString(R.string.txt_email_error));
+
+           // input_layout_userid.setError(getResources().getString(R.string.txt_email_error));
+            et_login_userid.setError(getResources().getString(R.string.txt_email_error));
             et_login_userid.requestFocus();
+
             return false;
         } else if (sLoginPassword.length() == 0) {
-            input_layout_pass.setError(getResources().getString(R.string.txt_pass_error));
+
+            //input_layout_pass.setError(getResources().getString(R.string.txt_pass_error));
+            et_login_password.setError(getResources().getString(R.string.txt_pass_error));
             et_login_password.requestFocus();
+
             return false;
         } else {
             input_layout_userid.setError(null);

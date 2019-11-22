@@ -469,6 +469,7 @@
     <string name="btn_no_driver">No Driver available now</string>
 
     <string name="txt_selected_type">Selecting Payment Type is</string>
+    <string name="txt_countdown_time">Seconds remaining:</string>
 
     <string name="txt_cash">CASH</string>
     <string name="txt_paypal">PAYPAL</string>

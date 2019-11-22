@@ -195,6 +195,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="@string/address"
+                    android:visibility="gone"
                     android:textColor="@color/color_background_main"
                     android:textSize="@dimen/_11ssp"
                     android:textStyle="bold" />

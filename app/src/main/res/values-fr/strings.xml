@@ -523,5 +523,6 @@
     <string name="txt_no_booking">Pas de réservation</string>
     <string name="txt_extra_cost">Coûts supplémentaires:</string>
     <string name="txt_payment_mode">Mode de paiement:</string>
+    <string name="txt_countdown_time">Secondes restantes:</string>
 </resources>
 

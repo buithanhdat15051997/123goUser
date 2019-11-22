@@ -97,7 +97,6 @@
         <item name="colorPrimary">@color/lightblueA700</item>
         <item name="colorPrimaryDark">@color/lightblueA700</item>
         <item name="colorAccent">@color/lightblueA700</item>
-
     </style>
 
     <style name="Color1SwitchStyle">

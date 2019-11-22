@@ -64,7 +64,7 @@ public class ForgotPasswordFragment extends BaseRegisterFragment implements Asyn
             case R.id.forgot_pass_btn:
                 if (et_email_forgot.getText().toString().length() == 0) {
                     et_email_forgot.requestFocus();
-                    input_layout_email_forgot.setError(activity.getString(R.string.txt_email_error));
+                    et_email_forgot.setError(activity.getString(R.string.txt_email_error));
                 } else {
                     input_layout_email_forgot.setError(null);
                     RequestPassword();

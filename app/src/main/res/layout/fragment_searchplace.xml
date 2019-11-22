@@ -173,17 +173,17 @@
         android:paddingTop="@dimen/_5sdp">
 
         <TextView
-            android:fontFamily="@font/questrial_regular"
             android:id="@+id/txt_select_prefered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_5sdp"
-            android:visibility="gone"
+            android:fontFamily="@font/questrial_regular"
             android:text="@string/txt_select_btn_route"
             android:textColor="@color/white"
             android:textSize="@dimen/_12ssp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone" />
 
         <LinearLayout
             android:id="@+id/LinearRoutes1"
@@ -207,11 +207,11 @@
                 android:src="@drawable/red_btn_marker" />
 
             <Button
-                android:fontFamily="@font/quicksand_bold"
                 android:id="@+id/btnRedMarker"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:background="@color/white"
+                android:fontFamily="@font/quicksand_bold"
                 android:textColor="@color/black_text"
                 android:textSize="@dimen/_15sdp"
                 android:visibility="visible"></Button>
@@ -238,12 +238,12 @@
                 android:src="@drawable/blue_btn_marker" />
 
             <Button
-                android:fontFamily="@font/quicksand_bold"
                 android:id="@+id/btnBlueMarker"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_below="@+id/btnRedMarker"
                 android:background="@color/white"
+                android:fontFamily="@font/quicksand_bold"
                 android:textColor="@color/black_text"
                 android:textSize="@dimen/_15sdp"
                 android:visibility="visible"></Button>
@@ -257,9 +257,9 @@
             android:layout_below="@+id/LinearRoutes2"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/background_rectango_stroke_routes_three"
             android:orientation="horizontal"
-            android:layout_marginBottom="@dimen/_5sdp"
             android:visibility="gone">
 
             <ImageView
@@ -272,12 +272,12 @@
                 android:src="@drawable/yellow_btn_marker" />
 
             <Button
-                android:fontFamily="@font/quicksand_bold"
                 android:id="@+id/btnYellowMarker"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_below="@+id/btnBlueMarker"
                 android:background="@color/white"
+                android:fontFamily="@font/quicksand_bold"
                 android:textColor="@color/black_text"
                 android:textSize="@dimen/_15sdp"
                 android:visibility="visible"
@@ -285,8 +285,7 @@
         </LinearLayout>
 
 
-        <com.github.ybq.android.spinkit.SpinKitView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/spin_kitHome"
             style="@style/SpinKitView.Large.Circle"
             android:layout_width="@dimen/_50sdp"
@@ -333,12 +332,12 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:fontFamily="@font/questrial_regular"
                     android:layout_width="40dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="@dimen/_3sdp"
                     android:layout_weight="2"
+                    android:fontFamily="@font/questrial_regular"
                     android:gravity="center"
                     android:text="From"
                     android:textSize="@dimen/_8sdp" />
@@ -351,7 +350,6 @@
                     android:src="@drawable/ic_destination_all" />
 
                 <AutoCompleteTextView
-                    android:fontFamily="@font/questrial_regular"
                     android:id="@+id/et_source_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -359,6 +357,7 @@
                     android:layout_marginRight="@dimen/_5sdp"
                     android:layout_weight="7"
                     android:backgroundTint="@null"
+                    android:fontFamily="@font/questrial_regular"
                     android:hint="@string/txt_current_loc"
                     android:imeOptions="actionSearch"
                     android:padding="@dimen/_10sdp"
@@ -407,11 +406,11 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:fontFamily="@font/questrial_regular"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="@dimen/_4sdp"
+                    android:fontFamily="@font/questrial_regular"
                     android:gravity="center"
                     android:text="To"
                     android:textSize="@dimen/_8sdp" />
@@ -424,7 +423,6 @@
                     android:src="@drawable/ic_destination_all" />
                 <!-- android:background="@drawable/background_rectango_stroke_blue"-->
                 <AutoCompleteTextView
-                    android:fontFamily="@font/questrial_regular"
                     android:id="@+id/et_destination_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -433,6 +431,7 @@
                     android:layout_marginBottom="@dimen/_2sdp"
                     android:layout_weight="9"
                     android:backgroundTint="@null"
+                    android:fontFamily="@font/questrial_regular"
                     android:hint="@string/txt_dest_hint"
                     android:imeOptions="actionSearch"
                     android:inputType="text"

@@ -49,14 +49,14 @@
     <LinearLayout
         android:id="@+id/signup2_footer"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_280sdp"
+        android:layout_height="wrap_content"
         android:background="@color/color_background_main"
         android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/user_info"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_above="@id/input_group"
             android:layout_marginTop="@dimen/_7sdp"
             android:gravity="center"
@@ -113,19 +113,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
                     android:background="@color/white"
+                    android:visibility="visible"
                     android:fontFamily="@font/quicksand_bold"
                     android:textColorHint="@color/black_text">
 
                     <EditText
                         android:id="@+id/user_fullname"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_35sdp"
+                        android:layout_height="@dimen/_40sdp"
                         android:layout_gravity="center_vertical"
                         android:background="@color/white"
                         android:fontFamily="@font/quicksand_bold"
                         android:hint="@string/full_name"
                         android:inputType="text"
                         android:padding="@dimen/_10sdp"
+
                         android:singleLine="true"
                         android:textColor="@color/black_text"
                         android:textColorHint="@color/black_text"
@@ -174,10 +176,10 @@
                 <EditText
                     android:id="@+id/user_email"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_35sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:background="@color/white"
                     android:fontFamily="@font/quicksand_bold"
-                    android:hint="@string/login_email"
+                    android:hint="@string/your_email"
                     android:inputType="textEmailAddress"
                     android:padding="@dimen/_10sdp"
                     android:singleLine="true"
@@ -190,14 +192,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:weightSum="1"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:orientation="vertical">
 
                 <android.support.design.widget.TextInputLayout
+                    android:layout_weight="0.5"
                     android:id="@+id/input_layout_pass"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_45sdp"
+                    android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:fontFamily="@font/quicksand_bold"
                     android:textColorHint="@color/black_text"
@@ -208,7 +212,7 @@
                     <EditText
                         android:id="@+id/user_password"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_35sdp"
+                        android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:fontFamily="@font/quicksand_bold"
                         android:hint="@string/login_Password"
@@ -223,10 +227,11 @@
 
 
                 <android.support.design.widget.TextInputLayout
+                    android:layout_weight="0.5"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:id="@+id/input_layout_confirmpass"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_45sdp"
+                    android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:fontFamily="@font/quicksand_bold"
                     android:textColorHint="@color/black_text"
@@ -237,7 +242,7 @@
                     <EditText
                         android:id="@+id/user_confirmpassword"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_35sdp"
+                        android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:hint="@string/txt_btn_comfirm_changepassword"
                         android:inputType="textPassword"
@@ -256,6 +261,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_weight="10"
+                    android:visibility="gone"
                     android:fontFamily="@font/quicksand_bold"
                     android:textColorHint="@color/black_text">
 

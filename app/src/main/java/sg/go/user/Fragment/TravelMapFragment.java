@@ -1196,7 +1196,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
     public void drawPath(String result) {
 
-        Log.d("Dat_Preference", new PreferenceHelper(activity).getOverViewPolyline().toString());
+        Log.d("Dat_OverViewPolyline", new PreferenceHelper(activity).getOverViewPolyline().toString());
 
 //        RequestOptional mOptinal = new RequestOptional();
         //Tranform the string into a json object
@@ -1500,6 +1500,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                     JSONArray routeArray = json.getJSONArray("routes");
                     JSONObject routes = routeArray.getJSONObject(0);
                     JSONObject overviewPolylines = routes.getJSONObject("overview_polyline");
+
                     String encodedString = overviewPolylines.getString("points");
                     List<LatLng> list = decodePoly(encodedString);
 
@@ -1775,13 +1776,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
             case Const.ServiceCode.CHECKREQUEST_STATUS:
 
-//                EbizworldUtils.appLogInfo("DAT_TRAVELMAP", "check req status: " + response);
-//                if (requestDetail.getTripStatus()>3){
-//
-//                }else {
-//
-//                    Log.d("aaaaaaaaa", "aaaaaaaaa: ");
-//                }
+                EbizworldUtils.appLogInfo("DAT_TRAVELMAP", "check req status: " + response);
 
                 if (response != null) {
 
@@ -1838,22 +1833,6 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
                                 DialogCacelByDriver(message_driver_cancel);
 
-//                                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-//                                builder.setMessage(activity.getResources().getString(R.string.txt_cancel_driver1)+" S$ "+money_driver_cancel+" "+activity.getResources().getString(R.string.txt_cancel_driver2))
-//                                        .setCancelable(false)
-//                                        .setPositiveButton(getResources().getString(R.string.txt_ok), new DialogInterface.OnClickListener() {
-//                                            public void onClick(DialogInterface dialog, int id) {
-//
-//                                                new PreferenceHelper(activity).clearRequestData();
-//                                                //googleMap.clear();
-//                                                dialog.dismiss();
-//                                                getActivity().onBackPressed();
-//                                                // activity.addFragment(new SearchPlaceFragment(), false, Const.SEARCH_FRAGMENT, true)
-//                                            }
-//                                        });
-//                                AlertDialog alert = builder.create();
-//                                alert.show();
-
                             }
                             break;
 
@@ -1899,7 +1878,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
 
                             // getDirectionsmy(myLocation.getLatitude(),myLocation.getLongitude(),driver_latlan.latitude,driver_latlan.longitude);
 
-                            getDirectionsmy(driver_latlan.latitude, driver_latlan.longitude, d_latlon.latitude, d_latlon.longitude);
+                            //getDirectionsmy(driver_latlan.latitude, driver_latlan.longitude, d_latlon.latitude, d_latlon.longitude);
 
 
                             jobStatus = Const.IS_DRIVER_DEPARTED;
@@ -1933,7 +1912,7 @@ public class TravelMapFragment extends BaseFragment implements LocationHelper.On
                             //getDirectionsmy(Double.valueOf(requestDetail.getS_lat()),Double.valueOf(requestDetail.getS_lat()),d_latlon.latitude,d_latlon.longitude);
 
 
-                            getDirectionsmy(s_latlon.latitude, s_latlon.longitude, d_latlon.latitude, d_latlon.longitude);
+                            getDirections(s_latlon.latitude, s_latlon.longitude, d_latlon.latitude, d_latlon.longitude);
 
 
                             jobStatus = Const.IS_DRIVER_ARRIVED;

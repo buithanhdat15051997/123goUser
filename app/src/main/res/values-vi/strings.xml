@@ -139,7 +139,7 @@
     <string name="trip_summary">TÓM TẮT CHUYẾN ĐI</string>
     <string name="txt_no_tolls">Số điện thoại</string>
     <string name="rate_ride">Đánh giá kinh nghiệm chuyến đi của bạn?</string>
-    <string name="txt_content_ratings">"Bạn phản hồi sẽ chúng tôi cải thiện các chuyến đi "</string>
+    <string name="txt_content_ratings">"Bạn phản hồi để chúng tôi cải thiện các chuyến đi "</string>
     <string name="txt_sub_rating">GỬI ĐI</string>
     <string name="txt_booking_success">Cảm ơn bạn đã đi chuyến đi với 123GO!</string>
     <string name="txt_content_booking_success">Chuyến đi của bạn đã được xác nhận, tài xế của chúng tôi sẽ đón trong vòng 5 phút, chúng ta đã có một chuyến đi tốt đẹp!</string>
@@ -232,6 +232,8 @@
     <string name="txt_payment_mode">Phương thức thanh toán:</string>
     <string name="distance">Khoảng cách</string>
     <string name="txt_cash">Tiền mặt</string>
+    <string name="your_email">Email của bạn</string>
+    <string name="txt_countdown_time">Số giây còn lại:</string>
 
 
 </resources>

@@ -509,5 +509,6 @@
     <string name="txt_no_booking">No Booking</string>
     <string name="txt_extra_cost">Extra Charges:</string>
     <string name="txt_payment_mode">" Payment Mode:"</string>
+    <string name="txt_countdown_time">Seconds remaining:</string>
 </resources>
 

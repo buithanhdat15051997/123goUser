@@ -71,7 +71,9 @@ public class SignUpMobileFragment extends BaseRegisterFragment implements AsyncT
                 break;
             case R.id.btn_confirm_phone:
                 if (TextUtils.isEmpty(user_mobile_nuber.getText().toString())) {
-                    input_layout_phone.setError(getResources().getString(R.string.txt_phone_error));
+                   // input_layout_phone.setError(getResources().getString(R.string.txt_phone_error));
+
+                    user_mobile_nuber.setError(getResources().getString(R.string.txt_phone_error));
                     user_mobile_nuber.requestFocus();
                 } else {
                     input_layout_phone.setError(null);

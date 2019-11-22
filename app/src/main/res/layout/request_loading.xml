@@ -11,9 +11,10 @@
         android:id="@+id/txt_show_time_down"
         android:layout_width="wrap_content"
         android:text="Time Down"
-        android:visibility="gone"
+        android:visibility="visible"
         android:textSize="@dimen/_12ssp"
-        android:textColor="@color/color_btn_main"
+        android:fontFamily="@font/quicksand_bold"
+        android:textColor="@color/white"
         android:layout_height="wrap_content" />
 
 

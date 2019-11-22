@@ -28,7 +28,7 @@ public class AmbulanceFCMService extends FirebaseMessagingService {
 
     private NotificationManager mNotificationManager;
     /*private String TAG = AmbulanceFCMService.class.getSimpleName();*/
-    private String TAG = "AmbulanceFCMService";
+    private String TAG = "DAT_NOTIFICATION_";
     private int mMessage_Type = 0;
     public static String providercancel_id = "";
 
@@ -50,7 +50,7 @@ public class AmbulanceFCMService extends FirebaseMessagingService {
             if(remoteMessage.getData().get("providercancel_id")!= null){
 
                 providercancel_id = remoteMessage.getData().get("providercancel_id");
-                Log.d("providercancel_id","   "+providercancel_id);
+                Log.d(TAG+"providercancel_id","   "+providercancel_id);
 
 //                GetRequestSecond(mRequestOptional, providercancel_id);
 
@@ -143,15 +143,68 @@ public class AmbulanceFCMService extends FirebaseMessagingService {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         }
-         if(type.equals(Const.NotificationType.TYPE_ACCOUNT_LOGOUT)){
 
-             intent = new Intent(Const.NotificationType.TYPE_ACCOUNT_LOGOUT);
 
-             intent.putExtra(Const.NotificationType.TYPE_ACCOUNT_LOGOUT, type);
+        switch (type){
 
-             LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+            case Const.NotificationType.TYPE_ACCOUNT_LOGOUT:
 
-         }
+                intent = new Intent(Const.NotificationType.TYPE_ACCOUNT_LOGOUT);
+
+                intent.putExtra(Const.NotificationType.TYPE_ACCOUNT_LOGOUT, type);
+
+                LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+
+
+                break;
+
+            case Const.NotificationType.SEND_REQUEST:
+
+                Intent intent_senrequest = new Intent(Const.NotificationType.SEND_REQUEST);
+
+                intent_senrequest.putExtra(Const.NotificationType.SEND_REQUEST,type);
+
+                Log.d(TAG,Const.NotificationType.SEND_REQUEST+": "+type);
+
+                LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent_senrequest);
+
+
+                break;
+
+            case Const.NotificationType.TYPE_SERVICE_REJECT:
+
+               Intent intent_reject = new Intent(Const.NotificationType.SEND_REQUEST);
+
+                intent_reject.putExtra(Const.NotificationType.SEND_REQUEST,type);
+
+                Log.d(TAG,Const.NotificationType.SEND_REQUEST+": "+type);
+
+                LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent_reject);
+
+                break;
+
+            case Const.NotificationType.TYPE_SERVICE_ACCEPT:
+
+                Intent intent_accept = new Intent(Const.NotificationType.SEND_REQUEST);
+
+                intent_accept.putExtra(Const.NotificationType.SEND_REQUEST,type);
+
+                Log.d(TAG,Const.NotificationType.SEND_REQUEST+": "+type);
+
+                LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent_accept);
+
+                break;
+
+        }
+//         if(type.equals(Const.NotificationType.TYPE_ACCOUNT_LOGOUT)){
+//
+//             intent = new Intent(Const.NotificationType.TYPE_ACCOUNT_LOGOUT);
+//
+//             intent.putExtra(Const.NotificationType.TYPE_ACCOUNT_LOGOUT, type);
+//
+//             LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+//
+//         }
 
 //        if (mMessage_Type == Const.NotificationType.SCHEDULE_CODE){
 //

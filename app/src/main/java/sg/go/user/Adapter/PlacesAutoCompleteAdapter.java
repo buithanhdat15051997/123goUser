@@ -107,6 +107,12 @@ public class PlacesAutoCompleteAdapter extends ArrayAdapter<String> implements F
 
             }
 
+            if(locale.equals("US")){
+
+                sb.append("&components=country:SG");
+
+            }
+
             sb.append("&radius=500");
             sb.append("&input=" + URLEncoder.encode(input, "utf8"));
             Log.d("PlaceAdapter", "Place Url : " + sb.toString());

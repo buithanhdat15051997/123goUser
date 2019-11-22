@@ -420,18 +420,26 @@ public class Const {
         public static final String TYPE = "type";
         public static final String BODY = "body";
         public static final String TITLE = "title";
+        public static final String NO_DRIVER ="no_driver";
+        public static final String SEND_REQUEST ="sendrequest";
+
+        public static final String ACTION_REQUEST = "request";
+
         public static final String ACTION_SCHEDULE = "request_later";
         public static final String ACTION_REQUEST_NORMAL = "request";
         public static final String TYPE_DRIVER_START = "driver_start";
         public static final String TYPE_DRIVER_ARRIVED = "arrived";
         public static final String TYPE_SERVICE_START = "service_start";
         public static final String TYPE_TRIP_COMPLETED = "completed";
+
         public static final String TYPE_SERVICE_ACCEPT = "accept";
         public static final String TYPE_SERVICE_REJECT = "reject";
+
         public static final String TYPE_SCHEDULE_APPROVED = "approve_scheduled";
         public static final String TYPE_TRIP_RATE = "rate";
         public static final String TYPE_TRIP_CANCLE = "cancel";
         public static final String TYPE_ACCOUNT_LOGOUT = "logout";
+
     }
 
     // service codes

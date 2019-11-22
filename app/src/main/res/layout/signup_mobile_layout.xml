@@ -151,7 +151,7 @@
                             android:fontFamily="@font/quicksand_bold"
                             android:id="@+id/user_mobile_nuber"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/_40sdp"
                             android:background="@color/white"
                             android:hint="@string/phn_no"
                             android:inputType="phone"

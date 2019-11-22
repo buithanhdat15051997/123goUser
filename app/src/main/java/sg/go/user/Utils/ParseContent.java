@@ -521,6 +521,8 @@ public class ParseContent {
 
                     JSONObject dataObject = jarray.getJSONObject(0);
 
+                    Log.d("DAT_PROVIDER",jarray.getJSONObject(0)+"");
+
                     new PreferenceHelper(activity).putRequestId(Integer.valueOf(dataObject.getString("request_id")));
                     EbizworldUtils.appLogDebug("HaoLS", "Request ID: " + new PreferenceHelper(activity).getRequestId());
 
@@ -533,6 +535,8 @@ public class ParseContent {
                             requestDetail.setPolyline_string(dataObject.getString("overview_polyline"));
 
                             new PreferenceHelper(activity).putOverViewPolyline(dataObject.getString("overview_polyline"));
+
+                            Log.d("DAT_OVER_POLYLINE",dataObject.getString("overview_polyline"));
 
                         }
 
